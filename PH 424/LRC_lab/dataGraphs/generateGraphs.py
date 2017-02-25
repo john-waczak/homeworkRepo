@@ -8,7 +8,7 @@ C = 0.1*10**(-6)
 L = 0.1674288
 
 
-dir = "C:/Users/John/Desktop/homeworkRepo/PH 424"
+dir = "C:/Users/John/Desktop/homeworkRepo/PH 424/LRC_lab/dataGraphs"
 w = np.loadtxt(dir+"/angularFrequencies.txt")
 phi_e= np.loadtxt(dir+"/phaseDiffExp.txt")
 #phi_t = np.loadtxt(dir+"/phaseDiffTheory.txt")
