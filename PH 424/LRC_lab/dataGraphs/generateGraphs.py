@@ -40,6 +40,7 @@ plt.xlabel("$\omega$ [rad/sec]")
 plt.title("Admittance response of LCR circuit")
 plt.grid(True)
 plt.ylim(0, 0.011)
+plt.xlim(4500, 13000)
 plt.legend()
 
 plt.show()
