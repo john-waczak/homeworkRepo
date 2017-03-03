@@ -1,0 +1,39 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+L = 1       #[m]
+v = 1       # [m/s]
+x = np.linspace(0,L, 1000)
+h_bar = 1
+m = 1
+
+def probOne(t):
+    f = np.zeros(1000)
+    for n in range(1,10):
+        f  = f + np.sin(np.pi*n*x/L)*np.cos(np.pi*n*v*t/L)*(28*L**2/(np.pi**3*n**3))*(1-np.cos(np.pi*n))
+    return f
+
+def probTwo(t):
+    f = np.zeros(1000)
+    for n in range(1, 10):
+        f = f + (np.sqrt(30/L**5))*(4*L**2/(np.pi**3*n**3))*(1-np.cos(np.pi*n))*np.sin(np.pi*n*x/L)*np.cos(-np.pi**2*n**2*t*h_bar/(2*m))
+    return f
+
+y = np.linspace(0,L, 1000)
+plt.contour(x,y,probThree(y))
+
+
+plt.figure()
+plt.plot(x, probTwo(0), color = 'k', label = " = 0")
+plt.plot(x, probTwo(0.2), '--', label = "t=0.1")
+plt.xlabel("x")
+plt.ylabel("$\psi (x,t)$")
+plt.legend()
+
+plt.figure()
+plt.plot(x,probOne(0), label = "t = 0 s", color ='k')
+plt.plot(x,probOne(0.25), '--', label = "t = 0.25 s")
+plt.xlabel("x")
+plt.ylabel("f(x,t)")
+plt.legend()
+plt.show()
