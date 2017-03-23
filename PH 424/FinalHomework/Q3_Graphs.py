@@ -14,7 +14,7 @@ def coefficient_1(n):
     return (V0/T)*(2*gamma/(gamma**2+n**2*w**2))
 
 def coefficient_2(n):
-    return ((4*A)/(np.pi**2*n**2))*(1-(-1)**n)
+    return A*(np.sin(n*np.pi/2)-np.sin(3*np.pi/2))/(np.pi**2*n**2)
 
 
 def prob_1(N):
@@ -26,17 +26,14 @@ def prob_1(N):
 def prob_2(N):
     V= 0
     for n in range(1,N):
-        V = V + coefficient_2(n)*np.cos(n*w*t)
+        V = V + coefficient_2(n)*np.sin(n*w*t)
     return V
 
-
-plt.figure()
-plt.plot(t, prob_1(100))
 
 
 plt.figure()
 plt.plot(t,prob_2(3), '--', color='k', label='terms up to n=3')
-plt.plot(t,prob_2(11), color='k',label='terms up to n = 11')
+plt.plot(t,prob_2(10000), color='k',label='terms up to n = 11')
 plt.xlabel("t [s]")
 plt.ylabel("V(t) [volts]")
 plt.grid(True)
