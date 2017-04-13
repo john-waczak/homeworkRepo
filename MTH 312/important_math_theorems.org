@@ -1,0 +1,172 @@
+     #+TITLE: Important Math Theorems 
+     #+AUTHOR: John L. Waczak 
+\pagebreak 
+
+
+* MTH 311 Key Theorems
+
+** Properties of Real Numbers
+*** Sum of natural numbers and their squares
+These formulas can be proved using mathematical induction and are usefull for evaluating certain sequences. 
+
+\begin{align}
+    \sum_{j=1}^n j & = \frac{n(n+1)}{2} \\ 
+    \sum_{j=1}^n j^2 &= \frac{n(n+1)(2n+1)}{6} 
+\end{align}
+
+*** Archimedean Property 
+
+Another usefull property of the real numbers is the following (dubbed the Archimedean property) 
+    1. \forall positive c, \exists n \in N s.t. n>c 
+    2. \forall positive \epsilon, \exists n \in N s.t. \frac{1}{n}<\epsilon
+
+
+*** Density properties 
+    1. \forall k \in Z there is no k \in z s.t. k\in open interval (n, n+1) 
+    2. \forall a,b with a<b \exists a rational number r \in (a,b) 
+    3. \forall c \in R \exists unique integer in the interval [c, c+1) 
+    4. \forall a,b with a<b \exists an irrational numbe I \in (a,b)
+
+*** Triangle Inequality 
+    | a + b | \leq | a | + | b |
+    
+The following three statements are equivalent
+
+    1. |x-a| < r 
+    2. a-r < x < a+r 
+    3. x \in (a-r, a+r) 
+
+** Convergence of sequences
+
+*** Definition of Convergence  
+Definition: A sequenc ${a_n}$ is said to converge to the number a provided that \forall \epsilon > 0, \exists N such that 
+$$ |a_n - a | < \epsilon, \quad \forall n \geq N $$ 
+   
+*** Comparison Lemma 
+Let the sequence ${a_n}$ converge to the number a. Then the sequence ${b_n}$ convergesto the number b if \exists C>0 and index $N_1$ s.t.
+\begin{equation} 
+|b_n-b| \leq C|a_n - a| 
+\end{equation} 
+
+*** Closedness of sets 
+Definition: A subset S of R is said to be closed provided that if ${a_n}$ converges to a number a, then the limit a also belongs to S
+
+*** Montone sequences 
+Definition: A sequence ${a_n}$ is monotonically increasing provided that \forall index n 
+$$a_{n+1} \geq a_n$$  
+\newline
+\newline
+Definition: A sequence ${a_n}$ is monotonically decreasing provided that \forall index n
+ $$a_{n+1} \leq a_n$$
+
+
+*** Monotone convergence theorem 
+A monotone sequence converges if and only if ($\iff$) it is bounded. Moreover, the bounded monotone sequence ${a_n}$ converges to: 
+     1. sup{$a_n$ | n in N} if it is monotonically increasing 
+     2. inf{$a_n$ | n in N} if it is monotonically decreasing
+
+*** Bounded sequences 
+Every bounded sequence has a convergent subsequence
+
+
+** Continuity 
+
+*** Sequence definition of continuous 
+Definition: A function f:D $\rightarrow$ R is said to be continuous at the point $x_0$ in D provided that for a sequence ${x_n}$ \in D:
+\newline 
+\newline 
+\lim_{n \to \infty} x_n = x_0   \to \lim_{n \to \infty} f(x_n) = f(x_0)
+
+*** The Extreme Value Theorem 
+A function f:D $\rightarrow$ R on a closed, bounded interval attains both a minimum and maximum value.
+
+*** The Intermediate Value Theorem 
+Suppose that the function f:D $\to$ R is continuous. Let c be a number strictly between f(a) and f(b); 
+that is, 
+\newline 
+\newline
+ f(a) < c < f(b) or  f(b) < c < f(b)
+\newline 
+Then there is a point $x_0$ \in (a,b) at which $f(x_0) = c
+
+*** Uniform Continuity 
+Definition: A function f:D $\to$ R is said to be uniformly continuous provided that whenever ${u_n}$ and ${v_n}$
+
+*** Uniform implies continuous
+A continuous function on a closed bounded interval is uniformly continuous
+
+*** Epsilon Delta criterion for continuity 
+A function f:D $\to$ R is said to satisfy the $\epsilon - \delta$ criterion for continuity at a point $x_0$ in the domain D provided that
+ \forall \epsilon > 0, \exists a \delta > 0 such that for a x in D, 
+\newline 
+\newline 
+$$|x-x_0| \to |f(x) - f(x_0)| $$ 
+
+*** Monotone functions 
+Definition: The function f:D $\to$ R is called monotonically increasing provided that: 
+f(v)$\geq$f(u) for all points u and v in D such that v > u. 
+\newline 
+\newline 
+Definition=: The function f:D $\to$ R is called monotonically decreasing  provided that:
+f(v)$\leq$f(u) for all points u and v in D such that v > u 
+
+*** Limits 
+Definition: For a set D $\subseteq$ R, the number $x_0$ is called a limit point of D providd that there is a sequence of points in D\$\{x_0\}$ that converges to $x_0$
+\newline 
+\newline 
+Definition: Given f: D$\to$ R and a limit point of D\$\{x_0\}$, for a number l, we write: 
+\begin{equation*}
+\lim_{x \to x_0} f(x) = l 
+\end{equation*} 
+\newline 
+provided that whenever ${x_n}$ is a sequence in D\$\{x_0\}$ that converges to $x_0$, 
+\begin{equation}
+\lim_{n \to \infty} f(x_n) = l
+\end{equation} 
+
+
+** Differentiation 
+
+*** Derivative definition
+Defintion: An open interval I = (a,b) that conatinas the point $x_0$ is called a neighborhood of $x_0$
+\newline 
+\newline 
+Definition: Let I be a neighborhood of $x_0$. Then the function f:I$\to$R is said to be differentiable at $x_0$ provided that: 
+\begin{equation*}
+\lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0}
+\end{equation*}
+
+*** Differentiable functions are continuous 
+If f is differentiable at $x_0$ then f is continuous at $x_0$. 
+
+*** Rolle's Theorem 
+Suppose that the function f:[a,b] $\to$ R is continuous and that the restriction to (a,b) is differentiable. 
+\newline
+If f(a) = f(b), then \exists $x_0$ such that $f'(x_0) = 0$. 
+
+*** Mean value theorem 
+Suppose that f:[a,b] $\to$ R is continuous and that the restriction to (a,b) is differentiable. Then \exists $x_0$ \in (a,b) s.t. 
+\newline 
+$$ f'(x_0) = \frac{f(b)-f(a)}{b-a} $$ 
+* MTH 312 Key Theorems 
+** Integrations and the Fundamental Theorem
+*** partition 
+Definition: P = ${x_0, x_1, x_2, ...x_n}f$ \subseteq [a,b] such that: 
+\newline 
+\newline 
+$$ a = x_0 < x_1 < x_2 < x_3 < ... x_{n-1} < x_n = b $$ 
+is denoted a partition of [a,b]. 
+
+*** Upper and Lower Darboux Sum 
+Definition: the uppper darboux sum for a partition P of [a,b] is denoted: 
+$$ \sum_{i=1}^n M_i(x_i-x_{i-1})$$ 
+Where M_i denotes the suprememum of f(x) on the interval $[x_{i-1}, x_i]$
+\newline
+\newline
+Definition: the lower darboux sum for a partition P of [a,b] is denoted: 
+$$ \sum_{i=1}^n m_i(x_i-x_{i-1})$$ 
+Where M_i denotes the infimum of f(x) on the interval $[x_{i-1}, x_i]$
+
+*** Refinement Lemma 
+Suppose that the function f:[a,b] $\to$ R is bounded and that P is a partition ofits domain [a,b] if $P^*$ is a refinement of P, then 
+$$L(f,P) \leq L(f,P^*) $$ 
