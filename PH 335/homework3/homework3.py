@@ -43,7 +43,17 @@ plt.grid(True)
 plt.figure()
 plt.plot(t, V)
 plt.xlabel('t [s]')
-plt.ylabel('v [m/s]') 
+plt.ylabel('v [m/s]')
 plt.grid(True)
 
+
+plt.figure()
+v_t = 20
+g = 10
+Vy = v_t*(np.exp(g*t/v_t)-np.exp(-g*t/v_t))/(np.exp(g*t/v_t)+np.exp(-g*t/v_t))
+plt.plot(t, Vy, 'b', label='vt*tanh(gt/vt)')
+plt.plot(t, g*t, 'k', label='gt')
+plt.legend()
+plt.xlim(0,6)
+plt.ylim(0,70)
 plt.show()
