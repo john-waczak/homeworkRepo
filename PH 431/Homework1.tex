@@ -1,0 +1,129 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath} 
+\usepackage{ulem} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 1} \hfill \textbf{John Waczak} \\
+\normalsize PH 431 \hfill  Date: \today \\
+Prof. Bo Sun  \\
+
+
+\section*{1. Image Charge}
+\textit{A charge q is placed near two perpendicular grounded, infinitely large metal plates,
+	what is the force exerted on q? Can you guess how the far field potential behaves?} \\ 
+
+I shall denote $\Phi_{tot}$ to be the total electric potential caused by $q$ and the induced charge in the perpendicular grounded plates. There are two important considerations for this problem that help to define our boundary conditions. They are that: 
+	\begin{align}
+		&\Phi_{tot}(x=0) = \Phi_{tot}(y=0) = 0 \\ 
+		&\Phi_{tot}(x^2+y^2>>d_1^2+d_2^2) \rightarrow 0
+	\end{align}
+In words: the potential on the plates must be zero because they are grounded and the potential at infinity must be zero in the first quadrant. These two equations will constitute the boundary conditions necessary to solve the problem. The total potential, $\Phi_{tot}$ does not obey Laplace's equation in the first quadrant which we need in order to apply the uniqueness theorem. However, the induced potential in the plates does as all of the charge is contained on the surfaces and not in the first quadrant. So we can say: 
+	\begin{align}
+		\nabla^2 \Phi_{ind} = 0
+	\end{align}
+Furthermore because of equation (1) and the fact that the only charged objects are $q$ and the induced charge on the plates, we can deduce the following: 
+	\begin{align}
+		\Phi_{total} &= \Phi_{ind}+\Phi{q} = 0\\ 
+		\Phi_{ind} &= -\Phi_{q}
+	\end{align}
+In order to solve this problem we simply need to find a potential that satisfies the boundary conditions outlined above. The uniqueness theorem then guarantees that this potential is the unique potential for the system in the region of the first quadrant. So rather than reasoning about the grounded plates, we will analyze an analogous system of image charges. \\
+
+\textbf{Claim:} The potential in the first quadrant can be determined by the charge q located at $(d_1,d_2,z)$ along with the image charges -q  at $(-d_1, d_2, z)$, q at $(-d_1, -d_2, z)$, and -q at $(d_1, -d_2, z)$. 
+
+From here on I will suppress the z dependence due to the plates being infinite. The potential of this distribution, i.e. a quadrupole, is given by: 
+	\begin{align*}
+		\Phi_{tot} &= \Phi_{q} + \Phi_{Im} \\ 
+				   &= \frac{1}{4\pi\epsilon_0} \Bigg\lbrack \frac{q}{\sqrt{(x-d_1)^2+(y-d_2)^2}}+\frac{-q}{\sqrt{(x+d_1)^2+(y-d_2)^2}} \\
+				   &+\frac{q}{\sqrt{(x+d_1)^2+(y+d_2)^2}}+\frac{-q}{\sqrt{(x-d_1)^2+(y+d_2)^2}} \Bigg\rbrack
+	\end{align*}
+First, $\Phi_{im}$ satisfies Laplace's equation in the first quadrant as all of the image charges reside outside of that region. Thus (3) holds. Secondly, the boundary condition that $\Phi_{tot} \rightarrow 0$ as $r \rightarrow \infty$ also holds as our configuration is a collection of point charges that all have $1/r$ dependence. So our only remaining boundary conditions are that $\Phi_{tot}(x=0) = 0$ and $\Phi_{tot}(y=0)=0$ on the "grounded plates." This we will show in two steps: 
+	\begin{align*}
+		\Phi_{tot}(x=0) &= \frac{1}{4\pi\epsilon_0} \Bigg\lbrack \frac{q}{\sqrt{d_1^2+(y-d_2)^2}}+\frac{-q}{\sqrt{d_1^2+(y-d_2)^2}} \\
+		&+\frac{q}{\sqrt{d_1^2+(y+d_2)^2}}+\frac{-q}{\sqrt{d_1^2+(y+d_2)^2}} \Bigg\rbrack \\ 
+		&= 0 
+	\end{align*} 
+as the terms inside cancel. Similarly for the second case of $y=0$ we have: 
+	\begin{align*}
+		\Phi_{tot}(y=0)&= \frac{1}{4\pi\epsilon_0} \Bigg\lbrack \frac{q}{\sqrt{(x-d_1)^2+d_2^2}}+\frac{-q}{\sqrt{(x+d_1)^2+d_2^2}} \\
+		&+\frac{q}{\sqrt{(x+d_1)^2+d_2^2}}+\frac{-q}{\sqrt{(x-d_1)^2+d_2^2}} \Bigg\rbrack \\
+		&=0
+	\end{align*}
+And so because this potential meets the boundary conditions, the uniqueness theorem guarantees it is the potential for the system. Now, because we have reduced the problem to a collection of point charges, solving for the force is incredibly easy. First we will the difference vectors from each of the image charges to q: 
+	\begin{align*}
+		\mathbf{r_1} &= 2 \cdot d_1 \hat{x} \\ 
+		\mathbf{r_2} &= 2 \cdot d_1 \hat{x} + 2 \cdot d_2 \hat{y} \\  
+		\mathbf{r_3} &= 2 \cdot d_2 \hat{y}
+	\end{align*}
+
+Using this information and the superposition principle, we conclude that: 
+	\begin{align*}
+		\mathbf{F_{im,q}} &= \mathbf{F_1} + \mathbf{F_2} + \mathbf{F_3} \\ 
+		&= \frac{q}{4\pi\epsilon_0} \Bigg\lbrack \frac{-q}{2d_1}\hat{x} + \frac{q}{\sqrt{4d_1^2 + 4d_2^2}}\left(2d_1 \hat{x} + 2d_2 \hat{y} \right) + \frac{-q}{2d_2}\hat{y} \Bigg\rbrack
+	\end{align*}
+
+\section*{2. Green's reciprocity theorem}
+\textit{a. Prove the Green's reciprocity theorem} \\
+
+In order to prove this theorem, I am going to make an assumption that both charge distributions $\rho_1$ and $\rho_2$ are finite as this will allow me to apply suitable boundary conditions. Some useful facts will be the following: 
+
+\begin{align}
+	&\nabla^2 \phi = \frac{\rho}{\epsilon_0} \\ 
+	&\mathbf{E} = -\nabla \phi \\ 
+	&\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0} \\ 
+	&\nabla \cdot (f\mathbf{A}) = (\nabla \cdot \mathbf{A})f + \mathbf{A} \cdot \nabla f \\
+	&\int_V (\nabla \cdot \mathbf{A})d^3\mathbf{r} = \oint_S \mathbf{A} \cdot d\mathbf{s} 
+\end{align}
+
+Now because we want to compare the two different distributions, we will look at a combination involving the electric fields $\mathbf{E_1}$ and $\mathbf{E_2}$ and then go to town applying the above theorems. Here on out when I write $\int$ I mean to integrate over all space unless otherwise specified.
+
+\begin{align*}
+	&\int \mathbf{E_1} \cdot \mathbf{E_2}  d^3\mathbf{r} = \\ 
+	&= - \int (\nabla \phi_1) \cdot \mathbf{E_2} d^3\mathbf{r} \\ 
+	&= - \int [\nabla \cdot (\mathbf{E_2}\phi_1)-(\nabla \cdot \mathbf{E_2})\phi_1] d^3\mathbf{r} \quad \mbox{eqn 10} \\ 
+	&= - \int (\nabla \cdot \mathbf{E_2})\phi_1 - \nabla \cdot (\mathbf{E_2}\phi_1) d^3\mathbf{r} \quad \mbox{rearranging}\\ 
+	&= -\int \frac{\rho_2}{\epsilon_0}\phi_1 - \nabla \cdot (\mathbf{E_2}\phi_1) d^3\mathbf{r}  \quad \quad \quad \mbox{ eqn 8}\\ 
+	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} + \int \nabla \cdot (\mathbf{E_2}\phi_1) d^3 \mathbf{r} \\
+	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} + \int \nabla \cdot (-\nabla \phi_1 \phi_2) d^3\mathbf{r} \quad \mbox{eqn 7} \\ 
+	&= -\int \frac{\rho_2}{\epsilon_0}\phi_1d^3\mathbf{r} - \oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r} \quad \quad \quad \mbox{eqn 10}
+\end{align*}
+In the last line we employed Gauss's law in reverse to give us a surface argument. Now here I employ my assumption that our potentials are both finite. This means that at infinity, these potentials must decay to 0. Now because we were integrating over all space when we convert the volume integral to a closed surface integral, the corresponding surface is of infinite radius. Thus the second integral must shrink to zero, i.e. 
+
+\begin{align*}
+	&= -\int \frac{\rho_2}{\epsilon}\phi_1 d^3\mathbf{r} - \mbox{\sout{$\oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r}$}} \\ 
+	&= -\int \frac{\rho_2}{\epsilon}\phi_1 d^3\mathbf{r} 
+\end{align*} 
+
+Now our choice to begin by expanding $\mathbf{E_1}$ was arbitrary and we could have repeated the same exact process but instead starting with $\mathbf{E_2}$. Thus we have that: 
+
+\begin{equation}
+	\frac{-1}{\epsilon_0} \int \rho_2 \phi_1 d^3\mathbf{r} = \int \mathbf{E_1} \cdot \mathbf{E_2} d^3\mathbf{r} = \frac{-1}{\epsilon_0} \int \rho_1 \phi_2 d^3\mathbf{r} 
+\end{equation}
+
+and thus: 
+
+\begin{equation}
+	\int\limits_{\mbox{all space}} \rho_2 \phi_1 d^3\mathbf{r} = \int\limits_{\mbox{all space}} \rho_1 \phi_2 d^3\mathbf{r} 
+\end{equation}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

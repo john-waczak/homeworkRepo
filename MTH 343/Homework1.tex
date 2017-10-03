@@ -1,0 +1,155 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 1} \hfill \textbf{John Waczak} \\
+\normalsize MTH 343 \hfill  Date: \today \\
+Prof. Ren Guo  \\
+
+
+\section*{1.3.15}
+\textit{Prove $A \cap (B \ C) = (A \cap B) \ (A \cap C)$}\\
+
+Recall $R \cap S = \{x : x \in R, x \in S\}$ and $R\setminus S = \{x:x\in R, x \notin S\}$. Thus: 
+\begin{align*}
+	A \cap (B \setminus C) &= \{x:x \in A, x \in B \setminus C \} \\ 
+	&= \{x: x \in A, x \in B, x \notin C \}  \\ 
+	&= \{x: x \in A \cap B, x \notin C \} \\ 
+	x \notin c &\rightarrow x \notin A \cap C \quad \mbox{since} \quad A \cap C \subseteq C \\
+	\mbox{Thus:} &= \{x:x \in A \cap B , x \notin A \cap C\} \\
+	&= (A \cap B) \cap (A \cap C)' \\ 
+	&= (A \cap B) \setminus (A \cap C) \qed
+\end{align*}
+
+\section*{1.3.19}
+\textit{Given $f:A \mapsto B$ and $g:B \mapsto C$ are invertible, show $(g \circ f)^{-1} = (f^{-1} \circ g^{-1})$} \\
+
+
+Recall that the composition of mappings is associative i.e. $h \circ (g \circ f) = (h \circ g) \circ f$. Thus: 
+
+\begin{align*}
+	(g \circ f) \circ (f^{-1} \circ g^{-1}) &= g \circ (f \circ f^{-1}) \circ g^{-1} \\ 
+	&= g \circ Id_B \circ g^{-1} \\ 
+	&= g \circ g^{-1} \\ 
+	&= Id_C \\
+	(f^{-1} \circ g^{-1}) \circ (g \circ f) &= f^{-1} \circ (g^{-1} \circ g) \circ f \\ 
+	&= f^{-1} \circ Id_B \circ f \\ 
+	&= f^{-1} \circ f \\ 
+	&= Id_c \\ 
+	\mbox{Thus:} \quad \quad (g \circ f)^{-1} &= (f^{-1} \circ g^{-1}) \qed
+\end{align*}
+
+\section*{1.3.26}
+\textit{define $(a,b) \sim (c,d)$ if $a^2 + b^2 \leq c^2 + d^2$. Show $\sim$ is reflexive and transitive but not symmetric.}
+
+\begin{align*}
+	\mbox{Reflexive:} \quad \mbox{w.t.s} \quad (a,b) &\sim (a,b) \\ 
+	\mbox{observe that:} \quad a^2 + b^2 &= a^2 + b^2 \\
+	&\mbox{Thus $\sim$ is reflexive} \\ \\ 
+	\mbox{Transitive:} \quad (a,b) \sim (c,d), (c,d) &\sim (e,f)  \Rightarrow (a,b) \sim (e,f) \\ 
+	\mbox{observe that:} \quad (a,b) \sim (c,d) &\Rightarrow a^2 + b^2 \leq c^2 + d^2 \\ 
+	(c,d) \sim (e,f) &\Rightarrow c^2 + d^2 \leq e^2 + f^2 \\ 
+	\mbox{thus} \quad a^2+b^2 &\leq c^2 + d^2 \leq e^2 + f^2 \\ 
+	&\Rightarrow a^2 + b^2 \leq e^2 + f^2 \\ 
+	&\mbox{and so $\sim$ is transitive} \\ 
+	\mbox{Not symmetric:} \quad (a,b) \sim (c,d) &\Rightarrow (c,d) \sim (a,b) \\ 
+	(a,b) \sim (c,d) &\Rightarrow a^2 + b^2 \leq c^2 + d^2 \\ 
+	(c,d) \sim (a,b) &\Rightarrow c^2 + b^2 \leq a^2 + d^2 \\ 
+	a^2 + b^2 \leq c^2 + d^2 &\Rightarrow \Leftarrow c^2 + d^2 \leq a^2 + b^2
+\end{align*}
+thus we have a contradiction and so $\sim$ is not symmetric \qed
+
+\section*{2.3.6}
+\textit{prove $4 \cdot 10^{2n} + 0 \cdot 10 ^{2n-1} +5$ is divisible by 99 $\forall n \in \mathbb{N}$} \\ 
+Proof by mathematical induction: 
+\begin{align*}
+	\mbox{let} \quad n=1, & \mbox{then} \quad 4\cdot 10^2 + 9\cdot 10 + 5 = \\ 
+	&= 400 + 90 + 5 \\ 
+	&= 495  \\ 
+	&= 5 \cdot 99
+\end{align*}
+
+Thus the base step is true. Now assuming n=k is true, w.t.s. that n=k+1 is true. 
+
+\begin{align*}
+	4 \cdot 10^{2(k+1)}	+ 9 \cdot 10^{2(k+1)-1} + 5 &= \\ 
+	&= 4 \cdot 10^{2k+2} + 0 \cdot 10^{2k+1} + 5 \\ 
+	&= 100(4*10^{2k}) + 100(9*10^{2k-1}) + 5 \\ 
+	&= 100(4*10^{2k} + 9*10^{2k-1}) + 5) -500 + 5 \\ 
+	&= 100(4*10^{2k} + 9*10^{2k-1}) + 5) -495 \\ 
+	&= 100(99*a) -495, a\in \mathbb{Z} \quad \mbox{because n=k is assumed true} \\
+	&= 100a \cdot 99 - 5\cdot 99 \\ 
+	&= (100a - 5)99 \\ 
+	&= 99b, b\in \mathbb{Z}
+\end{align*}
+Thus by mathematical induction, the hypothesis $4 \cdot 10^{2n} + 0 \cdot 10 ^{2n-1} +5$ is divisible by 99 $\forall n \in \mathbb{N}$. \qed
+
+
+\section*{2.3.15} 
+\textit{find r and s s.t. $gcd(r,s) = ra + sb$ given $a=234$ and $b=165$} \\ 
+
+First, we need to find the gcd of a and b which we will do using the Euclidean algorithm. Then working backwards, we will determine r and s. 
+
+\begin{align*}
+	234 &= 165\cdot 1 + 69 \\ 
+	165 &= 69 \cdot 2 + 27 \\ 
+	27 &= 15 \cdot 1 + 12 \\ 
+	15 &= 12 \cdot 1 + 3 \\ 
+	12 &= 3\cdot 4
+\end{align*}
+
+Thus, the gcd(a,b) is 3. Now  we will find $r,s \in \mathbb{Z}$
+
+\begin{align*}
+	3 &= 15 -12 \\ 
+	&= (69-(2)27) - (27-15)\\
+	&= 69-(2)27-27+15\\
+	&= 69 - (3)27 + 15 \\ 
+	&= 234-165-(3)(165-(2)69) + 69-(2)27 \\
+	&=234-165-(3)165+(6)69+69-(2)27\\
+	&= 234-(4)165+(7)69-(2)27\\
+	&= 234-(4)165+(7)(234-165)-(2)(165-(2)69)\\
+	&= 234-(4)165+(7)234-(7)165-(2)(165-(2)69)\\ 
+	&= 234-(4)165+(7)234-(7)165-(2)165+(4)69 \\ 
+	&= 234-(4)165+(7)234-(7)165-(2)165+(4)234-4(165)\\
+	&= (1+7+4)234 + (-4-7-2-4)165 \\ 
+	&=(12)234 + (-17)165 \\
+	&= 2808-2805\\
+	&= 3 \Rightarrow r=12, s=-17 \qed
+\end{align*}
+
+\section*{2.3.19}
+\textit{Let $x,y \in \mathbb{N}$ be relatively prime. If xy is a perfect square, prove that x and y must be perfect sqaures} \\ 
+
+I will prove this proposition by first proving a \textbf{lemma:} \textit{if n is a perfect square then each of the factors in its prime factorization must have an even power.} \\
+
+Because n is a perfect square we can say $\exists m \in \mathbb{Z}_+$ such that $ n = m^2 $. By the fundamental theorem of arithmetic (FTA), both n and m have a unique prime factorization up to order of factors. Thus we can say: 
+\begin{equation*}
+	m = p_1^{a_1} p_2^{a_2} ... p_k^{a_k} 
+\end{equation*}
+Now since $n = m^2$ we have 
+\begin{equation}
+	n = m^2 = (p_1^{a_1} p_2^{a_2} ... p_k^{a_k})^2 = p_1^{2a_1} p_2^{2a_2} ... p_k^{2a_k}
+\end{equation}
+And so by the uniqueness of the FTA, this must be \textit{the} prime factorization of n. Now if $a_i, i \in [0, k]$ is odd then $2a_i$ is even. Similarly if $a_i$ is even then $2a_i$ is also even. Thus all the factors in the prime factorization of n must have even power. 
+
+Now we w.t.s that given $gcd(a,b) = 1$ and xy is a perfect square $\Rightarrow$ x,y are perfect squares. Assume for contradiction that x is \textit{not} a perfect square. Then $\exists$ some $p_i$ in the prime factorization of x with an odd power. For xy to be a perfect square then $p_i$ must also divide y so that $p_i$ will have even power in the prime factorization of xy. This contradicts the assumption that $gcd(a,b) = 1$ and thus we say that x and y must \textit{both} be perfect squares. 
+
+
+\end{document}
+
+
+
+
+
+
+
+
