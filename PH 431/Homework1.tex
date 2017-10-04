@@ -110,6 +110,49 @@ and thus:
 	\int\limits_{\mbox{all space}} \rho_2 \phi_1 d^3\mathbf{r} = \int\limits_{\mbox{all space}} \rho_1 \phi_2 d^3\mathbf{r} 
 \end{equation}
 
+\section*{3. Conducting half sphere in a uniform field}
+\textit{A metal half-sphere conductor of radius a is placed in uniform electric field as shown. If we define the potential of the conductor to be zero, what is the potential at any given point outside the sphere? At far away from the sphere can you express the electric field by a dipole approximation?}
+
+I will choose the bottom (flat) half of the sphere to be centered at the origin of coordinates (i.e. $z = 0$). Note that because we have a uniform field in the z direction, $\mathbf{E} = E \hat{z}$, then $\phi_E = -Ez$ as $\mathbf{E} = -\nabla \phi_E$
+
+We are given the potential at the surface ($\phi_{tot}$) is 0 and so our boundary conditions are: 
+
+\begin{align}
+	\phi_{in}(r \rightarrow \infty) = 0 \\ 
+	\phi_{tot}(r=a, \theta < \frac{\pi}{2}) = 0 \\ 
+	\phi_{tot}(r\leq a , \theta = \frac{\pi}{2}) = 0 
+\end{align}
+
+Notice that Laplace's equation for $\phi_{in}$ is satisfied with azimuthal symmetry for outside of the half sphere. Thus, we can immediately conclude that the solution must be of the form: 
+\begin{equation*}
+	\phi_{in} = \sum\limits_{l = 0}^{\infty} \bigg( A_lr^l + \frac{B_l}{r^{l+1}} \bigg)P_l (\cos{\theta})
+\end{equation*}
+
+We only need to find $A_l, B_l$ such that the boundary conditions are met and then the uniqueness theorem means that this is \textit{the} solution. The first boundary condition, $\phi_{in}(r\rightarrow \infty) = 0$ means that $A_l = 0$  $\forall$ $l$ because the $r^l$ terms blow up at $\infty$. Thus we can reduce the equation to: 
+
+\begin{equation*}
+	\phi_{in} = \sum\limits_{l = 0}^{\infty} \bigg( \frac{B_l}{r^{l+1}} \bigg)P_l(\cos{\theta})
+\end{equation*}
+
+The problem set $\phi_{tot} = 0$ along the boundary of the half sphere but were are not given that it is grounded. Thus, we can expect that the electric field will lead to the separation of charge along the surface forming a dipole for $\phi_{in}$ with $\frac{1}{r^2}$ dependence. Therefore I claim that all $B_l = 0$ unless $l = 1$ so that: 
+\begin{equation*}
+	\phi_{in} = \bigg( \frac{B_1}{r^2} \bigg)\cos(\theta)
+\end{equation*}
+
+Now we can solve for $B_1$ using the other initial conditions (14) and (15).
+\begin{align*}
+	1) \quad &\phi_{tot}(r=a, \theta < \pi/2) = 0\\ 
+	&\Rightarrow \phi_{in} = -\phi_{\mathbf{E}}(r=a, \theta < \pi/2)\\
+	&\frac{B_1}{a^2}\cos{\theta} = Ez \\ 
+	&\frac{B_1}{a^2}\cos{\theta} = Ea\cos{\theta}\\ 
+	&B_1 = Ea^3 \\ 
+	2) \quad &\phi_{tot}(r < a, \theta = \pi/2) \Rightarrow z = 0\\ 
+	& \cos{\pi/2} = 0 \Rightarrow \phi_{in} = \phi_{\mathbf{E}} = 0
+\end{align*}
+Thus the have found an equation that meets the boundary conditions and satisfies Laplace's equation in the desired region so by the uniqueness theorem equation (16) is the induced potential in the half-sphere. 
+\begin{equation}
+	\phi_{in}(r,\theta) = \frac{Ea^3}{r^2}\cos{\theta}
+\end{equation}
 
 \end{document}
 
