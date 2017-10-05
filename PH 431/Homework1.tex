@@ -62,10 +62,12 @@ And so because this potential meets the boundary conditions, the uniqueness theo
 
 Using this information and the superposition principle, we conclude that: 
 	\begin{align*}
+		\mathbf{F}_{pt} &= \frac{1}{4\pi\epsilon_0}\frac{q_1q_2}{\mathbf{r}^2}\hat{\mathbf{r}} \\
 		\mathbf{F_{im,q}} &= \mathbf{F_1} + \mathbf{F_2} + \mathbf{F_3} \\ 
-		&= \frac{q}{4\pi\epsilon_0} \Bigg\lbrack \frac{-q}{2d_1}\hat{x} + \frac{q}{\sqrt{4d_1^2 + 4d_2^2}}\left(2d_1 \hat{x} + 2d_2 \hat{y} \right) + \frac{-q}{2d_2}\hat{y} \Bigg\rbrack
+		&= \frac{q}{4\pi\epsilon_0} \Bigg\lbrack \frac{-q}{4d_1^2}\hat{x} + \frac{q}{(4d_1^2 + 4d_2^2)^{\frac{3}{2}}}\left(2d_1 \hat{x} + 2d_2 \hat{y} \right) + \frac{-q}{4d_2^2}\hat{y} \Bigg\rbrack
 	\end{align*}
 
+As the image charge's illustrate, the expected far field behavior for this situation is that of a quadrupole. \\
 \section*{2. Green's reciprocity theorem}
 \textit{a. Prove the Green's reciprocity theorem} \\
 
@@ -87,14 +89,14 @@ Now because we want to compare the two different distributions, we will look at 
 	&= - \int [\nabla \cdot (\mathbf{E_2}\phi_1)-(\nabla \cdot \mathbf{E_2})\phi_1] d^3\mathbf{r} \quad \mbox{eqn 10} \\ 
 	&= - \int (\nabla \cdot \mathbf{E_2})\phi_1 - \nabla \cdot (\mathbf{E_2}\phi_1) d^3\mathbf{r} \quad \mbox{rearranging}\\ 
 	&= -\int \frac{\rho_2}{\epsilon_0}\phi_1 - \nabla \cdot (\mathbf{E_2}\phi_1) d^3\mathbf{r}  \quad \quad \quad \mbox{ eqn 8}\\ 
-	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} + \int \nabla \cdot (\mathbf{E_2}\phi_1) d^3 \mathbf{r} \\
-	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} + \int \nabla \cdot (-\nabla \phi_1 \phi_2) d^3\mathbf{r} \quad \mbox{eqn 7} \\ 
-	&= -\int \frac{\rho_2}{\epsilon_0}\phi_1d^3\mathbf{r} - \oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r} \quad \quad \quad \mbox{eqn 10}
+	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} - \int \nabla \cdot (\mathbf{E_2}\phi_1) d^3 \mathbf{r} \\
+	&= - \int \frac{\rho_2}{\epsilon_0}\phi_1 d^3\mathbf{r} - \int \nabla \cdot (-\nabla \phi_1 \phi_2) d^3\mathbf{r} \quad \mbox{eqn 7} \\ 
+	&= -\int \frac{\rho_2}{\epsilon_0}\phi_1d^3\mathbf{r} + \oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r} \quad \quad \quad \mbox{eqn 10}
 \end{align*}
 In the last line we employed Gauss's law in reverse to give us a surface argument. Now here I employ my assumption that our potentials are both finite. This means that at infinity, these potentials must decay to 0. Now because we were integrating over all space when we convert the volume integral to a closed surface integral, the corresponding surface is of infinite radius. Thus the second integral must shrink to zero, i.e. 
 
 \begin{align*}
-	&= -\int \frac{\rho_2}{\epsilon}\phi_1 d^3\mathbf{r} - \mbox{\sout{$\oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r}$}} \\ 
+	&= -\int \frac{\rho_2}{\epsilon}\phi_1 d^3\mathbf{r} + \mbox{\sout{$\oint_S \phi_1 \nabla\phi_2 d^3\mathbf{r}$}} \\ 
 	&= -\int \frac{\rho_2}{\epsilon}\phi_1 d^3\mathbf{r} 
 \end{align*} 
 
@@ -108,12 +110,48 @@ and thus:
 
 \begin{equation}
 	\int\limits_{\mbox{all space}} \rho_2 \phi_1 d^3\mathbf{r} = \int\limits_{\mbox{all space}} \rho_1 \phi_2 d^3\mathbf{r} 
-\end{equation}
+\end{equation}\\
 
+\textit{Now let us assume there are two separate, isolated conductors A and B. There is no constraint on their shapes and relative distance. If I put a total charge of Q on A, it generates electric field which has constant potential $V_{AB}$ on B and $V_{AA}$ on A (because B is a conductor). If I put the same total charge Q on B, while leaving A charged with Q, then A has potential $V_{BA}$. Prove that $V_{BA} = V_{AB} + V_{AA}$}\\
+
+In order to apply the above theorem, we need to identify two distinct charge configurations and the corresponding potentials $\rho_1, \rho_2, \phi_1, \phi_2$. Fortunately, the problem gives us those configurations as the scenario with one Q on A and then the second scenario with a charge Q on A and B. Keeping in mind that we only know the potentials on the respective surfaces, I'll redefine the volume charge densities as surface densities (because we know charge resides on the surface of a conductor) in the following way: 
+
+\begin{align}
+	\rho_1 &= \sigma_{AA}\delta(A) + \sigma_{AB}\delta(B) \\ 
+	\rho_2 &= \sigma_{BA}\delta(A) + \sigma_{BB}\delta(B) \\
+	\phi_1 &= \begin{cases}
+	V_{AA} & \text{if on surface A} \\
+	V_{AB} & \text{if on surface B} \\
+	\end{cases} \\ 
+	\phi_2 &= \begin{cases}
+	V_{BA} &= \text{if on surface A} \\
+	V_{BB} &= \text{if on surface B} \\ 
+	\end{cases}
+\end{align}
+Where $\delta$ denotes the delta function with respect the a particular surface. Now we can apply Green's reciprocity theorem to finish the proof: 
+\begin{align*}
+	\int\limits_{\text{all space}} \rho_1 \phi_2 d^3r &= 	\int\limits_{\text{all space}} \rho_2 \phi_1 d^3{r}\\
+	\int\limits_{\text{all space}} \big(\sigma_{AA}\delta(A) + \sigma{AB}\delta(B) \big)\phi_2 d^3r &= \int\limits_{\text{all space}} \big(\sigma_{BA}\delta(A) + \sigma_{BB}\delta(B) \big)\phi_1 d^3r \\
+	\int\limits_A \sigma_{AA}\phi_2 dS + \int\limits_B \sigma_{AB}\phi_2 dS &= \int\limits_A \sigma_{BA}\phi_1 dS + \int\limits_B \sigma_{BB} \phi_1 dS \\ 
+\end{align*}
+So the $\delta$-functions collapsed the volume integrals over all space to surface integrals over each surface where we know the potential is constant. Thus we can pull it through the sum. 
+
+\begin{equation*}
+	V_{BA}\int\limits_A \sigma_{AA}dS + V_{BB}\int\limits_B \sigma_{AB}dS = V_{AA}\int\limits_A \sigma_{BA}dS + V_{AB}\int\limits_B \sigma{BB}dS
+\end{equation*}
+Now that we have separated out the potentials from the integrals they simply are the sum of the surface charge densities along each surface which evaluates to the charge on that surface. Therefore we have that: 
+
+\begin{equation*}
+	V_{BA}Q + V_{BB}0 = V_{AA}Q + V_{AB}Q 
+\end{equation*}
+And so dividing away the Q's gives the desired result. 
+\begin{equation}
+	V_{BA} = V_{AA} + V_{AB} 
+\end{equation}
 \section*{3. Conducting half sphere in a uniform field}
 \textit{A metal half-sphere conductor of radius a is placed in uniform electric field as shown. If we define the potential of the conductor to be zero, what is the potential at any given point outside the sphere? At far away from the sphere can you express the electric field by a dipole approximation?}
 
-I will choose the bottom (flat) half of the sphere to be centered at the origin of coordinates (i.e. $z = 0$). Note that because we have a uniform field in the z direction, $\mathbf{E} = E \hat{z}$, then $\phi_E = -Ez$ as $\mathbf{E} = -\nabla \phi_E$
+I will choose the bottom (flat) half of the sphere to be centered at the origin of coordinates (i.e. $z = 0$). Note that because we have a uniform field in the z direction, $\mathbf{E} = E_0 \hat{z}$, then $\phi_E = -E_0z$ as $\mathbf{E} = -\nabla \phi_E$
 
 We are given the potential at the surface ($\phi_{tot}$) is 0 and so our boundary conditions are: 
 
@@ -143,15 +181,15 @@ Now we can solve for $B_1$ using the other initial conditions (14) and (15).
 \begin{align*}
 	1) \quad &\phi_{tot}(r=a, \theta < \pi/2) = 0\\ 
 	&\Rightarrow \phi_{in} = -\phi_{\mathbf{E}}(r=a, \theta < \pi/2)\\
-	&\frac{B_1}{a^2}\cos{\theta} = Ez \\ 
-	&\frac{B_1}{a^2}\cos{\theta} = Ea\cos{\theta}\\ 
-	&B_1 = Ea^3 \\ 
+	&\frac{B_1}{a^2}\cos{\theta} = E_0z \\ 
+	&\frac{B_1}{a^2}\cos{\theta} = E_0a\cos{\theta}\\ 
+	&B_1 = E_0a^3 \\ 
 	2) \quad &\phi_{tot}(r < a, \theta = \pi/2) \Rightarrow z = 0\\ 
 	& \cos{\pi/2} = 0 \Rightarrow \phi_{in} = \phi_{\mathbf{E}} = 0
 \end{align*}
-Thus the have found an equation that meets the boundary conditions and satisfies Laplace's equation in the desired region so by the uniqueness theorem equation (16) is the induced potential in the half-sphere. 
+Thus the have found an equation that meets the boundary conditions and satisfies Laplace's equation in the desired region so by the uniqueness theorem equation (16) is the induced potential outside the half-sphere. 
 \begin{equation}
-	\phi_{in}(r,\theta) = \frac{Ea^3}{r^2}\cos{\theta}
+	\phi_{in}(r,\theta) = \frac{E_0a^3}{r^2}\cos{\theta}
 \end{equation}
 
 \end{document}
