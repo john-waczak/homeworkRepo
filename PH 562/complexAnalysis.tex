@@ -1,0 +1,73 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis Summary} \hfill \textbf{John Waczak} \\ 
+Date: \today \\ \\ \\ \\ \\
+\noindent\textbf{Analytic Functions} A function f of the complex variable z is analytic at a point $z_0$ if $f'(z)$ exists at $z_0$ and in some neighborhood of $z_0$ i.e. $\{z:|z_0-z|< \epsilon\}$ \\ 
+
+\noindent\textbf{Singular Point (singularity)} If a function is analytic at every point in a neighborhood of $z_0$ except at $z=z_0$, we call $z_0$ a singular point.\\
+
+\noindent\textbf{Cauchy-Riemann Conditions} Suppose $f(z) = u(x,y) + iv(x,y)$ is analytic at $z_0$. Then at $z_0$ we have: 
+\begin{align*}
+	\frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y}	\\
+	\frac{\partial u}{\partial y} &= -\frac{\partial v}{\partial x}
+\end{align*}
+
+\noindent\textbf{Complex Integrals} Suppose $f: \mathbb{C}\rightarrow \mathbb{C}$ such that $f(z) = u(t) + iv(t)$. Then given two numbers $a,b \in \mathbb{R}$ we define the definite integral of f as: 
+\begin{equation*}
+	\int\limits_a^b f(z)dz = \int\limits_a^b u(t) dt + i\int\limits_a^b v(t) dt
+\end{equation*}
+
+\noindent\textbf{Cauchy Goursat Theorem} let $f(z)$ be analytic over the simply connected in a region U. Let C be a closed contour through this region U. Then we have that: 
+\begin{equation*}
+	\oint\limits_C f(z)dz = 0 
+\end{equation*}
+\textit{Proof:} let $f(z) = u(x,y)+iv(x,y)$ then by the definition of the integral we have: 
+\begin{equation*}
+	\oint f(z)dz = \oint (u+iv)(dx + idy) = \oint udx - vdy + i\oint vdx + udy 
+\end{equation*}
+Now we apply Green's theorem for surface integrals to achieve: 
+\begin{align*}
+	\oint vdx -udy &= \iint \bigg( -\frac{\partial v}{\partial x}- \frac{\partial u}{\partial y} \bigg) dxdy \\
+	\oint vdx + udy &= \iint \bigg( \frac{\partial u}{\partial x} - \frac{\partial v}{\partial y} \bigg) dxdy
+\end{align*}
+Now, because f is analytic on the closed contour and in the interior, we have that the Cauchy-Riemann conditions must hold making both of the integrands 0. Thus we have: 
+\begin{equation*}
+	\oint\limits_C f(z)dz = 0 \qed
+\end{equation*}
+
+\noindent\textbf{Cauchy Integral Formula} Let f be analytic everywhere within and on a closed contour C. If $z_0$ is any point on the interior to C, then: 
+\begin{equation*}
+	f(z_0) = \frac{1}{2\pi i}\oint\limits_C \frac{f(z)}{z-z_0}dz, 
+\end{equation*}
+where the integral is taken in the positive direction around C. \\
+
+\noindent\textbf{Derivative of Analytic Functions} If a function f is analytic at a point then its derivatives of all orders, f', f'', ..., are also analytic functions at that point. The $n^{th}$ derivative of f at $z_0$ is given by the formula: 
+\begin{equation*}
+	f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint\limits_C \frac{f(z)dz}{(z-z_0)^{n+1}} \quad \quad (n = 1,2,3...)
+\end{equation*}
+
+\noindent\textbf{Taylor Series} Let f be analytic at all points within a circle $C_0$ with a center at $z_0$ and radius $r_0$. Then at each point $z$ inside $C_0$: 
+\begin{equation*}
+	f(z) = \sum\limits_{j=0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n
+\end{equation*}
+
+\noindent\textbf{Laurent Series} Let $z'$ denote any point on either two concentric circles $C_1$ and $C_2$ 
+\end{document}
+
+
+
+
+
+
+
+

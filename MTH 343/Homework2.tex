@@ -1,0 +1,138 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 2} \hfill \textbf{John Waczak} \\
+\normalsize MTH 343 \hfill  Date: \today \\
+Prof. Ren Guo  \\
+
+\section*{3.4.7}
+\textit{Define $S = \mathbb{R}\setminus\{-1\}$. The operation * is such that $a*b = a + b +ab$. Prove that (S,*) is an Abelian group.}
+
+We must prove 4 things in order for S to be an Abelian group. Members of S must be associate, there must exist an identity element, for each element in S there must exist an inverse element, and (to be Abelian) * must be commutative. \\
+
+1) let a,b,c $\in$ S then:
+\begin{align*}
+	(a \ast b) \ast c &= (a+b+ab)\ast c \\
+	&= (a+b+ab)+c+c(a+b+ab) \\ 
+	&= a+b+ab+c+ac+bc+abc \\
+	&= a+b+c+ab+ac+bc+abc \\
+	a \ast (b \ast c) &= a \ast (b+c+bc) \\ 
+	&=a+(b+c+bc)+a(b+c+bc) \\ 
+	&=a+b+c+bc+ab+ac+abc \\ 
+	&= a+b+c+ab+ac+bc+abc \\ 
+	(a \ast b) \ast c &= a \ast (b \ast c)
+\end{align*}
+Thus S is associative with *. 
+
+2) claim: the identity is $e=0$ 
+\begin{align*}
+	a \ast 0 &= a + 0 + a0 = a \\ 
+	0 \ast a &= 0 + a + 0a = a 
+\end{align*}
+Thus there is a unique identity e in S \\ 
+
+3) for each a in S there exists a unique inverse $a^{-1}$
+\begin{align*}
+	a+b+ab &= 1 \\ 
+	a+b(1+a)&= 1 \\ 
+	b &= \frac{1-a}{1+a} \equiv a^{-1} \\
+	a^{-1} \ast a &= a + \frac{1-a}{1+a} + a\frac{1-a}{1+a} \\ 
+	&= \frac{a^2+a+1-a+a-a^2}{1+a} \\ 
+	&= \frac{1+a}{1+a} \\ 
+	&= 1 = a \ast a^{-1}
+\end{align*}
+Thus there is a unique inverse for each a in S. 
+
+4)
+\begin{align*}
+	a \ast b &= a + b +ab \\ 
+	b \ast a &= b + a +ba \\ 
+	&= a + b +ab \\
+	\Rightarrow a \ast b = b \ast a
+\end{align*}
+And thus we have shown that (S,*) is an Abelian group. 
+
+\section*{3.4.27}
+\textit{prove that the inverse of $g_1g_2...g_n$ is $g_n^{-1}g_{n-1}^{-1}...g_1^{-1}$.}\\
+
+\noindent We will prove this by mathematical induction. Clearly the base step $n=1$ is true as $g_n$ are in a group. Now assume that $n=k$ is true we must show that $n=k+1$ follows. 
+\begin{align*}
+	(g_1g_2...g_kg_{k+1})(g_{k+1}^{-1}g_k^{-1}...g_1^{-1}) &=(g_1g_2...g_k)g_{k+1}g_{k+1}^{-1}(g_k^{-1}...g_1^{-1})\\
+	&=(g_1g_2...g_k)e(g_k^{-1}...g_1^{-1})\\
+	&=(g_1g_2...g_k)(g_k^{-1}...g_1^{-1})\\
+	&= e \\
+	(g_{k+1}^{-1}g_k^{-1}...g_1^{-1})(g_1g_2...g_kg_{k+1}) &=g_{k+1}^{-1}(g_k^{-1}...g_1^{-1})(g_1g_2...g_k)g_{k+1}\\
+	&= g_{k+1}^{-1} e g_{k+1} \\ 
+	&= e 
+\end{align*}
+Thus by mathematical induction, the inverse of $g_1g_2...g_n$ is $g_n^{-1}g_{n-1}^{-1}...g_1^{-1}$.
+
+\section*{3.4.33}
+\textit{Let G be a group. Suppose $(ab)^2=b^2a^2$ for any a,b in G. Prove G is an Abelian group.}
+W.T.S. $ab = ba$ \\ 
+\begin{align*}
+	(ab)^2 &= a^2b^2 \\ 
+	abab &= aabb \\ 
+	a^{-1}abab &= a^{-1}aabb \\ 
+	\Rightarrow bab &= abb \\ 
+	babb^{-1} &= abbb^{-1} \\ 
+	\Rightarrow ba &= ab
+\end{align*}
+And so we have shown G is commutative and therefore G is Abelian.
+
+\section*{3.4.40}
+\textit{Prove that G is a subgroup of $SL_2(\mathbb{R})$.}
+
+We need to show three things: 
+
+\begin{enumerate}
+	\item e $\in SL_2(\mathbb{R})$ and e $\in$ G 
+	\item if a,b $\in$ G then ab $\in$ G 
+	\item if a $\in$ G then $a^{-1} \in$ G
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
