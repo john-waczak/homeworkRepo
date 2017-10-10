@@ -1,0 +1,95 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 1} \hfill \textbf{John Waczak} \\
+\normalsize PH 562 \hfill  Date: \today \\
+Prof. Weihong Qiu  \\
+
+
+\section*{1. Spring Mass System}
+\textit{Show that the restoring force $F_x$ is nonlinear for small values of x}\\
+
+\noindent First, from Hooke's Law we can surmise that the force due to each spring can be written as $F_{sp} = -k(s-l)$. However this force is along the axis of the spring. We can see that by the symmetry of the problem, the vertical components of this force must cancel and so we are left with the following: 
+	\begin{align*}
+		F_x &= -2k(s-l)\sin{\theta} \\ 
+		&= -2k(s-l)\frac{x}{s} \quad s = \sqrt{x^2+(l+d)^2} \\ 
+		&= -2kx(1-\frac{l}{s}) \\ 
+		&= -2kx\Bigg(1-\frac{l}{\sqrt{x^2+(l+d)^2}}\Bigg) \\ 
+		&= -2ks\Bigg( 1-\frac{l}{l+d}\Bigg(1+\frac{x^2}{(l+d)^2}\Bigg)^{-1/2}\Bigg) 
+	\end{align*}
+Now from the theory of Taylor Series we have that: 
+	\begin{align*}
+		(1+z)^p = 1 +pz +\frac{p(p-1)}{2!}z^2 + ... 
+	\end{align*}
+And so we can approximate the force as: 
+	\begin{align*}
+		F_x &\approx -2kx \Bigg(  1-\frac{l}{l+d} \Bigg(1 - \frac{x^2}{2(l+d)^2} \Bigg) \Bigg) \\
+		&= -2kx \Bigg( 1 - \frac{l}{l+d} + \frac{x^2l}{2(l+d)^3}\Bigg) 
+	\end{align*}
+Which is clearly non-linear because of the third term. \\ 
+
+
+\section*{2.a Trigonometric Integral}
+\textit{Solve $\int\limits_0^{2\pi} \frac{sin^2(\theta)}{a+b\cos(\theta)}d\theta$  for $a>|b|>0$.} \\ 
+
+\noindent First, recall the following facts: 
+	\begin{align*}
+		\sin(\theta) &= \frac{e^{i\theta}-e^{-i\theta}}{2i} = \frac{z - \frac{1}{z}}{2i}\\
+		\cos(\theta) &= \frac{e^{i\theta}+e^{-i\theta}}{2} = \frac{z+\frac{1}{z}}{2} \\ 
+		d\theta &= \frac{1}{iz}dz 
+	\end{align*}
+Armed with these facts our equation transforms into: 
+	\begin{align*}
+		\int\limits_0^{2\pi}\frac{sin^2(\theta)}{a+b\cos(\theta)}d\theta &= \oint\limits_{|z|=1}\frac{\Big(\frac{z-1/z}{2i}\Big)^2}{a+b\Big(\frac{z+1/z}{2}\Big)}\frac{dz}{iz}\\ 
+		&= \frac{i}{4} \oint\limits_{|z|=1} \frac{(1/z^2)(z^2-1)^2}{0.5(2az+bz^2+b)}dz \\ 
+		&= \frac{i}{2} \oint\limits_{|z|=1} \frac{(z^2-1)^2}{z^2(2az+bz^2+b)}dz
+	\end{align*}
+Now we shall denote the integrand $f(z)$. Clearly this function has three poles, one of order 2 at $z=0$ and another at the plus and minus roots of $2az+bz^2+b=0$. So we simply need to find the residues of these zeros to calculate the integral. First for the $z=0$ case we have simply that: 
+	\begin{align*}
+		\phi(z) &\equiv z^2f(z) \\ 
+		Res[]f(z), z=0] &= \lim\limits_{z\rightarrow 0} \phi'(z) \\
+		&= \lim\limits_{z \rightarrow 0} \frac{d}{dz}\frac{(z^2-1)^2}{(2a+bz^2+b)}\\
+		&=-2\frac{a}{b^2}
+	\end{align*}	
+For the final residues it is important to consider the sign of b. 
+	\begin{align*}
+		z &= \frac{-2b \pm \sqrt{4a^2-4b^2}}{2b} \\ 
+		&= \frac{-a}{b} \pm \sqrt{\frac{a^2}{b^2}-1}
+	\end{align*}
+Because we only know that $a>|b|>0$ it is not immediately clear whether these points will be inside the unit circle or not so I will include both roots in my solution to be safe. For the derivation of the residues see the attached Mathematica worksheet (it was too hard for me to differentiate and then plug in the values by hand) Thus we may apply the residue theorem to say that: 
+	\begin{align*}
+		I &= \frac{i}{2}\cdot 2\pi i \sum\limits_j Res[f(z), z_j] \\
+		&=\frac{i}{2} 2\pi i \Big( Res[z=0]+Res[\text{- root}]+ Res[\text{+ root}] \Big) \\ 
+		&= \frac{2\pi a}{b^2}
+	\end{align*}
+	
+
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
