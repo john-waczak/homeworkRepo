@@ -59,7 +59,7 @@ Thus there is a unique inverse for each a in S.
 	&= a + b +ab \\
 	\Rightarrow a \ast b = b \ast a
 \end{align*}
-And thus we have shown that (S,*) is an Abelian group. 
+And thus we have shown that (S,*) is an Abelian group. \qed
 
 \section*{3.4.27}
 \textit{prove that the inverse of $g_1g_2...g_n$ is $g_n^{-1}g_{n-1}^{-1}...g_1^{-1}$.}\\
@@ -74,7 +74,7 @@ And thus we have shown that (S,*) is an Abelian group.
 	&= g_{k+1}^{-1} e g_{k+1} \\ 
 	&= e 
 \end{align*}
-Thus by mathematical induction, the inverse of $g_1g_2...g_n$ is $g_n^{-1}g_{n-1}^{-1}...g_1^{-1}$.
+Thus by mathematical induction, the inverse of $g_1g_2...g_n$ is $g_n^{-1}g_{n-1}^{-1}...g_1^{-1}$. \qed
 
 \section*{3.4.33}
 \textit{Let G be a group. Suppose $(ab)^2=b^2a^2$ for any a,b in G. Prove G is an Abelian group.}
@@ -87,7 +87,7 @@ W.T.S. $ab = ba$ \\
 	babb^{-1} &= abbb^{-1} \\ 
 	\Rightarrow ba &= ab
 \end{align*}
-And so we have shown G is commutative and therefore G is Abelian.
+And so we have shown G is commutative and therefore G is Abelian. \qed
 
 \section*{3.4.40}
 \textit{Prove that G is a subgroup of $SL_2(\mathbb{R})$.}
@@ -100,7 +100,191 @@ We need to show three things:
 	\item if a $\in$ G then $a^{-1} \in$ G
 \end{enumerate}
 
+1) when $\theta = 0$ we have: 
+$
+\begin{pmatrix}
+	1 & 0 \\ 
+	0 & 1 
+\end{pmatrix}
+$
+which is the identity in $SL_2(\mathbb{R})$ as well. We have that: 
+\begin{align*}
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		\cos{\theta} & -\sin{\theta} \\
+		\sin{\theta} & \cos{\theta}
+	\end{pmatrix}
+	&= 
+	\begin{pmatrix}
+		\cos{\theta} & -\sin{\theta} \\
+		\sin{\theta} & \cos{\theta} 
+	\end{pmatrix} \\
+	\begin{pmatrix}
+		\cos{\theta} & -\sin{\theta} \\
+		\sin{\theta} & \cos{\theta}
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix}
+	&= 
+	\begin{pmatrix}
+		\cos{\theta} & -\sin{\theta} \\
+		\sin{\theta} & \cos{\theta}
+	\end{pmatrix}
+\end{align*}
 
+2) let $\gamma, \delta \in \mathbb{R}$, then we have that: 
+\begin{align*}
+	\begin{pmatrix}
+		\cos{\gamma} & -\sin{\gamma}\\
+		\sin{\gamma} & \cos{\gamma}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\cos{\delta} & -\sin{\delta} \\ 
+		\sin{\delta} & \cos{\delta} 
+	\end{pmatrix}
+	&= \\ 
+	&= 
+	\begin{pmatrix}
+		\cos{\gamma}\cos{\delta}-\sin{\gamma}\sin{\delta} & -\cos{\gamma}\sin{\delta}-\sin{\gamma}\cos{\delta} \\ 
+		\sin{\gamma}\cos{\delta} + \cos{\gamma}\sin{\delta} & -\sin{\gamma}\sin{\delta}+\cos{\gamma}\cos{\delta}
+	\end{pmatrix} \\
+	&=
+	\begin{pmatrix}
+		\cos{\gamma+\delta} & -\sin{\gamma+\delta}\\
+		\sin{\gamma+\delta} & \cos{\gamma+\delta}
+	\end{pmatrix}
+\end{align*}
+And since $\gamma+\delta \in \mathbb{R}$, we have that if a,b are in G, ab is in G. \\
+
+3) Given a we need to show there exists an inverse in G
+\begin{align*}
+	a &=
+	\begin{pmatrix}
+		\cos{\theta} & -\sin{\theta} \\ 
+		\sin{\theta} & \cos{\theta}
+	\end{pmatrix} \\ 
+	det[a] &= 1 \\ 
+	\Rightarrow a^{-1} &= 
+	\begin{pmatrix}
+		-\cos{\theta} & \sin{\theta} \\ 
+		-\sin{\theta} & -\cos{\theta}
+	\end{pmatrix}
+\end{align*}
+Thus we have found $a^{-1}$ and we can show that it too is in G by the following: 
+	\begin{align*}
+		\gamma &= \theta+\pi \\ 
+		a^{-1} &= 
+		\begin{pmatrix}
+			\cos{\gamma} & -\sin{\gamma} \\ 
+			\sin{\gamma} & \cos{\gamma}
+		\end{pmatrix}
+	\end{align*}
+Thus since $\gamma \in \mathbb{R}$, we have shown $a^{-1} \in G$. Therefore G is a subgroup of $SL_2(\mathbb{R})$.\qed
+
+\section*{3.4.42}
+\textit{let G be 2x2 group of matrices under addition and $H = \Bigg\{
+	\begin{pmatrix}
+		a & b \\ 
+		c & -a
+	\end{pmatrix}
+	: a,b,c \in \mathbb{R} \Bigg\}$. Prove H is a subgroup of G.} \\
+
+\noindent 1) The identity element is the zero matrix $
+\begin{pmatrix}
+	0 & 0 \\ 
+	0 & 0
+\end{pmatrix}$ which is in both H and G. \\
+
+\noindent 2)
+	\begin{align*}
+		\text{let} \quad A &= 
+		\begin{pmatrix}
+			a  & b \\ 
+			c & -a 
+		\end{pmatrix} \\ 
+		B &= 
+		\begin{pmatrix}
+			a' & b' \\ 
+			c' & -a'
+		\end{pmatrix} \\ 
+		\text{then, } \quad A+B &= 
+		\begin{pmatrix}
+			a+a' & b+b' \\ 
+			c+c' & -a + (-a')
+		\end{pmatrix}
+	\end{align*} 
+Since $-a + (-a)= -(a+a')$ we have that $A+B \in H$ as needed. \\ 
+
+3) let $A = 
+	\begin{pmatrix}
+		a & b \\
+		c & -a
+	\end{pmatrix}$. I claim that $A^{-1} = 
+	\begin{pmatrix}
+		-a & -b \\ 
+		-c & a
+	\end{pmatrix}$ is the inverse to A.
+\begin{align*}
+	A+A^{-1} &= 
+	\begin{pmatrix}
+		a & b \\ 
+		c & -a 
+	\end{pmatrix} + 
+	\begin{pmatrix}
+		-a & -b \\ 
+		-c & a 
+	\end{pmatrix} \\ 
+	&= 
+	\begin{pmatrix}
+		0 & 0 \\ 
+		0 & 0
+	\end{pmatrix} = e \\
+	A^{-1}+A &=
+	\begin{pmatrix}
+		-a & -b \\ 
+		-c & a 
+	\end{pmatrix} + 
+	\begin{pmatrix}
+		a & b \\ 
+		c & -a 
+	\end{pmatrix} \\ 
+	&= 
+	\begin{pmatrix}
+		0 & 0 \\ 
+		0 & 0
+	\end{pmatrix} = e 
+\end{align*}
+Thus we have shown that H is a subgroup of G. \qed
+
+\section*{4.4.5}
+\textit{find the order of every element in $\mathbb{Z}_{18}$.}\\ 
+
+\noindent Recall that if G is a cyclic group of order n and a in G is a generator we have that if $b=a^k$ then the order of b is $\frac{n}{d}$ where $d = gcd(k,n)$. Thus we can determine the order of each element as follows: 
+\begin{align*}
+	|0| &= 1 \\ 
+	|1| &= 18 \\ 
+	|2| &= 9 \\
+	|3| &= 6 \\ 
+	|4| &= 9 \\ 
+	|5| &= 18 \\ 
+	|6| &= 3  \\
+	|7| &= 18 \\ 
+	|8| &= 9 \\ 
+	|9| &= 2 \\ 
+	|10| &= 9 \\ 
+	|11| &= 18 \\ 
+	|12| &= 3 \\ 
+	|13| &= 18 \\ 
+	|14| &= 9 \\ 
+	|15| &= 6 \\ 
+	|16| &= 9 \\ 
+	|17| &= 18 
+\end{align*}
 \end{document}
 
 
