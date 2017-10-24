@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.23)  19 OCT 2017 17:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.23)  19 OCT 2017 21:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**homework2.tex
-(./homework2.tex
+**homework3.tex
+(./homework3.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -174,8 +174,8 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen123
 \Gin@req@width=\dimen124
 )
-(./homework2.aux)
-\openout1 = `homework2.aux'.
+(./homework3.aux)
+\openout1 = `homework3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
@@ -285,11 +285,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--18
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-
- []
-
 LaTeX Font Info:    Try loading font information for U+msa on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -299,108 +294,84 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 29--31
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--39
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
 
  []
 
+<images/fig1.png, id=1, 444.059pt x 254.551pt>
+File: images/fig1.png Graphic file (type png)
+ <use images/fig1.png>
+Package pdftex.def Info: images/fig1.png used on input line 43.
+(pdftex.def)             Requested size: 222.02895pt x 127.27518pt.
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--47
-
- []
-
-<images/prism.png, id=1, 597.23125pt x 358.33875pt>
-File: images/prism.png Graphic file (type png)
- <use images/prism.png>
-Package pdftex.def Info: images/prism.png used on input line 48.
-(pdftex.def)             Requested size: 298.61488pt x 179.16893pt.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./images/prism.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/fig1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
+<images/fig2.png, id=19, 444.059pt x 140.525pt>
+File: images/fig2.png Graphic file (type png)
+ <use images/fig2.png>
+Package pdftex.def Info: images/fig2.png used on input line 52.
+(pdftex.def)             Requested size: 222.02895pt x 70.26231pt.
+ [2 <./images/fig2.png>] <images/code2.png, id=25, 794.97pt x 774.895pt>
+File: images/code2.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+<use images/code2.png>
+Package pdftex.def Info: images/code2.png used on input line 102.
+(pdftex.def)             Requested size: 548.52989pt x 534.67813pt.
 
+Overfull \hbox (78.77487pt too wide) in paragraph at lines 102--103
+ [] 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 150--152
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
+[4 <./images/code2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 167--169
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--177
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-
- []
-
-<images/code.png, id=31, 614.295pt x 794.97pt>
-File: images/code.png Graphic file (type png)
- <use images/code.png>
-Package pdftex.def Info: images/code.png used on input line 192.
-(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-
-Overfull \hbox (144.53847pt too wide) in paragraph at lines 192--193
-[] 
  []
 
 [5]
-Overfull \vbox (167.38158pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
+ []
 
-[6 <./images/code.png>] (./homework2.aux) ) 
+[6] [7] (./homework3.aux) ) 
 Here is how much of TeX's memory you used:
- 3015 strings out of 494953
- 40017 string characters out of 6180977
- 110568 words of memory out of 5000000
- 6253 multiletter control sequences out of 15000+600000
+ 3020 strings out of 494953
+ 40104 string characters out of 6180977
+ 109568 words of memory out of 5000000
+ 6257 multiletter control sequences out of 15000+600000
  10879 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,12n,29p,463b,178s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb>
-Output written on homework2.pdf (6 pages, 180054 bytes).
+ 37i,14n,29p,523b,186s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti10.pfb>
+Output written on homework3.pdf (7 pages, 209504 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
