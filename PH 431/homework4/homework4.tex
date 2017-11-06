@@ -1,0 +1,175 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 4} \hfill \textbf{John Waczak} \\
+\normalsize PH 431 \hfill  Date: \today \\
+Prof. Bo Sun  \\
+Worked with: Katy Chase, Daniel Still, Cassandra H. \\
+
+
+\section*{Image Currents}
+\textit{Two nearly infinite materials of $\mu_1, \mu_2$ meet at the xy-plane. A current $I\hat{y}$ lies a distance d above the interface at $z=0$. Find the magnetic field in each material.} \\ 
+
+\noindent We want to fin the magnetic field in each material. In order to do this first, recall the definitions: 
+	\begin{align}
+		&\mathbf{H} = \frac{1}{\mu_0}\mathbf{B} - \mathbf{M} \\ 
+		&\nabla \times \mathbf{H} = \vec{J}_f
+	\end{align}
+Using these formulas, we want to find the values for $\mathbf{H}_a$ and $\mathbf{H}_b$ where a is above and b below in order to apply the boundary conditions for magnetically polarized materials. We will deduce $\mathbf{H}_a, \mathbf{H}_b$ via the method of images, selecting values that satisfy the Maxwell equation (2) for Ampere's law in each region. \\ 
+
+\noindent Consider two images; the first of a material with permeability $\mu_1$ and current $I_f\hat{y}$ at $z=d$ and current $I_1\hat{y}$ at $z=-d$. For the second, consider a material with permeability $\mu_2$ and current $I_2\hat{y}$ at  $z=d$. Now clearly the first configuration satisfies (2) for $z>0$ as the only current density in that region is $\vec{J}_f$. Similarly, the second satisfies (2) for $z<0$ since there is no free current density in that region. Now we will deduce the \textbf{H} fields due to each configuration in the respective regions. 
+
+	\begin{align*}
+		\mathbf{H}_a &= \mathbf{H}_f + \mathbf{H}_1 \\ 
+		\mathbf{H}_b &= \mathbf{H}_2 
+	\end{align*}
+Because our image currents are just wires, we can easily extend the \textbf{H} field for a single wire via the superposition principle. 
+	\begin{align*}
+		\mathbf{H}_{\text{wire}} &= \frac{I}{2\pi s}\hat{\phi}
+	\end{align*}
+Here s is the radial distance in the x-z plane and $\phi$ is the angle in this plane. Extending this result yields: 
+	\begin{align}
+		\mathbf{H}_a 	&= \frac{I_f}{2\pi s}\hat{\phi} + \frac{I}{2\pi s}\hat{\phi} \\
+						&= \frac{I_f}{2\pi\sqrt{x^2+(z-d)^2}}(-\sin(\phi)\hat{x} +\cos(\phi)\hat{z})+ \frac{I_1}{2\pi\sqrt{x^2+(z+d)^2}}(-\sin(\phi)\hat{x} +\cos(\phi)\hat{z})\\
+		\mathbf{H}_b	&= \frac{I_2}{2\pi s}\hat{\phi} \\ 
+						&=\frac{I_2}{2\pi\sqrt{x^2+(x-d)^2}}(-\sin(\phi)\hat{x} +\cos(\phi)\hat{z})
+	\end{align}
+Notice in the second step I converted back to Cartesian coordinates. This will make the evaluation of boundary conditions easier as it is now simple to identify the parallel and perpendicular components. The boundary conditions are: 	
+	\begin{align*}
+		&\mathbf{H}_{a,\parallel} = \mathbf{H}_{b,\parallel} \quad \Big|_{z=0} \\ 
+		&\mathbf{B}_{a,\bot} = \mathbf{B}_{b, \bot} \quad \Big|_{z=0}
+	\end{align*}
+Notice that when $z=0$, $\sin(\phi) = \frac{-d}{\sqrt{x^2+d^2}}$ for $I_f, I_2$ as they are above the $z=0$ line. Conversely, $\sin(\phi) = \frac{d}{\sqrt{x^2+d^2}}$ for $I_1$ since it is below the $z=0$ line. This is not a problem for the cosine terms as the numerator becomes just x for both.  Thus there is a minus sign difference between the three under the first condition. \\ 
+
+The perpendicular component of the fields is in the $\hat{z}$ direction. The parallel component is in the $\hat{x}$. Also, because we are assuming the materials are linearly polarizable, we have the relation that $\mathbf{B} = \mu \mathbf{H}$. Therefore the two boundary conditions lead to the following result: 
+	\begin{align}
+		I_f - I_1 &= I_2 \\ 
+		\mu_1(I_f+I_1)&= \mu_2 I_2 
+	\end{align}
+Solving this system give: 
+	\begin{align*}
+		&\mu_1 I_f + \mu_1 I_1 = \mu_2 I_f - \mu_2 I_1 \\ 
+		&(\mu_1 + \mu_2)I_1 = (\mu_2 -\mu_1)I_f \\ 
+		&I_1 = \frac{(\mu_2 - \mu_1)}{(\mu_2 + \mu_1)}I_f \\ 
+		&I_2 = \Big(1-\frac{\mu_2-\mu_1}{\mu_2+\mu_1}\Big)I_f \\ 
+		&\quad = \frac{(2\mu_2)}{(\mu_2+\mu_1)}I_f 
+	\end{align*}
+Now that we have solved for the different image currents we can construct the magnetic field in each region using $\mathbf{B} = \mu\mathbf{H}$. 
+	\begin{align}
+		\mathbf{B}(z>0) &=\frac{\mu_1 I_f}{2\pi\sqrt{x^2+(z-d)^2}}\hat{\phi_1}+\frac{\mu_1\frac{(\mu_2 - \mu_1)}{(\mu_2 + \mu_1)}I_f }{2\pi\sqrt{x^2+(z+d)^2}}\hat{\phi_2}\\ 
+		\mathbf{B}(z<0) &= \frac{\mu_2\frac{(2\mu_2)}{(\mu_2+\mu_1)}I_f}{2\pi\sqrt{x^2+(z-d)^2}}\hat{\phi_1} 
+	\end{align}
+Where we have that $\hat{\phi_1}$ is angle formed by at the distance of the current at $z=+d$ and $\hat{\phi_2}$ is the angle formed by the distance of the current at $z=-d$. i.e. 
+	\begin{align*}
+		\hat{\phi_1}	&= -\sin(\phi_1)\hat{x} + \cos(\phi_1)\hat{z} \\ 
+						&= -\frac{(z-d)}{\sqrt{x^2+(z-d)^2}}\hat{x} + \frac{x}{\sqrt{x^2+(z-d)^2}}\hat{z} \\ 
+		\hat{\phi_2}	&= -\sin(\phi_2)\hat{x} + \cos(\phi_1)\hat{z} \\ 
+						&= -\frac{(z+d)}{\sqrt{x^2+(z+d)^2}}\hat{x} +  \frac{x}{\sqrt{x^2+(z+d)^2}}\hat{z}
+	\end{align*}
+	
+	
+\section*{Multilayer Wire}
+\textit{Consider a coaxial cable of radii $a_1, a_2$ and permeabilities $\mu_1, \mu_2$ with a free current $I\hat{z}$ running down the center. Calculate the bound currents and calculate the magnetic fields produced by the bound currents.} \\ 
+
+\noindent In order to solve this problem we will first assume that the materials are linearly polarizable i.e. that $\mathbf{B} = \mu \mathbf{H}$ as well as that outside of the cable is vacuum ($\mu_0$). Now in order to find the bound currents we must first find the magnetic polarization moment density which is given by: 
+	\begin{align}
+		\mathbf{M} &= (\frac{\mu}{\mu_0} -1)\mathbf{H} \\ 
+			&= \begin{cases}
+				(\frac{\mu_1}{\mu_0} -1)\mathbf{H}; &r<a_1 \\ 
+				(\frac{\mu_2}{\mu_0} -1)\mathbf{H}; &a_1<r<a_2 \\ 
+				0;& a_2<r
+			\end{cases}
+	\end{align}
+The \textbf{H} field may be easily calculated using the Maxwell equation for Ampere's law: 
+	\begin{align*}
+		\nabla \times \mathbf{H} &= \vec{J}_f \\ 
+		\int \mathbf{H} \cdot d\vec{l} &= \int \vec{J}_f \cdot d\vec{a} \\ 
+		\mathbf{H} &= \frac{I}{2\pi r}\hat{\phi}
+	\end{align*}
+which holds for all space since I is the only free current. Now that we have \textbf{M} we can find the bound currents according to the following definitions: 
+	\begin{align}
+		\vec{J}_b &= \nabla \times \mathbf{M} \\ 
+		\vec{K}_b &= \mathbf{M} \times \hat{n} 
+	\end{align}
+The only component of the curl that has $M_\phi$ dependence is the $\hat{z}$ component which reduces to: 	
+	\begin{align*}
+		\nabla \times \mathbf{M}&= \frac{1}{r}\Bigg(\ \frac{\partial}{\partial r}rM_\phi \Bigg) \\ 
+		&= \frac{1}{r} \Bigg(\ \frac{\partial}{\partial r}(\frac{\mu}{\mu_0}-1)\frac{I}{2\pi}\Bigg) \\ 
+		&= 0 \\ 
+		\Rightarrow \vec{J}_b &= 0 
+	\end{align*}
+Thus there are only surface currents. First let's examine small Amperian loop inside the first material around the inner wire of free current. There are no volume bound currents in this region so we would expect that: 
+	\begin{equation}
+		\mathbf{B} = \mu_0 \frac{I}{2\pi r}\hat{\phi} 
+	\end{equation}
+However, we are in a polarizable material and so: 
+	\begin{equation}
+		\mathbf{B} = \mu_1 \mathbf{H} = \mu_1 \frac{I}{2\pi r}\hat{\phi} 
+	\end{equation}
+So there is a discrepancy between the two. There can be no volume bound currents so the only possible solution is that the first equation is wrong and we have a bound current $I_1$ traveling right on top of the wire. Thus the first bound current is:
+	\begin{align*}
+		\frac{1}{\mu_0}(\nabla \times \mathbf{B}) &= \vec{J}_{\text{tot}} \\ 
+		\frac{\mu_1}{\mu_0}(\nabla \times \mathbf{H}) &= \vec{J}_{\text{tot}} \\ 
+		\frac{\mu_1}{\mu_0}\vec{J}_f &= \vec{J}_{\text{tot}} \\ 
+		\vec{J}_1 &= (\frac{\mu_1}{\mu_0}-1)\vec{J}_f \\ 
+		I_1\delta(x)\delta(y)\hat{z} &= (\frac{\mu_1}{\mu_0}-1)I\delta(x)\delta(y)\hat{z} \\ 
+		\Rightarrow \vec{I}_1 &= (\frac{\mu_1}{\mu_0}-1)I \hat{z} 
+	\end{align*}
+Thus we have found the first bound current $I_1$. Now we assume that there are surface currents $K_2$ on the inside of the first interface, $K_3$ on the outside, $K_4$ on the inside of the second interface, and $K_5$. \\ 
+
+\noindent Clearly $K_5$ must be zero since in this region \textbf{M} is zero. Now we can find $K_2, K_3, K_4$ with the understanding that $\hat{n}$ is the normal vector pointing away from the material in which we evaluate \textbf{M}. Ergo: 
+	\begin{align*}
+		\vec{K_2} 	&= (\frac{\mu_1}{\mu_0}-1)\mathbf{H}\hat{\phi} \times \hat{r} \\ 
+					&= (\frac{\mu_1}{\mu_0}-1)\frac{I}{2\pi a_1}\hat{z} \\ 
+		\vec{K_3}	&= (\frac{\mu_1}{\mu_0}-1)\mathbf{H}\hat{\phi} \times \hat{-r} \\ 
+					&= (\frac{\mu_1}{\mu_0}-1)\frac{I}{2\pi a_1}\hat{-z} \\ 
+					&= (1-\frac{\mu_1}{\mu_0})\frac{I}{2\pi a_1}\hat{z} \\
+		\vec{K_4}	&= (\frac{\mu_2}{\mu_0}-1)\mathbf{H}\hat{\phi} \times \hat{r} \\ 
+					&= (\frac{\mu_2}{\mu_0}-1)\frac{I}{2\pi a_2}\hat{z}
+	\end{align*}
+And so we have our bound currents are: 
+	\begin{align*}
+		&\vec{I}_1 = (\frac{\mu_1}{\mu_0}-1)I\hat{z} \\ 
+		&\vec{K}_{2+3} = \Big(\frac{\mu_1-\mu_2}{\mu_0}\Big)\frac{I}{2\pi a_1}\hat{z} \\ 
+		&\vec{K}_4 = (\frac{\mu_2}{\mu_1}-1)\frac{I}{2\pi a_2}\hat{z}   
+	\end{align*}
+The magnetic field due to the first current can be easily calculated using the known formula for a wire. 
+	\begin{align*}
+		\mathbf{B}_{I_1} &= \mu_0\frac{I_1}{2\pi r}\hat{\phi} \\ 
+						&= \mu_0\frac{(\frac{\mu_1}{\mu_0}-1)I}{2\pi r}\hat{\phi} \\ 
+						&= (\mu_1-\mu_0)\frac{I}{2\pi r}\hat{\phi}
+	\end{align*}
+The magnetic field experiences a discontinuity at each interface. The size of this discontinuity can only be due to these surface bound currents. Thus: 
+	\begin{align*}
+		\mathbf{B}_{K_2+K_3}	&= \mathbf{B}_2 - \mathbf{B}_1 \\ 
+							&= \mu_2\mathbf{H} - \mu_1\mathbf{H} \\ 
+							&= (\mu_2-\mu_1)\frac{I}{2\pi r}\hat{\phi} \\
+		\mathbf{B}_{K_4} 	&= \mathbf{B}_0 - \mathbf{B}_2 \\ 
+							&= \mu_0\mathbf{H} - \mu_2\mathbf{H} \\ 
+							&= (\mu_0-\mu_2)\frac{I}{2\pi r}\hat{\phi}  
+	\end{align*} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
