@@ -61,10 +61,109 @@ Thus 2 is a generator for U(5) and therefore U(5) is cyclic. U(5) is a cyclic gr
 	\begin{align}
 		U(p) = \{1,2,3...p-1\}
 	\end{align}
-For U(p) to be cyclic, it remains to find a generator for U(p). While in most cases there are multiple generators, the only option that has a clear chance of being the generator for every p is the element (p-1). Fermat's Little Theorem (6.19) gives us that: 
-	\begin{equation}
-		a^{p-1} \equiv 1 \mod(p) 
-	\end{equation}
+It can be shown that U(p) is cyclic and so by theorem 9.8 it must be isomorphic to $\mathbb{Z}_{p-1}$. 
+
+\section*{10.3.1.b}
+\textit{Determine whether $H=\{(1),(123),(132)\}$ is a normal subgroup of $A_5$.}
+
+Recall that $A_5$ is the subgroup of even permutations of $S_5$, the symmetric group of permutations on 5 letters. Observe that the cycle (134) is an element of $A_5$ as it is equivalent to (14)(13). Now for H to be a normal group we must have $gH=Hg \quad \forall g \in A_5$. The following will show that this is not true for the cycle in $A_5$ listed above: 
+	\begin{align}
+		(134)H &= \{(134)(1), (134)(123), (134)(132)\} \\ 
+				&= \{(134), (124), (14)(23)\} \\ 
+		H(134) &= \{(1)(134), (123)(134), (132)(134)\} \\ 
+				&= \{(134), (234), (12)(34)\}  
+	\end{align}
+Thus $(134)H \neq H(134)$ and so H is not a normal subgroup of $A_5$. 
+\section*{10.3.4.c}
+\textit{Prove that U is normal in T}\\ 
+
+\noindent By definition we have the following: 
+	\begin{align}
+		T &= \Bigg\{ \begin{pmatrix}
+			a & b \\ 
+			0 & c \\ 
+		\end{pmatrix} : ac\neq 0, \quad a,b \in \mathbb{R}\Bigg\}\\ 
+		U &= \Bigg\{ \begin{pmatrix}
+			1 & x \\ 
+			0 & 1 \\
+		\end{pmatrix} : x \in \mathbb{R} \Bigg\}
+	\end{align}
+By theorem 10.3 we need to show that $\forall m \in T$, $mUm^{-1}=U$. Let: 
+	\begin{align*}
+		m &= \begin{pmatrix}
+			a & b \\ 
+			0 & c \\ 
+		\end{pmatrix} \\ 
+		\Rightarrow m^{-1} &= \frac{1}{ac}\begin{pmatrix}
+			c & -b \\ 
+			0 & a
+		\end{pmatrix}
+	\end{align*}
+Now with this we have: 
+	\begin{align*}
+		mUm^{-1} &= \frac{1}{ac}\begin{pmatrix}
+			a & b \\ 
+			0 & c 
+		\end{pmatrix} \begin{pmatrix}
+			1 & x \\ 
+			0 & 1 
+		\end{pmatrix} \begin{pmatrix}
+			c & -b \\ 
+			0 & a 
+		\end{pmatrix} \\ 
+		&= \frac{1}{ac}\begin{pmatrix}
+			a & b \\ 
+			0 & c 
+		\end{pmatrix}\begin{pmatrix}
+			c & -b + ax \\ 
+			0 & ac 
+		\end{pmatrix} \\ 
+		&= \frac{1}{ac}\begin{pmatrix}
+			ac & -ab +a^2x + ab \\ 
+			0 & ac 
+		\end{pmatrix}\\
+		&= \begin{pmatrix}
+			1 & \frac{a}{c}x \\ 
+			0 & 1 
+		\end{pmatrix}
+	\end{align*}
+Now if we let $x' = \frac{a}{c}x$ Then we have shown: 
+	\begin{align}
+		mUm^{-1} &= \begin{pmatrix}
+			1 & x' \\ 
+			0 & 1 
+		\end{pmatrix}
+	\end{align}
+Thus since x' is arbitrary in $\mathbb{R}$ we have shown that $mUm^{-1} = U$ and thus U is normal in T. \qed 
+
+\section*{10.3.6}
+\textit{If G is abelian, prove G/H is also abelian} \\ 
+
+\noindent Recall that G is abelian if $\forall a,b \in G$, $ab = ba$. By definition G/H is the group of cosets of H in G under the operation $(aH)(bH) = abH$. Now let $\alpha,\beta \in G$. By definition of G/H, 
+	\begin{equation*}
+		(\alpha H)(\beta H) = (\alpha \beta)H 
+	\end{equation*}
+Since we are given that G is abelian, 
+	\begin{align*}
+		(\alpha \beta)H &= (\beta \alpha)H \\ 
+						&= (\beta)H(\alpha)H \\
+		\Rightarrow (\alpha)H(\beta)H &= (\beta)H(\alpha)H 				
+	\end{align*}
+Therefore, because G is abelian, G/H must also be abelian.  \qed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
