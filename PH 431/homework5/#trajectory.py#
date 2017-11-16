@@ -3,11 +3,11 @@ import matplotlib as mpl
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import matplotlib.pyplot as plt
-
+import matplotlib.animation as animation 
 
 e_0 =1
 q = -1
-m = 1.5
+m = 1
 Q = 1
 w = 1
 A = 10
@@ -38,8 +38,7 @@ def F_bz(t,x,y,z):
     return q*(-(u*np.sqrt(x**2+y**2)/(2*A))*(w*Q*np.sin(w*t))*(x/np.sqrt(x**2+y**2))*vx-(u*np.sqrt(x**2+y**2)/(2*A))*(w*Q*np.sin(w*t))*(-y/np.sqrt(x**2+y**2))*vy)
 
 
-
-Tmax = 250
+Tmax = 150
 
 t = np.arange(0,Tmax, dt)
 
@@ -79,9 +78,7 @@ ax.plot(X,Y,Z, label='zi=0, xi=yi=0.25')
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
-#ax.set_xlim(-20,20)
-#ax.set_ylim(-20,20)
-#ax.set_zlim(-20,20) 
 ax.legend() 
 plt.savefig('trajectory.pdf')
-plt.show()
+
+

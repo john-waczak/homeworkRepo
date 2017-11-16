@@ -119,7 +119,8 @@ Now, to find the electric field in the capacitor, we will use a Gaussian pillbox
 	\begin{align*}
 		\int \mathbf{E} \cdot d\vec{a} &= \frac{1}{\epsilon_0}Q_{\text{enc}} \\ 
 		EA &= \frac{1}{\epsilon}Q \\ 
-		\Rightarrow \mathbf{E}(t)&= \frac{1}{\epsilon_0 A}Q(t)(-\hat{z})
+		\Rightarrow \mathbf{E}(t)&= \frac{1}{\epsilon_0 A}Q(t)(-\hat{z})\\ 
+		&= -\frac{Q_0\cos(\omega t)}{\epsilon_0 A}\hat{z}
 	\end{align*}	
 Now that we have \textbf{E} we can find \textbf{B} using an Amperian loop of radius r. 
 	\begin{align*}
@@ -128,14 +129,15 @@ Now that we have \textbf{E} we can find \textbf{B} using an Amperian loop of rad
 		B2\pi r &= -\mu_0\epsilon_0\partial_t E \pi r^2  \\ 
 		B &= =\mu_0\epsilon_0\frac{\dot{Q}r}{2\epsilon_0 A} \\ 
 		\mathbf{B} &= \frac{-\mu_0 \dot{Q}(t)r}{2A}\hat{\phi} \\
-					&=\frac{-\mu_0 \dot{Q}(t)r}{2A}(-sin(\theta)\hat{x} + \cos(\theta)\hat{y})
+					&=\frac{-\mu_0 \dot{Q}(t)\sqrt{x^2+y^2}}{2A}(-sin(\theta)\hat{x} + \cos(\theta)\hat{y}) \\ 
+					&= \frac{\mu_0\omega Q_0 \sin(\omega t)\sqrt{x^2+y^2}}{2A}(-\sin(\theta)\hat{x} + \cos(\theta)\hat{y})
 	\end{align*}
 The last line uses $\theta = \arctan(y/x)$ to define an angle in the plane. Now we can define the force on the electron as: 
 	\begin{equation}
 		\mathbf{F} = -e\big[\mathbf{E}(t) + \vec{v}\times\mathbf{B}(t)\big]
 	\end{equation}
 
-There is one special case to think about for this equation... the low hanging fruit if you will. That is when x=y=0. This forces the magnetic field to be zero and consequently, the motion is only along the z axis as determined by \textbf{E}. For any case more interesting, numerical methods are almost necessary as solving the second order ODE (Newton's second law) is extremely difficult. Attached is python code for solving for the trajectory using Euler's method twice (ran out of time before I could try Verlet's method). For a initial velocity of zero and an initial position of $\vec{r} = 0.25\hat{x} + 0.25\hat{y} + 0.0\hat{z}$ the following trajectory was produced: 
+\noindent There is one special case to think about for this equation... the low hanging fruit if you will. That is when x=y=0. This forces the magnetic field to be zero and consequently, the motion is only along the z axis as determined by \textbf{E}. For any case more interesting, numerical methods are almost necessary as solving the second order ODE (Newton's second law) is extremely difficult. Attached is python code for solving for the trajectory using Euler's method twice (ran out of time before I could try Verlet's method). For a initial velocity of zero and an initial position of $\vec{r} = 0.25\hat{x} + 0.25\hat{y} + 0.0\hat{z}$ the following trajectory was produced: 
 	\begin{center}
 		\includegraphics[scale=1.0]{trajectory}
 	\end{center}
