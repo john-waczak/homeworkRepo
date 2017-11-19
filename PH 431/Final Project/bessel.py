@@ -4,30 +4,25 @@ from scipy import special as sp
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm 
 
-
-ks = 1 #not sure how to define this component of the wavevector
+A0= 1 
+kz = 1 #not sure how to define this component of the wavevector
+kr = 1 
 w = 1
 
-def A_x(x,y,z,t):
+def E2(x,y,z,t):
     #assuming beam is traveling along x axis hence A_x. Thus s depends on y,z 
-    return np.real(sp.jv(1, ks*np.sqrt(y**2+z**2))*np.e**(1j * 1 * np.arctan2(z,y))*np.exp(-1j*w*t))
+   # return np.norm2(np.real(sp.jv(1, ks*np.sqrt(y**2+z**2))*np.e**(1j * 1 * np.arctan2(z,y))*np.exp(-1j*w*t)))
+    f = A0*np.exp(1j*kz*z)*sp.jv(1,kr*np.sqrt(x**2+y**2))*np.exp(1j*1*np.arctan2(y,x))*np.exp(-1j*w*t)
+    f_c = np.conj(f)
+    E2 = f*f_c
+    print np.isreal(E2)
+    E2 = np.real(E2)
+    return E2
 
-y = np.linspace(-10,10,1000)
-z = np.linspace(-10,10,1000)
-
-Y,Z = np.meshgrid(y,z)
-
-# plt.figure()
-# plt.pcolor(Y,Z, A_x(0, Y,Z))
-
-plt.figure()
-plt.pcolor(Y,Z, A_x(0, Y, Z, 3))  
-
-
-## make the surface plot 
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-# Plot the surface.
-surf = ax.plot_surface( Y, Z, A_x(0,Y,Z, 3), cmap=cm.coolwarm)
+x = np.linspace(-10,10,500)
+y = x
+X,Y = np.meshgrid(x,y)
+plt.plot()
+plt.pcolor(X,Y,E2(X,Y,0,0))
 
 plt.show() 
