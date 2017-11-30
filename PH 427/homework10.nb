@@ -1,0 +1,1153 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40843,       1145]
+NotebookOptionsPosition[     39768,       1106]
+NotebookOutlinePosition[     40109,       1121]
+CellTagsIndexPosition[     40066,       1118]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$Assumptions", " ", "=", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{"\[Kappa]1", ",", "\[Kappa]2"}], "}"}], "\[Epsilon]", " ", 
+    "Reals"}]}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$Assumptions", " ", "=", " ", 
+   RowBox[{"a", ">", "0"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Kappa]1", " ", "=", " ", 
+  RowBox[{"\[Gamma]1", "*", 
+   RowBox[{"m", "/", 
+    RowBox[{"h", "^", "2"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Kappa]2", "=", " ", 
+   RowBox[{"\[Gamma]2", "*", 
+    RowBox[{"m", "/", 
+     RowBox[{"h", "^", "2"}]}]}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Phi]1", "[", "x_", "]"}], ":=", " ", 
+  RowBox[{"Piecewise", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SqrtBox[
+         FractionBox["\[Kappa]1", "2"]], 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"\[Kappa]1", "*", 
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            FractionBox["a", "2"]}], ")"}]}]]}], ",", " ", 
+       RowBox[{"x", "<", 
+        FractionBox["a", "2"]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SqrtBox[
+         FractionBox["\[Kappa]1", "2"]], 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          RowBox[{"-", "\[Kappa]1"}], "*", 
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            FractionBox["a", "2"]}], ")"}]}]]}], ",", " ", 
+       RowBox[{"x", ">", 
+        FractionBox["a", "2"]}]}], "}"}]}], "}"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.7029915525823884`*^9, 3.7029916447193136`*^9}, {
+  3.702991785644247*^9, 3.702991844817128*^9}, {3.702992178095871*^9, 
+  3.7029922590052643`*^9}, {3.7029924370049725`*^9, 3.7029924465787725`*^9}, {
+  3.702992543252943*^9, 3.702992570558303*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"m", " ", "Reals", " ", "\[Gamma]1", " ", "\[Epsilon]"}], 
+    SuperscriptBox["h", "2"]], ",", 
+   FractionBox[
+    RowBox[{"m", " ", "Reals", " ", "\[Gamma]2", " ", "\[Epsilon]"}], 
+    SuperscriptBox["h", "2"]]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7029922600840273`*^9, 3.7029922624326944`*^9}, {
+  3.702992447719575*^9, 3.702992464445031*^9}, {3.7029925784989505`*^9, 
+  3.702992580482217*^9}}],
+
+Cell[BoxData[
+ RowBox[{"a", ">", "0"}]], "Output",
+ CellChangeTimes->{{3.7029922600840273`*^9, 3.7029922624326944`*^9}, {
+  3.702992447719575*^9, 3.702992464445031*^9}, {3.7029925784989505`*^9, 
+  3.7029925804867363`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"m", " ", "\[Gamma]1"}], 
+  SuperscriptBox["h", "2"]]], "Output",
+ CellChangeTimes->{{3.7029922600840273`*^9, 3.7029922624326944`*^9}, {
+  3.702992447719575*^9, 3.702992464445031*^9}, {3.7029925784989505`*^9, 
+  3.702992580497243*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"m", " ", "\[Gamma]2"}], 
+  SuperscriptBox["h", "2"]]], "Output",
+ CellChangeTimes->{{3.7029922600840273`*^9, 3.7029922624326944`*^9}, {
+  3.702992447719575*^9, 3.702992464445031*^9}, {3.7029925784989505`*^9, 
+  3.702992580499753*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Phi]2", "[", "x_", "]"}], ":=", " ", 
+   RowBox[{"Piecewise", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SqrtBox[
+          FractionBox["\[Kappa]2", "2"]], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"\[Kappa]2", "*", "x"}]]}], ",", " ", 
+        RowBox[{"x", "<", "0"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SqrtBox[
+          FractionBox["\[Kappa]2", "2"]], 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "\[Kappa]2"}], "*", "x"}]]}], ",", " ", 
+        RowBox[{"x", ">", "0"}]}], "}"}]}], "}"}], "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7029916680738726`*^9, 3.7029917014625645`*^9}, {
+   3.7029917509716434`*^9, 3.702991760329272*^9}, 3.7029918625316887`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"s", " ", "=", " ", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Phi]1", "[", "x", "]"}], "*", 
+      RowBox[{"\[Phi]2", "[", "x", "]"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"-", "Infinity"}], ",", " ", "Infinity"}], "}"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7029922698859844`*^9, 3.702992310660905*^9}, {
+  3.7029930923128986`*^9, 3.702993093182499*^9}, {3.7029933402171383`*^9, 
+  3.702993368702344*^9}, {3.702997562161476*^9, 3.702997563722577*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["test"],
+  TextCell["test"]]], "Output",
+ CellChangeTimes->{3.702992477241108*^9, 3.70299335588525*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\[Piecewise]", GridBox[{
+       {
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+               RowBox[{"2", " ", 
+                SuperscriptBox["h", "2"]}]]}], "-", 
+             FractionBox[
+              RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+              RowBox[{"2", " ", 
+               SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+           SqrtBox[
+            FractionBox[
+             RowBox[{"m", " ", "\[Gamma]2"}], 
+             SuperscriptBox["h", "2"]]], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "+", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               RowBox[{
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]], "+", 
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1"}], "-", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "-", 
+             RowBox[{"2", " ", 
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "+", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               RowBox[{
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]], "+", 
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]2"}]}], 
+            ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           SqrtBox[
+            FractionBox[
+             RowBox[{"m", " ", "\[Gamma]1"}], 
+             SuperscriptBox["h", "2"]]], " ", 
+           RowBox[{"(", 
+            RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], ")"}]}], 
+        RowBox[{
+         RowBox[{"a", ">", "0"}], "&&", 
+         RowBox[{
+          RowBox[{"Re", "[", 
+           FractionBox[
+            RowBox[{"m", " ", 
+             RowBox[{"(", 
+              RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+            SuperscriptBox["h", "2"]], "]"}], ">", "0"}]}]},
+       {
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            TagBox[GridBox[{
+               {"\[Piecewise]", GridBox[{
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    FractionBox[
+                    RowBox[{"m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox["a", "2"]}], "+", "x"}], ")"}], " ", 
+                    "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", "<", 
+                    FractionBox["a", "2"]}]},
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox["a", "2"]}], "+", "x"}], ")"}], " ", 
+                    "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]}]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", ">", 
+                    FractionBox["a", "2"]}]},
+                  {"0", 
+                   TagBox["True",
+                    "PiecewiseDefault",
+                    AutoDelete->True]}
+                 },
+                 AllowedDimensions->{2, Automatic},
+                 Editable->True,
+                 
+                 GridBoxAlignment->{
+                  "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.84]}, 
+                    Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.4]}, 
+                    Offset[0.2]}, "RowsIndexed" -> {}},
+                 Selectable->True]}
+              },
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.35]}, 
+                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}, "RowsIndexed" -> {}}],
+             "Piecewise",
+             DeleteWithContents->True,
+             Editable->False,
+             SelectWithContents->True,
+             Selectable->False], ")"}], " ", 
+           RowBox[{"(", 
+            TagBox[GridBox[{
+               {"\[Piecewise]", GridBox[{
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    FractionBox[
+                    RowBox[{"m", " ", "x", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", "<", "0"}]},
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"m", " ", "x", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]}]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", ">", "0"}]},
+                  {"0", 
+                   TagBox["True",
+                    "PiecewiseDefault",
+                    AutoDelete->True]}
+                 },
+                 AllowedDimensions->{2, Automatic},
+                 Editable->True,
+                 
+                 GridBoxAlignment->{
+                  "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.84]}, 
+                    Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.4]}, 
+                    Offset[0.2]}, "RowsIndexed" -> {}},
+                 Selectable->True]}
+              },
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.35]}, 
+                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}, "RowsIndexed" -> {}}],
+             "Piecewise",
+             DeleteWithContents->True,
+             Editable->False,
+             SelectWithContents->True,
+             Selectable->False], ")"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "\[Infinity]"}], ",", "\[Infinity]"}], "}"}], ",", 
+          RowBox[{"Assumptions", "\[Rule]", 
+           RowBox[{
+            RowBox[{"a", ">", "0"}], "&&", 
+            RowBox[{
+             RowBox[{"Re", "[", 
+              FractionBox[
+               RowBox[{"m", " ", 
+                RowBox[{"(", 
+                 RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+               SuperscriptBox["h", "2"]], "]"}], "\[LessEqual]", "0"}]}]}]}], 
+         "]"}], 
+        TagBox["True",
+         "PiecewiseDefault",
+         AutoDelete->True]}
+      },
+      AllowedDimensions->{2, Automatic},
+      Editable->True,
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{
+       "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.84]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}},
+      Selectable->True]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.35]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  "Piecewise",
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.702992477241108*^9, 3.7029933728282695`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"s", " ", "=", " ", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"a", " ", "\[Kappa]1"}], "2"]}], "-", 
+      FractionBox[
+       RowBox[{"a", " ", "\[Kappa]2"}], "2"]}]], " ", 
+    SqrtBox["\[Kappa]1"], " ", 
+    SqrtBox["\[Kappa]2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        FractionBox[
+         RowBox[{"a", " ", "\[Kappa]1"}], "2"]], " ", "\[Kappa]1"}], "-", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        FractionBox[
+         RowBox[{"a", " ", "\[Kappa]2"}], "2"]], " ", "\[Kappa]2"}]}], 
+     ")"}]}], 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"\[Kappa]1", "-", "\[Kappa]2"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"\[Kappa]1", "+", "\[Kappa]2"}], ")"}]}]]}]], "Input",
+ CellChangeTimes->{{3.7029924963306513`*^9, 3.702992497465455*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+       RowBox[{"2", " ", 
+        SuperscriptBox["h", "2"]}]]}], "-", 
+     FractionBox[
+      RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["h", "2"]}]]}]], " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]1"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]2"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        FractionBox[
+         RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+         RowBox[{"2", " ", 
+          SuperscriptBox["h", "2"]}]]], " ", "m", " ", "\[Gamma]1"}], 
+      SuperscriptBox["h", "2"]], "-", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        FractionBox[
+         RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+         RowBox[{"2", " ", 
+          SuperscriptBox["h", "2"]}]]], " ", "m", " ", "\[Gamma]2"}], 
+      SuperscriptBox["h", "2"]]}], ")"}]}], 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"m", " ", "\[Gamma]1"}], 
+      SuperscriptBox["h", "2"]], "-", 
+     FractionBox[
+      RowBox[{"m", " ", "\[Gamma]2"}], 
+      SuperscriptBox["h", "2"]]}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"m", " ", "\[Gamma]1"}], 
+      SuperscriptBox["h", "2"]], "+", 
+     FractionBox[
+      RowBox[{"m", " ", "\[Gamma]2"}], 
+      SuperscriptBox["h", "2"]]}], ")"}]}]]], "Output",
+ CellChangeTimes->{3.7029925853784246`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", "s", "]"}]], "Input",
+ CellChangeTimes->{{3.7029926081165557`*^9, 3.7029926109875917`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"a", " ", "m", " ", 
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]2"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}]}], ")"}]}], 
+  RowBox[{
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]1"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}]], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"s", " ", "=", " ", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Phi]2", "[", "x", "]"}], "*", 
+      RowBox[{"\[Phi]1", "[", "x", "]"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"-", "Infinity"}], ",", " ", "Infinity"}], "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7029926452448907`*^9, 3.702992645735242*^9}, {
+  3.7029926859245124`*^9, 3.702992689856285*^9}, {3.7029933779118776`*^9, 
+  3.7029933785623355`*^9}, {3.7029952072943306`*^9, 3.7029952177158613`*^9}, {
+  3.702997556604535*^9, 3.7029975576232505`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"a", " ", "m", " ", 
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]2"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}]}], ")"}]}], 
+  RowBox[{
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]1"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}]]], "Output",
+ CellChangeTimes->{3.7029952186945496`*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\[Piecewise]", GridBox[{
+       {
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["\[ExponentialE]", 
+            RowBox[{
+             RowBox[{"-", 
+              FractionBox[
+               RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+               RowBox[{"2", " ", 
+                SuperscriptBox["h", "2"]}]]}], "-", 
+             FractionBox[
+              RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+              RowBox[{"2", " ", 
+               SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+           SqrtBox[
+            FractionBox[
+             RowBox[{"m", " ", "\[Gamma]2"}], 
+             SuperscriptBox["h", "2"]]], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "+", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               RowBox[{
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]], "+", 
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1"}], "-", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "-", 
+             RowBox[{"2", " ", 
+              SuperscriptBox["\[ExponentialE]", 
+               FractionBox[
+                RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "+", 
+             RowBox[{
+              SuperscriptBox["\[ExponentialE]", 
+               RowBox[{
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]], "+", 
+                FractionBox[
+                 RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]2"}]}], 
+            ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"2", " ", 
+           SqrtBox[
+            FractionBox[
+             RowBox[{"m", " ", "\[Gamma]1"}], 
+             SuperscriptBox["h", "2"]]], " ", 
+           RowBox[{"(", 
+            RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+           RowBox[{"(", 
+            RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], ")"}]}], 
+        RowBox[{
+         RowBox[{"a", ">", "0"}], "&&", 
+         RowBox[{
+          RowBox[{"Re", "[", 
+           FractionBox[
+            RowBox[{"m", " ", 
+             RowBox[{"(", 
+              RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+            SuperscriptBox["h", "2"]], "]"}], ">", "0"}]}]},
+       {
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            TagBox[GridBox[{
+               {"\[Piecewise]", GridBox[{
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    FractionBox[
+                    RowBox[{"m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox["a", "2"]}], "+", "x"}], ")"}], " ", 
+                    "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", "<", 
+                    FractionBox["a", "2"]}]},
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"m", " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", 
+                    FractionBox["a", "2"]}], "+", "x"}], ")"}], " ", 
+                    "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]}]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]1"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", ">", 
+                    FractionBox["a", "2"]}]},
+                  {"0", 
+                   TagBox["True",
+                    "PiecewiseDefault",
+                    AutoDelete->True]}
+                 },
+                 AllowedDimensions->{2, Automatic},
+                 Editable->True,
+                 
+                 GridBoxAlignment->{
+                  "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.84]}, 
+                    Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.4]}, 
+                    Offset[0.2]}, "RowsIndexed" -> {}},
+                 Selectable->True]}
+              },
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.35]}, 
+                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}, "RowsIndexed" -> {}}],
+             "Piecewise",
+             DeleteWithContents->True,
+             Editable->False,
+             SelectWithContents->True,
+             Selectable->False], ")"}], " ", 
+           RowBox[{"(", 
+            TagBox[GridBox[{
+               {"\[Piecewise]", GridBox[{
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    FractionBox[
+                    RowBox[{"m", " ", "x", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", "<", "0"}]},
+                  {
+                   FractionBox[
+                    RowBox[{
+                    SuperscriptBox["\[ExponentialE]", 
+                    RowBox[{"-", 
+                    FractionBox[
+                    RowBox[{"m", " ", "x", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]}]], " ", 
+                    SqrtBox[
+                    FractionBox[
+                    RowBox[{"m", " ", "\[Gamma]2"}], 
+                    SuperscriptBox["h", "2"]]]}], 
+                    SqrtBox["2"]], 
+                   RowBox[{"x", ">", "0"}]},
+                  {"0", 
+                   TagBox["True",
+                    "PiecewiseDefault",
+                    AutoDelete->True]}
+                 },
+                 AllowedDimensions->{2, Automatic},
+                 Editable->True,
+                 
+                 GridBoxAlignment->{
+                  "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+                 
+                 GridBoxItemSize->{
+                  "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.84]}, 
+                    Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                   "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.4]}, 
+                    Offset[0.2]}, "RowsIndexed" -> {}},
+                 Selectable->True]}
+              },
+              
+              GridBoxAlignment->{
+               "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+              
+              GridBoxItemSize->{
+               "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+              GridBoxSpacings->{"Columns" -> {
+                  Offset[0.27999999999999997`], {
+                   Offset[0.35]}, 
+                  Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+                "Rows" -> {
+                  Offset[0.2], {
+                   Offset[0.4]}, 
+                  Offset[0.2]}, "RowsIndexed" -> {}}],
+             "Piecewise",
+             DeleteWithContents->True,
+             Editable->False,
+             SelectWithContents->True,
+             Selectable->False], ")"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "\[Infinity]"}], ",", "\[Infinity]"}], "}"}], ",", 
+          RowBox[{"Assumptions", "\[Rule]", 
+           RowBox[{
+            RowBox[{"a", ">", "0"}], "&&", 
+            RowBox[{
+             RowBox[{"Re", "[", 
+              FractionBox[
+               RowBox[{"m", " ", 
+                RowBox[{"(", 
+                 RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+               SuperscriptBox["h", "2"]], "]"}], "\[LessEqual]", "0"}]}]}]}], 
+         "]"}], 
+        TagBox["True",
+         "PiecewiseDefault",
+         AutoDelete->True]}
+      },
+      AllowedDimensions->{2, Automatic},
+      Editable->True,
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{
+       "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.84]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}},
+      Selectable->True]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.35]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  "Piecewise",
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.7029952306940594`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+         RowBox[{"2", " ", 
+          SuperscriptBox["h", "2"]}]]}], "-", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+     SqrtBox[
+      FractionBox[
+       RowBox[{"m", " ", "\[Gamma]2"}], 
+       SuperscriptBox["h", "2"]]], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         FractionBox[
+          RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+          RowBox[{"2", " ", 
+           SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "+", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"a", " ", "m", " ", 
+            RowBox[{"(", 
+             RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+           RowBox[{"2", " ", 
+            SuperscriptBox["h", "2"]}]], "+", 
+          FractionBox[
+           RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+           RowBox[{"2", " ", 
+            SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1"}], "-", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         FractionBox[
+          RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+          RowBox[{"2", " ", 
+           SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "-", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["\[ExponentialE]", 
+         FractionBox[
+          RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+          RowBox[{"2", " ", 
+           SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}], "+", 
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"a", " ", "m", " ", 
+            RowBox[{"(", 
+             RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}]}], 
+           RowBox[{"2", " ", 
+            SuperscriptBox["h", "2"]}]], "+", 
+          FractionBox[
+           RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+           RowBox[{"2", " ", 
+            SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]2"}]}], ")"}]}], 
+    ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"2", " ", 
+     SqrtBox[
+      FractionBox[
+       RowBox[{"m", " ", "\[Gamma]1"}], 
+       SuperscriptBox["h", "2"]]], " ", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], ")"}]}], "]"}]], \
+"Input",
+ CellChangeTimes->{{3.7029925029473515`*^9, 3.7029925063387566`*^9}, {
+  3.7029952540035934`*^9, 3.7029952700579815`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"a", " ", "m", " ", 
+       RowBox[{"(", 
+        RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["h", "2"]}]]}]], " ", "\[Gamma]1", " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]2"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]1"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]1"}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       FractionBox[
+        RowBox[{"a", " ", "m", " ", "\[Gamma]2"}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["h", "2"]}]]], " ", "\[Gamma]2"}]}], ")"}]}], 
+  RowBox[{
+   SqrtBox[
+    FractionBox[
+     RowBox[{"m", " ", "\[Gamma]1"}], 
+     SuperscriptBox["h", "2"]]], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "-", "\[Gamma]2"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"\[Gamma]1", "+", "\[Gamma]2"}], ")"}]}]]], "Output",
+ CellChangeTimes->{3.702995270925595*^9}]
+}, Open  ]]
+},
+WindowSize->{719, 868},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1920, 54, 210, "Input"],
+Cell[2503, 78, 471, 11, 49, "Output"],
+Cell[2977, 91, 222, 4, 30, "Output"],
+Cell[3202, 97, 273, 6, 48, "Output"],
+Cell[3478, 105, 273, 6, 48, "Output"]
+}, Open  ]],
+Cell[3766, 114, 897, 26, 79, "Input"],
+Cell[CellGroupData[{
+Cell[4688, 144, 595, 14, 50, "Input"],
+Cell[5286, 160, 141, 3, 30, "Output"],
+Cell[5430, 165, 12173, 309, 340, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17640, 479, 949, 29, 67, "Input"],
+Cell[18592, 510, 1740, 57, 98, "Output"]
+}, Open  ]],
+Cell[20347, 570, 131, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[20503, 576, 1847, 52, 170, InheritFromParent],
+Cell[22353, 630, 1216, 38, 103, "Output"],
+Cell[23572, 670, 12151, 309, 202, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35760, 984, 2775, 79, 61, InheritFromParent],
+Cell[38538, 1065, 1214, 38, 103, "Output"]
+}, Open  ]]
+}
+]
+*)
+

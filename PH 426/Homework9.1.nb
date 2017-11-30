@@ -1,0 +1,325 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9957,        315]
+NotebookOptionsPosition[      9275,        287]
+NotebookOutlinePosition[      9618,        302]
+CellTagsIndexPosition[      9575,        299]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.705844304093169*^9, 3.7058443049483724`*^9}}],
+
+Cell["\<\
+(e) Calculate the expectation value \[LeftAngleBracket]z\[RightAngleBracket] \
+as a function of time. Do you expect this answer? 
+
+To solve this, first we will set up the definition for the time dependent \
+wavefunction and then will use this to evaluate the weighted inner product to \
+find  \[LeftAngleBracket]z\[RightAngleBracket] . \
+\>", "Text",
+ CellChangeTimes->{{3.705844315588219*^9, 3.7058443610113745`*^9}, {
+  3.705844799036869*^9, 3.705844846560522*^9}, {3.705845120848677*^9, 
+  3.7058451275814075`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"$Assumptions", "=", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "r", ",", "n", ",", "a0", ",", "t", ",", "h", ",", "\[Epsilon]", ",", 
+     "\[Mu]"}], "}"}], "\[Element]", "Reals"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Z", "=", "1"}]}], "Input",
+ CellChangeTimes->{{3.7058443961756873`*^9, 3.7058444307195272`*^9}, {
+  3.7058445438643055`*^9, 3.7058445476576242`*^9}, {3.70584473715195*^9, 
+  3.705844741511428*^9}, {3.7058450190209975`*^9, 3.70584501972209*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+   "r", "|", "n", "|", "a0", "|", "t", "|", "h", "|", "\[Epsilon]", "|", 
+    "\[Mu]"}], ")"}], "\[Element]", "Reals"}]], "Output",
+ CellChangeTimes->{3.7058450253516846`*^9}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.7058450253516846`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Rho]", "[", "n_", "]"}], ":=", 
+   RowBox[{"Z", " ", 
+    RowBox[{"r", "/", 
+     RowBox[{"(", 
+      RowBox[{"n", " ", "a0"}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"R", "[", 
+   RowBox[{"n_", ",", "l_", ",", "r_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2", " ", 
+         RowBox[{"Z", "/", 
+          RowBox[{"(", 
+           RowBox[{"n", " ", "a0"}], ")"}]}]}], ")"}], "^", "3"}], " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"n", "-", "l", "-", "1"}], ")"}], "!"}], "/", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2", " ", "n", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"n", "+", "l"}], ")"}], "!"}], ")"}]}], ")"}], "^", 
+        "3"}]}]}], "]"}]}], " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{"-", 
+     RowBox[{"\[Rho]", "[", "n", "]"}]}], "]"}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"2", "*", 
+      RowBox[{"\[Rho]", "[", "n", "]"}]}], ")"}], "^", "l"}], " ", 
+   RowBox[{"LaguerreL", "[", 
+    RowBox[{
+     RowBox[{"n", "+", "l"}], ",", 
+     RowBox[{
+      RowBox[{"2", " ", "l"}], "+", "1"}], ",", 
+     RowBox[{"2", " ", 
+      RowBox[{"\[Rho]", "[", "n", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Y", "[", 
+   RowBox[{"l_", ",", "m_", ",", "\[Theta]_", ",", "\[Phi]_"}], "]"}], ":=", 
+  RowBox[{"SphericalHarmonicY", "[", 
+   RowBox[{"l", ",", "m", ",", "\[Theta]", ",", "\[Phi]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"En", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "1"}], "/", 
+    RowBox[{"(", 
+     RowBox[{"2", "*", 
+      RowBox[{"n", "^", "2"}]}], ")"}]}], "*", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"Z", "*", 
+      RowBox[{
+       RowBox[{"Exp", "[", "2", "]"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"4", "*", "\[Pi]", "*", "\[Epsilon]"}], ")"}]}]}], ")"}], "^",
+     "2"}], "*", 
+   RowBox[{"\[Mu]", "/", 
+    RowBox[{"h", "^", "2"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"T", "[", 
+    RowBox[{"n_", ",", "t_"}], "]"}], ":=", 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "I"}], "*", 
+     RowBox[{
+      RowBox[{"En", "[", "n", "]"}], "/", "h"}], "*", "t"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalPsi]ket", "[", 
+   RowBox[{"n_", ",", "l_", ",", "m_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"R", "[", 
+    RowBox[{"n", ",", "l", ",", "r"}], "]"}], "*", 
+   RowBox[{"Y", "[", 
+    RowBox[{"l", ",", "m", ",", "\[Theta]", ",", "\[Phi]"}], "]"}], "*", 
+   RowBox[{"T", "[", 
+    RowBox[{"n", ",", "t"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Psi]", "[", 
+   RowBox[{"r_", ",", "\[Theta]_", ",", "\[Phi]_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "/", 
+     RowBox[{"Sqrt", "[", "2", "]"}]}], ")"}], "*", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"\[CapitalPsi]ket", "[", 
+      RowBox[{"2", ",", "0", ",", "0"}], "]"}], "+", 
+     RowBox[{"\[CapitalPsi]ket", "[", 
+      RowBox[{"2", ",", "1", ",", "0"}], "]"}]}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[Psi]", "[", 
+   RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]", ",", "t"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7058450443983297`*^9, 3.7058450850974226`*^9}, 
+   3.7058451304249578`*^9}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SqrtBox[
+       FractionBox["1", 
+        SuperscriptBox["a0", "3"]]], " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox["r", 
+          RowBox[{"2", " ", "a0"}]]}], "+", 
+        FractionBox[
+         RowBox[{"\[ImaginaryI]", " ", 
+          SuperscriptBox["\[ExponentialE]", "4"], " ", "t", " ", "\[Mu]"}], 
+         RowBox[{"128", " ", 
+          SuperscriptBox["h", "3"], " ", 
+          SuperscriptBox["\[Pi]", "2"], " ", 
+          SuperscriptBox["\[Epsilon]", "2"]}]]}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"6", " ", 
+         SuperscriptBox["a0", "2"]}], "-", 
+        RowBox[{"6", " ", "a0", " ", "r"}], "+", 
+        SuperscriptBox["r", "2"]}], ")"}]}], 
+     RowBox[{"64", " ", 
+      SuperscriptBox["a0", "2"], " ", 
+      SqrtBox[
+       RowBox[{"2", " ", "\[Pi]"}]]}]]}], "-", 
+   FractionBox[
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["1", 
+        SuperscriptBox["a0", "3"]], ")"}], 
+      RowBox[{"3", "/", "2"}]], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["r", 
+         RowBox[{"2", " ", "a0"}]]}], "+", 
+       FractionBox[
+        RowBox[{"\[ImaginaryI]", " ", 
+         SuperscriptBox["\[ExponentialE]", "4"], " ", "t", " ", "\[Mu]"}], 
+        RowBox[{"128", " ", 
+         SuperscriptBox["h", "3"], " ", 
+         SuperscriptBox["\[Pi]", "2"], " ", 
+         SuperscriptBox["\[Epsilon]", "2"]}]]}]], " ", "r", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"120", " ", 
+        SuperscriptBox["a0", "3"]}], "-", 
+       RowBox[{"90", " ", 
+        SuperscriptBox["a0", "2"], " ", "r"}], "+", 
+       RowBox[{"18", " ", "a0", " ", 
+        SuperscriptBox["r", "2"]}], "-", 
+       SuperscriptBox["r", "3"]}], ")"}], " ", 
+     RowBox[{"Cos", "[", "\[Theta]", "]"}]}], 
+    RowBox[{"576", " ", "a0", " ", 
+     SqrtBox[
+      RowBox[{"2", " ", "\[Pi]"}]]}]]}], 
+  SqrtBox["2"]]], "Output",
+ CellChangeTimes->{3.7058451902698517`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Integrate", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Conjugate", "[", 
+     RowBox[{"\[Psi]", "[", 
+      RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]", ",", "t"}], "]"}], "]"}], 
+    "*", 
+    RowBox[{"\[Psi]", "[", 
+     RowBox[{"r", ",", "\[Theta]", ",", "\[Phi]", ",", "t"}], "]"}], "*", 
+    RowBox[{"r", "^", "3"}], "*", 
+    RowBox[{"Cos", "[", "\[Theta]", "]"}], "*", 
+    RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "0", ",", "Infinity"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", "\[Pi]"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Phi]", ",", "0", ",", 
+     RowBox[{"2", " ", "\[Pi]"}]}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ConditionalExpression", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["5", "64"]}], " ", "a0", " ", 
+    SuperscriptBox[
+     RowBox[{"Sign", "[", "a0", "]"}], "3"]}], ",", 
+   RowBox[{"a0", ">", "0"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.705845228965618*^9}]
+}, Open  ]],
+
+Cell["\<\
+Which we can see is not time dependent (as expected). This makes sense as \
+both of the basis states have the same n value and therefore the same energy. \
+Since the time dependence depends exclusively on the energy of the state, \
+when normalized, the norm squared of the n-energy turns to 1, removing any \
+time dependence. \
+\>", "Text",
+ CellChangeTimes->{{3.7058452472886057`*^9, 3.705845265507902*^9}, {
+  3.7058455977873926`*^9, 3.7058456704380445`*^9}}]
+},
+WindowSize->{1440, 877},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 94, 1, 30, "Input"],
+Cell[655, 23, 528, 10, 68, "Text"],
+Cell[CellGroupData[{
+Cell[1208, 37, 490, 10, 50, "Input"],
+Cell[1701, 49, 227, 6, 30, "Output"],
+Cell[1931, 57, 72, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2040, 63, 3547, 110, 221, "Input"],
+Cell[5590, 175, 2126, 64, 95, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7753, 244, 723, 19, 30, "Input"],
+Cell[8479, 265, 306, 9, 46, "Output"]
+}, Open  ]],
+Cell[8800, 277, 471, 8, 49, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
