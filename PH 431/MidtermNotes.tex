@@ -1,0 +1,250 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+\section*{PH 431 Review for Midterm}	
+	\subsection*{Electrostatics in Vacuum}
+		Coulomb's law for the force on a test charge Q due to a single point charge q is: 
+			\begin{equation}
+				\mathbf{F} = \frac{1}{4\pi\epsilon_0}\frac{qQ}{d^2}\hat{\mathbf{d}}
+			\end{equation} 
+		Where we use $\mathbf{d} = \mathbf{r-r'}$. The Factoring out the test charge Q allows us to define the electric field which depends only on the charged object. 
+			\begin{equation}
+				\mathbf{F} = Q \mathbf{E} 
+			\end{equation} 
+		We can define the Electric field for a collection of charges $q_i$ or can extend the concept to continuous distributions: 
+			\begin{align}
+				\mathbf{E(r)} 	&= \frac{1}{4\pi\epsilon_0}\sum\limits_i \frac{q_i}{d_i^2}\hat{\mathbf{d_i}} \\ 	
+								&= \frac{1}{4\pi\epsilon_0}\int \frac{\lambda(\mathbf{r'})}{d^2}\hat{\mathbf{d}} dl'\\
+								&= \frac{1}{4\pi\epsilon_0}\int \frac{\sigma(\mathbf{r'})}{d^2}\hat{\mathbf{d}}da' \\ 
+								&= \frac{1}{4\pi\epsilon_0}\int \frac{\rho(\mathbf{r'})}{d^2}\hat{\mathbf{d}}d\tau' 
+			\end{align}
+		Now let's right down the vector identities i.e. Maxwell's equations for electrostatics: 
+			\begin{align}
+				\oint \mathbf{E} \cdot d\mathbf{a} &= \frac{Q_{enc}}{\epsilon_0} \\ 
+				\Rightarrow \mathbf{\nabla} \cdot \mathbf{E} &= \frac{1}{\epsilon_0} \rho \\
+				\oint \mathbf{E} \cdot d\mathbf{l} &= 0 \\ 
+				\Rightarrow \nabla \times \mathbf{E} &= 0 
+			\end{align}
+		Since the curl of \textbf{E} is zero, we can define a scalar potential $\phi$ such that 
+			\begin{align}
+				\mathbf{E} &= -\nabla \phi \\ 
+				\Delta \phi &= - \int \limits_O^\mathbf{r} \mathbf{E} \cdot d\mathbf{l} 
+			\end{align}
+		The divergence and curl of \textbf{E} in terms of $\phi$ become Laplace and Poisson's equations. 
+			\begin{align}
+				\nabla^2\phi &= -\frac{\rho}{\epsilon_0} \\
+				\nabla^2\phi &= 0 
+			\end{align}
+		The second equation is Laplace's equation which applies for a region where there is zero free charge. From our definition of $\Delta \phi$ we can deduce definitions for the Electric potential. 
+			\begin{align}
+				\phi(\mathbf{r}) 	&= \frac{1}{4 \pi \epsilon_0} \sum\limits_i \frac{q_i}{d_i} \\
+									&= \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\mathbf{r'})}{d} d\tau' 
+			\end{align}
+	\subsection*{Boundary Conditions}
+		The electric field \textbf{E} always undergoes a discontinuity across a surface charge $\sigma$. The amount of this jump can be found using the electric field for a infinite surface and a Gaussian pillbox. The tangential component must always be continuous because $\oint \mathbf{E} \cdot d\mathbf{l} = 0$. Here I use a for above and b for below. 
+			\begin{align}
+				\mathbf{E}_{a}^{\bot} -\mathbf{E}_{a}^{\bot} = \frac{1}{\epsilon_0}{\sigma} \\ 
+				\mathbf{E}_{a}^{\parallel} = \mathbf{E}_{b}^{\parallel} 
+			\end{align}
+		In general for any surface, these become the following in terms of the potential (n refers to the 'normal' direction i.e. $\frac{\partial \phi}{\partial n} = \nabla \phi \cdot \hat{n}$)
+			\begin{align}
+				\frac{\partial \phi_a}{\partial n} - \frac{\partial \phi_b}{\partial n} &= - \frac{\sigma}{\epsilon_0}
+			\end{align}
+		\textbf{First Uniqueness Theorem:} The solution to Laplace's equation in some volume $V$ is uniquely determined if V is specified on the boundary surface $S$. 
+	\subsection*{Image Charge Method} 
+		The image charge method is the process of using a combination of fake point charges to simulate the potential of a given surface charge distribution. You need to satisfy Laplace's equation in a particular region ($\nabla^2\phi_{ind} = 0$). Also $\phi_T = \phi_Q + \phi_{ind}$. Apply boundary conditions and insure image charges satisfy (ex: $\phi_{ind} \rightarrow 0$ as $r \rightarrow \infty $)
+	\subsection*{Separation of Variables} 
+		Given a problem with azimuthal symmetry (i.e. symmetric about z axis) we can immediately write solution to Laplace's equation as: 
+			\begin{equation}
+				\sum\limits_{L=0}^{\infty}\Big(A_Lr^L + \frac{B_L}{r^{L+1}}\Big)P_L(\cos(\theta))
+			\end{equation}
+		The first 3 Legendre Polynomials of $\cos(\theta)$ are: 
+			\begin{align}
+				P_1 &= 1 \\ 
+				P_2 &= \cos(\theta) \\ 
+				P_3 &= \frac{1}{2}\Big( 3\cos^2(\theta)-1\Big)
+			\end{align}
+		In general you just need to find $A_L, B_L$ that satisfy b.c.'s. For example if $\phi_{in} \rightarrow 0$ as $r\rightarrow \infty$ then $A_L = 0 \quad \forall L$. If you need $\phi_{in}$ to be defined at $r=0$ then $B_L = 0 \quad \forall L$. 
+	\subsection*{Multi-pole expansion} 
+		The multi-pole expansion is the expansion of the potential for any distribution into powers of $1/r$. Note that: 
+			\begin{equation}
+				\frac{1}{d} = \frac{1}{r}\sum\limits_{n=0}^{\infty} \Big( \frac{r'}{r} \Big)^n P_n(\cos(\alpha)) 
+			\end{equation}
+		Plugging this into our definition of $\phi$ gives us the multi-expansion: 
+			\begin{equation}
+				\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\sum\limits_{n=0}^{\infty}\frac{1}{r^{n+1}}\int (\mathbf{r'})^n P_n)(\cos(\alpha))\rho(\mathbf{r'})d\tau' 
+			\end{equation}
+		So that you can use the famous physics method of \textbf{Guess It}, here are the monopole and dipole terms at large r: 
+			\begin{align}
+				\phi(\mathbf{r})_{mon} = \frac{1}{4 \pi \epsilon_0}\frac{Q}{r} \\ 
+				\phi(\mathbf{r})_{dip} = \frac{1}{4 \pi \epsilon_0} \frac{\mathbf{p} \cdot \hat{\mathbf{r}}}{r^2}
+			\end{align}
+		for a physical dipole, $\mathbf{p} = q\mathbf{d}$ where d goes from negative to positive. 
+	\subsection*{Electric Fields In Matter}
+		A dipole in a uniform electric field experiences a torque $\mathbf{N} = \mathbf{p} \times \mathbf{E}$. The force on the dipole can be written as: $\mathbf{F} = (\mathbf{p} \cdot \nabla)\mathbf{E}$. \\ 
+		
+		\noindent For polarizable materials we will consider collections of dipoles that we can describe with a dipole moment density. We will denote this as $\mathbf{P}$ which has dimensions of dipole per volume. Now if we want to construct the potential for this distribution, we can take equation (27). 
+			\begin{equation*}
+				\phi(\mathbf{r}) = \frac{1}{4 \pi \epsilon_0}\int\limits_V \frac{\mathbf{P(r')}\cdot \hat{\mathbf{d}}}{d^2}
+			\end{equation*}
+		This formulation is equivalent to a group of surface bound charges and volume bound charges: 
+			\begin{align}
+				\phi(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\oint\limits_S\frac{\sigma_b da'}{d} + \frac{1}{4\pi\epsilon_0}\int\limits_V\frac{\rho_b d\tau'}{d}
+			\end{align}
+		Where $\sigma_b = \mathbf{P} \cdot \hat{\mathbf{n}}$ and $\rho_b = -\nabla \cdot \mathbf{P}$.
+		
+		If we assume materials to be linearly polarizable, we can define some useful fields with corresponding differential vector equations. 
+			\begin{align}
+				\mathbf{D} &\equiv \epsilon_0 \mathbf{E} + \mathbf{P} \\ 
+				\nabla \cdot \mathbf{D} &= \nabla \cdot (\epsilon_0 \mathbf{E} + \mathbf{P}) = \rho_f \\
+				\mathbf{P} &= \epsilon_0\chi_e\mathbf{E}
+			\end{align}
+	\subsection*{Dielectric Boundary Conditions}
+		The	boundary conditions we have from the homework are: 
+			\begin{align}
+				\phi_{in} &= \phi_{out}, \quad r=R \\ 
+				\epsilon_1 \frac{\partial \phi_{in}}{\partial r} &= \epsilon_2 \frac{\partial \phi_{out}}{\partial r}
+			\end{align}
+		The boundary equations essentially are that $\phi$ is continuous across the interface, $\epsilon\partial_\bot\phi$ is continuous across interface and $\partial_\parallel \phi$ is continuous across the interface. \\ 
+		
+		\noindent \textbf{Strategies for polarizable materials:} Solve for the displacement field \textbf{D} then we want to go from $\rho_f$ to our \textbf{D} field. To do that we need \textit{symmetry}. Then you want to take \textbf{D} and derive \textbf{E, P} i.e. use $\nabla \cdot \mathbf{D} = \rho_f$. We assume that the free charge $\rho_f$ will be given.  Now for linearly polarizable materials we have $\mathbf{D} = \epsilon\mathbf{E}$ and $\epsilon = \epsilon_0\epsilon_r$. Now to get \textbf{P}, you use $\mathbf{P} = \mathbf{D} - \epsilon_0\mathbf{D}$. \\
+		
+		\noindent At a boundary, we derived that $\Delta \mathbf{E} = \frac{\sigma_b}{\epsilon_0}$... Katy wanted me to add this... so here it is. \\ 
+		
+	\subsection*{Energy in a Dielectric System}
+		The energy stored in a dielectric configuration is equivalent to the work required to form the system. This is given by: 
+			\begin{eqnarray}
+				W = \frac{1}{2} \int \mathbf{D} \cdot \mathbf{E} d\tau
+			\end{eqnarray}
+		Also the energy of a capacitor is given by $U = \frac{1}{2}CV^2$
+	\subsection*{Magnetostatics}
+		The magnetic force on a particle moving through magnetic and electric fields is given by the Lorentz force law (taken to be true based off of observation). It is: 
+			\begin{equation}
+				\mathbf{F}_{E/M} = Q)[\mathbf{E} +\vec{v}\times\mathbf{B}]
+			\end{equation}
+		Notice that because the magnetic force always points PERPENDICULAR to velocity, \textbf{the magnetic field does NO work}.\\ 
+		
+		\noindent The equivalent of charge densities to magnetostatics are current densities. They are: 
+			\begin{align}
+				\mathbf{I} &= \lambda \vec{v} \\ 
+				\mathbf{K} &= \sigma \vec{v} \\ 
+				\mathbf{J} &= \rho \vec{v} 
+			\end{align}
+		From the last density, we will write the general equation for the magnetic force as: 
+			\begin{equation}
+				\mathbf{F} = \int \mathbf{J} \times \mathbf{B} d\tau
+			\end{equation} 
+			
+		For steady current systems, the magnetic field can be calculated via the Biot-Savart law: 
+			\begin{equation}
+				\mathbf{B} = \frac{\mu_0}{4\pi} \int \frac{\mathbf{J}\times \vec{d}}{d^3} d\tau' 
+			\end{equation}
+			
+		The equivalent of Gauss's law for magnetostatics is called Ampere's law. It is: 
+			\begin{align}
+				\oint \mathbf{B} \cdot d\vec{l} &= \mu_0 I_{enc} \\ 
+					\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} 
+			\end{align}
+		Now we can summarize the equations into Maxwell's laws for vacuum: 
+			\begin{align}
+				\nabla \cdot \mathbf{E} &= \frac{1}{\epsilon_0}\rho \\ 
+				\nabla \times \mathbf{E} &= 0 \\ 
+				\nabla \cdot \mathbf{B} &= 0 \\ 
+				\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} 
+			\end{align} 
+			
+		Also, since the divergence of the \textbf{B} field is zero, we can define a vector potential \textbf{A} since the divergence of the curl is always zero: 
+			\begin{align}
+				\mathbf{A} &= \frac{\mu_0}{4\pi}\int \frac{\mathbf{J(r')}}{d}d\tau' \\ 
+				\mathbf{B} &= \nabla \times \mathbf{A} 
+			\end{align} 
+		
+		The magnetic dipole moment, \textbf{m}, is given by: 
+			\begin{equation}
+				\mathbf{m} \equiv I \int d\mathbf{a}
+			\end{equation}
+	\section*{Magnetic Fields in Matter} 
+		Similar to electric forces, magnetic dipoles in a magnetic field experience a torque defined by: 
+			\begin{equation}
+				\mathbf{N} = \mathbf{m} \times \mathbf{B} 
+			\end{equation}
+		This torque is what accounts for paramagnetism since it aligns the dipole to be parallel with the magnetic field. The force for an infinitesimal loop around a dipole \textbf{m} in a field \textbf{B} is: 
+			\begin{align}
+				\mathbf{F} = \nabla (\mathbf{m} \cdot \mathbf{B}) 
+			\end{align}
+		As with electrically polarizable materials we can consider materials as collections of magnetic dipoles which we will account for by the magnetic dipole density \textbf{M} which has dimensions of magnetic dipole per volume. The magnetic vector potential for such a distribution is given by: 
+			\begin{align}
+				\mathbf{A(r)} &= \frac{\mu_0}{4\pi}\int \frac{\mathbf{M(r')}\times \hat{\mathbf{d}}}{d^2} d\tau' 
+			\end{align}
+		We can show this is equivalent to a surface bound current $\mathbf{K}_b$ and a volume bound current $\mathbf{J}_b$ such that: 
+			\begin{align}
+				\mathbf{A(r)} &= \frac{\mu_0}{4\pi}\int \frac{\mathbf{J_b(r')}d^3\mathbf{r'}}{d} + \frac{\mu_0}{4\pi}\int \frac{\mathbf{K_b(r')}d^2\mathbf{r'}}{d}
+			\end{align}
+		Where $\mathbf{J_b} = \nabla \times \mathbf{M}$ and $\mathbf{K_b} = \mathbf{M} \times \hat{\mathbf{n}}$ \\ 
+		
+		\noindent Now recall that for magnetostatics we know that: 
+			\begin{align}
+				\nabla \times \mathbf{B} &= \mu_0\mathbf{J} \\ 
+				\mathbf{J} &= \mathbf{J}_f + \mathbf{J}_b \\ 
+						&= \mathbf{J}_f + \nabla \times \mathbf{M} \\ 
+				\Rightarrow \nabla \times (\frac{1}{\mu_0}\mathbf{B} - \mathbf{M}) &= \mathbf{J} - \mathbf{J_b} = \mathbf{J_f} \\ 
+				\mathbf{H} &\equiv \frac{1}{\mu_0}\mathbf{B} - \mathbf{M} 
+			\end{align}
+		Now we have our analogous field to the displacement field with the vector identity that: 
+			\begin{eqnarray}
+				\nabla \times \mathbf{H} = \mathbf{J_f} 
+			\end{eqnarray}
+		Thus the correspondence is that given \textbf{M} and \textbf{H} we can solve for \textbf{B} using (58). Then we have that $\mathbf{B} = \mu \mathbf{H}$ for linearly polarizable materials where $\mu = \mu_0(1+\chi_m)$. Then we can solve for the bound current densities using equations $\mathbf{J_b} = \nabla \times \mathbf{M}$ and $\mathbf{K_b} = \mathbf{M} \times \hat{\mathbf{n}}$. 
+	\subsection*{usefull stuff...} 
+		the magnetic field for a naked wire is given by: 
+			\begin{equation}
+				\mathbf{B} = \frac{\mu_0 I}{2\pi r}\hat{\phi}
+			\end{equation}
+		The magnetic field for a solenoid of n turns per length is given by: 
+			\begin{equation}
+				\mathbf{B} = \mu_0 n I \hat{z} 
+			\end{equation}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

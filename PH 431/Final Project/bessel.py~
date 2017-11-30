@@ -1,0 +1,14 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import special as sp 
+
+
+
+
+ks = 1 #not sure how to define this component of the wavevector
+
+def A_x(x,y,z):
+    #assuming beam is traveling along x axis hence A_x. Thus s depends on y,z 
+    return sp.jn(1, ks*np.sqrt(y**2+z**2))*np.e**(1j * 1 * np.arctan2(z,y))
+
+print np.real(A_x(1,1,1))

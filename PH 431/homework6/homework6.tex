@@ -1,0 +1,191 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 6} \hfill \textbf{John Waczak} \\
+\normalsize PH 431 \hfill  Date: \today \\
+Prof. Bo Sun  \\
+
+\section{}
+\textit{Find the monochromatic plane wave solution in the Lorentz guage and derive the energy flux}\\
+
+\noindent First, let's translate Maxwell's equations into equations on the vector and scalar potential. We have that in vacuum: 
+	\begin{align*}
+		&\nabla \cdot \mathbf{E} = \rho/\epsilon_0 \\
+		&\nabla \times \mathbf{E} = -\partial_t \mathbf{B} \\ 
+		&\nabla \cdot \mathbf{B} = 0 \\ 
+		&\nabla \times \mathbf{B} = \mu_0\vec{J} + \mu_0\epsilon_0\partial_t\mathbf{E} 
+	\end{align*}
+Because there are no magnetic monopoles, there must exist a vector potential such that: 
+	\begin{equation*}
+		\mathbf{B} = \nabla \times \vec{A} 
+	\end{equation*} 
+Similarly, because of the second equation (Faraday's law), we can introduce a scalar potential such that:
+	\begin{equation*}
+		-\nabla\phi = \mathbf{E} + \partial_t\vec{A}
+	\end{equation*}
+Now using these equations in Gauss's and Ampere's laws we can deduce the following: 
+	\begin{align*}
+		\nabla \cdot \mathbf{E} &= \frac{1}{\epsilon_0}\rho \\ 
+		\nabla \cdot (-\nabla\phi - \partial_t\vec{A}) &= \frac{1}{\epsilon_0}\rho \\ 
+		-\nabla^2\phi - \partial_t(\nabla \cdot \vec{A}) &= \frac{1}{\epsilon_0}\rho \\ 
+		\quad \\ 
+		\nabla \times \mathbf{B} - \mu_0\epsilon_0\mathbf{E} &= \mu\vec{J} \\ 
+		\nabla \times \nabla \times \vec{A} -\mu_0\epsilon_0\partial_t(-\nabla \phi - \partial_t \vec{A}) &= \mu+0 \vec{J} \\ 
+		\nabla(\nabla \cdot \vec{A})-\nabla^2\vec{A} + \mu_0\epsilon_0\partial_t\nabla\phi + \mu_0\epsilon_0\partial_t^2\vec{A} &= \mu_0\vec{J} \\ 
+		(\nabla^2\vec{A}-\mu_0\epsilon_0\partial_t^2\vec{A})-\nabla(\nabla \cdot \vec{A} + \mu_0\epsilon_0\partial_t\phi) &= -\mu_0\vec{J} \\ 
+		\text{define d'Alembert's operator as:}\quad \Box &\equiv \big[\nabla^2 -\mu_0\epsilon_0\partial_t^2\big] \\ 
+		\Box \vec{A} - \nabla(\nabla\cdot\vec{A}+\mu_0\epsilon_0\partial_t\phi) &= -\mu_0\vec{J}
+	\end{align*}
+In vacuum we have that $\rho = 0, \vec{J} = \mathbf{0}$. Now for the Lorentz gauge we have the following condition: 
+	\begin{equation}
+		\nabla \cdot \vec{A} +\mu_0\epsilon_0\partial_t \phi = 0 
+	\end{equation}
+This changes our equations to become: 
+	\begin{align*}
+		\Box \vec{A} - \nabla(0) &= 0 \\ 
+		\Rightarrow \Box\vec{A} &= 0 \\ 
+		\\ 
+		\nabla \cdot \vec{A} &= -\mu_0\epsilon_0\partial_t\phi \\ 
+		\nabla^2\phi + \partial_t(-\mu_0\epsilon_0\partial_t\phi) &= 0 \\ 
+		\nabla^2\phi - \mu_0\epsilon_0\partial_t^2\phi &= 0 \\ 
+		\Rightarrow \Box \phi &= 0 
+	\end{align*}
+Because the $\Box$ operator turns both equations into the wave equation, we have that the following solutions are permitted: 	
+	\begin{align*}
+		\vec{A} &= \vec{A}_0e^{i(\vec{k}_1\cdot\vec{r}-\omega_1t)} \\ 
+		\phi &= \phi_0e^{i(\vec{k}_2\cdot\vec{r}-\omega_2t)}  
+	\end{align*}
+Now applying these solutions to the Lorentz condition yields: 
+	\begin{align*}
+		\nabla \cdot \vec{A}_0e^{i(\vec{k}_1\cdot\vec{r}-\omega_1t)} &= -\mu_0\epsilon_0\partial_t\phi_0e^{i(\vec{k}_2\cdot\vec{r}-\omega_2t)} \\
+		(i\vec{k_1}\cdot\vec{A}_0)e^{i(\vec{k}_1\cdot\vec{r}-\omega_1t)} &= (i\omega_2\mu_0\epsilon_0\phi_0)e^{i(\vec{k}_2\cdot\vec{r}-\omega_2t)}
+	\end{align*}
+This equation must be true at any point in space and at any instant in time. Thus we must have that $\vec{k}_1 =\vec{k}_2, \omega_1=\omega_2$. Therefore: 
+	\begin{equation}
+		\vec{k} \cdot \vec{A}_0  = \omega\mu_0\epsilon_0\phi_0
+	\end{equation}
+Using this information we can write the equations for the magnetic and electric fields (the real, physically meaningful objects). 
+	\begin{align*}
+		\mathbf{B} 	&= \nabla \times \vec{A} \\ 
+					&= \nabla \times \vec{A}_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\
+					&= i\vec{k}\times\vec{A}_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\ 
+					\\
+		\mathbf{E} 	&= -\nabla \phi - \partial_t \vec{A}\\
+					&= -\nabla\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}- \partial_t\vec{A}_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\ 
+					&=-i\vec{k}\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}-i(-\omega)\vec{A}_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\ 
+					&=(-i\phi_0\vec{k}+i\omega\vec{A}_0)e^{i(\vec{k}\cdot\vec{r}-\omega t)}
+	\end{align*}
+All that remains is to show that these are true plane waves by proving both \textbf{B} and \textbf{E} are mutually perpendicular to the wavevector $\vec{k}$.\\ 
+
+\noindent This clearly must be true for \textbf{B} because it is defined in terms of a cross product wit the wavevector and so must be perpendicular to it. It is a little trickier for \textbf{E} and so first we will derive the dispersion relation for both $\vec{A}, \phi$. 
+	\begin{align*}
+		\nabla^2\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} &= -k^2\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\ 
+		\partial_t^2\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} &= -\omega^2\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)} \\
+		\nabla^2\phi -\mu_0\epsilon_0\partial_t^2\phi &= 0 \\
+		\Rightarrow k^2-\mu_0\epsilon_0\omega^2 &= 0 \\
+		\frac{\omega}{k} &= \frac{1}{\sqrt{\mu_0\epsilon_0}} \equiv c 
+	\end{align*}
+	
+Now to prove that $\mathbf{E} \bot \vec{k}$, we must calculate $\vec{k}\cdot\mathbf{E}$. 
+	\begin{align*}
+		\vec{k}\cdot\mathbf{E} &= \vec{k}\cdot(-i\phi_0\vec{k}+i\omega\vec{A}_0)e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\
+		&=(-i\phi_0(\vec{k}\cdot\vec{k})+i\omega(\vec{k}\cdot\vec{A}_0))e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\
+		&=(-i\phi_0k^2+i\omega(\omega\mu_0\epsilon_0\phi_0))e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\
+		&=(-k^2+\omega^2\mu_0\epsilon_0)i\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\
+		&=(-k^2+\frac{\omega^2}{c^2})i\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\ 
+		&=(-k^2+k^2)i\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\ 
+		&=0i\phi_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\ 
+		&=0
+	\end{align*}
+Thus because $\vec{k}\cdot\mathbf{E} =0$, we have shown that $\mathbf{E}\bot\vec{k}$ and so we have found a transverse, plane wave solution in the Lorentz gauge. Now we must derive the energy flux which is given by the Poynting vector. Because the electric and magnetic fields are real fields, before we calculate the Poynting vector we will first take the real parts: 
+	\begin{align*}
+		\text{let} \quad \delta &= \vec{k}\cdot\vec{r}-\omega t \\ 
+		Re[\mathbf{B}]	&= Re[i(\vec{k}\times\vec{A}_0)e^{i\delta}] \\ 
+						&= -\sin(\delta)(\vec{k}\times\vec{A}_0) \\ 
+		Re[\mathbf{E}]	&= Re[(-i\phi_0\vec{k}+i\omega\vec{A}_0)e^{i\delta}] \\ 
+						&=-\omega \sin(\delta) \vec{A}_0 + \phi_0\sin(\delta)\vec{k} \\ 
+						&= -\sin(\delta)(\omega \vec{A}_0 - \phi_0\vec{k})	
+	\end{align*}
+Now that we have \textbf{E} and \textbf{E} we can solve for $\vec{S}$. 
+	\begin{align*}
+		\vec{S} &= \frac{1}{\mu_0}(\mathbf{E} \times \mathbf{B}) \\ 
+				&= \frac{1}{\mu_0}[-\sin(\delta)(\omega\vec{A}_0-\phi_0\vec{k})\times -\sin(\delta)(\vec{k}\times\vec{A}_0)] \\ 
+		\text{Recall that:} \quad a\vec{u}\times b\vec{v} &= ab(\vec{u}\times\vec{v}) \\ 
+				&= \frac{1}{\mu_0}\sin^2(\delta)[(\omega\vec{A}_0-\phi_0\vec{k})\times(\vec{k}\times\vec{A}_0)] \\ 
+				&= \frac{\sin^2(\delta)}{\mu_0}[\omega\vec{A}_0\times\vec{k}\times\vec{A}_0 - \phi_0\vec{k}\times\vec{k}\times\vec{A}_0] \\ 
+				&= \frac{\sin^2(\delta)}{\mu_0}[\omega[\vec{k}(\vec{A}_0\cdot\vec{A}_0)-\vec{A}_0(\vec{A}_0\cdot\vec{k})]-\phi_0[\vec{k}(\vec{k}\cdot\vec{A}_0)-\vec{A}_0(\vec{k}\cdot\vec{k})]]\\
+				&= \frac{\sin^2(\delta)}{\mu_0}[\omega A_0^2\vec{k}-\frac{\omega^2}{c^2}\phi_0\vec{A}_0-\frac{\omega}{c^2}\phi_0^2\vec{k}+k^2\phi_0\vec{A}_0]\\
+				&=\frac{\sin^2(\delta)}{\mu_0}[(\omega A_0^2-\frac{\omega}{c^2}\phi_0^2)\vec{k}+(k^2\phi_0-\frac{\omega^2}{c^2}\phi_0)\vec{A}_0]\\
+		\text{Recall that:} \quad \frac{\omega}{k} &= c \\ 
+				&= \frac{\sin^2(\delta)}{\mu_0}[(\omega A_0^2-\frac{\omega}{c^2}\phi_0^2)\vec{k}+(k^2\phi_0-k^2\phi_0)\vec{A}_0]\\
+				&= \frac{\sin^2(\delta)}{\mu_0}(\omega A_0^2-\frac{\omega}{c^2}\phi_0^2)\vec{k}
+	\end{align*}
+Thus we have derived that the Poynting vector points in the $\vec{k}$ direction as expected!
+	\begin{equation}
+		\vec{S} = \frac{\sin^2(\vec{k}\cdot\vec{r}-\omega t)}{\mu_0}(\omega A_0^2-\frac{\omega}{c^2}\phi_0^2)\vec{k} 
+	\end{equation}
+	
+\section{}
+\textit{For the nonlinear polarization $A_x\hat{x}+iA_y\hat{y}$ derive the real electric and magnetic fields as well as the energy density and energy flux (Poynting vector) in the Coulomb gauge.} \\ 
+	
+Recall from class that in the Coulomb gauge we have: 
+	\begin{align*}
+		\nabla^2\phi &= 0 \\
+		\phi &= 0 \\ 
+		\nabla \cdot \vec{A} &= 0 \\ 
+		\Box \vec{A} &= 0 \\ 
+		\vec{A} &= \vec{A}_0e^{i(\vec{k}\cdot\vec{r}-\omega t)}
+	\end{align*}
+Now we want to derive the real E and B fields with the new polarization vector. Again, I will use $\delta = \vec{k}\cdot\vec{r}-\omega t$ for simplification.  
+	\begin{align*}
+		\mathbf{B} 	&= \nabla \times \vec{A} \\ 
+					&= i\vec{k}\times(A_x\hat{x}+iA_y\hat{y})e^{i\delta} \\ 
+		\mathbf{E} 	&= -\nabla \phi - \partial_t \vec{A} \\ 
+					&= i\omega(A_x\hat{x}+iA_y\vec{y})e^{i\delta} \\ 
+	\end{align*}	
+Note that because $\nabla \cdot \vec{A}=0, i\vec{k}\cdot\vec{A} =0$ and so we can immediately deduce that $\vec{k} = k_z\hat{z}$.
+	\begin{align*}
+		\mathbf{B} &= ie^{i\delta}(k_z\hat{z}\times\vec{A}_0) \\ 
+		\vec{k}\times\vec{A}_0 &= -iA_yk_z\hat{x} + A_xk_z\hat{y} \\ 
+		\Rightarrow\mathbf{B} &= i(-iA_yk_z\hat{x} + A_xk_z\hat{y})e^{i\delta} \\ 
+		Re[\mathbf{B}] &= A_yk_z\cos(\delta)\hat{x}-A_xk_z\sin(\delta)\hat{y} \\ 
+		\\
+		\mathbf{E} 	&= i\omega \vec{A}_0e^{i\delta} \\ 
+					&= i\omega (A_x\hat{x} + iA_y\hat{y})e^{i\delta} \\ 
+		Re[\mathbf{E}] &= -\omega A_x\sin(\delta)\hat{x} - \omega A_y \cos(\delta)\hat{y} 
+	\end{align*}
+Using these, we can derive the energy density $u = u_B + u_E$ and the Poynting vector. 
+	\begin{align*}
+		u 	&= \frac{1}{2}[\epsilon\mathbf{E}^2+\frac{1}{\mu_0}\mathbf{B}^2] \\ 
+			&= \frac{\epsilon}{2}[\sin^2(\delta)\omega^2A_x^2+\omega^2 A_y^2\cos^2(\delta)] + \frac{1}{2\mu_0}[A_y^2k_z^2\cos^2(\delta)+A_x^2k_z^2\sin^2(\delta)]	\\ 
+			\\
+		\vec{S} &= \frac{1}{\mu_0}\mathbf{E}\times\mathbf{B} \\ 
+				&= \frac{1}{\mu_0}(\omega A_x^2k_z\sin^2(\delta)+\omega A_y^2k_z\cos^2(\delta))\hat{z} 
+	\end{align*}
+Unfortunately, it doesn't appear that the sines and cosines in these solutions simplify but we have shown that the Poynting vector does point in the same direction of $\vec{k}$ as expected for an electromagnetic plane wave. 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document} 
