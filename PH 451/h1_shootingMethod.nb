@@ -10,21 +10,24 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     72619,       1439]
-NotebookOptionsPosition[     69576,       1364]
-NotebookOutlinePosition[     70642,       1394]
-CellTagsIndexPosition[     70599,       1391]
+NotebookDataLength[     72749,       1443]
+NotebookOptionsPosition[     69706,       1368]
+NotebookOutlinePosition[     70772,       1398]
+CellTagsIndexPosition[     70729,       1395]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell["\<\
+John Waczak
+
 Mathematica code  for SHO based off of Dr. Tate\[CloseCurlyQuote]s \
 \[OpenCurlyDoubleQuote]Shooting Method\[CloseCurlyDoubleQuote] used in class \
-1/10/18\tJohn Waczak\
+1/10/18\t\
 \>", "Text",
- CellChangeTimes->{{3.72479047039463*^9, 
-  3.724790514698722*^9}},ExpressionUUID->"d9e5b46c-1614-458a-8c89-\
+ CellChangeTimes->{{3.72479047039463*^9, 3.724790514698722*^9}, {
+  3.7247907402260017`*^9, 
+  3.7247907559321003`*^9}},ExpressionUUID->"d9e5b46c-1614-458a-8c89-\
 36af9ea70072"],
 
 Cell[BoxData[
@@ -285,11 +288,11 @@ f6262a4f2932"]
 
 Cell["\<\
 Now we choose an energy of 0.5 (because we have sent m, \[Omega], and \[HBar] \
-to 1 we expect the ground state 
-to have an energy of \[HBar]\[Omega](n + 1/2) with n =0) \
+to 1 we expect the ground state to have an energy of \[HBar]\[Omega](n + 1/2) \
+with n =0) \
 \>", "Text",
- CellChangeTimes->{{3.724790209650692*^9, 
-  3.7247902806588907`*^9}},ExpressionUUID->"5db953c5-e16e-4db5-afe2-\
+ CellChangeTimes->{{3.724790209650692*^9, 3.7247902806588907`*^9}, 
+   3.724790760554161*^9},ExpressionUUID->"5db953c5-e16e-4db5-afe2-\
 eb61365148cf"],
 
 Cell[CellGroupData[{
@@ -1018,12 +1021,13 @@ a1ca7da1cf99"]
 }, Open  ]],
 
 Cell["\<\
-Now, going back to the ground state, we can see how sensitive the system is as 
-an increase of one ten thousandth was enough make the solution blow up 
-to infinity. \
+Now, going back to the ground state, we can see how sensitive the system is \
+as an increase of one ten thousandth was enough make the solution blow up to \
+infinity. \
 \>", "Text",
- CellChangeTimes->{{3.724790392335256*^9, 
-  3.7247904599148483`*^9}},ExpressionUUID->"0a07466b-11ea-4c08-901d-\
+ CellChangeTimes->{{3.724790392335256*^9, 3.7247904599148483`*^9}, {
+  3.724790766546116*^9, 
+  3.724790768849421*^9}},ExpressionUUID->"0a07466b-11ea-4c08-901d-\
 8d4b3a062763"],
 
 Cell[CellGroupData[{
@@ -1393,52 +1397,52 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[545, 20, 317, 7, 91, "Text", "ExpressionUUID" -> \
+Cell[545, 20, 372, 10, 123, "Text", "ExpressionUUID" -> \
 "d9e5b46c-1614-458a-8c89-36af9ea70072"],
-Cell[865, 29, 1459, 29, 130, "Input", "ExpressionUUID" -> \
+Cell[920, 32, 1459, 29, 70, "Input", "ExpressionUUID" -> \
 "22d96045-1182-4ff4-8996-547e6064f06b"],
 Cell[CellGroupData[{
-Cell[2349, 62, 317, 6, 97, "Input", "ExpressionUUID" -> \
+Cell[2404, 65, 317, 6, 97, "Input", "ExpressionUUID" -> \
 "1b98cf07-0855-4259-87dc-5415e9905c9f"],
-Cell[2669, 70, 130, 3, 36, "Output", "ExpressionUUID" -> \
+Cell[2724, 73, 130, 3, 36, "Output", "ExpressionUUID" -> \
 "b5c14831-4699-4217-a153-46407f7f2710"],
-Cell[2802, 75, 130, 3, 36, "Output", "ExpressionUUID" -> \
+Cell[2857, 78, 130, 3, 36, "Output", "ExpressionUUID" -> \
 "152ba512-63c9-4e3a-bec0-39d9a96a2916"],
-Cell[2935, 80, 127, 2, 36, "Output", "ExpressionUUID" -> \
+Cell[2990, 83, 127, 2, 36, "Output", "ExpressionUUID" -> \
 "8bf2d2ab-0277-4860-a94a-d28406a4bef6"]
 }, Open  ]],
-Cell[3077, 85, 922, 18, 40, "Input", "ExpressionUUID" -> \
+Cell[3132, 88, 922, 18, 40, "Input", "ExpressionUUID" -> \
 "a0c15dec-7c9a-4848-bf06-fddcbf38af05"],
-Cell[4002, 105, 182, 3, 59, "Text", "ExpressionUUID" -> \
+Cell[4057, 108, 182, 3, 59, "Text", "ExpressionUUID" -> \
 "300305f2-052b-48f1-87dd-635bd85fea3e"],
 Cell[CellGroupData[{
-Cell[4209, 112, 1091, 24, 69, "Input", "ExpressionUUID" -> \
+Cell[4264, 115, 1091, 24, 69, "Input", "ExpressionUUID" -> \
 "2cf0b5d0-5f06-4676-8aaa-a584f1c1c6cb"],
-Cell[5303, 138, 7485, 144, 328, "Output", "ExpressionUUID" -> \
+Cell[5358, 141, 7485, 144, 328, "Output", "ExpressionUUID" -> \
 "e85b744a-6d18-489a-8c2c-f6262a4f2932"]
 }, Open  ]],
-Cell[12803, 285, 322, 7, 91, "Text", "ExpressionUUID" -> \
+Cell[12858, 288, 346, 7, 59, "Text", "ExpressionUUID" -> \
 "5db953c5-e16e-4db5-afe2-eb61365148cf"],
 Cell[CellGroupData[{
-Cell[13150, 296, 1603, 44, 130, "Input", "ExpressionUUID" -> \
+Cell[13229, 299, 1603, 44, 130, "Input", "ExpressionUUID" -> \
 "aa779412-7246-4231-b989-7bc0e9c7b061"],
-Cell[14756, 342, 17727, 311, 336, "Output", "ExpressionUUID" -> \
+Cell[14835, 345, 17727, 311, 336, "Output", "ExpressionUUID" -> \
 "ab821f0c-9763-4d39-9bf4-bbde278ea780"]
 }, Open  ]],
-Cell[32498, 656, 223, 5, 59, "Text", "ExpressionUUID" -> \
+Cell[32577, 659, 223, 5, 59, "Text", "ExpressionUUID" -> \
 "39679b40-af9c-4117-b148-b77fdfb1843c"],
 Cell[CellGroupData[{
-Cell[32746, 665, 1284, 40, 130, "Input", "ExpressionUUID" -> \
+Cell[32825, 668, 1284, 40, 130, "Input", "ExpressionUUID" -> \
 "0607102d-cf41-4c35-8e6f-38faccafe7ef"],
-Cell[34033, 707, 17554, 309, 325, "Output", "ExpressionUUID" -> \
+Cell[34112, 710, 17554, 309, 325, "Output", "ExpressionUUID" -> \
 "a11f7c66-5655-4573-92cd-a1ca7da1cf99"]
 }, Open  ]],
-Cell[51602, 1019, 317, 7, 123, "Text", "ExpressionUUID" -> \
+Cell[51681, 1022, 368, 8, 91, "Text", "ExpressionUUID" -> \
 "0a07466b-11ea-4c08-901d-8d4b3a062763"],
 Cell[CellGroupData[{
-Cell[51944, 1030, 1288, 40, 130, "Input", "ExpressionUUID" -> \
+Cell[52074, 1034, 1288, 40, 130, "Input", "ExpressionUUID" -> \
 "b3deaae8-5baf-485e-bb89-cfa49e6a7dd4"],
-Cell[53235, 1072, 16325, 289, 334, "Output", "ExpressionUUID" -> \
+Cell[53365, 1076, 16325, 289, 334, "Output", "ExpressionUUID" -> \
 "9a2cec8d-147f-4446-8053-a2655e5b8c8d"]
 }, Open  ]]
 }
