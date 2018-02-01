@@ -1,0 +1,77 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{2B} \hfill \textbf{John Waczak} \\
+\normalsize MTH 434 \hfill  Date: \today \\
+Dr. Christine Escher \\
+I took roughly \textbf{30 min} to finish and type up this homework\\ 
+ 
+\section*{1.38}
+Compute the curvature for the helix directly from definition and then by reparametrizing by arc length. \\
+
+a) 
+	\begin{align*}
+		\gamma(t) &= (\cos(t), \sin(t), t) \\ 
+		\gamma'(t)&= v(t) = (-\sin(t), \cos(t), 1)\\
+		\gamma''(t)&= a(t) = (-\cos(t), -\sin(t), 0)\\
+		a(t)^{\parallel} &= \text{proj}_av = \frac{\langle a, v \rangle}{|v|^2}v \\
+		|\gamma'(t)| &= \sqrt{2} \\ 
+		\langle a,v \rangle &= \sin(t)\cos(t)-\sin(t)\cos(t) = 0 \\ 
+		\Rightarrow a^{\perp} &= a \\ 
+		|a| &= \sqrt{1} = 1 \\ 
+		|v| &= \sqrt{2} \\ 
+		\kappa(t) &= \frac{|a^{\perp}|}{|v|^2} = \frac{1}{2} 
+	\end{align*}
+
+b) 
+	\begin{align*}
+		|\gamma'(t)| &= \sqrt{2} \\ 
+		s &= \int_0^{t}\sqrt{2}dt' \\ 
+			&= \sqrt{2}t \\ 
+		\Rightarrow t &= \frac{1}{\sqrt{2}}s \\
+		\gamma(s) &= (\cos(\frac{1}{\sqrt{2}}s), \sin(\frac{1}{\sqrt{2}}s, \frac{1}{\sqrt{2}}s)\\
+		\gamma'(s) &= \frac{1}{\sqrt{2}}(-\sin(\frac{1}{\sqrt{2}}s), \cos(\frac{1}{\sqrt{2}}s), 1) \\ 
+		\gamma''(s) &= \frac{1}{\sqrt{2}}\Big(-\frac{1}{\sqrt{2}}\cos(\frac{1}{\sqrt{2}}s), -\frac{1}{\sqrt{2}}\sin(\frac{1}{\sqrt{2}}s), 0\Big) \\ 
+		\kappa(s) &= |a(s)| = |\gamma''(s)| = \frac{1}{\sqrt{2}}\sqrt{\frac{1}{2}}\\
+			&= \frac{1}{2}
+	\end{align*}
+	Thus we have shown that both definitions serve to calculate the curvature. 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

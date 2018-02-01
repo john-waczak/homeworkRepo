@@ -1,0 +1,82 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{2C} \hfill \textbf{John Waczak} \\
+\normalsize MTH 434 \hfill  Date: \today \\
+Dr. Christine Escher \\
+Total time was roughly \textbf{35} minutes
+
+\section*{1} Define $\gamma(t) = (t, \sin(t))$. Find the curvature function. 
+	\begin{align*}
+		\gamma'(t) &= v(t) = (1, \cos(t))\\ 
+		\gamma''(t) &= a(t) = (0, \cos(t))\\ 
+		\kappa(t) &\equiv \frac{|\mathbf{t}'(t)|}{|v(t)|} \\ 
+		\mathbf{t} &= \frac{v}{|v|} = \Big((1+\cos^2(t))^{-1/2}, \cos(t)(1+\cos^2(t))^{1/2}\Big) \\ 
+		\mathbf{t}' &= \Big( \frac{\sin(t)\cos(t)}{(1+\cos^2(t))^{3/2}}, -\frac{\sin(t)}{(1+\cos^2(t))^{3/2}} \Big) \\ 
+		|\mathbf{t}'| &= \sqrt{\Big(\frac{\sin(t)\cos(t)}{(1+\cos^2(t))^{3/2}}\Big)^2 + \Big(-\frac{\sin(t)}{(1+\cos^2(t))^{3/2}} \Big)^2} \\
+		\Rightarrow \kappa(t) &= \frac{\sqrt{\Big(\frac{\sin(t)\cos(t)}{(1+\cos^2(t))^{3/2}}\Big)^2 + \Big(-\frac{\sin(t)}{(1+\cos^2(t))^{3/2}} \Big)^2} }{\sqrt{1+\cos^2(t)}}
+	\end{align*} 
+	
+\section*{2}
+Let $\kappa:(a,b)\to \mathbb{R}$ be a function with $\kappa(t) > 0$ $\forall t \in (a,b)$ and let $\kappa$ be integrable. Show that there exists a regular curve whose curvature is $\kappa$. 
+	\begin{align*}
+		\phi(s) &\equiv \int_{s_0}^s \kappa(u)du \\ 
+		\alpha(s) &= \Big(\int_{s_0}^s \cos(\phi(t))dt, \int_{s_0}^s \sin(\phi(t))dt\Big) \\ 
+		\alpha'(s) &= (\cos(\phi(s)), \sin(\phi(s))) \quad \text{(by the F.T.C)} \\ 
+		|\alpha'(s)| &= 1 \\ 
+		\Rightarrow &\alpha(t) \text{ is a regular curve} \\ 
+		\Rightarrow &\kappa(t) = |a(t)| \\ 
+		|a(t)| &= |\alpha''(t)| \\ 
+		\alpha''(t) &= (-\phi'\sin(\phi), \phi'\cos(\phi)) \\ 
+		|a(t)| &= \sqrt{\phi'^2} = \phi'(s)\\ 
+			&= \frac{d}{ds}\int_{s_0}^{s}\kappa(u)du \\ 
+			&= \kappa(s) \quad \text{(by F.T.C.)}
+	\end{align*}
+Therefore, given $\kappa$ is an integrable function, we have shown there exists a regular curve with curvature $\kappa$. 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
