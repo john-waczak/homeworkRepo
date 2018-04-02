@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt("malusLaw.csv", delimiter=",")
+
+
+theta = data[:, 0]
+v_norm = data[:, 1]
+
+t = np.sort(theta)
+theory = np.cos(t)*np.cos(t)
+
+plt.figure()
+plt.plot(theta, v_norm, 'ro', label="transmission data")
+plt.plot(t, theory, 'k', label="Malus law theory curve")
+plt.title("Transmission voltage vs polarizer angle difference")
+plt.xlabel(r"$\theta$ [radians]")
+plt.ylabel("Normalized voltage (transmission intensity)")
+plt.xlim(-1, 2)
+plt.legend()
+plt.savefig("malusLaw")
+plt.show()

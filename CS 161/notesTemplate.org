@@ -1,0 +1,40 @@
+#+TITLE: NOTES
+#+DATE: 3/14/1997
+#+DESCRIPTION: template for note taking in org mode
+#+OPTIONS: toc:nil
+
+* Main Section
+
+** Subsection
+
+*** subsubsection
+    we can even include code snippets using <s + tab.
+
+    Type C-c ' to enter into coding buffer. Be sure to specify desired
+    language in the preamble. Use M-x org-fill-paragraph to make
+    selection fill with correct wrapping
+    #+BEGIN_SRC python
+      import numpy as np
+      import matplotlib
+      matplotlib.use("Agg")
+      import matplotlib.pyplot as plt
+
+
+      x = np.linspace(-10*np.pi,10*np.pi,1000)
+      y = np.sin(x)/x
+
+      plt.figure()
+      plt.plot(x,y)
+      plt.savefig("graph.png")
+
+    #+END_SRC
+
+    #+RESULTS:
+    : None
+
+    #+CAPTION: Test caption
+    #+NAME: Test figure
+    [[./graph.png]]
+
+    Create an image by using [[./image_file and close with two
+    brackets. Use C-c C-x C-v to view the image inline

@@ -1,0 +1,11 @@
+#+TITLE: NOTES
+#+DATE: 3/14/1997
+#+DESCRIPTION: template for note taking in org mode
+#+OPTIONS: toc:nil
+
+* Main Section
+
+** Subsection
+
+*** subsubsection
+    we can even include code snippets using <s + tab
