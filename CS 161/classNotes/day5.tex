@@ -1,0 +1,62 @@
+% Created 2018-04-11 Wed 11:23
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{John Waczak}
+\date{4/11/2018}
+\title{CS 161 Day 5 Notes}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section*{Some usefull math tricks}
+\label{sec-1}
+\begin{verbatim}
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using std::cout;
+using std::endl;
+using std::string;
+using std::pow;
+
+int main()
+{
+  int num = 6;
+  num++;
+  cout <<"num++ does this: "<< num << endl;
+  num--;
+  cout <<"num-- does this: " << num << endl;
+  cout <<"The pow command for 2^3 does this: "<< pow(2,3) << endl;
+  return 0;
+}
+\end{verbatim}
+
+\begin{center}
+\begin{tabular}{lllrllll}
+num++ & does & this: & 7 &  &  &  & \\
+num-- & does & this: & 6 &  &  &  & \\
+The & pow & command & for & 2$^{\text{3}}$ & does & this: & 8\\
+\end{tabular}
+\end{center}
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}

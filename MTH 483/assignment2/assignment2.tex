@@ -1,0 +1,394 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{physics}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Variables: Assignment 2} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+Worked with Lucy Huffman and Connor Edwards 
+
+\subsection*{2.17}
+	\textit{Where are the following functions differentiable? Where are they holomorphic? Determine their derivatives at points where they are differentiable} \\ 
+	
+	\noindent Recall that from Theorem 2.13 (b) if $f$ is a complex function such that the partial derivatives $\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}$ are continuous at z and satisfy the Cauchy-Riemann equations at z, then $f$ is differentiable at z. Furthermore if $f$ is differentiable for all points in some open disc around z then $f$ is holomorphic at z. The derivative of $f$ is given as:\\ 
+		\begin{equation*}
+			f'(z) = u_x+iv_x
+		\end{equation*}
+		
+	\noindent \textit{a) $f(z)=e^{-x}e^{-iy}$} \\ 
+	
+	\noindent Observe that we can rewrite $f(z) = e^{-x}(\cos(y)-i\sin(y))$ and thus identify $u(x,y) = e^{-x}\cos y$ and $v(x,y) = -e^{-x}\sin(y)$. Then the Cauchy Riemann equations yield: 
+		\begin{align*}
+			u_x &= -e^{-x}\cos y \\ 
+			u_y &= -e^{-x}\sin y \\ 
+			v_x &= e^{-x}\sin y \\ 
+			v_y &= -e^{-x}\cos y \\ 
+			&\quad\\ 
+			u_x &= v_y \Rightarrow -e^{-x}\cos y = -e^{-x}\cos y  \\ 
+			u_y &= -v_x \Rightarrow -e^{-x}\sin y = -e^{-x}\sin y  \\ 
+		\end{align*}
+	
+	\noindent All of the partials are continuous functions and the C-R relations are satisfied for all choices of x and y. Thus we have the $f(z)$ is differentiable for all $z\in\mathbb{C}$ and therefore is holomorphic on $\mathbb{C}$. At these points we have that $f'(z)= -e^{-x}\cos y +ie^{-x}\sin y = -f(z)$.\\
+	
+	\noindent\textit{b) $f(z) = 2x+ixy^2$.} \\ 
+	
+	\noindent Identify $u(x,y) = 2x$ and $v(x,y) = xy^2$. Then the C-R relations give: 
+		\begin{align*}
+			u_x &= 2 \\ 
+			u_y &= 0 \\ 
+			v_x &= y^2 \\ 
+			v_y &= 2xy \\ 
+			&\quad \\ 
+			u_x &= v_y \Rightarrow 2 = 2xy \\ 
+				&\Rightarrow xy = 1 \\ 
+			u_y &= -v_x \Rightarrow 0 = y^2  \\ 
+				&\Rightarrow y = 0 \\ 
+		\end{align*}
+	As it is impossible to have both $y=0$ and $xy=1$ we have that $f$ is nowhere differentiable and therefore not holomorphic. \\ 
+	
+	\noindent\textit{c) $f(z)=x^2+iy^2$} \\ 
+	
+	\noindent Identify $u(x,y)=x^2$ and $v(x,y)=y^2$. Then the C-R relations give: 
+		\begin{align*}
+			u_x &= 2x \\ 
+			u_y &= 0 \\ 
+			v_x &= 0 \\ 
+			v_y &= 2y \\ 
+			&\quad \\ 
+			u_x &= v_y \Rightarrow 2x = 2y \\ 
+			u_y &= -v_x \Rightarrow 0 = 0 \\ 
+		\end{align*}
+	
+	\noindent The C-R relations are satisfied only on the line $x=y$. Thus, $f(z)$ is only differentiable when $x=y$ with derivative $f'(z) = 2x$. Because our differentiable points form a curve and not an area we cannot construct an open disc around any $z$ such that all points in the disc are differentiable. This implies that $f(z)$ is not holomorphic for any $z\in\mathbb{C}$ \\ 
+	
+	\noindent\textit{d) $f(z)=e^{x}e^{-iy}$} \\ 
+	
+	\noindent Rewrite $f(z) = e^{x}(\cos y - i\sin y)$ and identify $u(x,y) = e^{x}\cos y$ and $v(x,y)=-e^{x}\sin y$. The C-R relations then give: 
+		\begin{align*}
+			u_x &= e^{x}\cos y \\ 
+			u_y &= -e^{x}\sin y \\ 
+			v_x &= -e^{x}\sin y \\ 
+			v_y &= -e^{x}\cos y \\ 
+			&\quad \\ 
+			u_x &= v_y \Rightarrow e^{x}\cos y = -e^{x}\cos y \\ 
+				&\Rightarrow \cos y = 0 \\ 
+			u_y &= -v_x \Rightarrow -e^{x}\sin y = e^{x}\sin y \\ 
+				&\Rightarrow \sin y = 0 
+		\end{align*}
+		
+	\noindent Since $\nexists z \in \mathbb{R}$ such that $\sin y=0$ and $\cos y=0$ we have that $f(z)$ is nowhere differentiable and therefore is not holomorphic.  \\
+	
+	\noindent\text{f) $f(z)=\Im(z)$.}\\
+	
+	\noindent Let $z = x + iy$ then $f(z) = y \in \mathbb{R}$. Thus we can identify $u(x,y) = y$ and $v(x,y)=0$. The C-R relations give: 
+		\begin{align*}
+			u_x &= 0 \\
+			u_y &= 1 \\
+			v_x &= 0 \\ 
+			v_y &= 0 \\ 
+			&\quad \\ 
+			u_x &= v_y \Rightarrow 0 = 0 \\ 
+			u_y &=-v_x \Rightarrow 1 = 0 \\  
+		\end{align*}
+	
+	\noindent This is impossible and therefore $f(z)$ is nowhere differentiable and thus nowhere holomorphic. \\
+	
+	\noindent\textit{g) $f(z) = x^2 + y^2$} \\ 
+	
+	\noindent Identify $u(x,y)=x^2+y^2$ and $v(x,y)=0$. Then the C-R relations give the following: 
+		\begin{align*}
+			u_x &= 2x \\ 
+			u_y &= 2y \\ 
+			v_x &= 0 \\ 
+			v_y &= 0 \\ 
+			&\quad \\ 
+			u_x &= v_y \Rightarrow x = 0 \\ 
+			u_y &= -v_x \Rightarrow y = 0 \\ 
+		\end{align*}
+		
+	\noindent Thus $f(z)$ is only differentiable when $x=y=0$ i.e. at the origin. Here it has derivative $f'(z) = 2x \Rightarrow f'(0)=0$. \\
+	
+\subsection*{2.19}
+	\textit{Prove that if $f$ is holomorphic the the region $G\subseteq \mathbb{C}$ and always real valued, then $f$ is constant in $G$. } \\ 
+	
+	\noindent Define $f(x,y) = u(x,y)+iv(x,y)$. Since f is always real valued we have that $v(x,y)=0 \quad \forall z \in G$. Then it follows from the C-R relations that $u_x = v_y \Rightarrow u_x=0$ and $v_x = 0$ since $v=0$. Then $f'(z) = u_x + iv_x = 0 + i0 = 0$. Since the derivative of $f(z)$ is zero $\forall z \in G$ then $f(z)$ must be a constant in $G$. \qed 
+	
+\subsection*{2.20} 
+	\textit{Prove that if $f(z)$ and $\overline{f(z)}$ are holomorphic in the region $G\subseteq\mathbb{C}$ then $f(z)$ is constant in $G$.} \\ 
+	
+	\noindent let $f(z)=u(x,y)+iv(x,y)$. Then $\overline{f(z)} = u(x,y)-iv(x,y)$. Applying the C-R relations to both functions gives the following:
+		\begin{align*}
+			f(z)\begin{cases}
+				u_x = v_y \\ 
+				u_y = -v_x 
+			\end{cases} \\ 
+			\quad \\
+			\overline{f(z)}\begin{cases}
+				u_x = -v_y \\ 
+				u_y = v_x 
+			\end{cases}
+		\end{align*}
+	\noindent If we add the first equation from each case we get: 
+		\begin{align*}
+			u_x = 0 
+		\end{align*}
+	\noindent If we subtract the second equations from each case we get: 
+		\begin{align*}
+			v_x = 0 
+		\end{align*}
+	\noindent Thus because $u_x=v_x=0$ we have that $f'(z) = 0 + i0 = 0$ for all $z\in G$. This implies that $f(z)$ is constant in $G$. \qed
+
+\subsection*{2.24}
+	\textit{For each of the following functions u, find a function v such that $u+iv$ is holomorphic in some region. Maximize that region.}\\ 
+	
+	\noindent\textit{a) $u(x,y)= x^2-y^2$} \\ 
+	
+	\noindent The C-R relations give that $u_x=v_y$ and $u_y = -v_x$. Thus differentiating $u$ gives the following: 
+		\begin{align*}
+			v_y &= 2x \\ 
+			v_x &= -(-2y) = 2y \\ 
+		\end{align*}
+	\noindent Thus if we integrate either equation with respect to the type of derivative it represents we should be able to determine a functional form for $v$. 
+		\begin{align*}
+			\int v_y dy &= \int 2x dy = 2xy + C \\ 
+			\int v_x dx &= \int 2y dx = 2xy + c 
+		\end{align*}
+	\noindent Thus it appears that $v(x,y) = 2xy$ as both integrals agree. The domain of this function is maximized as it is all of $\mathbb{C}$. \\
+	
+	\noindent \textit{d) $u(x,y) = \frac{x}{x^2+y^2}$}\\ 
+	
+	\noindent Following the same pattern as for the previous part we have that:
+		\begin{align*}
+			v_y &= \frac{x^2-y^2}{(x^2+y^2)^2} \\ 
+			v_x &= -\Big(-\frac{2xy}{(x^2+y^2)^2}\Big) = \frac{2xy}{(x^2+y^2)^2} 
+		\end{align*}	
+	
+	\noindent Now we can integrate both equations to determine $v$. 
+		\begin{align*}
+			\int v_y dy &= \int \frac{x^2-y^2}{(x^2+y^2)^2} dy = \frac{-y}{x^2+y^2}+C\\ 
+			\int v_x dx &= \int \frac{2xy}{(x^2+y^2)^2} dx = \frac{-y}{x^2+y^2} + c 
+		\end{align*}
+	
+	\noindent Since both equations agree we have the $v(x,y) = \frac{-y}{x^2+y^2}$. This function is defined for all $z\in \mathbb{C}\setminus\{0\}$ and is therefore maximized. 
+		
+\subsection*{3.7}
+	\textit{Show that the Mobius transformation $f(z) = \frac{1+z}{1-z}$ maps the unit circle onto the imaginary axis}\\ 
+	
+	\noindent Recall that in polar form all $z$ s.t. $|z|=1$ can be written as $z=e^{i\phi}$. Then using this in $f(z)$ yields the following. 
+		\begin{align*}
+			f(z) &= \frac{1+e^{i\phi}}{1-e^{i\phi}} \\ 
+				&= \frac{1+e^{i\phi}}{1-e^{i\phi}}\Big(\frac{\overline{1-e^{i\phi}}}{\overline{1-e^{i\phi}}}\Big) \\ 
+				&= \frac{(1+e^{i\phi})(1-e^{-i\phi})}{|1-e^{i\phi}|^2} \\ 
+				&= \frac{e^{i\phi}-e^{-i\phi}}{|1-e^{i\phi}|^2} \\ 
+				&= \frac{2i\sin\phi}{|1-e^{i\phi}|^2} \\ 
+				&= i \frac{2\sin\phi}{|1-e^{i\phi}|^2}
+		\end{align*}	
+	\noindent Thus we see that $f(z)$ is just $i$ times the transformation that maps the unit circle to the real line. Since $i=e^{i\pi/2}$, this is just a rotation by $\pi/2$ of the aforementioned  transformation. When you rotate the real line by $\pi/2$ you get the imaginary axis and therefore this transformation must map the unit circle to the imaginary axis.\\
+	
+\subsection*{3.9}
+	\textit{Fix $a\in\mathbb{C}$ with $|a|<1$ and consider $f_a(z)=\frac{z-a}{1-\overline{a}z}$} \\ 
+	
+	\textit{a) Show that $f_a(z)$ is a Mobius transformation}  \\ 
+	
+	\noindent Recall that a Mobius transformation is a function of the form $f(z) = \frac{az+b}{cz+d}$ such that $ad-bc\neq 0$. Here we have $a=1$, $b=-a$, $c=-\overline{a}$, $d=1$. Thus $ad-bc =1-a\overline{a}=1-|a|^2$. Since $|a|<1$ this can never evaluate to zero and therefore we have that $f_a(z)$ is a Mobius transformation. \\
+	
+	\noindent \textit{b) Show that $f_a^{-1}(z) = f_{-a}(z)$ } \\ 
+	
+	\noindent Recall from class that if $f(z)=\frac{az+b}{cz+d}$ is a Mobius transformation, it is invertible with inverse: $f^{-1}(z) = \frac{dz-b}{-cz+a}$. Using this and the results from a we have that:
+		\begin{align*}
+			f_a^{-1}(z) &= \frac{z+a}{\overline{a}z+1} \\
+				&= \frac{z-(-a)}{1-(-\overline{a})z} \\ 
+				&= f_{-a}(z) 
+		\end{align*}
+		
+	\noindent\textit{b) Prove that $f(z)$ maps the unit disc $D_1(0)$ to itself}\\
+	
+	\noindent We must show that if $|z|< 1$ then $|f(z)|<1$. Observe the following: 
+		\begin{align*}
+			|f(z)| &= \frac{|z-a|}{|1-\overline{a}z|} < 1 \\ 
+			\Rightarrow |z-a|^2& < |1-\overline{a}z|^2 \\ 
+			(z-a)(\overline{z}-\overline{a}) &< (1-\overline{a}z)(1-a\overline{z}) \\
+			|z|^2-a\overline{z}-\overline{a}z+|a|^2 &< 1-a\overline{z}-\overline{a}z+|az| \\
+			|z|^2+|a|^2 &< 1+|az| = 1+|a||z| \\ 
+			\Rightarrow 0 &<  1+|a||z|-|z|^2-|a|^2 \\ 
+				&= 1+(|z|-|a|)^2-|a||z|  \\ 
+		\end{align*}
+	\noindent I am not sure how exactly to continue from here. We know that $|a|<1$ by hypothesis. 
+	
+\subsection*{3.14}
+	\textit{Find Mobius transformations satisfying each of the following...}\\ 
+	
+	\noindent First recall from class that the Mobius transformation that sends $\alpha_1 \mapsto 0$, $\alpha_2 \mapsto 1$ and $\alpha_3\mapsto\infty$ is given by $f(z) = \frac{(z-\alpha_1)(\alpha_2-\alpha_3)}{(z-\alpha_3)(\alpha_2-\alpha_1)}$. \\
+	
+	\noindent\textit{a) $1 \mapsto 0$, $2 \mapsto 1$, $3\mapsto \infty$.}\\
+		\begin{align*}
+			f(z) &= \frac{(z-1)(2-3)}{(z-3)(2-1)} = \frac{1-z}{z-3}
+		\end{align*}
+		
+	\noindent\textit{b) $1\mapsto 0$, $1+i \mapsto 1$, $2\mapsto \infty$.} 
+		\begin{align*}
+			f(z) &= \frac{(z-1)(1+i-2)}{(z-2)(1+i-1)} =\frac{(i-1)z+(1-i)}{iz-2i} 
+		\end{align*}
+		
+	\noindent\textit{c) $0 \mapsto i$, $1\mapsto 1$, $\infty \mapsto -i$}\\ 
+	
+	\noindent In oder to solve this final transformation we will first find the reverse mapping and then take the inverse. 
+		\begin{align*}
+			f^{-1}(z) &= \frac{(z-i)(1+i)}{(z+i)(1-i)} = \frac{(1+i)z-(i-1)}{(1-i)z+(i+1)} \\ 
+			a &= 1+i, \quad b= 1-i, \quad c= 1-i, \quad d = 1+i \\ 
+			\text{thus } f(z) &= \frac{(1+i)z-(1-i)}{(-1-i)z+(1+i)} 
+		\end{align*}
+
+\subsection*{3.16}
+	\textit{Let $\gamma$ be the unit circle. Find a Mobius transformation that transforms $\gamma$ to $\gamma$ and transforms $0$ to $\frac{1}{2}$.} \\ 
+	
+	\noindent First, we know that $f(z) = \frac{az+1}{cz+2}$ in order to send $0$ to $\frac{1}{2}$. Now in order to map the unit circle to itself let's try $f(1)=1$ and $f(-1)=-1$. 
+		\begin{align*}
+			f(1) &=1 = \frac{a+1}{c+2} \\ 
+			f(-1) &= -1 = \frac{-a+1}{-c+2} \\ 
+			\text{adding eqns: } 0 &= \frac{a+1}{c+2} + \frac{-a+1}{-c+2} \\ 
+			\frac{a-1}{-c+2} &= \frac{a+1}{c+2} \\ 
+			(a+1)(-c+2) &= (a-1)(c+2) \\ 
+			2a-ac-c+2 &= ac +2a -c -2 \\ 
+			-ac +2 &= ac -2 \\ 
+			ac &= 2 \\ 
+			\Rightarrow a &= \frac{2}{c} \\ 
+			f(1) &= 1 = \frac{\frac{2}{c}+1}{c+2} \\ 
+			c+2 &= \frac{2}{c}+1 \\ 
+			c^2 + 2c &= 2 + c \\ 
+			c^2 + c -2 &= 0 \Rightarrow c = -2, \quad c=1  \\ 
+			c&\neq -2 \text{ since } f(1) \text{ would equal } 0 \\ 
+			\Rightarrow c &= 1 \Rightarrow a = \frac{2}{c} = 2\\ 
+			\text{thus } f(z) &= \frac{2z+1}{z+2}
+		\end{align*}
+		
+	\noindent Now to check that this does indeed send the unit circle to itself we need to show that $|f(z)|=1$ when $|z|=1$. Let $z=e^{i\phi}$. Then 
+		\begin{align*}
+			|f(z)| &= \frac{|2e^{i\phi}+1|}{|e^{i\phi}+2|} \\ 
+				&= \frac{|2\cos\phi+1 + i2\sin\phi|}{|\cos\phi+2+i\sin\phi|} \\ 
+				&= \frac{\sqrt{(2\cos\phi+1)^2+4\sin^2\phi}}{\sqrt{(\cos\phi+2)^2+\sin^2\phi}}\\
+				&=\frac{\sqrt{1+4\cos\phi+4\cos^2\phi+4\sin^2\phi}}{\sqrt{4+4\cos\phi+\cos^2\phi+\sin^2\phi}}\\ 
+				&=\frac{\sqrt{5+4\cos\phi}}{\sqrt{5+4\cos\phi}} = 1 
+		\end{align*} \qed
+		
+		
+\subsection*{3.19} 
+	\textit{Show that if $f=u+iv$ is holomorphic then the Jacobian equals $|f'(z)|^2$.}\\
+	
+	\noindent Because we have that f is holomorphic, the C-R relations apply and give us that $u_x=v_y$ and $u_y=-v)x$. Thus the Jacobian becomes: 
+		\begin{align*}
+			J & = \Big|\begin{matrix}
+				u_x & u_y \\ 
+				v_x & v_y
+			\end{matrix}\Big| \\ 
+			&= \Big|\begin{matrix}
+				u_x & -v_x \\ 
+				v_x & u_x 
+			\end{matrix}\Big| \\ 	
+			&= u_x^2 + v_x^2 = |f'(z)|^2 \text{ since } f'(z) = u_x+iv_x 
+		\end{align*} \qed 
+		
+\subsection*{3.21}
+	\textit{Find each Mobius transformation f such that}\\ 
+	
+	\noindent \textit{a) f maps $0\mapsto1$, $1\mapsto \infty$, $\infty \mapsto 0$}\\
+	
+	\noindent First, recall Corollary 3.8 which extends the Mobius transformations to include infinities in a way such that: 
+		\begin{equation*}
+			\begin{cases}
+				\frac{az+b}{cz+d} & if \quad z \in \mathbb{C}\setminus\{-\frac{d}{c}\} \\ 
+				\infty & if \quad z = -\frac{d}{c} \\ 
+				\frac{a}{c} & if \quad z =\infty 
+			\end{cases}
+		\end{equation*}
+	
+	\noindent Using this corollary we see that
+		\begin{align*}
+			f(\infty) &= 0 = a/c \Rightarrow a = 0 \\ 
+			f(1) &= \infty \rightarrow 1 = -d/c \rightarrow -c =d \\
+			f(0) &= 1 = -b/c \Rightarrow c = -b \\ 
+			\text{thus } f(z) &= \frac{b}{-bz+b} \text{ is the desired trans.}
+		\end{align*}
+	
+	\noindent \textit{b) f maps $1\mapsto1$, $-1\mapsto i$, $-i \mapsto -1$} \\ 
+	
+	\noindent We will solve this transformation by creating a composition of two transformations of the form used in problem 3.14. 
+		\begin{align*}
+			\text{let } f(\alpha_1)&= \beta_1, \quad f(\alpha_2)=\beta_2, \quad f(\alpha_3) = \beta_3 \\ 
+			\text{define } g_1 &= \frac{(z-\alpha_1)(\alpha_2-\alpha_3)}{(z-\alpha_3)(\alpha_2-\alpha_1)} \\ 
+				g_2 &= \frac{(z-\beta_1)(\beta_2-\beta_3)}{(z-\beta_3)(\beta_2-\beta_1)}\\ 
+			\text{then } g_1 &= \frac{(z-1)(-1+i)}{(z+i)(-1-1)} = \frac{(-1+i)z+(1-i)}{-2z-2i} \\ 
+				g_2 &= \frac{(z-1)(i+1)}{(z+1)(i-1)} = \frac{(i+1)z+(-1-i)}{(i-1)z+(i-1)} \\ 
+				g_2^{-1} &= \frac{(i-1)z+(1+i)}{(1-i)z+(1+i)} \\ 
+			\Rightarrow g_2^{-1}\circ g_1 &=  \frac{(i-1)\frac{(z-1)(-1+i)}{(z+i)(-1-1)}+(1+i)}{(1-i)\frac{(z-1)(-1+i)}{(z+i)(-1-1)}+(1+i)} \\ 
+		\end{align*}
+	
+	\noindent And some further simplification with Mathematica leads to: 
+		\begin{equation*}
+			f(z) = \frac{4}{(-1+2i)+z}+(1+2i)
+		\end{equation*}
+	\noindent This works as we can verify $f(1)= -2i+1+2i = 1$ and so on. \\
+	
+	
+	\noindent\textit{c) f maps x-axis to $y=x$ and y-axis to $y=-x$, and the unit circle to itself}		\\
+		
+	\noindent Recall from linear algebra that the map that obeys the first two transformations above is a simple rotation counter-clockwise by $\pi/4$. Thus if we define the Mobius transformation with $a=e^{i\pi/4}$, $b=c=d=0$ then we have the simple rotation desired. To make sure that the unit circle maps to itself observe that $|e^{i\pi/4}|=1$ and thus $|f(z)|=1|z| = 1$ whenever $|z|=1$. 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

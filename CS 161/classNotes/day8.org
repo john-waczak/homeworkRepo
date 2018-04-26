@@ -1,0 +1,61 @@
+#+TITLE: CS 161 Day 8 Notes
+#+DATE: 4/18/2018
+#+OPTIONS: toc:nil
+
+* Do-while loops
+  Do while loops test condition at end of loop so that the loop is
+  always entered at least once.
+  #+BEGIN_SRC C++ :exports both
+    #include <iostream>
+    #include <string>
+
+    using std::cin;
+    using std::cout;
+    using std::endl;
+    using std::string;
+
+    int num;
+
+    int main()
+    {
+      int counter = 0;
+
+      do
+        {
+          cout << "counter = "<< counter << endl;
+          counter ++ ;
+        }while (counter < 10);
+
+      int score = 95;
+      char score;
+
+      if (score > 90)
+        score  = 'A';
+      else if (score > 80)
+        score = 'B';
+      else if (score > 70)
+        score = 'C';
+      else if (score > 60)
+        score = 'D';
+      else
+        score = 'F';
+
+
+
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  | counter | = | 0 |
+  | counter | = | 1 |
+  | counter | = | 2 |
+  | counter | = | 3 |
+  | counter | = | 4 |
+  | counter | = | 5 |
+  | counter | = | 6 |
+  | counter | = | 7 |
+  | counter | = | 8 |
+  | counter | = | 9 |
+
+  We probably wont use do-while as often as while

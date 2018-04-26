@@ -1,0 +1,106 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis - MTH 483} \hfill \textbf{John Waczak} \\
+\normalsize Day 10 \hfill  Date: \today \\
+
+\subsubsection*{More on integration}
+If $f:\Omega \rightarrow \mathbb{C}$ is a function and $\gamma:[a,b]\rightarrow\Omega$ is a curve, then $\int_\gamma f(z)dz = \int_a^b f(\gamma(t))\gamma'(t)dt$\\
+
+\noindent \textbf{Definition} we say two curves are \textit{equivalent} if
+	\begin{align*}
+		\gamma_1&:[a,b]\rightarrow\mathbb{C} \\ 
+		\gamma_2&:[c,d]\rightarrow\mathbb{C} 
+	\end{align*}
+and there exists a continuous function $u:[a,b]\rightarrow[c,d]$ with $u(a)=c$ and $u(b)=d$ differentiable with $u'(t)>0$ such that $\gamma_1(t) = \gamma_2(u(t))$. In this situation, $\gamma_1$ and $\gamma_2$ define the same curves, just parametrized differently. \\
+
+\noindent \textbf{Proposition} if $\gamma_1, \gamma_2$ are equivalent, then $\int_{\gamma_1}f(z)dz = \int_{\gamma_2}f(z)dz$. \\
+
+\noindent \textbf{Definition} the length of a curve $\gamma$ is given by: 
+	\begin{equation*}
+		\text{length}\gamma = \int_a^b |\gamma'(t)|dt
+	\end{equation*}
+
+\noindent \textit{Example} 
+	$\gamma:[0,2]\rightarrow\mathbb{C}$ such that $\gamma(t) = (1+3i)t$ (a straight line). 
+		\begin{align*}
+			\text{length}\gamma &= \int_0^2 |1+3i|dt \\ 
+				&= \sqrt{10}t\Big|_0^2 \\ 
+				&= 2\sqrt{10} 
+		\end{align*}
+
+\subsubsection*{Properties of path integrals} 
+	\begin{enumerate}
+		\item $\int_\gamma (af(z)+bg(z))dz = \int_\gamma af(z)dz + \int_\gamma bg(z)dz$ i.e. integration is linear
+		
+		\item if $-\gamma$ denotes the path $\gamma$ traversed in opposite direction, then $\int_{-\gamma}f(z)dz = -\int_\gamma f(z)dz$. 
+		
+		\item if $\gamma_1:[a,b]\rightarrow \mathbb{C}$ and $\gamma_2:[c,d]\rightarrow\mathbb{C}$ with $\gamma_1(b) = \gamma_2(c)$ then if $\gamma_3$ is obtained by $\gamma_1$ then $\gamma_2$ we have:
+			\begin{equation*}
+				\int_{\gamma_3}f(z)dz = \int_{\gamma_1}f(z)dz + \int_{\gamma_2}f(z)dz
+			\end{equation*}
+		
+		\item $|\int_\gamma f(z)dz| \leq \max\{|f(z)|\:z\in\gamma\}\cdot\text{length}(\gamma)$. Think of bounding an integral by making a square with its maximum value i.e. $|\int_a^b f(x)dx|\leq M(b-a)$. 
+	\end{enumerate}
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+#+TITLE: Day 3 Notes
+#+DATE: 4/6/2018
+#+OPTIONS: toc:nil
+
+* Some tips:
+  It is common that the first program everyone learns is to print
+  "Hello world!" to the screen.
+
+  #+BEGIN_SRC C++
+    #include <iostream>
+    using namespace std;
+
+    int main()
+    {
+      cout << "Hello world!" << endl;
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  : Hello world!
+
+  Be carefull with the "using namespace std;" line. This imports many
+  functions which can cause conflicts with user defined functions in
+  large programs. Typically it is better to use smaller statements
+  such as:
+
+  #+BEGIN_SRC C++
+    #include <iostream>
+
+    using std::cout;
+    using std::cin;
+    using std::endl;
+
+    int main()
+    {
+      cout << "Hello world!" << endl;
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  : Hello world!
+
+* Data types
+  There are multiple data types to consier. They all have different
+  ways to be declared.
+
+  #+BEGIN_SRC C++
+    #include <iostream
+
+    using std::cout;
+    using std::cin;
+    using std::string;
+    using std::endl;
+
+    int main()
+    {
+      int myInt = 7;
+      char myChar = '7';
+      string myString = "7";
+      bool myBool = true;
+
+      cout << myInt << endl;
+      cout << myChar << endl;
+      cout << myString << endl;
+      cout << myBool << endl;
+
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  | 7 |
+  | 7 |
+  | 7 |
+  | 1 |

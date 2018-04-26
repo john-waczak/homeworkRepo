@@ -1,0 +1,16 @@
+#+TITLE: CS 161 Day 1
+#+DATE: 4/2/2018
+#+DESCRIPTION: template for note taking in org mode
+#+OPTIONS: toc:nil
+
+
+* My account info:
+  Log in with my onid username and password. User: "waczakj"
+  Your web page address is http://web.engr.oregonstate.edu/~waczakj Visit http://engr.oregonstate.edu/computing/web for more information on setting up your web page.
+
+  Go to ENGR Accounts to login to your newly created account.
+
+  To log into the ENGR accounts use "ssh waczakj@access.engr.oregonstate.edu
+
+* Demo information
+  Make sure to sign up for demo sessions in "grading hours" before assigments are due (Tuesday 3:00pm - 6:00pm is a good slot)

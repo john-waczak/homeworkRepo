@@ -1,0 +1,85 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 10 \hfill  Date: \today \\
+
+\subsection*{Simple harmonic oscillator(s)}	
+Recall the that the energy of a single, simple harmonic oscillator is given by $E_n = (n+\frac{1}{2})\hbar\omega$. Typically to solve for this kind of thing we look for normal modes in a differential equation with specified boundary conditions. Normal modes are nice because we can view them as non-interacting.	\\ 
+
+\noindent First, let's find our partition function: 
+	\begin{align*}
+		Z 	&= \sum\limits_{n=0}^\infty e^{-\beta(n+1/2)\hbar\omega} \\ 
+			&= e^{-\beta\hbar\omega/2}\sum\limits_{n=0}^\infty e^{-\beta \hbar \omega n}\\
+		\text{let } \xi &= e^{-\beta\hbar\omega} \\ 
+		\text{let } \Xi &= \sum\limits_{n=0}^\infty e^{-\beta\hbar\omega n}\\
+			\Xi &= \sum\limits_{n=0}^\infty \xi^n \\ 
+		\text{Note: this is}& \text{ the geometric series} \\ 
+			\Xi &= \frac{1}{1-\xi} \\ 
+		\Rightarrow Z &= \frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta \hbar \omega}}
+	\end{align*}
+	
+\noindent Now that we have our partition function $Z$ the next logical thing is to calculate the Helmholtz free energy.
+	\begin{align*}
+		F &= -kT\ln Z \\ 
+			&= -kT \ln \Big(\frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta \hbar \omega}}\Big) \\ 
+			&= \frac{kT\beta\hbar\omega}{2}+kT\ln (1-e^{-\beta\hbar\omega}) \\
+				&= \frac{\hbar\omega}{2}+kT\ln (1-e^{-\beta\hbar\omega})
+	\end{align*}
+	
+\noindent Now that we have F we can find the entropy as usual. 
+	\begin{align*}
+		S 	&= -\Big(\frac{\partial F}{\partial T}\Big)_V\\
+			&= -k\ln(1-e^{-\beta\hbar\omega})-\frac{kT(-e^{-\beta\hbar\omega})}{1-e^{-\beta\hbar\omega}}\Big(\frac{-\hbar\omega}{kT}\Big)\\
+			&= \frac{\hbar\omega}{T}\frac{e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}}-k\ln(1-e^{-\beta\hbar\omega})
+	\end{align*}
+	
+\noindent Now recall that $U = \langle E \rangle = \langle(n+1/2)\hbar\omega\rangle =(\langle n\rangle + \frac{1}{2})\hbar\omega$. Considering this, solve for U. 
+	\begin{align*}
+		U 	&= F + TS \\ 
+			&= \frac{\hbar\omega}{2}+kT\ln(1-e^{-\beta\hbar\omega}) + \hbar\omega\frac{e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}}-kT\ln(1-e^{-\beta\hbar\omega}) \\ 
+			&= \frac{\hbar\omega}{2}+\hbar\omega\frac{e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}} \\ 
+		\text{Furthermore: } \langle n \rangle &= \frac{e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}} = \frac{1}{e^{\beta\hbar\omega}-1}
+	\end{align*}
+	
+\noindent Now let's consider the high and low temperature limits of this
+	\begin{align*}
+		\text{High temp} &\Rightarrow \beta\hbar\omega << 1 \\ 
+		\langle n \rangle &= (e^{\beta\hbar\omega}-1)^{-1} \\ 
+			&= \frac{1}{1+\beta\hbar\omega + ... - 1} \\ 
+			&= \frac{kT}{\hbar\omega}\quad \text{"Equipartition result"}\\
+		\text{Low temp} &\Rightarrow \beta\hbar\omega >> 1 \\ 
+		\langle n \rangle &= \frac{e^{-\beta\hbar\omega}}{1-e^{-\beta\hbar\omega}} \\ 
+			&\approx e^{-\beta\hbar\omega}(1+e^{-\beta\hbar\omega}) \quad \text{using } (1+z)^p \\ 
+			&= e^{-\beta\hbar\omega}+e^{-2\beta\hbar\omega}
+	\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

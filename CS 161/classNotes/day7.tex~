@@ -1,0 +1,44 @@
+% Created 2018-04-16 Mon 11:05
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{John Waczak}
+\date{4/16/2018}
+\title{CS 161 -- Day 7 Notes}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+
+\section{Named constants}
+\label{sec-1}
+Most of the time people just call them constants. They are different
+from variables (named chunks of memory we can control) and literals
+(literal values). A constant is a reserved, named piece of memeroy
+but the value never changes. When you declare you have to say what
+the value is. \\
+
+Constants are easy to change (think for example sales tax that might
+change year to year) and much better for catching typographical
+errors than if you manually type out the same thing over and over
+again. \\
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}

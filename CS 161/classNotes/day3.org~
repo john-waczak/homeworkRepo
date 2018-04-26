@@ -1,0 +1,17 @@
+#+TITLE: Day 3 Notes
+#+DATE: 4/6/2018
+#+OPTIONS: toc:nil
+
+* Some tips:
+  It is common that the first program everyone learns is to print
+  "Hello world!" to the screen.
+
+  #+BEGIN_SRC C++ :includes <iostream>
+
+    int a=1;
+    int b=1;
+    std::cout<<"a + b = " << a+b << std::endl;
+  #+END_SRC
+
+  #+RESULTS:
+  : a + b = 2

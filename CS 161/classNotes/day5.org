@@ -1,0 +1,110 @@
+#+TITLE: CS 161 Day 5 Notes
+#+DATE: 4/11/2018
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+
+* Some usefull math tricks
+  #+BEGIN_SRC C++ :exports both
+    #include <iostream>
+    #include <string>
+    #include <cmath>
+
+    using std::cout;
+    using std::endl;
+    using std::string;
+    using std::pow;
+
+    int main()
+    {
+      int num = 6;
+      num++;
+      cout <<"num++ does this: "<< num << endl;
+      num--;
+      cout <<"num-- does this: " << num << endl;
+      cout <<"The pow command for 2^3 does this: "<< pow(2,3) << endl;
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  | num++ | does | this:   |   7 |     |      |       |   |
+  | num-- | does | this:   |   6 |     |      |       |   |
+  | The   | pow  | command | for | 2^3 | does | this: | 8 |
+
+
+* Here is a way to get a whole line instead of stoping at first whitespace with cin
+  #+BEGIN_SRC C++
+    #include <iostream>
+    #include <string>
+    #include <cmath>
+
+    using std::cout;
+    using std::endl;
+    using std::string;
+    using std::pow;
+    using std::getline;
+    using std::cin;
+
+
+    int main()
+    {
+      string name;
+      cout << "Please enter your name." <<endl;
+      getline(cin, name);
+      cout << "name = " << name << endl;
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  | Please | enter | your | name. |
+  | name   | =     |      |       |
+
+* Be carefull with the input buffer
+  When you use something like cin << to get some text from the user,
+  there is an implicit newline character that stays in the input
+  buffer. If you then try to get a char from the user, cin.get() will
+  take the first char which is the newline character! To get around
+  this you can use cin.ignore(1) before getting your character to
+  clear the buffer up to (1) character. You can increase this number
+  to flush the buffer if you are paranoid.
+
+* String, strings, strings
+  We are interested in getting the length of strings, picking off
+  particular characters, and concatenating (adding) two strings
+  together.
+  #+BEGIN_SRC C++ :exports both
+    #include <iostream>
+    #include <string>
+
+
+    using std::cout;
+    using std::endl;
+    using std::string;
+
+
+    int main()
+    {
+      string str = "Hello ";
+      str = str + "world!";
+      cout << str << endl;
+
+      int len = str.length();
+      // we can index strings!
+      cout << str.at(3) << endl;
+      return 0;
+    }
+  #+END_SRC
+
+  #+RESULTS:
+  | Hello | world! |
+  | l     |        |
+
+
+
+
+
+
+
+
+s

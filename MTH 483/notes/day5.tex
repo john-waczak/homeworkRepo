@@ -1,0 +1,119 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis - MTH 483} \hfill \textbf{John Waczak} \\
+\normalsize Day 5 \hfill  Date: \today \\
+
+\subsection*{Mobius transformations} 
+	\textbf{Def:} A \textit{Mobius transformation} is a function of the form:
+		$$ f(z) = \frac{az+b}{cz+d} $$
+	where $a,b,c,d \in mathbb{C}$ and $ad-bc\neq0$. (Sometimes called linear fractional transformation) \\ 
+	
+	\noindent If $c=0$ then $f(z) = \frac{a}{d}z + \frac{b}{d}$ which is entire since $f(z)$ is a linear polynomial. If $c\neq 0$ then $f(z)$ is holomorphic everywhere except at $-\frac{d}{c}$. Wherever this is holomorphic, we have that 
+		$$f'(z) = \frac{(cz+d)a - (az+b)c}{(cz+d)^2} = \frac{ad-bc}{(cz+d)^2} \neq 0$$ 
+	
+	\noindent The composition of $f(z) = \frac{az+b}{cz+d}$ and $g(z) = \frac{a'z+b'}{c'z+d'}$ is yet another Mobius transformation. 
+		\begin{align*}
+			f(g(z)) &=  \frac{a\Big(\frac{a'z+b'}{c'z+d'}\Big)+b}{c\Big(\frac{a'z+b'}{c'z+d'}\Big)+d}\\
+				&= \frac{a(a'z+b')+b(c'z+d')}{c(a'z+b')+d(c'z+d')} \\ 
+				&= \frac{(aa'+bc')z+(ab'+bd')}{(ca'+dc')z+(cb'+dd')}
+		\end{align*}
+	\noindent all that remains is to show that we have the nonzero requirement. 
+		\begin{align*}
+			\begin{pmatrix}
+				a & b \\ 
+				c & c \\ 
+			\end{pmatrix}\begin{pmatrix}
+				a' & b' \\ 
+				c' & d' \\ 
+			\end{pmatrix} &= \begin{pmatrix}
+				aa' + bc' & ab' + bd' \\ 
+				ca' + dc' & cb" + dd'
+			\end{pmatrix}
+		\end{align*}
+	\noindent since the determinant multiplies and each of the two matrices has nonzero matrix we have that the determinant of the product is nonzero and therefore the composition of Mobius transformations is a Mobius transformation and furthermore we can encode Mobius transformations as $M_{2x2}$. Algebraically, the set of all Mobius transformations is a group with $(\circ)$ function composition and identity $f(z) =z$. The inverse of $f(z)$ is the corresponding \textit{inverse matrix}... 
+		\begin{align*}
+			\text{if}\quad f(z) &= \frac{az+b}{cz+d} \\ 
+			\text{then} \quad f^{-1}(z) &= \frac{dz-b}{-cz+a}\\
+			\Rightarrow f(f^{-1}(z)) &= \frac{a\Big(\frac{dz-b}{-cz+a}\Big)+b}{c\Big(\frac{dz-b}{-cz+a}\Big)+d} \\ 
+				&=\frac{a(dz-b)+b(-zc+a)}{(dz-b)+d(-cz+a)} \\ 
+				&= \frac{(ad-bc)z-0}{0z+ad-bc} = z \quad \checkmark
+		\end{align*}
+	\noindent but why don't we need to "divide by determinant"? Multiply a Mobius transformation by constant $r$ would have no effect since it would scale numerator and denominator the same. So really dividing by determinant doesn't change anything. 
+		$$r\begin{pmatrix}
+			a & b \\ 
+			c & d
+		\end{pmatrix} = \begin{pmatrix}
+			ra & rb \\ 
+			rc & rd
+		\end{pmatrix} $$ 
+	This implies that 
+		$$rf(z) = \frac{raz+rb}{rcz+rd}= \frac{az+b}{cz+d} = f(z) $$
+
+\subsection*{Special types}
+	\begin{itemize}
+		\item \textbf{Translations} $f(z) = z+b \quad (b\in\mathbb{C})$ 
+		\item \textbf{Dilations} $f(z) = az \quad (a\in\mathbb{C}, a\neq 0)$ \\ 
+			\noindent For dilation $f(z)=az$, in polar form we have $a=re^{i\phi}$ so that f "stretches" by r and "rotates" by angle of $\phi$
+		\item \textbf{Inversion} $f(z) = \frac{1}{z}$
+	\end{itemize}
+	
+	\noindent \textbf{Proposition} All Mobius transformations can be expressed as a composition of translations, dilations, and inversions.\\
+	
+	\noindent pf. If $c=0$ then $f(z) = \frac{a}{d}z + \frac{b}{d}$ which is dilation composed with a  translation. If $c\neq 0$ then $f(z) = \Big(\frac{bc-ad}{c^2}\Big)\Big(\frac{1}{z+\frac{d}{c}}\Big)+\frac{a}{c}$ Which we can see is a combination of all three. \qed\\
+	
+	\noindent \textbf{Theorem} If $S\subseteq \mathbb{C}$ is either a circle or a line and $f(z)$ is a Mobius transformation, then $f(S)$ is either a circle or a line. \\
+	
+	\noindent \textit{Example:} $f(z) = \frac{z-1}{iz+i}$ takes circle $x^2+y^2=1$ to the real line $y=0$. \\ 
+	
+	\noindent pf. Let $|z|=1$. Then $z=e^{i\phi}$ Then $f(z) = \frac{e^{i\phi}-1}{ie^{i\phi}+i}$. This is just $= \frac{(e^{i\phi}-1)(e^{i\phi}+1)}{i(e^{i\phi}+1)(e^{i\phi}+1)} $. This means that $=\frac{(e^{i\phi}-1)(\overline{e^{i\phi}}+1)}{i|e^{i\phi}+1|^2}$ which further simplifies to $\frac{(e^{i\phi}\overline{e^{i\phi}}+e^{i\phi}-\overline{e^{i\phi}}-1)}{i|e^{i\phi}+1|^2} = \frac{i2\sin\phi}{i|e^{i\phi}+1|^2} = \frac{2\sin\phi}{|e^{\phi}+1|^2} \in\mathbb{R}$\qed 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 7 \hfill  Date: \today \\
+
+\subsection*{Things to address from homework 1} 
+On problem 1 we had an expression like $S = k\beta U + k\ln Z$ and then we zapped with d and took the differential. The biggest issue was not considering the fact that $\beta$ was changing. $k_b$ is definitely constant and also $V$ implicitly. Since $\beta = \frac{1}{k_b T}$ we have to allow $\beta$ to vary in our differential. \\ 
+
+\noindent We want to show we can extend proof from number two to n systems. let: 
+	\begin{align*}
+		S_{AB} &= S_A + S_B \quad \text{from first part} \quad \checkmark\\ 
+		\text{define } S_N &= S_1 + S_{N-1} \\ 
+		&. \\
+		&. \\
+		&. \\
+		S_N &= NS_1 
+	\end{align*}
+
+\subsection*{New stuff... deriving Boltzmann Factor} 
+Last time we established the Micro-canonical definition of temperature, which was:
+	\begin{equation}
+		\frac{1}{T} = \Big(\frac{\partial S}{\partial E}\Big)_V
+	\end{equation}
+Furthermore: 
+	\begin{align*}
+		S(E) &= k_b \ln(E) \\ 
+		g_{AB}(E_{AB}) &= \sum\limits_{E_A}g_A(E)g_b(E_{AB}-E_A) \\ 
+		P(E_A) &= \frac{g_A(E_A)g_B(E_{AB})}{\sum\limits_{E_A'}g_A(E_A')g_B(E_{AB}-E_A')}
+	\end{align*}
+	
+	
+\noindent Assume we have two systems A,B with $A<<B$. Now this will allow us to use a power series expansion 
+
+\begin{align*}
+	S_B(E_B) &= k_B \ln(g_B(E_B)) \\
+	S_B(E_{AB}-E_A) &\approx S_B(E_{AB})- \frac{1}{T}E_A \quad \text{from taking derivative in expansion in }E_A \\ 
+	\rightarrow \frac{S_B(E_{AB})}{k}-\frac{E_A}{kT} &= \ln g_B(E_{AB}-E_A) \\ 
+	\rightarrow g_B(E_{AB}-E_A) &\approx e^{\frac{S_B(E_{AB})}{k}-\frac{E_A}{\beta}}\\
+	\text{thus} \quad P(E_A) &\approx \frac{g_A(E_A)e^{\frac{S_B(E_{AB})}{k}-\frac{E_A}{\beta}}}{\sum\limits_{E_A'}g_A(E_A')e^{\frac{S_B(E_{AB})}{k}-\frac{E_A'}{\beta}}} \\ 
+		&=\frac{g_A(E_A)e^{-\frac{E_A}{\beta}}}{\sum\limits_{E_A'}g_A(E_A')e^{-\frac{E_A'}{\beta}}} \\
+		&= \frac{g_A(E_A)e^{-\frac{E_A}{\beta}}}{\sum\limits_{\mu'}e^{-\frac{E_{\mu'}}{\beta}}} \\
+		&= \frac{g_A(E_A)e^{-\frac{E_A}{\beta}}}{Z} \\
+		&= \frac{e^{-\beta E_\mu}}{Z} 
+\end{align*}	
+
+The \textit{Boltzmann factor} is taken as a ratio of two probabilities (aka Boltzmann ratio). 
+
+
+\subsection*{Internal Energy U} 
+	\begin{align*}
+		U &= \sum\limits_\mu E_\mu P_\mu = \sum\limits_\mu\frac{E_\mu e^{-\beta E_\mu}}{Z} \\
+		\text{Note that: } \frac{\partial}{\partial \beta}\sum\limits_\mu e^{-\beta E_\mu} &= -\sum\limits_\mu E_\mu e^{-\beta E_\mu} \\ 
+		\text{so... } U&= \frac{-\frac{\partial Z}{\partial \beta}}{Z} = -\frac{\partial \ln Z}{\partial \beta} \quad \text{This is a trick... NEVER START HERE you wont remember it} 
+	\end{align*}
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

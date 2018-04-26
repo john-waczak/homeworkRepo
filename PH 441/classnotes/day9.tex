@@ -1,0 +1,86 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 9 \hfill  Date: \today \\
+
+\subsection*{Ideal Gas}
+Start with a big box with 1 atom in it. What are the possible eigenvalues of energy? 
+	\begin{equation*}
+		E = \frac{\hbar^2k^2}{2m} 
+	\end{equation*}
+Our wavefunction only has kinetic energy and there are three degrees of freedom i.e. $p_x, p_y, p_z$. You get a choice of boundary conditions --- if we stick this in a box we now have: 
+	\begin{equation*}
+		E_{n_x, n_y,n_z} = \frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2}
+	\end{equation*}
+
+\noindent Now we want to work out the partition function: 
+	\begin{align*}
+		Z &= \sum\limits_{n_x}^\infty \sum\limits_{n_y}^\infty \sum\limits_{n_z}^\infty e^{-\beta\frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2}} \\ 
+	\end{align*}
+This sucks... So lets take a statistical approximation for a REALLY big box. First though let's simplify... We got this by separation of variables in quantum mechanics. Let's try and do that again. 
+	\begin{align*}
+		\frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2} &= \sum\limits_{n_x}^\infty e^{-\beta \frac{\hbar^2\pi^2n_x^2}{2mL^2}}\sum\limits_{n_y}^\infty e^{-\beta \frac{\hbar^2\pi^2n_y^2}{2mL^2}}\sum\limits_{n_z}^\infty e^{-\beta \frac{\hbar^2\pi^2n_z^2}{2mL^2}} \\ 
+		&= \Big(\sum\limits_n^\infty e^{-\beta\frac{\hbar^2\pi^2n^2}{2mL^2}}\Big)^3 \quad \text{same in each dimension} \\ 
+		\text{take: } \quad \frac{\beta \pi^2}{2mL^2}&<< 1 \quad \text{as classical approximation} \\  
+	\end{align*}
+So in this limit we expect that we can happily turn this sum into an integral for the limit given. 
+	\begin{align*}
+		&\approx \int\limits_0^\infty e^{-\frac{\beta\hbar^2\pi^2}{2mL^2}n^2}dn  \\ 
+		\xi &= \sqrt{\frac{\beta\hbar^2\pi^2}{2mL^2}n} \\ 
+		\Rightarrow &= \Big(\frac{2mL^2}{\beta\hbar^2\pi^2} \Big)^3\Big(\int\limits_0^\infty e^{-\xi^2}d\xi\Big)^{3/2} = \Big(\frac{mL^2}{\beta\hbar^2 2 \pi} \Big)^{3/2}\quad \text{handy integration trick for Gaussians}\\ 
+	\end{align*}
+Thus we conclude that: 
+	\begin{equation*}
+		Z = \Big(\frac{mkT}{2\hbar^2\pi}\Big)^{3/2}V = n_Q V\quad \text{quantum density}
+	\end{equation*}
+	
+	
+\noindent\textit{Question:}What are S, U, p? 
+	\begin{align*}
+		F &= -kT\ln Z = -kT \ln \Big(\Big(\frac{mkT}{2\hbar^2\pi}\Big)^{3/2}V\Big)  \\ 
+		p &= -\frac{\partial F}{\partial V} = \frac{kT}{V} \\ 
+		S &= -\frac{\partial F}{\partial T} = k\ln(n_Q V) + \frac{3}{2}k \\ 
+		U &= F + TS = \frac{3}{2}kT 
+	\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

@@ -1,0 +1,10 @@
+#+TITLE: CS 161 Day 8 Notes
+#+DATE: 4/18/2018
+#+OPTIONS: toc:nil
+
+* Do-while loops
+  Do while loops test condition at end of loop so that the loop is
+  always entered at least once.
+  #+BEGIN_SRC C++ :exports both
+
+  #+END_SRC

@@ -1,0 +1,132 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis - MTH 483} \hfill \textbf{John Waczak} \\
+\normalsize Day 8 \hfill  Date: \today \\
+
+\subsubsection*{More exponential stuff}
+Last time we defined the following: 
+	\begin{align*}
+		e^z &= \sum\limits_{n=0}^\infty\frac{1}{n!}z^n = 1 + z + \frac{z^2}{2}+\frac{z^3}{6}+... \\ 
+		\cos z &= \frac{1}{2}(e^{iz}+e^{-iz}) \\ 
+		\sin z &= \frac{1}{2i}(e^{iz}-e^{-iz}) 
+	\end{align*}
+
+\noindent We defined the complex exponential function, $e^z$ to be the power series. We haven't done a lot of power series so for now we just have to trust that this converges $\forall z$ and defines a holomorphic function. Using this we can define the cosine and sine functions. \\ 
+
+\noindent We also mentioned that these are entire functions (holomorphic on $\mathbb{C}$). We also proved that $e^{z+w}=e^ze^w$. Here this isn't really algebra so we had to prove this using the power series definition. Furthermore we used this to show $e^0 = 1$. \\ 
+
+\noindent From these definitions of cosine and sine we can derive the ordinary power series for those functions: 
+	\begin{align*}
+		\cos z &= \frac{1}{2}(e^{iz}+e^{-iz}) \\ 
+			&= \frac{1}{2} \sum \frac{1}{n!}(iz)^n + \frac{1}{2}\sum \frac{1}{n!}(-iz)^n \\ 
+			&= \frac{1}{2}\sum\frac{1}{n!}(i^n+(-1)i^n)z^n \\ 
+		\text{let } \quad n &= 2m \quad \text{only even n contribute}  \\ 
+			&= \frac{1}{2}\sum\limits_{m=0}^\infty \frac{1}{2m!}2(-1)^mz^{2m} \\ 
+		\Rightarrow \cos z	&= \sum \frac{(-1)^{m}}{2m!}z^{2m} 
+	\end{align*}
+\noindent We can do the same to derive the standard power series for the sine function. We can also check that $\frac{1}{e^z}=e^{-z} = (e^z)^\star$. 
+	\begin{align*}
+		1 &= e^0 = e^{z-z} = e^{z}e^{-z} \\ 
+		|e^{iy}| &= \sqrt{\cos^2y+\sin^2y} = 1 \\
+		\Rightarrow |e^{x+iy}| &= |e^xe^{iy}| = |e^{x}||e^{iy}| = |e^x| = e^x
+	\end{align*}
+	
+\noindent Now let's consider periodicity of exponential representation for complex numbers: 
+	\begin{align*}
+		e^{z+2\pi i} &= e^{x+iy+2\pi i} = e^{x}e^{i(y+2\pi)}= e^{x+iy} = e^{z}
+	\end{align*}
+	
+\indent Finally, let's think about the derivative. 
+	\begin{align*}
+		f(z)=e^z \Rightarrow f'(z) = e^z \\ 
+		\text{pf:} \quad \frac{d}{dt}\sum\frac{1}{n!}z^n &= \sum\limits_{n=1}^\infty \frac{n}{n!}z^(n-1) \\ 
+			&= \sum\limits_{n=1}^\infty \frac{1}{(n-1)!}z^{n-1} \\ 
+		\text{let } m &= n-1 \\ 
+			&= \sum\limits_{m=0}^\infty \frac{1}{m!}z^m = e^z 
+	\end{align*}
+	
+\subsubsection*{The complex logarithm} 
+We want to try to define the inverse of the exponential function but this is tough because we don't have 1-to-1 since $e^{2\pi i} = e^z$. So we can't truly define an inverse for $e^z$ (sort of). We can still \textit{almsot} define an inverse. Recall that we are fine to define the inverse so long as we restrict the domain of the inverse to within the domain of periodicity (i.e. $(0, 2\pi)$).\\
+
+\noindent\textit{Definition:} Let $\Omega \subseteq \mathbb{C}$ be a region. A branch of the complex logarithm is a function $\log:\Omega \rightarrow \mathbb{C}$ satisfying the identity that $e^{\log z} = z$. \\
+
+\noindent\textit{Remark:} If $\log$ is a continuous branch of the logarithm, then so is the function $\log(z+2\pi i)$. Because $e^{\log(z)+2\pi i} = e^{\log(z)} = z$. Therefore the logarithm is \textit{not} unique. \\
+
+\noindent \textit{Definition:} Let $z\in\mathbb{C}$, $z=re^{i\phi}$ where $r = |z|$ and let $\phi \in (-\pi, \pi]$. Let $\arg z = \phi$. Assuming $z\neq 0$, define $Log z = \ln |z| + i\arg z $. This defines a function $Log:\mathbb{C}\setminus\{0\}\rightarrow\mathbb{C}$. This function is called the \textbf{principal branch} of the logarithm. 
+	\begin{align*}
+		e^{Log z} = e^{\ln |z| + i\arg z} = e^{\ln r} e^{i\phi} = re^{i\phi} = z
+	\end{align*}
+
+\noindent\textbf{Warning:} $Log z$ is not continuous along the non-positive real axis. \\
+
+\noindent If $\log:\Omega\rightarrow\mathbb{C}$ is a branch of the logarithm, then $\log$ is holomorphic on $\Omega$ and $\log'(z) = \frac{1}{z}$. 
+	\begin{align*}
+		\text{proof sketch:} \quad \quad \quad & \\ 
+			e^{\log z} &= z \\ 
+			\Rightarrow (e^{\log z})\log' z &= 1 \\ 
+			z\log'(z) &= 1 \\
+			\log' (z) &= \frac{1}{z}
+	\end{align*}
+
+\subsubsection*{Some examples} 
+\textit{Examples: } 
+	\begin{align*}
+		Log (2) &= \ln|2| \\ 
+			&= \ln(2) \\ 
+		Log (i) &= \ln|i|+i\arg(i) \\ 
+			&=\ln(1) +i\frac{\pi}{2}\\
+			&= 0 + i\frac{\pi}{2} \\ 
+		Log (-3) &= \ln(3) + i\arg(-3) \\ 
+			&= \ln(3)+ i\pi \\
+		Log (-1+i) &= \ln|-1+i| + i\arg(-1+i)\\
+			&= \ln(\sqrt{2})+i\frac{3\pi}{4} 
+	\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+\end{document}
+

@@ -1,0 +1,95 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+
+\newcommand{\dbar}{{\mkern3mu\mathchar'26\mkern-12mu d}} 
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 8\hfill  Date: \today \\
+
+\subsection*{Free Energy}
+	From Monday we have that $U = \sum\limits_\mu P_\mu E_\mu = - \Big(\frac{\partial \ln(Z)}{\partial\beta}\Big)_V$. Here is another way to solve for the Free Energy. 
+		\begin{align*}
+			\Rightarrow d\ln Z &= -U d\beta + \frac{\partial \ln Z}{\partial V}dV \\
+			\text{let } \xi &= \frac{\partial \ln Z}{\partial V} \\ 
+			d(U\beta) &= Ud\beta + \beta dU \\ 
+			\Rightarrow -Ud\beta &= \beta dU - d(U\beta) \\ 
+			d\ln Z &= \beta dU - d(U\beta) + \xi dV \\ 
+			dU &= \frac{1}{\beta} d(\ln Z - U\beta) + \xi dV \\ 
+				&= TdS - pdV = Td(k(\ln Z - U\beta)) + \xi dV \\ 
+			\Rightarrow \frac{S}{k} &= \ln Z - \frac{U}{kT} \\ 
+			-kT\ln Z &= U - TS = F \\ 
+		\end{align*}
+  
+	  \noindent Question: What is F if g $\mu$states all with energy $E_0$? 
+		  \begin{align*}
+			  Z &= \sum\limits_\mu e^{-\beta E_\mu} = ge^{-\beta E_0} \\ 
+			  F &= -kT\ln(Z) =-kT\ln(ge^{-\beta E_0}) = E_0 - kT\ln(g)
+		  \end{align*}
+	  
+	  \noindent Note: $F=-kT\ln Z$ is a fine place \textit{to start} as opposed to beginning with $U - - \frac{\partial \ln Z}{\partial \beta}$. \\ 
+	  
+	  \noindent Turning the equation around we have that $Z = e^{-\beta F}$ which can be very useful. 
+
+\subsection*{Pressure} 
+	Recall that $p = -\frac{\partial U}{\partial V}$ at fixed S from the thermodynamic identity. \\ 
+	
+	\noindent \textit{Question:} How do I fix the entropy?\\
+	 
+		\noindent Recall that $dU = \dbar Q - \dbar W $ Thus, if we thermally isolate the system, $\dbar Q = 0 \Rightarrow dS = 0$ since $T\neq 0$. Another way to think about it is from $S=-k\sum\limits_\mu P_\mu \ln P_\mu $. So if we don't let the probabilities change then $dS = 0$. \\
+	  
+	 Thus, now we have: 
+		 \begin{align*}
+			 p &= -\frac{\partial U}{\partial V} = -\sum\limits_\mu P_\mu \frac{dE_\mu}{dV} \quad \text{since probabilities are fixed} 
+		 \end{align*}
+		 
+\subsection*{What do we do with F?} 
+	We have two important definitions: 
+		\begin{enumerate}
+			\item $F = -kT\ln Z $ 
+			\item $F = U - TS \Rightarrow dF = -SdT -pdV$ 
+		\end{enumerate}
+	This allows us to say that $p = -\frac{\partial F}{\partial V}$ and $S = -\frac{\partial F}{\partial T}$ \\
+	
+	\noindent What is the physics meaning of the Free-energy? Usually you talk about keeping either T or V fixed. For example if you keep the temperature fixed, then F is equal to the work i.e. \textit{the Helmholtz Free energy describes the available work}. Another thing you can say is that it is the energy that is naturally a function of temperature and volume. The internal energy U given by $dU = TdS - pdV$ is naturally a function of entropy and volume. 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

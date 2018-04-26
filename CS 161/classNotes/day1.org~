@@ -1,0 +1,13 @@
+#+TITLE: NOTES
+#+DATE: 3/14/1997
+#+DESCRIPTION: template for note taking in org mode
+#+OPTIONS: toc:nil
+
+
+* My account info:
+  Log in with my onid username and password. User: "waczakj"
+  Your web page address is http://web.engr.oregonstate.edu/~waczakj Visit http://engr.oregonstate.edu/computing/web for more information on setting up your web page.
+
+  Go to ENGR Accounts to login to your newly created account.
+
+  To log into the ENGR accounts use "ssh waczakj@access.engr.oregonstate.edu

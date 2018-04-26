@@ -1,0 +1,23 @@
+#include<iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+
+/*********************************************************************
+** Author: John Waczak
+** Date: 4/5/2018
+** Description: A simple program to convert a temperature from Celsius
+** to Farenheit.
+*********************************************************************/
+int main()
+{
+  double C, F;
+  cout << "Please enter a Celsius temperature." << endl;
+  cin >> C;
+  F = (9.0/5.0)*C+32.0;
+  cout << "The equivalent Farenheit temperature is:" << endl;
+  cout << F << endl;
+
+  return 0;
+}

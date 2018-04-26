@@ -1,0 +1,214 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{listings}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assigment 2: Project Plan} \hfill \textbf{John Waczak} \\
+\normalsize CS 161 \hfill  Date: \today \\
+Tim Alcon \\
+
+	
+\subsection*{2.a Min-Max}
+	\textbf{Pseudocode:} 
+	\begin{lstlisting}
+		declare "ints" string for storing integers 
+		declare "max", "min" and "numInts" int-variables
+		
+		prompt user to enter a number of intergers
+		capture user input and intialize to "numInts" variable 
+		
+		Initialize "max" and "min" to zero.
+		loop over integers from 1 to "numInts" 
+			declare "integer" int 
+			prompt user to enter number
+			initialize "integer" to value user enters
+			
+			if "integer" is greater than "max"			
+				set "max" to "integer"
+			else if "integer" is less than "min"
+				set "min" to "integer" 
+			else 
+				do nothing 
+		
+		once loop is finished, display max and min		  	
+	\end{lstlisting}
+	
+	\textbf{Test Plan}
+		\begin{center}
+			\begin{tabular}{|c|c|}
+				\hline
+				\textbf{test} & \textbf{expected output} \\ 
+				\hline 
+				user enters all 1's (or integers of same value) & output max = 1, min = 1\\
+				\hline 
+				user enters 1,2,3,4,5 & output max = 5, min = 1 \\ 
+				\hline 
+				user enters 100, 101, 200, 1000 & output max = 1000, min = 100 \\ 
+				\hline 
+				user enters 10, 5, 0, -5, -10 & output max = 10, min = -10 \\ 
+				\hline 
+				user only enters 1 integer, say 10 & output max = 10, min = 10 \\ 
+				\hline 
+			\end{tabular}
+		\end{center}
+	
+\subsection*{2.b File Adder} 
+	\textbf{Pseudocode} 
+	\begin{lstlisting}
+		declare "fileName" string variable 
+		prompt user to enter a file name
+		intialize "fileName" to user's value 
+		check to see if "fileName" is actually a file 
+			if it isn't 
+				print out "Not a file" 
+			else, if it is a file 
+				print out "Found file" 
+		Open file 
+		declare "numLines" int variable 
+		declare "sum" variable and intialize to 0
+		set the "numLines" to the number of lines in file 
+		
+		if the file is empty 
+			print "empty file" and quit program 
+		otherwise, 
+			continue 
+			
+		for each line from 0 to "numLines" 
+			read in line and cast to int variable "lineNum" 
+			add "lineNum" to "sum" variable 
+		
+		Close the file 
+		Create a file called "sum.txt" and open it 
+		write the value "sum" to the file 
+		close "sum.txt" 
+	\end{lstlisting}
+
+	\textbf{Test plan} 
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{test (input)} & \textbf{expected output} \\ 
+			\hline 
+			empty file & create empty sum file \\ 
+			\hline 
+			file with single integer 1& write 1 to sum.txt \\ 
+			\hline 
+			file with 1,2,3,4,5 & write 15 to sum.txt \\ 
+			\hline 
+			file with 10, 100, 1000 &  write 1110 to sum.txt \\ 
+			\hline 
+			file with 10, 5, 0, -5, -20 & write -10 to sum.txt \\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+
+\subsection*{2.c Num Guess} 
+	\textbf{Pseudocode} 
+	\begin{lstlisting}
+		declare "userNum", "playerGuess", and "guessCount" ints 
+		prompt user to enter an integer for player to guess 
+		initialize "userNum" to this value 
+		
+		declare boolean "isCorrect" and initialize to false
+		initialize "guessCount" to 0
+		
+		begin loop (probably a do-while)
+			prompt player to input a guess 
+			initialize "playerGuess" to player's value 
+			
+			if the guess is too low, print out "Too low--try again"
+			if the guess is too high, print out "Too high--try again" 
+			otherwise, if the guess is correct
+				 change "isCorrect" to true
+				 
+			increment "guessCount" 
+			check if "isCorrect" is true. If it is, exit the loop
+		print out "you guessed it in guessCount tries" 		
+	\end{lstlisting}
+	
+	\textbf{Test Plan} 
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{test (input)} & \textbf{expected output} \\ 
+			\hline 
+			val: 1, guess: 1 & 1 try \\ 
+			\hline 
+			val: 1, guess: 10, -10, 1 & too high, too low, 3 tries \\
+			\hline 
+			val: -10, guess: 100, 10, 0, -1, -10 & too high, too high ..., 5 tries \\ 
+			\hline 
+			val: 1000, guess: 1, 2, 100, 10000, 1000 & too low, too low, too low, too high, 5 tries \\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
