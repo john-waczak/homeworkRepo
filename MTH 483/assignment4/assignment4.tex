@@ -1,0 +1,332 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{proposition}{Proposition}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Variables: Assignment 4} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+\par\noindent\rule{\textwidth}{0.4pt}
+
+\subsection*{4.12} 
+\begin{proof}
+	Let $w=0$ we have that 
+		\begin{align*}
+			\oint_{C[0,2]}z^{1/2}dz &= \oint_{C[0,2]}\frac{f(z)}{z}dz \\ 
+				&= 2\pi i f(0) \\ 
+			\text{By inspection, we see that } \quad \frac{f(z)}{z} &= z^{1/2} \Rightarrow f(z) = z^{3/2} \\ 
+			\text{and thus } \quad \oint_{C[0,2]}z^{1/2}dz &= 2\pi i z^{3/2}\Big|_{z=0} = 0
+		\end{align*} 
+\end{proof}
+	
+\subsection*{4.33} 
+	\begin{proof}[$(r<1)$]
+		Let $w=-2i$. Then the function $\frac{1}{z^2+1}$ is holomorphic in and on $C[-2i, r]$. Therefore we have that
+			\begin{align*}
+				\oint_{C[-2i, r]}\frac{dz}{z^2+1} &= \oint_{C[-2i, r]}\frac{f(z)}{z+2i}dz\\ 
+				\Rightarrow f(z) &= \frac{z+2i}{(z^2+1)(z+2i)} \\ 
+				\textit{Thus, we have } \quad I(r) &= 2\pi i f(-2i) = 2\pi i 0 = 0
+			\end{align*}
+	\end{proof}	
+	
+	\begin{proof}[$(1<r<3)$]
+		Observe that $\frac{1}{z^2+1} = \frac{1}{(z+i)(z-i)}$ has a pole within the circle of integration $C[-2i, r]$ at $w=-i$. Thus, applying Cauchy's integral theorem for $f(z) = \frac{1}{z-i}$ with $w=-i$ will evaluate $I(r)$. 
+			\begin{align*}
+				\oint_{C[-2i, r]}\frac{1}{(z-i)(z+i)} &= 2\pi i f(w) \\ 
+					&= 2\pi i \frac{1}{z-i}\big|_{z=-i} \\ 
+					&= -\pi
+			\end{align*}
+	\end{proof}
+	
+	\begin{proof}[$(r>3)$]
+		Observe that for $r>3$ the function $\frac{1}{z^2+1}=\frac{1}{(z-i)(z+i)}$ has two poles. Thus split the integral into two counterclockwise oriented curves $\gamma_1, \gamma_2$ that share a common boundary such that 	
+			\begin{align*}
+				\oint_{C[-2i, r]}\frac{1}{(z-i)(z+i)}dz &= \oint_{\gamma_1} \frac{1}{(z-i)(z+i)}dz + \oint_{\gamma_2} \frac{1}{(z-i)(z+i)}dz 
+			\end{align*}
+		\noindent Now that we have split the curve into two segments each containing one pole, we can easily apply Cauchy's integral theorem to evaluate each individually. This gives
+			\begin{align*}
+				&= 2\pi i \frac{1}{z+i}\big|_{z=i} + 2\pi i \frac{1}{z-i}\big|_{z=-i} \\
+				&= \pi - \pi =  0
+			\end{align*}
+	\end{proof}
+	
+	\noindent So in summary we have shown that 
+		\begin{equation*}
+			I(r) = \begin{cases}
+				0 & r < 1 \\ 
+				-\pi & 1 < r < 3 \\ 
+				0 & r > 3
+			\end{cases}
+		\end{equation*}
+	
+	
+\subsection*{5.3.a} 
+	\begin{proof}
+		Recall that $Log(z)$ is holomorphic on $\mathbb{C}\setminus\mathbb{R}^{-}$. i.e. everything except the negative real line and zero. By this definition then the function $Log(z-4i)$ is holomorphic everywhere in $\mathbb{C}$ except along the line $\{(x-4i) \in \mathbb{C} : x\leq 0\}$. We want to integrate over the circle $C[0,3]$ and so the nearest singularity misses this region. Therefore $Log(z-4i)$ is holomorphic in and on $C[0,3]$. Thus 
+			\begin{equation*}
+				\oint_{C[0,3]}Log(z-4i)dz = 2\pi i Log(z-4i)z \big|_{z=0} = 0
+			\end{equation*}
+	\end{proof}
+	
+\subsection*{5.3.b}
+	\begin{proof}
+			$\oint_{C[0,3]}\frac{1}{z-1/2}dz$. We have a pole at $w=1/2$. Thus identify $f(z) = 1$. This implies
+				\begin{equation*}
+					\oint_{C[0,3]}\frac{1}{z-1/2}dz = 2\pi i f(1/2) = 2\pi i (1) = 2\pi i
+				\end{equation*}
+
+	\end{proof}
+	
+	
+\subsection*{5.3.c}
+	\begin{proof}
+		The function $\frac{1}{z^2+4}=\frac{1}{(z-2i)(z+2i)}$ has two poles, both of which are in our region of integration. Thus define $\gamma_1, \gamma_2$ to be the clockwise semicircles each enclosing one of the poles. Then we have that
+			\begin{align*}
+				\oint_{C[0,3]}\frac{1}{(z-2i)(z+2i)}dz &= \oint_{\gamma_1}\frac{1}{(z-2i)(z+2i)}dz+\oint_{\gamma_2}\frac{1}{(z-2i)(z+2i)}dz\\ 
+			\end{align*}
+		\noindent Applying Cauchy's integral theorem on each of the curves gives 
+			\begin{align*}
+				&= 2\pi i \frac{1}{z+2i}\big|_{z=2i}+ 2\pi i \frac{1}{z-2i}\big|_{z=-2i} \\ 
+				&= \frac{\pi}{2} - \frac{\pi}{2} = 0
+			\end{align*}
+	\end{proof}
+	
+	
+\subsection*{5.3.d} 
+	\begin{proof}
+	Note that the function $\frac{e^{z}}{z^3}$ has a pole of multiplicity 3 at $z=0$. Recall the generalized Cauchy integral formula which states
+		\begin{align*}
+			f^{(n)}(w) = \frac{n!}{2\pi i}\oint_\gamma \frac{f(z)}{(z-w)^{n+1}}dz
+		\end{align*}
+		
+	\noindent Using this theorem for $n=2$ gives the desired result. 
+		\begin{align*}
+			\oint_{C[0,3]}\frac{e^z}{z^3} &= \frac{2\pi i}{2!}\frac{d^2}{dz^2}d^z\big|_{z=0} \\ 
+				&= \pi i e^0 = \pi i 
+		\end{align*}
+	\end{proof}
+
+\subsection*{5.3.e}
+	\begin{proof}
+		$\oint_{C[0,3]}\frac{\cos^2(z)}{z^2}dz$. Let $w=0$, apply first derivative form of Cauchy's integral theorem. 
+			\begin{align*}
+				\oint_{C[0,3]}\frac{\cos^2(z)}{z^2}dz &= \frac{2\pi i}{1!}\frac{d}{dz}\cos^2(z)\big|_{z=0} \\ 
+				&= 2\pi i (2\cos(z)\sin(z))\big|_{z=0} \\ 
+				&= 0 
+			\end{align*}
+	\end{proof}	
+	
+	
+\subsection*{5.4}
+	\begin{proof}
+		There are two cases: $w<2$ and $w>2$. If $w<w$ then the function $\frac{e^z}{(z-w)^2}$ has a pole of multiplicity 2 inside of $C[0,2]$. Thus applying Cauchy's integral formula for the first derivative yields
+			\begin{equation*}
+				\oint_{C[0,2]} \frac{e^z}{(z-w)^2}dz = 2\pi i \frac{d}{dz}e^z \big|_{z=w} = 2\pi i e^w 
+			\end{equation*}
+		\noindent If $w>2$ then the function $\frac{e^z}{(z-w)^2}$ is holomorphic in and on the curve ${C[0,2]}$. Thus it's integration yields $\oint_{C[0,2]}\frac{e^z}{(z-w)^2}dz = 0$. 
+	\end{proof}
+	
+	
+\subsection*{5.18} 
+	\textit{Compute  $\int\limits_{-\infty}^{\infty}\frac{dx}{x^4+1}$}	
+	\begin{proof}
+		Let $\sigma_R$ define the semicircle joining $-R$ and $R$ with radius $R$ in the counterclockwise orientation. Let $\gamma_R$ denote the arc portion of $\sigma_R$ going from $R$ to $-R$. Then we have 
+			\begin{equation*}
+				\oint_{\sigma_R} \frac{dz}{z^4+1} = \int_{\gamma_R}\frac{dz}{z^4+1} + \int_{[-R,R]}\frac{dx}{x^4+1}
+			\end{equation*} 
+		\noindent First we will argue that the integral over $\gamma_R$ must be zero so that the left hand side is equal to the integral to the far right. Then we will compute the L.H.S. using the residue theorem taking our limit as R goes to infinity giving the value of the original integral. \\ 
+		
+		\noindent We can easily bound the $\gamma_R$ integral in the following way. 
+			\begin{align*}
+				\Big|\int_{\gamma_R}\frac{dz}{z^4+1}\Big| &\leq \max_{z\in\gamma_R}\Big|\frac{1}{z^4+1}\Big|\pi R \\ 
+					&= \frac{\pi R}{R^4+1} \\ 
+				\text{then } \lim\limits_{R\to\infty}&\Big(\frac{\pi R}{R^4+1}\Big)= 0 \\ 
+				\text{ thus} 0 \leq &\int_{\gamma_R}\frac{1}{z^4+1}dz \leq 0 \\ 
+				\Rightarrow &\int_{\gamma_R}\frac{1}{z^4+1}dz = 0
+			\end{align*}
+		\noindent Thus we have that 
+			\begin{equation*}
+				\int_{[-R,R]}\frac{dx}{x^4+1} = \oint_{\sigma_R} \frac{dz}{z^4+1}
+			\end{equation*}
+		
+		
+		\noindent To evaluate the R.H.S. observe that $z^4+1 = (z-e^{i\pi/4})(z-e^{3i\pi/4})(z-e^{5i\pi/4})(z-e^{7i\pi/4})$ and so our integrand has four simple poles, two of which lie in our region of integration $\sigma_R$. Those are the roots that lie in the first two quadrants, namely $e^{i\pi/4}$ and $e^{3i\pi/4}$. Thus applying the residue theorem gives that 
+			\begin{align*}
+				\oint_{\sigma_R}\frac{dz}{z^4+1} &= 2\pi i \sum_j Res[f(z), z=z_i] \\
+					&= 2\pi i \Big[Res[f(z), z=e^{i\pi/4}]+Res[f(z), z=e^{3i\pi/4}]\Big] \\ 
+					&= 2\pi i \Bigg[\frac{1}{(e^{i\pi/4}-e^{3i\pi/4})(e^{i\pi/4}-e^{5i\pi/4})(e^{i\pi/4}-e^{7i\pi/4})} \\
+					&\quad \quad \quad+ \frac{1}{(e^{3i\pi/4}-e^{i\pi/4})(e^{3i\pi/4}-e^{5i\pi/4})(e^{3i\pi/4}-e^{7i\pi/4})}\Bigg] \\ 
+					&= 2\pi i \Big[-\frac{1}{4}\Big(e^{i\pi/4}-e^{3i\pi/4}\Big)\Big] \\
+					&= -\frac{\pi i}{2}\frac{1}{\sqrt{2}}\Big[(1+i)+(-1+i)\Big] \\ 
+					&= \frac{\pi\sqrt{2}}{2}
+			\end{align*}
+		\noindent Our solution is independent of $R$ as expected, thus as we take the limit $R\to\infty$ we have that 
+			\begin{equation*}
+				\int_{-\infty}^{\infty}\frac{dx}{x^4+1} = \lim\limits_{R\to\infty}\oint_{\sigma_R}\frac{dz}{z^4+1} = \frac{\pi\sqrt{2}}{2}
+			\end{equation*}
+	\end{proof}
+	
+	
+\subsection*{8.3}
+	\textit{Find the power series centered at $\pi$ for $\sin(z)$}
+	\begin{proof}
+		First recall the general equation for a power series centered at $z_0$
+			\begin{equation*}
+				f(z) = \sum\limits_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n
+			\end{equation*}
+		\noindent Also, remember that the derivatives of $\sin(z)$ are cyclic i.e. 
+			\begin{align*}
+				f(z) &= \sin(z) & f'(z) &= \cos(z) \\ 
+				f''(z) &= -\cos(z) & f'''(z) &= -\sin(z) \\ 
+				. & .. & . &.. 
+			\end{align*}
+		\noindent Taking this we can write out the first few terms of the expansion in order to do some pattern recognition. 
+			\begin{align*}
+				\sin(z) &= \sin(\pi) + \cos(\pi)(z-\pi) -\frac{\sin(\pi)}{2!}(z-\pi)^2 ... \\
+				&= - (z-\pi)+\frac{1}{3!}(z-\pi)^3-\frac{1}{5!}(z-\pi)^5 + ...
+			\end{align*}
+		And so we can write the entire power series in summation notation as follows 
+			\begin{equation*}
+				\sin(z) = \sum_{n=0}^{\infty}\frac{(-1)^{n+1}}{(2n+1)!}(z-\pi)^{2n+1}
+			\end{equation*}
+	\end{proof}
+	
+	
+	
+	
+\subsection*{8.5.a} 
+	\begin{proof}
+		$f(z) = \frac{1}{1+z^2}$ at $z_0 = 1$. To find the power series up to third order we will need the first three nonzero terms. The derivatives of f(z) are as follows 
+			\begin{align*}
+				f(z) 	&= \frac{1}{1+z^2} & f(1) &= \frac{1}{2} \\ 
+				f'(z) 	&= \frac{-2z}{(1_z^2)^2} & f'(1) &= -\frac{1}{2} \\ 
+				f''(z) 	&= \frac{6z^2-2}{(1+z^2)^3} & f''(1) &= \frac{1}{2} \\ 
+				f'''(z) &= \frac{2z(-18z^2+6)}{(1+z^2)^4}+\frac{12z}{(1+z^2)^3} & f'''(1) &= 0
+			\end{align*}
+		Thus we have that the power series expansion up to third order is 
+			\begin{equation*}
+				f(z) \approx \frac{1}{2}-\frac{1}{2}(z-1)+\frac{1}{4}(z-1)^2 + 0 
+			\end{equation*}
+		\noindent The radius of convergence can be taken to be the distance from $z_0$ to the nearest singularity of $f(z)$. We can rewrite $f(z) = \frac{1}{1+z^2} = \frac{1}{(z+i)(z-i)}$. Thus the poles of $f(z)$ are $\pm i$. $|z_0\pm i| = |1\pm i| = \sqrt{2}$. Thus the radius of convergence for the power series expansion of $f(z)$ about $z_0=1$ is $R=\sqrt{2}$. 
+	\end{proof}	
+	
+	
+\subsection*{8.5.b} 
+	\begin{proof}
+		$f(z) = \frac{1}{e^z+1}$, $z_0 = 0$. Again to find the power series we need the first few derivatives evaluated at $z_0 = 0$. 
+			\begin{align*}
+				f(z) &= \frac{1}{e^z+1} & f(0) &= \frac{1}{2} \\ 
+				f'(z) &= -\frac{e^z}{(e^z+1)^2} & f'(0) &= -\frac{1}{4} \\ 
+				f''(z) &= \frac{2e^{2z}}{(e^z+1)^3}-\frac{e^z}{(e^z+1)^2} & f''(0)&=\frac{2}{8}-\frac{1}{4}=0 \\ 
+				f'''(z) &= -\frac{6e^{3z}}{(e^z+1)^4}+\frac{6e^{2z}}{(e^z+1)^3}-\frac{e^z}{(e^z+1)^2} & f'''(0)&= \frac{1}{8} 
+			\end{align*}
+		Thus our power series to the third order is given by 
+			\begin{equation*}
+				f(z) \approx \frac{1}{2} - \frac{1}{4}z + \frac{1}{8\cdot 3!}z^3 
+			\end{equation*}
+		The denominator of $f(z)$ is zero when $e^z = -1$ which means $z=i(\pi_2\pi n), n\in\mathbb{Z}$. Thus the closest singularity occurs when $n=0$ and thus $R = |0-\pi i| = \pi $
+	\end{proof}
+	
+\subsection*{8.5.c} 
+	\begin{proof}
+		$f(z) = (1+z)^{1/2}$, $z_0 = 0$. The first few derivatives evaluated at $z_0$ are 
+			\begin{align*}
+				f(z) &= (1+z)^{1/2} & f(0)&= 1 \\ 
+				f'(z) &= \frac{1}{2}(1+z)^{-1/2} & f'(0)&=\frac{1}{2} \\ 
+				f''(z) &= -\frac{1}{4}(1+z)^{-3/2} & f''(0)&= -\frac{1}{4} \\ 
+				f'''(z) &= \frac{3}{8}(1+z)^{-5/2} & f'''(0)&= \frac{3}{8} \\ 
+			\end{align*}
+		Thus the power series expansion to third order is 
+			\begin{equation*}
+				f(z) \approx 1 + \frac{1}{2}z -\frac{1}{4\cdot 2!}z^2+\frac{3}{8\cdot 3!}z^3
+			\end{equation*}
+		To consider the radius of convergence we must investigate the singularities of $f(z)$ using the principle value of an exponent we can say that $(1+z)^{1/2} = \exp(\frac{1}{2}Log(1+z))$. Recall that $Log(1+z)$ is undefined when $z=-1$ because $\ln(0) = -\infty$. This suggests that $R = |0+1| = 1$. 
+	\end{proof}
+	
+\subsection*{8.5.d}
+	\begin{proof}
+		$f(z)=e^{z^2}$, $z_0 = i$. We need the first few derivatives evaluated at $z_0$. They are
+			\begin{align*}
+				f(z) &= e^{z^2} & f(i) &= \frac{1}{e} \\ 
+				f'(z) &= 2ze^{z^2} & f'(i) &= \frac{2i}{e} \\ 
+				f''(z) &= 2e^{z^2}+4z^2e^{z^2} & f''(i) &= -\frac{2}{e} \\ 
+				f'''(z) &= 12ze^{z^2} + 8z^3e^{z^2} & f'''(i)&= \frac{4i}{e}
+			\end{align*}
+		Thus our power series expansion to third order is 
+			\begin{equation*}
+				f(z) \approx \frac{1}{e} + \frac{2 i}{e}(z-i) -\frac{2}{e\cdot 2!}(z-i)^2+\frac{4i}{e\cdot 3!}(z-i)^3 
+			\end{equation*}
+		Note that the functions $e^z, z^2$ are entire. Thus their composition, $f(z)$ must also be entire. This suggests that $R=+\infty$. 
+	\end{proof}
+	
+	
+	
+	
+\subsection*{5.10.a}
+	\begin{proof}
+		$\sum_{k\geq 0} c_k z^{2k}$. Note that we already have that $\sum_{k\geq 0}c_kz^k$ converges with a radius of convergence $R$. Recall the definition of the radius of convergence which says that 
+			\begin{equation}
+				R = \begin{cases}
+						\infty & \text{if } \lim\limits_{k\infty} \sqrt[k]{c_k} = 0 \\ 
+						\frac{1}{\lim\limits_{k\infty} \sqrt[k]{c_k}} & \text{ otherwise} 
+					\end{cases}
+			\end{equation}
+		Thus because the $c_k$ did not change, our radius of convergence did not change. This also makes sense because the function $z^2$ is entire and so composing it with a power series should not change it's radius of convergence. 
+	\end{proof}
+	
+\subsection*{5.10.b} 
+	\begin{proof}
+		$\sum_{k\geq 0} 3^k c_k z^k$. Define a new coefficient $b_k = 3^k c_k$. Then we have that 
+			\begin{equation*}
+				\frac{1}{R'} = \lim\limits_{k\to\infty}\sqrt[k]{b_k} = \lim\limits_{k\to\infty}\sqrt[k]{3^k c_k}=\lim\limits_{k\to\infty}3\sqrt[k]{c_k} = \frac{3}{R}
+			\end{equation*}
+		Thus the new radius of convergence is $R' = \frac{R}{3}$. 
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

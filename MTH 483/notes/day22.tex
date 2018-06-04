@@ -1,0 +1,100 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{proposition}{Proposition}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis: Day 22} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+
+\subsection*{Heading towards Residues} 
+	Recall that last time we defined 3 types of singularities
+		\begin{enumerate}
+			\item Removable
+			\item Pole 
+			\item Essential
+		\end{enumerate}
+	\noindent Removable singularities mean it's possible to find an alternative function that agrees with $f$ and is defined at the singularity. A \textit{pole} had $\lim_{z\to z_0}=+\infty$. Essential was neither removable nor a pole.\\ 
+	
+	\begin{theorem}
+		If $f:\Omega\setminus\{z_0\}\to\mathbb{C}$ is holomorphic and there exists $r>0$ for which $f(z)$ is bounded on $D_r(z_0)\setminus\{z_0\}$, then the singularity is removable. Using this we can show the following
+	\end{theorem}
+	
+	\begin{proposition}
+		If $f:\Omega\setminus\{z_0\}\to\mathbb{C}$ is holomorphic, then $f$ has a pole at $z_0$ if and only f $\frac{1}{f(z_0)}$ has a zero when $f(z)$ has a singularity. 
+	\end{proposition}
+	
+	\noindent \textit{Example} $f(z) = \frac{z^2}{(z-1)(z+2)}$ $g(z) = \frac{(z-1)(z-2)}{z^2}$ \\ 
+	f(z) has zero at $z=0$ and poles at $z=1, z=-2$. \\ 
+	
+	
+	
+	\begin{proposition}
+		Let $f:\Omega\setminus\{a\}\to\mathbb{C}$ be holomorphic w/ a pole at $a$ of multiplicity $m\geq 1$. Then there exists $r>0$ such that for all $z\in D_r(a)\setminus\{a\}$ we have that:
+			\begin{equation}
+				f(z) \frac{a_{-m}}{(z-a)^m} + \frac{a_{-m+1}}{(z-a)^{m-1}}+...+\frac{a_{-1}}{z-a}+a_0+a_1(z-a)+... = \sum_{k=-m}^{\infty}a_k(z-a)^k 
+			\end{equation}
+	\end{proposition}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

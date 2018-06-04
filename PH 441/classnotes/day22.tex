@@ -1,0 +1,37 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{cancel} 
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+
+\begin{document}
+	%Header-Make sure you update this information!!!!
+	\noindent
+	\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+	\normalsize Day 22 \hfill  Date: \today \\
+	
+\subsection*{Heat capacity for Fermi-gas} 
+	Recall that the heat capacity is given by $C_V = \big(\frac{\partial U}{\partial T}\big)_V$. Thus we can find this using our density of states
+		\begin{align*}
+			U &= \int D(\varepsilon)\varepsilon f(\varepsilon)d\varepsilon \\ 
+			\Rightarrow C_V &= \int D(\varepsilon)\varepsilon \Big(\frac{\partial f(\varepsilon)}{\partial T}\Big)_\varepsilon d\varepsilon \\ 
+			f(\varepsilon) &= \frac{1}{e^(\varepsilon-\mu)/kT + 1} \\ 
+			\frac{\partial f}{\partial T} &= \frac{-e^{\beta(\varepsilon-\mu)}}{(e^{\beta(\varepsilon-\mu)}+1)^2}\Big[\frac{(\varepsilon-\mu)}{kT^2}-\beta\frac{\partial \mu}{\partial T}\Big]
+		\end{align*}
+	where the $\partial_T \mu$ term goes to zero if we assume that $\mu$ isn't changing much with temperature. Thus we have $\mu=\varepsilon_f$ as well. So,  
+		\begin{align*}
+			\partial_T f(\varepsilon) &= \frac{1}{\Big(e^{\beta(\varepsilon-\varepsilon_f)}+1\Big)\Big(e^{-\beta(\varepsilon-\varepsilon_f)}+1\Big)}\frac{\varepsilon-\varepsilon_f}{kT^2}
+		\end{align*}
+\end{document}

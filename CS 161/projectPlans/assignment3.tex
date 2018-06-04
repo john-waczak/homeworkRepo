@@ -1,0 +1,144 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=0.5in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{listings}
+\graphicspath{ {images/} }
+
+ \lstset{breaklines=true}
+
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assigment 3: Project Plan} \hfill \textbf{John Waczak} \\
+\normalsize CS 161 \hfill  Date: \today \\
+Tim Alcon \\
+
+
+\subsection*{3a: Small sort}
+	\paragraph{}
+		\textit{Testing plan}\\
+	
+		\begin{center}
+			\begin{tabular}{|c|c|}
+				\hline
+				\textbf{test} & \textbf{expected output} \\ 
+				\hline 
+				input 10, 5, 1 & output 1, 5, 10 \\ 
+				\hline
+				input 10, -10, 0 & output -10, 0, 10 \\ 
+				\hline
+				input 1, 1, 1 & output 1, 1, 1 \\ 
+				\hline
+			\end{tabular}
+		\end{center}
+	
+	\paragraph{}
+		\textit{Pseudo-code} 
+		\begin{lstlisting}
+		
+			define function that passes three ints (num1, num2,
+			num3) by reference
+				initialize three ints: max, middle, min 
+				and set all 3 to value of num1
+				
+				if num2 is less than min
+					set min to num2
+				else if num2 is greater than max
+					set max to num2 
+				else 
+					set middle to num2 
+				
+				if num3 is less than min
+					set min to num3 
+				else if num3 is greater than max
+					set max to num3 
+				else 
+					set middle to num 3 
+					
+				set num1 to min 
+				set num2 to middle 
+				set num3 to max 
+			___________________________________________________		
+			
+			(in main loop)
+			
+			initialize three ints: num1, num2, num3 
+			
+			prompt user to enter three integers and set to num1, 
+			num2, and num3
+			
+			run function with values num1, num2, num3
+			
+			print out new values of num1, num2, num3
+			 
+		\end{lstlisting}
+
+
+
+\subsection*{3b: }
+	
+	\paragraph{}
+		\textit{Testing plan} 
+		\begin{center}
+			\begin{tabular}{|c|c|}
+				\hline
+				\textbf{test} & \textbf{expected output} \\ 
+				\hline 
+				players only hold & game eventually ends \\ 
+				\hline
+				players never hold & game eventually ends \\ 
+				\hline 
+				comment out random numbers and set to hard values like 5 & game should eventually end \\ 
+				\hline 
+			\end{tabular}
+		\end{center}
+	I'm not really sure what else to try as my only inputs and outputs are to hold or not hold. 
+	
+	\paragraph{}
+		\textit{Pseudo-code}
+		\begin{lstlisting}	
+			define function called take takeTurn that takes a 
+			player's score as the argument (pass by reference).
+				define int turnTotal and set to 0
+				
+				initialize boolean caled turnOver to false 
+				
+				begin while loop on condition turnOver
+				
+					roll two random numbers roll_1, roll_2 between 1 and 6 then print out rolls
+				
+					if there is a single one, print turn over and set turnOver to true
+				
+					else if both are 1's set player's score to 0 and set turnOver to true
+				
+					otherwise give player option to hold. If they hold, set turnTotal plaer score to the sum of the rolls and allow loop to repeat. Otherwise set turnOver to true and add turnTotal to player score. 
+			
+			intialize two ints for each player's score and set to 0
+			initialize int turn and set to 1 (for player 1 and 2)
+			initialize a boolean gameOver to false
+			
+			begin while loop on gameOver condition 
+				if turn is 1 call takeTurn function with player 1's score after function call set turn to 2. 
+				
+				if turn is 2 call takeTurn function with player 2's score after function call set turn to 1. 
+				
+				print out each players score 
+				
+				if either score is greater than or equal to 100, end set gameOver to true and then print out scores and declare a winner. 
+				
+				
+		\end{lstlisting} 
+
+
+
+
+
+
+\end{document}

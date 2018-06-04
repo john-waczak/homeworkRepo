@@ -1,0 +1,38 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{physics}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assignment 4 Reflection} \hfill \textbf{John Waczak} \\
+\normalsize CS 161 \hfill  Date: \today \\
+
+\subsection*{Understanding}
+	\paragraph{}
+	When I wrote my project plan I was confused about some of the rules for the game. For example I somehow missed the orthogonal move requirement as well as the requirement about the first move not being in the center of the board. After writing my code according to my project plan and then double checking with the project description I was able to figure out what I needed to update. 
+	
+\subsection*{Testing Plan}
+	\paragraph{}
+	I found that the testing plan was particularly hard to write for this project as it required specifying the board configuration as well as subsequent moves and results. To that end, I think this was less useful then when we wrote testing plans for past projects that mostly involved functions. Perhaps on future projects I will writing testing plans for the class methods and functions I write as well as the overall game configuration to make this more helpful.
+
+\subsection*{Design}
+	\paragraph{}
+	As I mentioned in the first section, I had some difficulty concerning the rules of the game but the overall, I don't think this impacted the design. I decided to try and use classes as well as arrays which made it very easy to store and update the game board as well as group together functions for testing whether moves were legal and when the game is over. 
+\subsection*{Implementation} 
+	\paragraph{}
+	The most difficult part regarding the implementation was figuring out a successful way to check for when the game is over. I thought about trying to loop through all of the elements of my board array but it turned out to be about as much code as just programming in the 8 if-else statements for all of the different 3-in-a-row possibilities. Other than that I didn't have too much trouble implementing my pseudo code. 
+\subsection*{Improvement} 
+	\paragraph{} 
+	To improve I think I would like to clean up my code to make things simpler where I can. Particularly in my main loop I had some large if else states that could probably by broken up into smaller functions and simplified (a lot of repeated code). 
+	
+
+		
+\end{document}

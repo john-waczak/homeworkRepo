@@ -1,0 +1,100 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{cancel} 
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+	%Header-Make sure you update this information!!!!
+	\noindent
+	\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+	\normalsize Day 19 \hfill  Date: \today \\
+	
+	
+	
+	
+\subsection*{Motivation: Fermi/Bose gases} 
+	\par\noindent\rule{\textwidth}{0.4pt}; 
+	
+	\noindent Why are we bothering with this? Where do Fermi-gases appear? Recall that for a Fermi/Bose gas we need either high density or low temperature (or both). The electrons in a metal can be treated as an \textit{electron-gas}. The truth is that this isn't a bad model and we can pretty well ignore the electron-electron interaction. In the universe we can see another example in White Dwarf stars and Neutron-Stars. \\
+	
+	\noindent For bosons pick any atom with integer total spin (nucleon plus electron). $He_4$ is the most common one. Bose-Einstein condensation is what you get when these Bose-gasses condense. Another interesting effect is \textit{Super-fluidity}. Lastly, \textit{Superconductivity} is another similar effect where electrons pair up into cooper-pairs that behave as bosons. So this stuff \textit{is interesting}. 
+	
+\subsection*{Density of States} 		
+	\par\noindent\rule{\textwidth}{0.4pt}
+	We are going to now introduce a concept called the density of states $D(\varepsilon)$. It should be called densities of orbitals... but this is what everyone calls it. It tells you how many orbitals there are per unit energy. This is very similar to the multiplicity $g(s)$ that we had in the beginning. The density of states is looking at single particle states so we don't have to do as many combinatorics counting gymnastics. \textbf{Note:} density of states has $[\text{number}]/[\text{engergy}]$ units. Part of the reason we love $D(\varepsilon)$ is because they are \textit{easy}. \\ 
+	
+	\noindent The way we use the density of states is as follows: 
+		\begin{align*}
+			\sum\limits_{n_x}\sum\limits_{n_y}\sum\limits_{n_y}\xi(\varepsilon_{n_x, n_y, n_z}) &= \int \xi(\varepsilon)D(\varepsilon)d\varepsilon\\ 
+			D(\varepsilon) &= \sum\limits_i^{\text{all orbitals}} \delta(\varepsilon-\varepsilon_i)
+		\end{align*}
+	
+	And \textit{we like} $\delta$-functions! Let's do a gas in three dimensions i.e. $\varepsilon_{n_x,n_y,n_z} = \frac{\hbar^2\pi^2}{2mL^2}(n_x^2+n_y^2+n_z^2)$. Remember that there are two spin states. 
+		\begin{align*}
+			D(\varepsilon) &= \sum_i \delta(\varepsilon-\varepsilon_i) \\ 
+				&= 2\int_0^\infty\int_0^\infty\int_0^\infty  \delta(\varepsilon-\varepsilon_i)dn_x dn_y dn_z \\ 
+				&= \frac{2}{8}\int_0^\infty\int_0^{2\pi}\int_0^{\pi}\delta(\varepsilon-\varepsilon(n))n^2 \sin\theta d\theta d\phi dn \\ 
+				&= \pi \int_0^\infty n^2 \delta(\varepsilon - \varepsilon(n))dn \\ 
+			\text{let } \epsilon &= \frac{\hbar^2 \pi^2}{2 m L^2}n^2 \\ 
+				d\epsilon &= \frac{\hbar^2 \pi^2}{2 m L^2}2(ndn) \\ 
+			\Rightarrow &= \pi \int_0^\infty \delta(\varepsilon-\epsilon)\sqrt{\epsilon\frac{2mL^2}{\hbar^2\pi^2}}\frac{mL^2}{\hbar^2\pi^2} d\epsilon  \\ 
+			&= \pi \Big(\frac{L}{\pi}\Big)^3\sqrt{2}\Big(\frac{m}{\hbar^2}\Big)^{3/2}\varepsilon^{1/2} \\ 
+		D(\varepsilon)	&= \frac{V}{2\pi^2}\Big(\frac{2m}{\hbar^2}\Big)^{3/2}\varepsilon^{1/2}
+		\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

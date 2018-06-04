@@ -1,0 +1,158 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Abstract Surfaces} \hfill \textbf{John Waczak} \\
+\normalsize MTH 435 \hfill  Date: \today \\
+Dr. Christine Escher \\
+\par\noindent\rule{\textwidth}{0.4pt}	
+	
+\subsection*{Problem 1}
+	\textit{Introduce a metric on the projective plane $\mathbb{R}P^2$ so that the natural projection $\pi:S^2\to\mathbb{R}P^2$ is a local isometry. What is the Gaussian curvature of such a metric?}
+
+	\begin{proof}
+		Recall that the natural projection $\pi:S^2\to\mathbb{R}P^2$ is defined such that $\forall p \in S^2$, $\pi(p) = [p] = \{p, A(p)\}$ where $A:S^2\to S^2$ is the antipodal map. We want to choose a metric $\langle , \rangle$ for $\mathbb{R}P^2$ such that $\pi$ is an isometry. This mean that for $p\in S^2$ and $\forall x,y \in T_p S^2$ we need 	
+			\begin{equation*}
+				\big\langle x,y \big\rangle_p = \big\langle d\pi(x), d\pi(y) \big\rangle_{\pi(p)}
+			\end{equation*}
+		
+		\noindent Recall that $d\pi:T_p S^2 \to T_{\pi(p)}\mathbb{R}P^2$ is a linear transformation. We also showed in class that specific charts $X_i:U\subset \mathbb{R}^2 \to S^2$ induce an associated basis on the tangent space. Thus, let $p\in S^2$ such that $p= X_i(u,v)$ for some $u,v \in U$ and let $q\in \mathbb{R}P^2$ such that $q=\pi(p)$. Then $\forall a,b \in T_{\pi(p)}\mathbb{R}P^2$ and $\alpha,\beta,\gamma,\delta\in\mathbb{R}$, we can write 
+			\begin{align*}
+				a &= \alpha\Big(\pi \circ X_i(u,v)\Big)_u + \beta\Big(\pi \circ X_i(u,v)\Big)_v \\ 
+				b &= \gamma\Big(\pi \circ X_i(u,v)\Big)_u + \delta\Big(\pi \circ X_i(u,v)\Big)_v 
+			\end{align*} 
+		\noindent Where I have written $\pi(p)_u, \pi(p)_v$ to denote the associated basis for the tangent space. Now define $a',b'\in T_{p=X_i(u,v)}S^2$ such that 
+			\begin{align*}
+				a' &= \alpha \Big(X_i(u,v)\Big)_u + \beta \Big(X_i(u,v)\Big)_v \\ 
+				b' &= \gamma \Big(X_i(u,v)\Big)_u + \delta \Big(X_i(u,v)\Big)_v 
+			\end{align*}
+		\noindent Where $a',b'$ are the points in the tangent space associated with the scaling factors $\{\alpha,\beta,\gamma\delta\}$. From the linearity of $d\pi$ we can write
+			\begin{align*}
+				d\pi(a') &= d\pi \Big[ \alpha \Big(X_i(u,v)\Big)_u + \beta \Big(X_i(u,v)\Big)_v  \Big] \\ 
+					&= \alpha d\pi\Big(X_i(u,v)\Big)_u + \beta d\pi\Big(X_i(u,v)\Big)_v \\ 
+					&= \alpha\Big(\pi \circ X_i(u,v)\Big)_u + \beta\Big(\pi \circ X_i(u,v)\Big)_v = a 
+			\end{align*}
+		So $d\pi(a') = a$ and repeating this process for $b'$ gives $d\pi(b') = b$. Therefore, to induce an isometry, choose a metric $\langle , \rangle$ such that 
+			\begin{equation*}
+				\langle a, b \rangle_{\pi(p)} \equiv \langle a', b' \rangle_p 
+			\end{equation*}
+		Then $\forall x,y \in T_p S^2$ we have that 
+			\begin{equation*}
+				\big\langle x, y \big\rangle_p = \big\langle d\pi(x), d\pi(y)\big\rangle_{\pi(p)}  
+			\end{equation*}
+		Because our choice of metric on $\mathbb{R}P^2$ induces an isometry with $S^2$ then the Gaussian curvature of $S^2$ is preserved by the isometry $\pi$. Thus the curvature of $\mathbb{R}P^2$ under our metric must be 1. 
+	\end{proof}
+
+\subsection*{Problem 2 (The Infinite Mobius Strip)} 
+	\textit{
+		Let $C=\{(x,y,z)\in \R^3 : x^2+y^2 = 1\}$ be a cylinder and $A:C\to C$ be the map (antipodal map) such that $A(x,y,z) = (-x,-y,-z)$. Let $M$ be the quotient of C by the equivalence relation $p\sim A(p)$ and let $\pi:C\to M$ be the map $\pi(p) = [p] = \{p, A(p)\}$, $p\in C$. 
+		\begin{enumerate}[label=(\alph*)]
+			\item Show that $M$ can be given a differentiable structure so that $\pi$ is a local diffeomorphism ($M$ is then called the infinite Mobius Strip) 			
+			\item Prove that M is non-orientable 			
+			\item Introduce a Riemannian metric on M so that $\pi$ is a local isometry. What is the curvature of such a metric. 
+		\end{enumerate}
+		}
+
+		\begin{proof}[(a)]
+			Recall that a \textbf{differentiable structure} is the family of open subsets of $\R^2$ denoted $U_\alpha$ together with coordinate charts on those open subsets that take $U_\alpha \to S$. These charts are denoted $X_\alpha$ and are referred to collectively as $\{U_\alpha, X_\alpha\}$. \\
+			
+			\noindent We need to show that $M$ can be given a differentiable structure $(U_\alpha, \pi\circ X_\alpha)$ so that $\pi$ is a local diffeomorphism. To be a local diffeomorphism we need the image $\pi\circ X_\alpha(U_\alpha)$ to be open in $M$ for all $\alpha$ and that $\pi\circ X_\alpha$ is a smooth bijection with smooth inverse. First, it is not hard to establish that the antipodal map $A(p)$ is a bijection. The only operation is multiplying each coordinate by the scalar (-1) which is smooth. It's inverse also looks pretty much exactly the same. 
+			
+			I think I'm on to something but I'm really confused on how to proceed. 
+			
+			
+ 
+		\end{proof}
+
+		\begin{proof}[(b)]
+			I have no idea what to do for this part... 
+		\end{proof}
+
+		\begin{proof}[(c)]
+			repeat the construction from problem 1. If we make $\pi$ an isometry, then it must preserve the curvature of the cylinder $C$ which we know to be 0. 
+		\end{proof}
+
+\subsection*{Problem 3}
+	\textit{\begin{enumerate}[label=(\alph*)]
+			\item Show that the projection $\pi:S^2\to\R P^2$ from the sphere onto the projective plane has the following properties. (1) $\pi$ is continuous and $\pi(S^2) = \R P^2$. (2) each point $p\in \R P^2$ has a neighborhood U such that $\pi^{-1}(U) = V_1 \cup V_2$ where $V_1$ and $V_2$ are disjoint upen subsets of $S^2$ and the restriction of $\pi$ to each $V_i, \quad i=1,2$ is a homeomorphism onto U. Thus $\pi$ satisfies formally the conditions for a covering map with two sheets. Beacaus of this, we say that $S^2$ is an orientable double covering of $\R P^2$.  	
+			\item Show that in this sense, the torus $T$ is an orientable double covering of the Klein bottle $K$ and that the cylinder is an orientable double covering of the infinite Mobius strip. 
+		\end{enumerate}}
+
+\subsection*{Problem 4} 
+	\textit{Extend the Gauss-Bonnet theorem to orientable Riemannian 2-manifolds and apply it to prove the following fact: There is no Riemannian metric on an abstract surface $T$ }
+
+%\subsection*{Problem 5} 
+%	\textit{Let $S$ be an abstract, connected, non-orientable surface. For each $p\in S$, consider the set $B$ of all bases of $T_p S$ and call two bases equivalent if they are related by a matrix with a positive determinant. This is clearly an equivalence relation that divides $B$ into two disjoint sets. Let $\mathcal{D}_p$ be the quotient space of $B$ by this equivalence relation. $\mathcal{D}$ has two elements, and each element $O_p \in \mathcal{D}_p$ is an orientation of $T_p S$. Let $\tilde{S}$ be the set
+%			\begin{equation}
+%				\tilde{S} = \{(p, O_p: p\in S, O_p\in \mathcal{D}_p)\}
+%			\end{equation}
+%	To give $\tilde{S}$ a differentiable structure, let $\{(U_\alpha, X_\alpha)\}$ be the maximal differentiable structure of $S$ and define $\tilde{X}_\alpha:U_\alpha\to \tilde{S}$ by }
+
+
+
+
+
+
+		
+		
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

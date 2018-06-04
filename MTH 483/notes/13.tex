@@ -1,0 +1,145 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis: Day 13} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+
+\subsection*{More on Cauchy's Integral Formula}
+	\begin{theorem}
+		Let $\Omega \subseteq \mathbb{C}$ be a region containing a closed disc $\overline{D_R(c)}\subseteq\Omega$. Let $f:\Omega\rightarrow\mathbb{C}$ be a holomorphic function and let $w\in D_r(c)$. Then 
+			\begin{equation*}
+				f(w) = \frac{1}{2\pi i}\int\limits_{|z-c|=R}\frac{f(z)}{z-w}dz
+			\end{equation*}
+		Where we have integrated around the circle in the clockwise direction. 
+	\end{theorem} 
+	
+	\begin{proof}
+		Without loss of generality we may assume that w is the center of a circle. Use a straight line homotopy from $|z-c|=R$ to a smaller circle $|z-w|=r$. Then 
+			\begin{equation*}
+				\frac{1}{2\pi i}\int\limits_{|z-c|=R}\frac{f(z)}{z-w}dz = \frac{1}{2\pi i}\int\limits_{|z-w|=r}\frac{f(z)}{z-w}dz
+			\end{equation*}
+		Now let's calculate something that will be usefull: 
+			\begin{align*}
+				\frac{1}{2\pi i}\int\limits_{|z-w|=r}\frac{1}{z-w}dz &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{1}{w + re^{it}-w}rie^{it}dt = 1 \\ 
+			\end{align*}
+		Let $A=f(w)-\frac{1}{2\pi i}\int\limits_{|z-w|=r}\frac{f(z)}{z-w}dz$. We must show that $A=0$. 
+		
+		\begin{align*}
+			|A| &= \Big|f(w)-\frac{1}{2\pi i}\int\limits_{|z-w|=r}\frac{f(z)}{z-w}dz\Big|\\
+			&. \\ 
+			&. \\
+			&. \\
+			|A| &= 0 \text{ some details left out} 
+		\end{align*}
+	\end{proof}
+	
+	\noindent\textbf{Definition} A \textbf{Jordan curve} is a simple, closed curve which is positively oriented (counter-clockwise, does not cross itself, ends where it begins). \\
+	
+	\begin{theorem}[Jordan Curve Theorem]
+		If $\gamma$ is a Jordan Curve then $\mathbb{C}\setminus\gamma$ is the union of two regions, one bounded and one unbounded (ie. the "inside" and the "outside".)
+	\end{theorem}	
+	
+	\noindent Now we may interpret \textbf{positively-oriented} to mean that the bounded region is on the left as we traverse the curve. \\
+	
+	\begin{theorem}[Cauchy's theorem for Jordan Curves]
+		Let $\Omega\subseteq\mathbb{C}$ be a region, let $\gamma$ be a Jordan curve in $\Omega$ such that $\Omega$ contains the entire region bounded by $\gamma$. Let $w$ be a point in the region bounded by $\gamma$. Then if $f:\Omega\rightarrow\mathbb{C}$ is holomorphic, 
+			\begin{align*}
+				f(w) &= \frac{1}{2\pi i}\int_{\gamma} \frac{f(z)}{z-w}dz
+			\end{align*}
+	\end{theorem}
+	
+	\noindent The proof of this theorem follows from the theorem for circles as we can show that $\gamma$ is homotopic to a circle centered at $w$ in $\Omega\setminus\{w\}
+	$. 
+		
+		
+		
+\subsection*{Examples}
+		Ex: $\int\limits_{|z-i|=1} \frac{1}{z^2+1}dz$ We could use partial fraction decomposition and just grind it out but we can do it with less effort using Cauchy's theorem. Let $f(z)=\frac{1}{z+i}$. This is holomorphic on $\mathbb{C}\setminus\{-i\}$. Furthermore, it is holomorphic on our region of integration which means we can use Cauchy's theorem. 
+			\begin{align*}
+				\text{let } w&= i  \\ 
+				f(i) &= \frac{1}{2\pi i}\int\limits_{|z-i|=1}\frac{f(z)}{z-i}dz \\ 
+				\text{we want } \int\limits_{|z-i|=1}\frac{1}{z^2+1}dz &= \int\limits_{|z-i|=1}\frac{\frac{1}{z+i}}{z-i}dz \\ 
+				&= 2\pi i f(i) \\
+				&= \pi 
+			\end{align*}
+		
+		\noindent Ex: $\int\limits_{|z|=3}\frac{e^z}{z^2-2z}dz$. 
+			\begin{align*}
+				\int\limits_{|z|=3}\frac{e^z}{z^2-2z}dz &= \int\limits_{|z|=3}\frac{-\frac{1}{2}e^z}{z}+\frac{\frac{1}{2}e^z}{z-2}dz\\
+				&= -\frac{1}{2}\int\limits_{|z|=3}\frac{e^z}{z}dz +\frac{1}{2}\int\limits_{|z|=3} \frac{e^z}{z-2}dz \\ 
+				&= -\frac{1}{2}2\pi i e^0 + \frac{1}{2}2\pi i e^2 \\ 
+				&= \pi i(e^2-1)
+			\end{align*}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

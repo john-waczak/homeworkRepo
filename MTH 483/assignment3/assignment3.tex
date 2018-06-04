@@ -1,0 +1,373 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+
+\begin{document}
+\noindent
+\large\textbf{Complex Variables: Assignment 3} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+
+
+\subsection*{3.31} 
+	\begin{proof}[a]
+		\begin{align*}
+			\sin(z) &= \frac{e^{iz}-e^{-iz}}{2i} \\ 
+				&= \frac{e^{i(x+iy)}-e^{-i(x+iy)}}{2i} \\ 
+				&= \frac{e^{-y+ix}-e^{-y-ix}}{2i} \\ 
+				&= \frac{e^{-y}(\cos x + i \sin x)-e^{y}(\cos x - i \sin x)}{2i} \\ 
+				&= \frac{(e^{-y}-e^{y})\cos x + i(e^{-y}+e^{y})\sin x}{2i} \\ 
+				&= i\sinh y \cos x + \cosh y \sin x 
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[b] 
+		\begin{align*}
+			\cos z &= \frac{e^{iz}+e^{-iz}}{2} \\ 
+				&= \frac{e^{i(x+iy)}+e^{-i(x+iy)}}{2} \\ 
+				&= \frac{e^{-y+ix}+e^{y-ix}}{2} \\ 
+				&= \frac{e^{-y}(\cos x + i \sin x)+e^{y}(\cos x - i \sin x)}{2}\\ 
+				&= \frac{(e^{-y}+e^{y})\cos x + i(e^{-y}-e^{y})\sin x}{2} \\ 
+				&= \cosh y \cos x - i \sinh y \sin x 
+		\end{align*}
+	\end{proof}
+	
+\subsection*{3.32}
+	\begin{proof}
+		Notice that we can write $\sin(z) = \frac{1}{2i}\Big(e^{iz}-e^{-iz}\Big)$. Thus since we are solving for the zeros and $2i\neq0$, it follows that $e^{iz}=e^{-iz}$ and therefore $e^{2iz} = 1$. However since we have the periodicity of the exponential function we can write that $e^{2iz} = 1e^{0 +i 2\pi n}$ which gives the equation $2iz = 2i\pi n$ and therefore $z= \pi n$ where $n\in\mathbb{Z}$. Thus we have shown that all of the roots of $\sin z$ are real valued with precisely integer multiples of $\pi$. 
+	\end{proof}
+		
+\subsection*{3.33}
+	\begin{proof}[a]
+		Let the set S be the line segment $z=iy$ with $0\leq y \leq 2\pi$. Then the image of $z$ under the exponential function is $\exp(S) = \exp(iy) = \cos(y)+i\sin(y)$. This image is the circle of radius one centered about the origin. 
+	\end{proof}
+	
+	\begin{proof}[b]
+		Let the set S be the line segment $z=1+iy$ with $0\leq y \leq 2\pi$. Then the image of this set under the exponential function is given by $\exp(S) = \exp(1+iy) = e^1(\cos(y) + i\sin(y))$. This is just the circle of radius $e$ around the origin. 
+	\end{proof}
+	
+	\begin{proof}[c]
+		Let $S=\{z=x+iy:0\leq x\leq 1, 0\leq y \leq 2\pi \}$ be a rectangle. Then the image of of S under the exponential function is $\exp(S) = \exp(x+iy) = e^x(\cos(y)+i\sin(y))$. For every x we have the circle of radius $e^x$. Thus this image is the union of all such circles letting x go from $0$ to $1$ i.e. the closed disk of radius $e$ centered at the origin.  
+	\end{proof}
+		
+\subsection*{3.40} 
+	Recall that the principal value of $a^b$ with $a,b\in\mathbb{C}$ is defined as $a^b = \exp(bLog(a))$ where $Log(z)$ denotes the principal branch of the logarithm. Using this we have the following: 
+	
+	\begin{proof}[a]
+		\begin{align*}
+			Log(2i) &= \exp(1\cdot Log(Log(2i))) \\ 
+				&= Log(2i) \\ 
+				&= \ln(2) + i\pi/2 
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[b]
+		\begin{align*}
+			(-1)^i &= \exp(iLog(-1)) \\ 
+				&= \exp(i(\ln(1)+i\pi)) \\ 
+				&= e^{-\pi} \approx 0.0432139 
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[c]
+		\begin{align*}
+			Log(-1+i)&= \exp(Log(Log(-1+i))) \\ 
+				&= Log(-1+i) \\ 
+				&= \ln(\sqrt{2})+i\frac{3\pi}{4}
+		\end{align*}
+	\end{proof}
+
+
+\subsection*{3.41}
+	\begin{proof}[a]
+		\begin{align*}
+			e^{i\pi} &= \cos \pi + i \sin \pi \\ 
+				&= -1 
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[b]
+		\begin{align*}
+			e^\pi &= e^\pi \\ 
+			\text{ as it is a real number and}&\text{ so is already in the correct form} 
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[c]
+		\begin{align*}
+			i^i &= \exp(iLog(i)) \\ 
+				&= \exp(i(\ln(1)+i\pi/2)) \\ 
+				&= \exp(-\pi/2)
+		\end{align*}
+	\end{proof}
+	
+	\begin{proof}[d]
+		\begin{align*}
+			e^{\sin i} &= e^{\frac{e^{ii}-e^{-ii}}{2i}} \\ 
+				&= e^{\sinh(1)i}\\
+				&= e^{\sinh(1)}e^i \\ 
+				&= e^{\sinh(1)}(\cos(1)+i\sin(1)) \\ 
+				&= e^{\sinh(1)}\cos(1) + ie^{\sinh(1)}\sin(1) 
+		\end{align*}
+	\end{proof}
+
+	\begin{proof}[e]
+		\begin{align*}
+			\exp(Log(3+4i)) &= \exp(\ln(5)+i\arctan(4/3)) \\ 
+				&= 5e^{i\arctan(4/3)} \\ 
+				&= 5(\cos\arctan(4/3)+i\sin\arctan(4/3)) \\ 
+				&= 5(3/5 + i4/5) \\ 
+				&= 3 + 5i \text{ as expected since } \exp(Log(z)) = z 
+		\end{align*}
+	\end{proof}
+
+	\begin{proof}[f]
+		\begin{align*}
+			(1+i)^{1/2} &= \exp(1/2 Log(1+i)) \\ 
+				&= \exp(1/2(\ln(\sqrt{2})+i\pi/4)) \\ 
+				&= 2^{1/4}e^{i\pi/8} \\ 
+				&= 2^{1/4}(\cos\pi/8 + i\sin\pi/8)
+		\end{align*}
+	\end{proof}
+
+
+
+\subsection*{4.1}
+	Recall that the length of a curve $\gamma(t)$ is given as $\int |\gamma'(t)|dt$. Thus we have the following: 
+	
+	\begin{proof}[b]
+		\begin{align*}
+			\gamma(t) &= (-1-i)+(2i-(-1-i))t \\ 
+				&= -1+t-i+3it \\ 
+			\gamma'(t) &= 1+3i \\ 
+			\Rightarrow \text{length}(\gamma(t)) &= \int_0^1 \sqrt{(1+3i)(1-3i)}dt \\ 
+				&= \sqrt{10}\cdot 1 \\ 
+				&= \sqrt{10} 
+		\end{align*}
+	\end{proof}
+
+	\begin{proof}[c]
+		Top half of circle $C[0,34]$. 
+		\begin{align*}
+			\gamma(t) &= 34e^{it} \\ 
+			\gamma'(t) &= 34ie^{it} \\ 
+			\Rightarrow \text{length}(\gamma(t)) &= \int_0^{\pi} \sqrt{\big(34ie^{it}\big)\big(-34ie^{-it}\big)}dt \\ 
+			&= \int_0^{\pi} 34 dt \\ 
+			&= 34\pi \text{ which is exactly half of the circumference of the circle}
+		\end{align*}
+	\end{proof}
+
+
+\subsection*{4.4}
+	\begin{proof}
+		Recall Cauchy's integral forumla which states that 
+			\begin{equation*}
+				f(w)=\frac{1}{2\pi i}\oint\limits_{C[w,R]} \frac{f(z)}{z-w}dz
+			\end{equation*}. 
+		whenever $f(z)$ is holomorphic on $\overline{D}[w,R]$. Thus choosing $f(z)=1$ and $w=0$ gives us that:
+			\begin{align*}
+				1 &= \frac{1}{2\pi i}\oint\limits_{C[0,1]}\frac{dz}{z} \\ 
+				\Rightarrow & \oint\limits_{C[0,1]}\frac{dz}{z} = 2\pi i 
+			\end{align*}
+		Because we have chosen $f(z)$ to be a constant function for all $z\in\mathbb{C}$ then $f(w)=1$ $\forall w$. This means that reapplying the theorem gives
+			\begin{align*}
+				1 &= \frac{1}{2\pi i}\oint\limits_{C[w,R]}\frac{dz}{z-w} \\ 
+				\Rightarrow & \oint\limits_{C[w,R]}\frac{dz}{z-w} = 2\pi i
+			\end{align*}
+	\end{proof}
+
+\subsection*{4.5}
+	\begin{proof}[b]
+		Observe that $f(z) = z^2-2z+3$ is a holomorphic function  as it is the addition of monomials which are holomorphic. Furthermore the curve of integration $\gamma = C[0,2]$ is contractible. Thus by \textit{Corollary 4.20} we have that $\int_{\gamma}f(z)dz = 0$. 
+	\end{proof}
+
+	\begin{proof}[d]
+		Since we have that $f(z)=xy$ we can verify with the C-R equations that this function is not everywhere differentiable. Thus we can not safely apply \textit{Corollary 4.20}. Instead we can perform the integration by recognizing that in general $\int_\gamma f(z)dz = \int_a^b f(\gamma(t))\gamma'(t)dt$. Using this we have that: 
+			\begin{align*}
+				\gamma(t) &= \sqrt{2}\cos t + i \sqrt{2} \sin t \\ 
+				\gamma'(t) &= -\sqrt{2}\sin t + i \sqrt{2} \cos t \\ 
+				\Rightarrow \int_{\gamma}f(z)dz &= \int_0^{2\pi} \Big(\sqrt{2}\cos t \sqrt{2}\sin t\Big)\Big[-\sqrt{2}\sin t + i\sqrt{2} \cos t\Big] dt \\
+					&= 2\sqrt{2} \Big[ \int_0^{2\pi}\cos t \sin^2 dt + i\int_0^{2\pi}\cos^2 t \sin t dt \Big] \\ 
+					&= 2\sqrt{2}(0+0) \\ 
+					&= 0
+			\end{align*}
+	\end{proof} 
+
+
+\subsection*{4.6}
+	\begin{proof}[a]
+		$\gamma$ is the line segment from $0$ to $1-i$. Thus we have that: 
+			\begin{align*}
+				\gamma(t) &= 0 +(1-i-0)t \\ 
+					&= (1-i)t \\ 
+				\gamma'(t) &= (1-i) \\ 
+				\int_{\gamma}xdz &= \int_0^1 t(1-i)dt = \frac{1}{2}(1-i) \\ 
+				\int_{\gamma}ydz &= \int_0^1 -it(1-i)dt = \frac{-i}{2}(1-i) \\ 
+				\Rightarrow \int_\gamma z dz &= \int_\gamma x dz +i\int_\gamma y dz \\ 
+					&= \frac{1}{2}(1-i)+i\frac{-i}{2}(1-i) = (i-1) \\ 
+				\int_\gamma \overline{z} dz &=  \int_\gamma x dz -i\int_\gamma y dz \\ 
+					&= \frac{1}{2}(1-i)-i\frac{-i}{2}(1-i) \\ 
+					&= \frac{1}{2}(1-i)-\frac{1}{2}(1-i) = 0 
+			\end{align*}
+	\end{proof}
+	
+	\begin{proof}[c]
+		$\gamma$ is $C[a,r]$. Let $a = a_x+ia_y$. Then, 
+			\begin{align*}
+				\gamma(t) &= \sqrt{r}\cos t + a_x + i (\sqrt{r}\sin t + a_y) \\ 
+				\gamma'(t) &= -\sqrt{r}\sin t + i\sqrt{r}\cos t \\ 
+				\int_\gamma xdz &= \int_0^{2\pi}\Big(\sqrt{r}\cos t+a_x\Big)\Big(-\sqrt{r}\sin t + i\sqrt{r}\cos t\Big) \\ 
+					&= r\int_0^{2\pi}\cos^2 t dt = \pi r \\ 
+				\int_\gamma ydz &= \int_0^{2\pi}\Big(i\sqrt{r}\sin t+ia_y\Big)\Big(-\sqrt{r}\sin t + i\sqrt{r}\cos t\Big) \\ 
+				&= -ir\int_0^{2\pi}\sin^2 t dt = -i\pi r \\ 
+				\Rightarrow \int_\gamma zdz &= \int_\gamma xdz + i\int_\gamma ydz \\ 
+					&= 2\pi r \\ 
+				\int_\gamma \overline{z}dz &= \int_\gamma xdz -i \int_\gamma y dz \\ 
+					&= \pi r -\pi r = 0 
+			\end{align*}
+		where I have used the fact that $\sin t, \cos t, \sin t\cos t$ all integrate to zero over a full period of $[0, 2\pi]$. 
+	\end{proof}
+
+
+\subsection*{4.7}
+	\begin{proof}[a]
+		$\gamma$ is a line segment from 1 to $i$. Then we have that: 	
+			\begin{align*}
+				\gamma(t) &= 1+(i-1)t \\ 
+					&= 1-t + it \\ 
+				\gamma'(t) &= (i-1) \\ 
+				\int_\gamma \exp(3z)dz &= \int_0^1 e^{3(1+(i-1)t)}(i-1)dt \\ 
+					&= (i-1)e^3\int_0^3 e^{3(i-1)t}dt \\ 
+					&= \frac{1}{3}e^3\Big[e^{3(i-1)t}\Big]_0^1 \\ 
+					&= \frac{1}{3}e^3\Big[e^{3(i-1)}-1\Big]
+			\end{align*}
+	\end{proof}
+
+
+
+	\begin{proof}[b]
+		$\gamma$ is $C[0,3]$. This means that $\gamma(t) = \sqrt{3}\cos t + i \sqrt{3}\sin t$. Notice that $f(z) = \exp(3z)$ is holomorphic because it is the composition of two holomorphic functions $\exp(z)$ and $3z$. $\gamma$ is contractible and thus we have that by \textit{Corollary 4.20} 	
+			\begin{equation*}
+				\int_\gamma \exp(3z)dz = 0 
+			\end{equation*}
+	\end{proof}
+
+
+	\begin{proof}[c]
+		$y=x^2$ is our curve which we are integrating over from $x=0$ to $x=1$. 
+			\begin{align*}
+				\gamma(t) &= t+it^2 \\ 
+				\gamma'(t) &= 1+2it \\ 
+				\Rightarrow \int_\gamma \exp(3z)dz &= \int_0^1 e^{3(t+it^2)}(1+2it)dt \\ 
+					&= \frac{1}{3}e^{3(t+it^2)}\Big|_0^1 \\ 
+					&= \frac{1}{3}e^{3+3i}-\frac{1}{3}  
+			\end{align*}	
+	\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

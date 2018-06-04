@@ -1,0 +1,118 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz} 
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 12 \hfill  Date: \today \\
+
+
+\subsection*{More on the box full of radiation in thermal equilibrium}
+	Here is where we finished last time. We have the Free energy for a system of a bunch of harmonic oscillators representing radiation in a black box.
+		\begin{align*}
+			F &= -kT\ln Z = 2kT\Big[\sum\limits_{n_x=-\infty}2^\infty\sum\limits_{n_y=-\infty}^\infty\sum\limits_{n_z=-\infty}^\infty\ln(1-e^{-\beta\hbar\omega_{n_xn_yn_z}})\Big]\\
+			&= 2kT\Big[\sum\limits_{n_x=-\infty}^\infty\sum\limits_{n_y=-\infty}^\infty\sum\limits_{n_z=-\infty}^\infty\ln\Big(1-e^{-\beta\hbar\frac{c2\pi\sqrt{n_x^2+n_y^2+n_z^2}}{L}}\Big)\Big]\\
+		\end{align*}
+	\noindent Now we can argue that for large L we can turn this sum into a triple integral. 
+		\begin{align*}
+			F &\approx 2kT\int\int\int\limits_{-\infty}^\infty \ln\Big(1-e^{-\beta\frac{hc}{L}\sqrt{n_x^2+n_y^2+n_z^2}}\Big)dn_xdn_ydn_z \\ 
+		\end{align*}
+	\noindent Now observe that we only really depend on $\sqrt{n_x^2+n_y^2+n_z^2}$ and thus we can convert this whole contraption into spherical coordinates. 
+		\begin{align*}
+			F &= 2kT\int_0^{\infty}\ln\Big(1-e^{-\beta\frac{hc}{L}n}\Big)\pi n^2dn \\
+			\text{let } \xi &= \frac{\beta h c}{l}n \Rightarrow d\xi = \frac{\beta h c}{L} dn \\ 
+				&= 2kT\Big(\frac{L}{\beta h c}\Big)^3 4\pi \int_0^\infty \ln(1-e^{-\xi})\xi^2 d\xi \\
+				&= 2kT\Big(\frac{L}{\beta h c}\Big)^3 4\pi \frac{\pi^4}{45}
+		\end{align*}
+
+	\noindent Here we have done a great physics trick in the last step: We \textbf{took the physics out of the integral}. Then we truly only have a few options for what can happen to this dimensionless integration. We can deal with infinities, 0, or about 1. If it's the later then it really doesn't matter what that constant is because you've pulled out the physics/philosophy. \\ 
+		\begin{align*}
+			\frac{F}{V} &= \frac{8\pi(kT)^4}{h^3c^3}\int_0^\infty \ln(1-e^{-\xi})\xi^2d\xi \\ 
+		\end{align*}
+	\noindent Now let's try and figure out the entropy and internal energy as always...
+		\begin{align*}
+			S 	&= -\Big(\frac{\partial F}{\partial T}\Big)_V \\ 
+				&= V\frac{32\pi^5k^4T^3}{45 h^3c^3} = -4\frac{F}{T} \\
+			U 	&= F + TS \\ 
+				&= F+T(-4F/T) = -3F =V\frac{24\pi^5k^4T^4}{45h^3c^3}
+		\end{align*}
+
+
+\subsection*{Heading towards the Steffan-Boltzmann law} 
+	\textbf{Def} intensity $I$ is the power per surface area. Power being energy per unit time radiated. So how can we get to an equation for this intensity from our internal energy. We need to think about the velocity of the light coming out of our hole except it's not just c because we have light traveling in multiple directions.
+		\begin{align*}
+			\langle v_z \rangle /2 &=  \frac{1}{4\pi} \int_0^{2\pi}\int_0^{\pi/2} c \cos\theta \sin\theta d\phi d\theta \\ 
+				&=  \frac{2\pi c}{4\pi}\int_0^{\pi/2} \sin\theta \cos\theta d\theta \\
+				&= \frac{c}{4}
+		\end{align*}
+	Now we can conclude that our power should be:
+		 \begin{align*}
+			 P &= \frac{U}{V}\frac{cA}{4} \\ 
+			 \Rightarrow I &= \frac{P}{A} = \frac{Uc}{4V} = \frac{6\pi(kT)^4\pi^4}{h^3c^2 45} = \sigma_BT^4
+		 \end{align*}
+	\noindent Where $\sigma_B$ is just everything but the temperature dependence. 
+
+
+\subsection*{Now how do we get the spectrum?}
+	Notice how throughout this derivation we lost $\omega$! How do we get back the famous black body spectrum? We will have to go back to the beginning... 
+		\begin{align*}
+			U &= 2\sum\limits_{n_xn_yn_z} U_{n_xn_yn_z}^1 \\
+			\text{let j be all of the}&\text{ indices considering factor of two} \\ 
+			&= \sum\limits_j \hbar\omega_j\langle n_j \rangle \\
+			&= \sum\limits_j \frac{\hbar \omega_j}{e^{\beta\hbar\omega_j}-1} \\ 
+			&. \\
+			&. \\
+			&. \\
+			&= 2\int 4\pi n^2 dn \Big(\frac{\hbar \omega_n}{e^{\beta\hbar\omega_n}-1}\Big)\\ 
+		\text{recall } \omega &= kc = \frac{2\pi n}{L}c \\ 
+			&= 8\pi\int n^2dn \frac{\frac{\hbar2\pi n c}{L}}{e^{\frac{\hbar2\pi n c}{L}}-1}
+		\end{align*}
+	\noindent We want to know the internal energy as a function of $\omega$ so let's turn this into an $\omega integral$. 
+		\begin{align*}
+			d\omega &= \frac{2\pi c}{L}dn \\ 
+			\Rightarrow U &= 8\pi \Big(\frac{L}{2\pi c}\Big)^3\int \omega^2d\omega \frac{\hbar \omega}{e^{\beta\hbar\omega}-1} \\ 
+			&= \frac{V\hbar}{\pi^2c^3}\int_0^\infty \frac{\omega^2d\omega}{e^{\beta\hbar\omega}-1} \\ 
+			\Rightarrow \frac{dU}{d\omega} &= \frac{V\hbar}{\pi^2c^3}\frac{\omega^2d\omega}{e^{\beta\hbar\omega}-1}
+		\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+			
+			
+			
+			
+			
+			
+			

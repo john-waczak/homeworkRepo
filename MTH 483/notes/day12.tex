@@ -1,0 +1,117 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{physics}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis: Day 12} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+
+\subsection*{Proof of Cauchy's theorem (out verison)} 
+	\textbf{Thm:} If $f:\Omega\rightarrow\mathbb{C}$ is a holomorphism, and $\gamma_0, \gamma_1$ are $\Omega$-homotopic closed curves in $\Omega$, then 
+		\begin{equation*}
+			\int_{\gamma_0} f = \int_{\gamma_1} f
+		\end{equation*}
+
+	\noindent Proof under additional hypotheses: 
+		\begin{enumerate}
+			\item Assume f' is continuous 
+			\item Assume that homotopy h has continuous second partial derivatives. 
+		\end{enumerate}
+
+	\noindent Recall that $\gamma_0, \gamma_1$ parametrized by interval $[0,1]$ and $h:[0,1]\times[0,1]\rightarrow\Omega$, the homotopy map is such that $h(t,0) = \gamma_0(t)$, $h(t,1) = \gamma_2(t)$ and $h(0,s)=h(1,s)$. Think of $\gamma_s$ as the continuously varying family of curves. \\ 
+	
+	\noindent Define $I(s) = \int_{\gamma_s} f$. So $I(0)=\int_{\gamma_0} f$ and $I(1)=\int_{\gamma_1} f$. So we want to show $I(0)=I(1)$. To show this, it suffices to show that $I'(s)=0 \quad \forall s$. \\ 
+	
+	\noindent $I'(s) = \frac{d}{ds}\int_0^1 f(\gamma_s(t))\gamma_s'(t)dt$. When we switch to use $h(t,s)$ instead, our derivatives become partials. 
+		\begin{align*}
+		I'(s)	&= \frac{\partial}{\partial s}\int_0^1 f(h(t,s))\frac{\partial}{\partial t}h(t,s)dt \\ 
+			&= \int_0^1 \frac{\partial}{\partial s}\Big[f(h)\frac{\partial}{\partial t} h\Big]dt \\ 
+			&= \int_0^1 f'(h(t,s))\frac{\partial h}{\partial s}\frac{\partial h}{\partial t} + f(h(t,s))\frac{\partial^2 h}{\partial s \partial t} dt \\
+			&= \int_0^1 f'(h(t,s))\frac{\partial h}{\partial t}\frac{\partial h}{\partial s} + f(h(t,s))\frac{\partial^2 h}{\partial t \partial s}dt \\
+			&= \int_0^1 \frac{\partial }{\partial t} \Big[f(h(t,s))\frac{\partial h}{\partial s}\Big]dt \quad \text{product rule} \\ 
+			&= f(h(1,s))\frac{\partial h}{\partial s}(1,s) -f(h(0,s))\frac{\partial h}{\partial s}(0,s) \\ 
+			&= 0 \quad \text{since} \quad h(0,s)=h(1,s) \forall s \\ 
+		\text{thus } I'(s) &= 0 \Rightarrow I(s) = \text{ const } \forall s
+		\end{align*}
+
+	\noindent \textbf{Def} we say $\gamma$ is contractible (or null-homotopic) in $\Omega$ if $\gamma$ is $\Omega$-homotopic to a constant curve (i.e. a point). \\
+	
+	\noindent \textbf{Consequence:} If $\gamma$ is null-homotopic then,
+		\begin{equation*}
+			\int_{\gamma} f = \int_0^1 f(\gamma(t))\gamma'(t)dt = \int_0^1 f(\gamma(t))0dt = 0 
+		\end{equation*}
+	\noindent Think -- integral of a point is always zero. \\ 
+	
+	\noindent\textit{Ex:} $\int_{|z-2|-1} Log(z)dz = 0$. Since $Log(z)$ is holomorphic on $\Omega = \mathbb{C}\setminus(-\infty, 0]$ and the curve $|z-2|=1$ is null-homotopic in $\Omega$ by inspection. \\
+	
+	\noindent \textbf{Def} if $f$ is entire and $\gamma$ is closed, then $\int_\gamma f=0$. \\
+	
+	\noindent p.f. Every closed curve is null-homotopic in $\mathbb{C}$. (Straight line homotopy) \textit{Note:} if $\Omega\rightarrow\mathbb{C}$ is a region in which every closed curve is null-homotopic in $\Omega$, we say $\Omega$ is \textbf{Simply connected} (no holes). $\mathbb{C}$ is simply connected. $\mathbb{C}\setminus\{0\}$ is not. Recall that we proved $\int_{|z|=1}\frac{1}{z}dz = 2\pi i \neq 0$ when $\Omega = \mathbb{C}\setminus\{0\}$ which does not agree with what Cauchy's theorem would give if we included the origin. \\
+	
+	\noindent More generally, if $\Omega$ is simply-connected, then $\int_\gamma f=0$ $\forall$ closed curves $\gamma$ and holomporphisms $f$. \\
+	
+	\noindent \textit{Ex:} $\int_{|z|=1}\frac{1}{z^2-2z}dz =\int_{|z|=1}-\frac{1}{2z}+\frac{1}{2}\frac{1}{z-2}dz = -\frac{1}{2}2\pi i$ Since we know the value of the first integral and the second is null-homotopic on the unit circle (the hole is at z=2). We did this using partial fraction decomposition. 
+	
+	
+\subsection*{Cauchy's Integral Formula} 
+	\textbf{Theorem}(Cauchy's Integral Formula): Let $\Omega\subseteq\mathbb{C}$ be a region and suppose the closed disc with center w and radius R, $D_R(w)\subseteq \Omega$, i.e. $\{z: |z-w|\leq R\}\subseteq \Omega$. Then if $f:\Omega\rightarrow\mathbb{C}$ is holomorphic, we have
+		\begin{equation*}
+			f(w) = \frac{1}{2\pi i}\int\limits_{|z-w|=R} \frac{f(z)}{z-w} dz  
+		\end{equation*}
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

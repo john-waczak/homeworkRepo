@@ -1,0 +1,127 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{cancel} 
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 18 \hfill  Date: \today \\
+
+
+\subsection*{Fermions and Bosons}	
+	We found the Fermi-Dirac distribution to be
+		\begin{equation*}
+			f_{FD}(\epsilon) = \frac{1}{e^{\beta(\epsilon-\mu)}+1} 
+		\end{equation*}
+		
+	\noindent and the Bose-Einstein distribution was: 
+		\begin{equation*}
+			f_{BE}(\epsilon) = \frac{1}{e^{\beta(\epsilon-\mu)}-1}
+		\end{equation*}
+	
+	\noindent The confusing thing here is we have energy, chemical potential, and temperature hanging out here. So how can we remember the difference between these two equations? Let's look at the energy that is exactly equal to the chemical potential. Then $f_{FD}(\mu) = \frac{1}{2}$ and $f_{BE}(\mu) = \frac{1}{0}=\infty$. And thus we see the difference between the fermions (which cant have multiple occupancy). 
+	
+	
+	
+	
+\subsection*{Classical Ideal Gas} 
+	We keep coming back to this because (a) it's something we can solve and (b) in the dilute limit this describes things pretty well (chemistry). \\ 
+	
+	\noindent So the \textbf{Classical-limit} for a gas is \textit{low density}. This means that the occupancy of any orbital will be very, very small (there's just not a lot of gas to occupy states). This tells us that $\epsilon \gg \mu$ in the classical limit. This is identical to $f(\epsilon)\ll 1$. And thus: 
+		\begin{equation*}
+			f_{\text{classical}}(\epsilon) = e^{-\beta(\epsilon-\mu)}
+		\end{equation*}
+	
+	\noindent Now we want to know what the average number of particles is for this limit. 
+		\begin{align*}
+			\langle N_i \rangle &= \sum\limits_i^{\text{orbitals}} f(\epsilon_i) \\ 
+				&= \sum\limits_i^{\text{classical orbitals}} e^{-\beta(\epsilon_i-\mu)}\\
+				&= e^{\beta \mu}\sum\limits_i^{\text{orbitals}}e^{-\beta\epsilon_i}\\
+			Z_1 &\equiv \sum_i^{\text{orbitals}} e^{-\beta\epsilon_i} = n_Q V\\ 
+			\text{where: } n_Q &= \Big(\frac{mkT}{2\pi\hbar^2}\Big)^{3/2} \text{ for one particle in a box}\\ 
+			\Rightarrow N &= \langle N_i \rangle = e^{\beta \mu}n_QV \\ 
+			\text{thus } \frac{n}{n_Q} &= e^{\beta \mu} \\ 
+			\Rightarrow \mu &=  kT\ln(\frac{n}{n_Q})\\
+				&= kT\Big[\ln(N)-\ln(V)-\frac{3}{2}\ln(T)+...\Big]
+		\end{align*}
+	
+	\noindent Now let's figure out what the free energy is. Recall that: 
+		\begin{align*}
+			dF &= -SdT-pdV+\mu dN \\ 
+		\end{align*}
+	\noindent and so by holding appropriate things constant (temp,volume) then we have that: 
+		\begin{align*}
+			F &= \int_0^N \mu dN \\ 
+				&= kT\Big(\int_0^N \ln(N)dN+N\ln(1/Vn_Q)\Big)\\
+				&= kT\Big(N\ln N -N + N\ln(1/Vn_Q)\Big) \\ 
+				&= NkT\Big[\ln\Big(\frac{n}{n_Q}\Big)-1\Big]\\
+				&= NkT\Big[\ln(n)+\frac{3}{2}\ln(2\pi\hbar^2)-\frac{3}{2}\ln(m)-\frac{3}{2}\ln(k)-\frac{3}{2}\ln(T)\Big]-NkT\\
+			S &= -\Big(\frac{\partial F}{\partial T}\Big)_{V,N} = \frac{3}{2}Nk-Nk\Big[\ln(n/n_Q)-1\Big] \\
+			p &= -\Big(\frac{\partial F}{\partial V}\Big)_{T,N} = \frac{NkT}{V} \\ 
+			U &= U-TS = \frac{3}{2}NkT
+		\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,272 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\usepackage{bbm} 
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Geodesics in local coordinates, Completeness} \hfill \textbf{John Waczak} \\
+\normalsize MTH 435 \hfill  Date: \today \\
+Dr. Christine Escher \\
+
+
+
+\subsection*{1}
+	\textit{Let $\sigma(u,v)=(f(v)\cos(u), f(v)\sin(u), g(v))$ be a coordinate for a surface of revolution}
+	
+	\begin{enumerate}[label=\alph*]
+		\item \textit{Compute the Christoffels for $\sigma$}
+		\par\noindent\rule{\textwidth}{0.4pt}
+		\begin{align*}
+			\sigma_u &= (-f(v)\sin(u), f(v)\cos(u), 0) \\ 
+			\sigma_v &= (f'(v)\cos(u), f'(v)\sin(u), g'(v)) \\ 
+			E &= \langle \sigma_u, \sigma_u \rangle = (f(v))^2 \\
+			F &= \langle \sigma_u, \sigma_v \rangle = 0 \\ 
+			G &= \langle \sigma_v, \sigma_v \rangle = f'(v)^2+g'(v)^2 =1 
+		\end{align*}
+		
+		\noindent Where in the final line I have assumed that the curve of revolution $\gamma(v) = (f(v), 0, g(v))$ is parametrized by arc length. From this we can use proposition 5.53 to calculate the Christoffel symbols. First we have that $\alpha = \alpha = 2(EG)-2F^2 = 2f(v)^2$.  And thus, 
+			\begin{align*}
+				\alpha \Gamma_{11}^1&=GE_u-2FF_u +FE_v	&	\alpha\Gamma_{11}^2&= 2EF_u-EE_v-FE_u \\ 
+				2f(v)^2\Gamma_{11}^1 &= 1(0)-0+0	&	2f(v)^2\Gamma_{11}^2 &= 0-f(v)^22f(v)f'(v) + 0 \\ 
+				\Rightarrow \Gamma_{11}^1 &= 0	&	\Rightarrow\Gamma_{11}^2 &= -f(v)f'(v) \\ 
+				\quad &&& \\ 
+				\alpha\Gamma_{12}^1 &= GE_v-FG_u	&	\alpha\Gamma_{12}^2 &= EG_u-FE_v \\
+				2f(v)^2\Gamma_{12}^1 &= 2f(v)f'(v)	&	2f(v)^2\Gamma_{12}^2 &= 0 \\ 
+				\Rightarrow \Gamma_{12}^1 &= \frac{f'(v)}{f(v)}	&	\Rightarrow\Gamma_{12}^2 &= 0\\
+				\quad&&&\\ 
+				\alpha\Gamma_{22}^1 &= 2GF_v-GG_u-FG_v	&	\alpha\Gamma_{22}^2 &= EG_v-2FF_v+FG_u \\ 
+				2f(v)^2\Gamma_{22}&=0	&	2f(v)^2\Gamma_{22}^2 &= 0\\ 
+				\Rightarrow \Gamma_{22}^1 &= 0	&	\Rightarrow\Gamma_{22}^2 &= 0 \\ 
+			\end{align*} 	
+		\noindent Thus we have the the Christoffel symbols for the surface of revolution are
+			\begin{equation*}
+				\begin{cases}
+					\Gamma_{11}^1 = 0 & \Gamma_{11}^2 = -f(v)f'(v) \\ 
+					\Gamma_{12}^1 = \frac{f'(v)}{f(v)} & \Gamma_{12}^2 = 0 \\ 
+					\Gamma_{22}^1 = 0 & \Gamma_{22}^2 = 0
+				\end{cases}
+			\end{equation*}
+		
+		\item \textit{Show that the longitudes, parametrized by arc length, are geodesics}
+		\par\noindent\rule{\textwidth}{0.4pt}
+			\begin{proof}
+				From our surface chart we can construct the general equation for a longitude $L$ as follows. 
+					\begin{equation*}
+						L(v) = \sigma(u_0,v) = (f(v)\cos(u_0),f(v)\sin(u_0), g(v))
+					\end{equation*}
+				Where here $u_0$ is some constant angle in the $x-y$ plane and $v$ is a free parameter. Now to show that longitudes are geodesics we must show that $L(v)$ satisfies the \textit{geodesic equations}, namely
+					\begin{equation*}
+						\begin{cases}
+							u''+(u')^2\Gamma_{11}^1+2(u'v')\Gamma_{12}^1+(v')^2\Gamma_{22}^1 = 0 \\ 
+							\quad \\ 
+							v''+(u')^2\Gamma_{11}^2+2(u'v')\Gamma_{12}^2+(v')^2\Gamma_{22}^2 = 0
+						\end{cases}
+					\end{equation*}
+				For our longitudes we have that $u(t) = u_0$ and $v(t) = t$ as here v is the parameter for the curve. Thus $u' = 0$, $v' = 1$, $u'' =0$ and $v''=0$. Thus the geodesic equations reduce to the following system
+					\begin{equation*}
+						\begin{cases}
+							\Gamma_{22}^1 = 0 \\ 
+							\quad \\ 
+							\Gamma_{22}^2 = 0
+						\end{cases}
+					\end{equation*}
+				Looking back at our Christoffel symbols from part (a) we see that the above two equations are satisfied for all $v$. Thus all longitudes of a surface of revolution are geodesics. 
+			\end{proof}
+		
+		\item \textit{Show that the latitudes, parametrized by arc length, are geodesics iff $f'=0$}
+		\par\noindent\rule{\textwidth}{0.4pt}
+		
+			\begin{proof}[$(\rightarrow)$]
+				Assume that $f'(v) = 0$. From our definition of the Christoffel symbols, it follows that $\Gamma_{ij}^k = 0$ $\forall i,j,k\in\{1,2\}$ because $f'(v)$ appears in the numerator of all of the non-zero Christoffel symbols. Also, not that a latitude on a surface of revolution can be parametrized as
+					\begin{equation*}
+						\tilde{L}(u) = \sigma(u, v_0) = (f(v_0)\cos(u), f(v_0)\sin(u), g(v_0))
+					\end{equation*}
+				Where now $u(t)=t$ is the free parameter and $v(t)=v_0$ is a constant choice of height along the surface. Then from this we have again that $u'' = v'' = 0$. Because the second derivatives of $u, v$ are zero and $\Gamma_{ij}^k=0$  $\forall i,j,k$, the geodesic equations are satisfied. This means that $\tilde{L}(u)$ is a geodesic if $f'(v)=0$. 
+			\end{proof}
+			\begin{proof}[$(\leftarrow)$]
+				Assume that $\tilde{L}(u)$, a latitude, is a geodesic. We want to show that $f'(v)=0$. From our previous discussion we established that $u'', v'' =0$ Now since we have that $\tilde{L}$ is a geodesic by assumption, then it must also satisfy the geodesic equations. These reduce to
+					\begin{align*}
+						\Gamma_{11}^1 &= 0 \\ 
+						\Gamma_{11}^2 &= 0 \\ 
+					\end{align*}
+				As all other terms are zero. If we substitute our definitions for these Christoffel symbols, the first equation becomes redundant as $\Gamma_{11}^1$ already is zero for a surface of revolution. The second equation yields
+					\begin{equation*}
+						\Gamma_{11}^2 = -f(v)f'(v) = 0 
+					\end{equation*}
+				Since $f(v)>0$ by definition of a surface of revolution, it follows that if $\tilde{L}$ is a geodesics, then $f'$ must be zero. 
+			\end{proof}
+			Thus we have shown that a latitude is a geodesic if and only if $f'=0$. 
+			
+		\item \textit{Prove Clairaut's relation. }
+		\par\noindent\rule{\textwidth}{0.4pt}
+			\begin{proof}
+				To begin, consider a general geodesic $\gamma(s)=\sigma(u(s),v(s))$ and a general latitude $\tilde{L}(u) = \sigma(u(s), v_0)$. Clairaut's theorem considers the angle between the tangent vectors of two such curves. These tangent vectors are: 
+					\begin{align*}
+						\tilde{L}' &= \sigma_u = (-f(v)\sin(u), f(v)\cos(u), 0) \\ 
+						\gamma'(s) &= (-f(v)\sin(u)u'+f'(v)\cos(u)v', f(v)\cos(u)u'+f'(v)\sin(u)v', g'(v)v')
+					\end{align*}
+				Now using the geometric definition of angle we can try and solve for $\cos\theta$. 
+					\begin{align*}
+						\cos\theta &= \frac{\langle \tilde{L}', \gamma' \rangle}{|\tilde{L}'||\gamma'|} \\ 
+							&= \frac{f^2\sin^2(u)u'+f^2\cos^2(u)u'}{\sqrt{f^2}}\\
+							&= \frac{f^2u'}{f} \\
+						\Rightarrow f\cos\theta &= f^2u'
+					\end{align*}
+				Here I have assumed that the geodesic is parametrized by arc-length making $|\gamma'|=1$. Thus by application of part (e) which follows next, we have that for a geodesic on a surface of revolution, $f^2u'=$ const. Since $f(v)$ is the distance to the x-axis, let $r=f$. Thus if $\gamma$ is a geodesic in a surface of revolution S, then $r\cos\theta =$const. 
+			\end{proof}
+		
+		\item \textit{Let $\gamma(s) = \sigma(u(s),v(s))$ be a geodesic parametrized by arc length which is neither a longitude nor a latitude. Show that the first differential equation for a geodesic can be written as $f^2u' =$ const $= c\neq 0$. Also that the first fundamental form along $\gamma(s)$ is $\mathbbm{1}=f^2\Big(\frac{du}{ds}\Big)^2 + (f'^2+g'^2)\Big(\frac{dv}{ds}\Big)^2$ and together with the first equation, is equivalent to the second differential equation for a geodesic. }
+		
+		\par\noindent\rule{\textwidth}{0.4pt}
+		
+		\begin{proof}
+			Recall from earlier that for a surface of revolution generated by a curve parametrized by arc length we have that
+				\begin{align*}
+					E&= f(v)^2 & F&= 0 & G&= f'(v)^2+g'(v)^2 = 1 
+				\end{align*}
+			This allows us to easily write the first fundamental form for the surface of revolution:
+				\begin{align*}
+					\mathbbm{1} &= Edu^2+2Fdudv+Gdv^2 \\ 
+						&= f^2du^2+0+(f'^2+g'^2)dv^2 = f^2du^2+dv^2\\ 
+						\text{assuming arc length} &\text{ parametrization as we did for Christoffels}
+				\end{align*}
+			Recall that geodesics have constant speed. Therefore, assume without loss of generality that $|\gamma '|=1$. Then if we restrict the first fundamental to the geodesic with $u(s), v(s)$ then the chain rule gives: 
+				\begin{equation*}
+					\mathbbm{1} = \Big(f^2\Big(\frac{du}{ds}\Big)+\frac{dv}{ds}\Big)ds
+				\end{equation*} 
+			As expected. For a curve the first fundamental form just returns the length of the tangent vector (this is how we calculate arc length using $\mathbbm{1}$). Thus:
+				\begin{equation*}
+					\Big(f^2\Big(\frac{du}{ds}\Big)+\frac{dv}{ds}\Big) = 1
+				\end{equation*}
+			Now let's try and simplify the first differential equation for a geodesics. We have that
+				\begin{align*}
+					0&= u''+(u')^2\Gamma_{11}^1+2(u'v')\Gamma_{12}^1+(v')^2\Gamma_{22}^1\\
+						&=u''+2u'v'\Gamma_{12}^1  \\ 
+						&=u''+2u'v'\frac{f'(v)}{f(v)} \\
+				\end{align*}
+			Now lets work from the other end and manipulate the equation $f^2u'=c$ to show it is equivalent to this geodesic DiffEq. 
+				\begin{align*}
+					c	&= f^2u' \\ 
+					0	&= \frac{d}{dt}(f^2u')\\ 
+						&= u'\frac{df^2}{dt}+f^2u'' \\ 
+						&= u'\frac{\partial f^2(v)}{\partial v}v' + f^2u'' \\ 	
+						&= u'2f\frac{\partial f}{v}v' + f^2u'' \\ 
+						&= 2ff'u'v' + f^2u'' \\ 
+						&= \frac{1}{f^2}\Big[2ff'u'v' + f^2u''\Big] \text{ since }f>0\\ 
+						&= 2u'v'\frac{f'}{f} + u'' 
+				\end{align*}
+			Thus we have that $f^2u'=c$ is equivalent to the first geodesic differential equation. Now we must use this along with the first fundamental form to construct the second geodesic differential equation. We want to arrive at: 
+				\begin{equation*}
+					v'' + (u')^2\Gamma_{11}^2+2u'v'\Gamma_{12}^2+(v')^2\Gamma_{22}^2 = 0
+				\end{equation*}
+			Except with what we have for the Christoffel's this is really: 
+				\begin{equation*}
+					v'' - (u')^2f(v)f'(v) = 0
+				\end{equation*} 
+			Observe that from our first fundamental form we can write:
+				\begin{align*}
+					\Big(\frac{dv}{ds}\Big)^2 &= -f^2\Big(\frac{du}{ds}\Big)^2 + 1 \\
+					(v')^2 &= -f^2(u')^2+1 \\ 
+					(v')^2 &= -f^2(\frac{c}{f^2})^2+ 1 \\ 
+							&= -\frac{c^2}{f^2} + 1 \\ 
+				\end{align*}
+			Taking the derivative with respect to s gives: 
+				\begin{align*}
+					2v'v'' &= \frac{2ff'c^2}{f^4}v' + 0 \\ 
+					\Rightarrow 2v'v'' &= 2ff'v'(u')^2  \text{ reusing } u'=\frac{c}{f^2}\\ 
+					\text{thus } v''-(u')^2ff' &= 0
+				\end{align*}
+			Which is exactly the second geodesic differential equation. 
+		\end{proof}
+	\end{enumerate}
+	
+	
+	
+	
+\subsection*{2} 
+	\textit{Give an example of a connected surface S such that any two points can be connected by a minimal geodesic, however S is not geodesically complete.}
+	
+	\begin{proof}
+		Consider the open disc $D_r(a)$ of radius r centered around point a in $\mathbb{R}^2$. This regular surface is certainly path connected and therefore is connected. As it is in the plain, geodesics in this disc are straight lines. This surface fails to be geodesically complete as we can not extend the geodesics to $\gamma:\mathbb{R}\to S$ because the extended straight lines would necessarily leave S. 
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

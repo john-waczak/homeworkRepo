@@ -1,0 +1,142 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Complex Analysis: Day 15} \hfill \textbf{John Waczak} \\
+\normalsize MTH 483 \hfill  Date: \today \\
+
+
+\subsection*{Extension of Cauchy's integral formula (for derivative)}
+	\textit{Recall:} let $\Omega\subseteq\mathbb{C}$ be a region, $\gamma$ a positively oriented, simple closed curve, and $f:\Omega\rightarrow\mathbb{C}$ a holomorphic function on $\Omega$ then,
+		\begin{equation*}
+			f(w) = \frac{1}{2\pi i}\int_\gamma \frac{f(z)}{z-w}dz
+		\end{equation*}
+		
+	\noindent Often, $\gamma$ is just a circle but we showed this for a general closed curve. We can use this in both directions. Sometimes you'd like to know the value of the integral and it's enough to just plug in $w$. On the other hand it is useful to go the other way so we can evaluate derivatives of functions easily!
+		\begin{align*}
+			\text{Calculation:} \quad \frac{d}{dw}\Big(\frac{1}{z-w}\Big) &= \frac{1}{(z-w)^2} \\ 
+				\frac{d^2}{dw^2}\Big(\frac{1}{z-w}\Big) &= 2\frac{1}{(z-w)^3} \\ 
+					&. \\ 
+					&. \\ 
+					&. \\ 
+				\frac{d^n}{dw^n}\Big(\frac{1}{z-w}\Big) &= n!\frac{1}{(z-w)^(n+1)}
+		\end{align*}
+	\begin{theorem}[Cauchy's integral formula for derivatives]
+		With the hypotheses of Cauchy's integral formula for simple-closed curves we have that
+			\begin{align*}
+				f'(w) &= \frac{1}{2\pi i}\int_\gamma \frac{f(z)}{(z-w)^2} dz \\
+					&. \\ 
+					&. \\ 
+					&. \\
+				\text{more generally }\quad f^{(n)}(w) &= \frac{n!}{2\pi i}\int_\gamma \frac{f(z)}{(z-w)^(n+1)}dz
+			\end{align*}
+	\end{theorem}
+		
+	\noindent\textit{Remark:} the proof involves interchanging the order of a derivative with a path integral. The important \textit{take-away} is that just assuming that $f'$ is holomorphic (i.e. has one derivative) means that we get "for free" that all derivatives $f^{(n)}$ exist. Also notice that if we divide by the $n!$ we get something that looks very similar to the coefficient of a power series. \\ 
+	
+\subsection*{Examples}
+	\begin{align*}
+		\text{Ex: } \quad &\oint_{|z|=1}\frac{\sin z}{z^2} dz \\ 
+		\text{take n=1 case in theorem } f(z) &= \sin z\\ 
+		f'(z) &= \cos z \\ 
+		\text{take w = 0 }& \\ 
+		f'(0) &= \frac{1}{2\pi i}\oint_{|z|=1}\frac{\sin z}{z^2} dz = \cos 0 = 1 \\ 
+		\Rightarrow \oint_{|z|=1}\frac{\sin z}{z^2}dz &= 2\pi i \\ 
+	\end{align*}
+		
+	\begin{align*}
+		\oint_{|z|=2}\frac{1}{z^2(z-1)}dz &= \\ 
+		\text{take straight vertical line}& \text{ between singularities and make two new paths}\\
+			&= \oint_{\gamma_1}\frac{1}{z^(z-1)}dz +\oint_{\gamma_2}\frac{1}{z^2(z-2)}dz\\
+		\text{take } f_1(z) &= \frac{1}{z-1}, \quad w=0, \quad n=1 \\ 
+			f_1'(z) &= \frac{-1}{(z-1)^2} \\ 
+			\Rightarrow \oint_{\gamma_1} \frac{f_1(z)}{z^2}dz &= f_1'(0)2\pi i =  -2\pi i \\
+		\text{take } f_2(z) &= \frac{1}{z^2}, \quad w=1, n=0 \\ 
+			\oint_{\gamma_2}\frac{f_2(z)}{z-1}dz &= f_2'(1)2\pi i = 2\pi i \\ 
+		\text{thus } \oint_{|z|=2}\frac{1}{z^2(z-1)}dz &= -2\pi i + 2\pi i = 0 \\
+	\end{align*} 
+		
+
+\subsection*{Some fun applications of this theorem} 
+	\begin{theorem}[Fundamental theorem of Algebra]
+		Let $p(z) = a_dz^d + a_{d-1}z^{d-1}+...a_0d^0$ be a non-constant polynomial with coefficients in $\mathbb{C}$. Then $p(z)$ has a root in $\mathbb{C}$ (this is false over $\mathbb{R}$). 
+	\end{theorem}
+		
+	\begin{proof}
+		Assume without loss of generality that $a_d \neq 0$, $d\geq 1$. Note that $\exists R>0$ for which $\frac{1}{2}|a_d||z|^d \leq |p(z)| \leq 2|a_d||z|^d$ whenever $|z|\geq R$. 
+			\begin{align*}
+				p(z) &= a_dz^d\Big(1 + \frac{a_{d-1}}{a_dz}+\frac{a_{d-2}}{a_dz^2}+ ... + \frac{a_0}{a_dz^d}\Big) \\ 
+				\text{as } z\rightarrow \infty&, \text{parentheses} \rightarrow 1 \\ 
+			\end{align*} 
+		Now that we have this lemma let's prove the statement. \\ 
+		
+		\noindent Assume that $p$ has no roots in $\mathbb{C}$. Then $\frac{1}{p(z)}$ is entire. By Cauchy's integral formula with $f(z) = \frac{1}{p(z)}$ and $R$ as in the lemma, we have
+			\begin{align*}
+				\frac{1}{p(0)} &= \frac{1}{2\pi i}\oint_{|z|=R}\frac{\frac{1}{p(z)}}{z}dz \\ 
+				|\frac{1}{p(0)}| &= \Big|\frac{1}{2\pi i}\oint_{|z|=R}\frac{\frac{1}{p(z)}}{z}dz\Big| \\ 
+					&\leq \frac{1}{2\pi}\text{length}(|z|=R)\cdot\max_{|z|=R}|\frac{1}{zp(z)} \\ 
+					&= \frac{d1}{2\pi}2\pi R\cdot \frac{1}{R} \frac{2}{|a_d|R^d} \\ 
+					&= \frac{2}{|a_d|R^d} \rightarrow 0 \text{ as } R \rightarrow \infty
+			\end{align*}
+			But $p(0)$ is a constant that doesn't depend on $R$ so the only choice is to make $R=0$ thus we have $\frac{1}{p(0)} = 0$ which is a contradiction. 
+	\end{proof}
+	
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

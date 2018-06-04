@@ -1,0 +1,33 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{physics}
+\graphicspath{ {images/} }
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assignment 3 Reflection} \hfill \textbf{John Waczak} \\
+\normalsize CS 161 \hfill  Date: \today \\
+
+\subsection*{Understanding}
+	\paragraph{}
+	I felt that the first problem was pretty straight forward and I didn't have trouble implementing a solution for using the pass-by-reference function to order three integers. The dice-game however was much more difficult and I found that the process of writing a testing plan and then pseudo-code and then actual code helped me learn how the game was actually supposed to work. For example I was confused at first and thought that we 
+	
+\subsection*{Testing Plan}
+	\paragraph{}
+	My testing plan was overall pretty good. I found that I had difficulty figuring out a comprehensive testing plan  for the dice game as I couldn't predict which dice would be rolled without hard-coding the random number seed but I think my tests gave me confidence that my solutions worked. 
+\subsection*{Design}
+	\paragraph{}
+	As I mentioned the only thing I had to update in my design was reorganizing the dice-game logic as I slowly figured out how the rules worked. I was definitely confused about how the holding should work and also the difference between the turn total and the player score. 
+ 
+\subsection*{Improvement} 
+	 To improve my process for working on this problem I would try and come up with some better test cases. The ones I envisioned didn't involve fixing the random number seed which in hindsight I realize is a great way to test the game. Knowing that the sequence of random numbers is fixed would help me come up with some decision trees (hold/no hold) that I could try out to make sure that the program works. 
+		
+		
+\end{document}

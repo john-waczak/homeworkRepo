@@ -1,0 +1,77 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=0.5in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{listings}
+\graphicspath{ {images/} }
+
+ \lstset{breaklines=true}
+
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Assigment 4: Project Plan} \hfill \textbf{John Waczak} \\
+\normalsize CS 161 \hfill  Date: \today \\
+Tim Alcon \\
+
+
+\subsection*{Pseudocode} 
+
+\begin{lstlisting}
+	---------------------- board class ------------------------------- 
+	Create a board class to keep track of state of board
+	This class should have a private char array for representing board
+	boolean - gameOver
+	Some of it's functions are
+		Construct blank board
+		print board 
+		Get value at position (x,y) 
+		set value at position (x,y) 
+		check if board is full (3 x's and 3 o's)
+		check if player has won 
+		
+		
+		
+	----------------------turn function-------------------------------	
+	Take in integer for which player
+	If all pieces aren't on board 
+		prompt user to place pice 
+		if user places at taken position or incorrect location 
+			prompt user to enter something else 
+	else if all pieces are on board
+		prompt user for which piece they want to move
+		prompt user for where they want to place piece 
+			set old poisition back to "*" 
+			mark new position with piece
+		
+		
+	----------------------Main Loop-----------------------------------
+	Declare board object. 
+	create turn variable and set to 0
+	Begin game in while loop on gameOver boolean. 
+		print board 
+		if turn is even, it's player one's turn 
+		if turn is odd, it's player two's turn 
+		run turn function 
+		
+		check if player has won.
+		
+		add one to turn variable 
+		
+	When the game is over print out "Game over!", print the board 
+	and say which player one (can figure out from turn count). 
+	
+\end{lstlisting}
+
+
+
+
+
+
+\end{document}

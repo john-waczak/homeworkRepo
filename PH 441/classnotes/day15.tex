@@ -1,0 +1,141 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{cancel} 
+\usepackage{enumitem} 
+\graphicspath{ {images/} }
+
+
+\newtheorem*{theorem}{Theorem}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Thermal Physics - PH441} \hfill \textbf{John Waczak} \\
+\normalsize Day 15 \hfill  Date: \today \\
+
+	
+\subsection*{Euler's integrals and Euler's homogeneous function theorem} 
+	Recall $dU = TdS-pdV+\mu dN$. Let's now reconsider this equation's extensive/intensive properties. Imagine a system of water within a particular volume of glass of water. Now if we take our system and re-define the volume to be something like half of the volume. Then the temperature, pressure, and chemical potential won't change. However, our internal energy is half of what it was, our volume is half, the number of particles is half, and as we proved in the first homework, S is also halved. So imagine we keep repeating this process of halving. This indicates to us that: 
+		\begin{align*}
+			\lambda U(S,V,N) &= U(\lambda S, \lambda V, \lambda N) \\ 
+		\end{align*}
+	\noindent This is what Euler called a \textit{homogeneous function} which in our language just means extensive. Now if we take a limit as we keep halving we will eventually approach 0 for U, S, V, N. Now imagine going the other way and integrating. Then we would have: 
+		\begin{align*}
+			U &= TS - pV + \mu N
+		\end{align*}
+	This appears intuitive but our argument was \textit{not} rigorous. This is a sort of \textit{mind-blowing} result. If this is true, then we can zap this thing with d to find: 
+		\begin{align*}
+			dU &= TdS+SdT-pdV-Vdp+\mu dN + Nd\mu \\ 
+		\end{align*}
+	This is more variables than we want!!! To resolve this issue and get the original thermodynamic identity we must have: 
+		\begin{align*}
+			SdT + Nd\mu -Vdp &= 0 \\ 
+		\end{align*}
+	
+	If we go back to the \textit{mind-blowing} equation then we can solve: 
+		\begin{align*}
+			\mu &= \frac{U-TS+pV}{N} = \frac{G}{N}
+		\end{align*}
+	Which tells us that the Gibb's is analogous to the chemical potential. Chemistry wise, we usually define the Gibb's as $\sum\limits_i^{\text{species}}\mu_iN_i$ as they have many different molecules at once. \\ 
+	
+	\noindent\textbf{Definition:} \textit{Total-activity} is defined as $\lambda = e^{\beta \mu}$.
+	
+\subsection*{Ideal gas} 
+	Recall that $n = n_Qe^{\beta \mu} = n_Q\lambda$. So you can think of activity as a measure of concentration. When we do our Gibb's sum $\mathbb{Z} = \sum_i e^{-\beta(E_i-\mu N_i)}$ then we also have that: 
+		\begin{align*}
+			\mathbb{Z} &= \sum_i \lambda^{N_i}e^{-\beta E_i}
+		\end{align*}
+		
+\subsection*{Chemistry} 
+	Recall the simple reaction: $2 H_2 + O_2 \rightarrow 2H_2 O$ where we had the equilibrium constant
+		\begin{align*}
+			K_{eq} &= \frac{[H_2O]^2}{[H_2]^2[O_2]}
+		\end{align*}
+	They would have told us in Chemistry that $[X]$ was the concentration but really it is the activity of that molecule. Once we know this we can say: 
+		\begin{align*}
+			K_{eq} &= \frac{\lambda_{H_2O, \text{int}}^2}{\lambda_{H_2,\text{int}}^2\lambda_{O_2,\text{int}}} \\ 
+				&= \frac{e^{2\beta\mu_{H_2O, \text{int}}}}{e^{2\beta\mu_{H_2, \text{int}}}e^{\beta\mu_{O_2, \text{int}}}} \\ 
+				&=e^{\beta\big[2\mu_{H_2O, \text{int}}-2\mu_{H_2, \text{int}}-\mu_{O_2, \text{int}}\big]}
+		\end{align*}
+	So this seems weird but we need to be careful because here we are talking about internal chemical potential and not the total chemical potential. So to clarify the external chemical potential is typically called the Gibb's of formation where: 
+		\begin{align*}
+			G_{H_2O,\text{ext}}^0 &\equiv \mu_{H_2O,\text{ext}} \\ 
+			\Rightarrow \mu_{H_2O, \text{tot}} &= G_{H_2O,\text{ext}}^0+\mu_{H_2O, \text{int}}
+		\end{align*}
+	So we can fix our equilibrium constant by writing: 
+		\begin{align*}
+			K_{eq} &=e^{\beta\big[2(\mu_{H_2O, \text{tot}}-G_{H_2O}^0)-2(\mu_{H_2, \text{tot}}-G_{H_2}^0)-(\mu_{O_2, \text{tot}}-G_{O_2}^0)\big]} \\ 
+				&= e^{-\beta(2G_{H_2O}^0-2G_{H_2}^0-G_{O_2}^0)}e^{\beta(2\mu_{H_2O,\text{tot}}-2\mu_{H_2,\text{tot}}-\mu_{O_2,\text{tot}})}
+		\end{align*}
+	So what do we do with this? Well we have two systems that are in equilibrium and so we can say that the total chemical potential of products must be the same as the total chemical potential of the reactants. Thus 
+		\begin{align*}
+			K_{eq} &= e^{-\beta(2G_{H_2O}^0-2G_{H_2}^0-G_{O_2}^0)}\cancelto{1}{e^{\beta(2\mu_{H_2O,\text{tot}}-2\mu_{H_2,\text{tot}}-\mu_{O_2,\text{tot}})}} \\
+			& \\ 
+			&= e^{-\beta(G_\text{products}-G_\text{reactants})}= e^{-\beta\Delta G}
+		\end{align*}
+		
+		
+\subsection*{Orbitals} 
+	Recall our Hamiltonian for a multi-particle system should look something like: 
+		\begin{align*}
+			\hat{H} &= \sum_i \frac{p_i^2}{2m_i}+V_i(\vec{r_i})
+		\end{align*}
+		
+	Assume that the potential is the same for each particle (i.e. no interactions) then separation of variables yields: 
+		\begin{align*}
+			\Psi(\vec{r}_1, \vec{r}_2, ...) &= \phi_i(\vec{r}_1)\phi_2(\vec{r}_2)... \\ 
+			\Rightarrow \Big(\frac{p^2}{2m}+V(\vec{r})\Big)\Phi_i(\vec{r}) &= \epsilon_i\phi_i(\vec{r})
+		\end{align*}
+	Where the $\phi_i(\vec{r})$. This implies symmetry except from quantum we know there are problems quantum-mechanically with identical particles: 
+	
+	\textbf{Fermions} $\Phi(\vec{r}_1, \vec{r}_2, ...) = -\Phi(\vec{r}_2, \vec{r}_1, ...)$
+	\textbf{Bosons} $\Phi(\vec{r}_1, \vec{r}_2, ...) = \Phi(\vec{r}_2, \vec{r}_1, ...)$ \\ 
+	
+	\noindent We can construct an overall Fermionic wavefunction $\Psi$ from the set of orbitals $\{\phi_i\}$ using a special determinant called the Slater determinant. This works because swapping rows or columns introduces a minus sign in the determinant: 
+	\begin{equation*}
+		\Psi(\vec{r}_r, \vec{r}_2, ...) = \frac{1}{\sqrt{N!}}
+		\begin{vmatrix}
+			\phi_1(\vec{r}_1) & \phi_2(\vec{r}_1) &\phi_3(\vec{r}_1) ... \\ 
+			\phi_1(\vec{r}_2) & \phi_2(\vec{r}_2) &\phi_3(\vec{r}_2) ... \\ 
+			\phi_1(\vec{r}_3) & \phi_2(\vec{r}_3) &\phi_3(\vec{r}_3) ... \\ 
+			. & & \\ 
+			. & & \\ 
+			. & & \\ 
+		\end{vmatrix}
+	\end{equation*} 
+	
+	\noindent There is another version of this for overall Bosonic states but you take a determinant-like-thing that has non-trivial multiplication rules. Recall our discussion of identical particles at the end of the quantum capstone. We had that for a system of fermions in the first excited state we needed the AS or SA spatial-spin symmetry i.e. 
+		\begin{align*}
+			|\Psi_{12}^{AS}\rangle &= \frac{1}{\sqrt{2}}\Big(\phi_1(x_1)\phi_2(x_2)-\phi_1(x_2)\phi_2(x_1)\Big)|1, M\rangle
+		\end{align*}
+	Where $M = 1,0,-1$ are the symmetric spin triplet states. Notice that the spatial component is exactly what you would get from the 2x2 Slater determinant. 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
