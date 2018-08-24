@@ -1,3 +1,12 @@
+/*************************************
+John Waczak
+6/5/2018
+
+header file for board class
+
+*************************************/
+
+
 #ifndef BBOARD_HPP
 #define BBOARD_HPP
 
@@ -19,8 +28,7 @@ public:
   int getNumShipsRemaining();
   bool placeShip(Ship*, int, int, char);
   bool attack(int, int);
-  bool allShipsSunk(); 
-
+  bool allShipsSunk();
 
 };
 

@@ -1,3 +1,11 @@
+/**********************************
+John Waczak
+6/5/2018
+
+Header file for Ship class 
+**********************************/
+
+
 #ifndef SHIP_HPP
 #define SHIP_HPP
 
@@ -25,4 +33,4 @@ public:
 
 
 
-#endif 
+#endif

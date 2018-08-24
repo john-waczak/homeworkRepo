@@ -17,8 +17,11 @@ int main()
   cout << "damage = " << ship1.getDamage() << endl;  // asks the Ship for its damage
   board.attack(2, 3);  // attacks the other square the Ship is on to sink the Ship
   cout << std::boolalpha << board.allShipsSunk() << endl;  // prints whether all Ships are sunk
-  board.attack(2, 3);  // attacks a square that was already attacked
-  Ship* shipPtr = board.getShipsArrayElement(2, 3);  // gets the address of the Ship on square (2,3)
-
+  cout << board.attack(2, 3) << endl;  // attacks a square that was already attacked
+  cout << board.attack(0,0) << endl; // attacks square with no ship
+  Ship ship2("boat2", 10);
+  cout << board.placeShip(&ship2, 2, 0, 'R') << endl; 
+  cout << board.placeShip(&ship2, 0, 0, 'R') << endl; 
+  cout << std::boolalpha << board.allShipsSunk() << endl;
   return 0;
 }

@@ -1,3 +1,12 @@
+/**********************************************
+John Waczak
+6/5/2018
+
+Program to take array and replace with one
+twice as long with original values followed
+by those values plus one
+**********************************************/
+
 #include <iostream>
 
 using std::cout;
@@ -5,7 +14,12 @@ using std::cin;
 using std::endl; 
 
 
-
+/*********************************************
+Function takes referce of pointer to dynamic
+array and replaces array with one twice as
+long following specifactions in above
+comment.
+*********************************************/
 void transformArray(int* &intArray, int size){
   int* newArray = new int[size*2];
   for (int i = 0; i<size*2; i++){

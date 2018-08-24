@@ -39,6 +39,12 @@ int Ship::getDamage(){
   return damage; 
 }
 
+
+
+/********************************
+Function to increase damage when
+ship has been hit
+********************************/
 void Ship::takeHit(){
   damage ++; 
 }
