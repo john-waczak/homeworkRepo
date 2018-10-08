@@ -1,0 +1,366 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}  % enable change of margins mid document
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\usepackage{bbold}
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% braket notation commands 
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+	}%
+	\item[]}{\end{list}}
+
+
+
+
+\begin{document}
+%Header-Make sure you update this information!
+\noindent
+\large\textbf{Homework 3} \hfill \textbf{John Waczak} \\
+\normalsize PH 651 \hfill  Date: \today \\
+Dr. Ostroverkhova
+\par\noindent\rule{\textwidth}{0.4pt} \\	
+	
+	
+\noindent 1. Recall that $Tr(A) = \sum_nA_{nm} = \sum_n\bra{\varphi_n}A\ket{\varphi_n}$ where $\{\varphi_n\}$ is a complete orthonormal basis. Using bra-ket algebra, prove the following relations: \\
+
+\noindent (a) $Tr(ABC) = Tr(CAB) = Tr(BCA)$ where A, B, C are operators. \\
+	\begin{solution}
+		\noindent By definition we have that 
+			\begin{equation*}
+				Tr(ABC) = \sum_n \bra{\varphi_n}ABC\ket{\varphi_n}
+			\end{equation*}
+		Now, we insert some identity operators 
+			\begin{align*}
+				Tr(ABC) &= \sum_n \bra{\varphi_n} A \Big(\sum_n \ket{\varphi_m}\bra{\varphi_m}\Big) B \Big(\sum_q \ket{\varphi_q}\bra{\varphi_q}\Big) C \ket{\varphi_n} \\ 
+					&= \sum_q\sum_m\sum_n \bra{\varphi_n}A\ket{\varphi_m}\bra{\varphi_m}B\ket{\varphi_q}\bra{\varphi_q}C\ket{\varphi_n}
+			\end{align*}
+		At this point, notice that we have reduced the sum to a multiplication of three scalar quantities (inside of the bra-kets). Therefore because scalar multiplication on $\C$ is commutative, we are free to rearrange the order of the multiplication. i.e. 
+			\begin{align*}
+				Tr(ABC) &= \sum_q\sum_m\sum_n \bra{\varphi_q}C\ket{\varphi_n}\bra{\varphi_n}A\ket{\varphi_m}\bra{\varphi_m}B\ket{\varphi_q} \\
+					&= \sum_q \bra{\varphi_q} C \Big(\sum_n\ket{\varphi_n}\bra{\varphi_n}\Big) A \Big(\sum_m\ket{\varphi_m}\bra{\varphi_m}\Big) B \ket{\varphi_q} \\ 
+					&= \sum_q \bra{\varphi_q} CAB \ket{\varphi_q} \\
+					&= Tr(CAB) 
+			\end{align*}
+		Alternatively, we can rearrange the sum to find 
+			\begin{align*}
+				Tr(ABC) &= \sum_q\sum_m\sum_n \bra{\varphi_m}B\ket{\varphi_q}\bra{\varphi_q}C\ket{\varphi_n}\bra{\varphi_n}A\ket{\varphi_m} \\
+					&= \sum_m \bra{\varphi_m} B \Big(\sum_q\ket{\varphi_q}\bra{\varphi_q}\Big) C \Big(\sum_n \ket{\varphi_n}\bra{\varphi_n}\Big) A \ket{\phi_m} \\ 
+					&= \sum_m \bra{\phi_m}BCA\ket{\phi_m} \\ 
+					&= Tr(BCA)
+			\end{align*}
+	\end{solution}
+	
+\noindent (b) $Tr(\ket{\psi}\bra{\phi}) = \bra{\phi}\ket{\psi}$ where $\ket{\phi}, \ket{\psi}$ are state vectors. \\
+	\begin{solution}
+		\noindent Consider an orhtonormal basis $\{\ket{\varphi_n}\}$. Then we can describe the states in this basis as: 
+			\begin{align*}
+				\ket{\psi} &= \sum_n a_n\ket{\varphi_n} \\ 
+				\ket{\phi} &= \sum_n b_n\ket{\varphi_n} 
+			\end{align*}
+		Then, 
+			\begin{align*}
+				Tr(\ket{\psi}\bra{\phi}) &= \sum_k \bra{\varphi_k}\Big(\ket{\psi}\bra{\phi}\Big)\ket{\varphi_n} \\ 
+				&= \sum_k\bra{\varphi_k}\Big(\sum_m a_m\ket{\varphi_m}\Big)\Big(\sum_n b_n^* \bra{\varphi_n}\Big)\ket{\varphi_k} \\ 
+				&= \sum_n \sum_m \sum_k a_mb_n^* \bra{\varphi_k}\ket{\varphi_m}\bra{\varphi_n}\ket{\varphi_k} \\ 
+				&= \sum_n \sum_m \sum_k a_m b_n^* \delta_{km} \delta_{nk} \\ 
+				&= \sum_k a_k b_k^* \\ 
+				&= \bra{\phi}\ket{\psi}
+			\end{align*}
+	\end{solution}
+
+\noindent 2. Consider the matrices $A = \begin{pmatrix}7 & 0 & 0\\ 0 & 1 & -i \\ 0 & i & -1\end{pmatrix}$, $B = \begin{pmatrix}1 & 0 & 3 \\ 0 & 2i & 0 \\ i & 0 & -5i\end{pmatrix}$. \\ 
+
+\noindent(a) Are $A$ and $B$ Hermitian? Write down the matrices representing $A^\dagger$ and $B^\dagger$. 
+	\begin{solution}
+		\begin{align*}
+			A^\dagger &= \begin{pmatrix}7 & 0 & 0 \\ 0 & 1 & -i \\ 0 & i & -1\end{pmatrix} \\
+			B^\dagger &= \begin{pmatrix}1 & 0 & -i \\ 0 & 2i & 0 \\ 3 & 0 & -5i\end{pmatrix}
+		\end{align*}
+		From the above, we see that $A=A^\dagger$ and $B\neq B^\dagger$. Therefore, we conclude that $A$ is Hermitian and $B$ is not. One can make the observation for $B$ very quickly by noting that there are imaginary elements along the diagonal. This makes it impossible for $B$ to be Hermitian. \\
+	\end{solution} 
+
+\noindent(b) Find eigenvalues and normalized eigenvectors of A. What is the relationship between $Tr(A)$ and a sum of the eigenvalues of $A$? Explain. \\
+	\begin{solution}
+		\noindent The characteristic polynomial for matrix $A$ is 
+			\begin{align*}
+				P(\lambda) &= (7-\lambda)[(1-\lambda)(-1-\lambda)-i(-i)] \\ 
+					&= (7-\lambda)[\lambda^2 -2]
+			\end{align*}
+		We solve for the eigenvalues $\{\lambda_i\}$ by setting the characteristic polynomial to zero and solving. 
+			\begin{align*}
+				(7-\lambda)&[\lambda^2 -2] = 0 \\ 
+				\Rightarrow& \lambda_1 = 7 \\ 
+				\Rightarrow& \lambda_{2,3} = \pm \sqrt{2} 
+			\end{align*}
+		Now using $\lambda_1 = 7$ gives:
+			\begin{align*}
+				\begin{pmatrix} 0 & 0 & 0 \\ 0 & -6 & -i \\ 0 & i & -8\end{pmatrix} &\cong \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} \\ 
+				\Rightarrow& \mathit{v}_1 = \begin{pmatrix}1 \\ 0 \\ 0 \end{pmatrix}
+			\end{align*}
+		Using $\lambda_2 = -\sqrt{2}$ gives: 
+			\begin{align*}
+				\begin{pmatrix}7+\sqrt{2} & 0 & 0 \\ 0 & 1+\sqrt{2} & -i \\ 0 & i & -1+\sqrt{2}\end{pmatrix} &\cong \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1+\sqrt{2} & -i \\ 0 & 0 & 0  \end{pmatrix} \\ 
+				\Rightarrow x=0 &\text{ and } (1+\sqrt{2})y-iz = 0 \\ 
+				\Rightarrow \mathit{v}_2 &= \begin{pmatrix}0 \\ i(-1+\sqrt{2}) \\ 1\end{pmatrix}
+			\end{align*}
+		Using $\lambda_2 = \sqrt{2}$ gives: 
+			\begin{align*}
+				\begin{pmatrix}7-\sqrt{2} & 0 & 0 \\ 0 & 1-\sqrt{2} & -i \\ 0 & i & -1-\sqrt{2}\end{pmatrix} &\cong \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1-\sqrt{2} & -i \\ 0 & 0 & 0  \end{pmatrix} \\ 
+				\Rightarrow x=0 &\text{ and } (1-\sqrt{2})y-iz = 0 \\ 
+				\Rightarrow \mathit{v}_3 &= \begin{pmatrix}0 \\ -i(1+\sqrt{2}) \\ 1\end{pmatrix}
+			\end{align*}
+		Lastly, we need to normalize these vectors. The first vector is normalized already, and taking the inner-products $\braket{\mathit{v}_1}{\mathit{v}_1}, \braket{\mathit{v}_2}{\mathit{v}_2}$ leads us to.
+			\begin{equation*}
+				\Bigg\{ \begin{pmatrix} 1 \\ 0 \\ 0\end{pmatrix}, \frac{1}{\sqrt{4-2\sqrt{2}}}\begin{pmatrix}0 \\ i(-1+\sqrt{2}) \\ 1\end{pmatrix}, \frac{1}{\sqrt{4+2\sqrt{2}}}\begin{pmatrix}0 \\ -i(1+\sqrt{2}) \\ 1 \end{pmatrix}   \Bigg\}
+			\end{equation*} 
+		
+		\noindent The trace of A is $Tr(A) = 7+1-1 = 7$ and the sum of the eigenvalues is $\sum_n\lambda_n = 7-\sqrt{2}+\sqrt{2} = 7$. We see that these values are the same. This is because the trace of a matrix is an invariant under change of basis. The eigenvalues correspond to the diagonal elements of the Matrix A diagonalized in it's basis of eigenvectors. Therefore, the sum of the eigenvalues is the same thing as the trace of the matrix. \\
+	\end{solution}
+
+\noindent(c) Show that the eigenvectors of A form a complete and orthonormal basis. \\
+	\begin{solution}
+		\noindent We already have that the vectors are normalized. Clearly, $\mathit{v}_1$ is orthogonal to $\mathit{v}_2, \mathit{v}_3$ as it has a single non-zero value of 1 in the only place where the other vectors have a zero. Thus all we need to verify is that $\braket{\mathit{v}_2}{\mathit{v}_3} = 0$. 
+			\begin{align*}
+				\begin{pmatrix}0 & -i(-1+\sqrt{2}) & 1\end{pmatrix}	\begin{pmatrix}0 \\ -i(1+\sqrt{2}) \\ 1\end{pmatrix} &= 0 - (-1+\sqrt{2})(1+\sqrt{2}) + 1 \\ 
+				 &= 0-(-1-\sqrt{2}+\sqrt{2}+2)+1 \\ 
+				 &= -1+1 = 0 
+			\end{align*}
+		Thus, we see that, in fact, the vectors are orthogonal. To show completeness we must establish that $\sum_n \ket{\mathit{v}_n}\bra{\mathit{v}_n} = Id$ for the $\{\mathit{v}_n\}$ eigenvectors.\\ 
+		
+		See attached Mathematica notebook for completeness calculation. \\
+	\end{solution}
+
+\noindent(d) Is $Tr(AB) = Tr(BA)$? Is $\det(AB) =\det(BA)$? Is $\det(B^\dagger) = \det(B)^*$? Show. 
+	\begin{solution}
+	\begin{align*}
+		AB &= \begin{pmatrix}
+			7 & 0 & 21 \\ 
+			1 & 2i & -5 \\ 
+			-i & -2 & 5i
+		\end{pmatrix} \\ 
+		BA &= \begin{pmatrix}
+			7 & 3i & -3 \\ 
+			0 & 2i & 2 \\ 
+			7i & 5 & 5i
+		\end{pmatrix}
+	\end{align*}
+	\noindent So, $Tr(AB) = 7+7i$ and $Tr(BA) = 7 + 7i$ and $\det(AB) = -224$ and $\det(BA) = -224$. Recall that $B^\dagger$ is given by: 
+		\begin{equation*}
+			B^\dagger = \begin{pmatrix}1 & 0 & -i \\ 0 & -2i & 0 \\ 3 & 0 & 5i \end{pmatrix}
+		\end{equation*}
+	From this we see that $\det(B^\dagger) = 16$ and $\det(B)^* = (16)^* = 16$. \\
+	\end{solution}
+
+\noindent(e) Calculate the commutator $[A,B]$. Find $Tr([A,B])$. 
+	\begin{solution}
+			\begin{align*}
+				[A, B] &= AB-BA \\ 
+					&= \begin{pmatrix}0 & -3i & 24 \\ 1 & 0 & -7 \\ -8i & -7 & 0\end{pmatrix}
+			\end{align*}
+			\noindent And so we see that $Tr([A,B]) = 0$. \\
+	\end{solution}
+
+\noindent(f) Calculate the inverse of A, i.e. $A^{-1}$. What are he eigenvalues of $A^{-1}$. 
+	\begin{solution}
+		We can calculate the inverse of A by finding the cofactor matrix. 
+		\begin{align*}
+			A^{-1} &= \frac{1}{\det(A)}\begin{pmatrix}
+				\begin{vmatrix} 1 & -i \\ i & -1\end{vmatrix} & -\begin{vmatrix} 0 & -i \\ 0 & -1\end{vmatrix} & \begin{vmatrix} 0 & 1 \\ 0 & i\end{vmatrix} \\ 
+				-\begin{vmatrix} 0 & 0 \\ i & -1\end{vmatrix} & \begin{vmatrix} 7 & 0 \\ 0 & -1\end{vmatrix} & -\begin{vmatrix} 7 &  0 \\ 0 & i\end{vmatrix} \\ 	
+				\begin{vmatrix} 0 & 0 \\ 1 & -i\end{vmatrix} & -\begin{vmatrix} 7 & 0 \\ 0 & -i\end{vmatrix} & \begin{vmatrix} 7 & 0\\ 0 & 1\end{vmatrix} 
+				\end{pmatrix} \\ 
+				&= \frac{-1}{14}\begin{pmatrix}
+					-2 & 0 & 0 \\ 
+					0 & -7 & -7i \\ 
+					0 & 7i & 7
+				\end{pmatrix} \\ 
+				&= \frac{1}{14}\begin{pmatrix}
+					2 & 0 & 0 \\ 
+					0 & 7 & -7i \\ 
+					0 & 7i & -7
+				\end{pmatrix}	
+		\end{align*}
+		This matrix has a characteristic equation: 
+			\begin{equation*}
+				P(\lambda) = (\frac{1}{7}-\lambda)[(\frac{1}{2}-\lambda)(-\frac{1}{2}-\lambda)-\frac{1}{4}]
+			\end{equation*}
+		This leads to the following eigenvalues
+			\begin{align*}
+				\lambda_1 &= \frac{1}{7} \\ 
+				-\frac{1}{4} &+ \lambda^2 - \frac{1}{4} = 0 \\ 
+				\lambda_{2,3}&= \pm \frac{1}{\sqrt{2}}
+			\end{align*}
+		Interestingly, these appear to be the reciprocals of the eigenvalues for the matrix $A$. \\
+	\end{solution}
+
+\noindent3. Consider a system whose Hamiltonian is given by $H = \alpha(\ket{\varphi_1}\bra{\varphi_2}+\ket{\varphi_2}\bra{\varphi_1})$, where $\alpha$ is a real number having the dimensions of energy. \\ 
+
+\noindent(a) Is H a projection operator? What about $\alpha^{-2}H^2$? 
+	\begin{solution}
+		Recall that a projection operator must satisfy the condition $P^2 = P$. Thus, we can check if $H$ is a projection. 
+			\begin{align*}
+				H^2 &= \alpha(\ket{\varphi_1}\bra{\varphi_2}+\ket{\varphi_2}\bra{\varphi_1})\alpha(\ket{\varphi_1}\bra{\varphi_2}+\ket{\varphi_2}\bra{\varphi_1})\\ 
+				&= \alpha^2\Big(\ket{\varphi_1}\bra{\varphi_2}\ket{\varphi_1}\bra{\varphi_2} + \ket{\varphi_1}\bra{\varphi_2}\ket{\varphi_2}\bra{\varphi_1}+\ket{\varphi_2}\bra{\varphi_1}\ket{\varphi_2}\bra{\varphi_1} + \ket{\varphi_2}\bra{\varphi_1}\ket{\varphi_1}\bra{\varphi_2}\Big) \\
+				&= \alpha^2\Big( 0 + \ket{\varphi_1}\bra{\varphi_1}+ 0 + \ket{\varphi_2}\bra{\varphi_2}\Big) \neq H
+			\end{align*}
+		Therefore it looks as though H is \textit{not} a projection operator. Now let's look at $\alpha^{-2}H^2$. We know what this operator is from the above arithmetic. 
+			\begin{align*}
+				\alpha^{-2}H^2 &= \ket{\varphi_1}\bra{\varphi_1} + \ket{\varphi_2}\bra{\varphi_2} \\ 
+				\Big(\alpha^{-2}H^2\Big)^2 &= \Big(\ket{\varphi_1}\bra{\varphi_1} + \ket{\varphi_2}\bra{\varphi_2}\Big)\Big(\ket{\varphi_1}\bra{\varphi_1} + \ket{\varphi_2}\bra{\varphi_2}\Big) \\ 
+				&= \ket{\varphi_1}\bra{\varphi_1}\ket{\varphi_1}\bra{\varphi_1}+\ket{\varphi_1}\bra{\varphi_1}\ket{\varphi_2}\bra{\varphi_2}+\ket{\varphi_2}\bra{\varphi_2}\ket{\varphi_1}\bra{\varphi_1}+\ket{\varphi_2}\bra{\varphi_2}\ket{\varphi_2}\bra{\varphi_2} \\ 
+				&= \ket{\varphi_1}\bra{\varphi_1}+ 0 + 0 + \ket{\varphi_2}\bra{\varphi_2} \\ 
+				&= \alpha^{-2}H^2
+			\end{align*}
+			Therefore, we have that $\alpha^{-2}H^2$ is a projection operator. \\
+	\end{solution}
+
+\noindent(b)Are $\ket{\phi_i}, i\in\{1, 2\}$ eigenstates of $H$? 
+	\begin{solution}
+		\noindent We can examine whether or not the states are eigenstates by acting $H$ upon them. 	
+			\begin{align*}
+				H\ket{\varphi_1} &= \alpha\Big(\ket{\varphi_1}\bra{\varphi_2} + \ket{\varphi_2}\bra{\varphi_1}\Big)\ket{\varphi_1} \\ 
+				&= \alpha \ket{\varphi_2}  \\ 
+				H\ket{\varphi_2} &= \alpha\Big(\ket{\varphi_1}\bra{\varphi_2} + \ket{\varphi_2}\bra{\varphi_1}\Big)\ket{\varphi_2} \\ 
+				&= \alpha\ket{\varphi_1}
+			\end{align*}
+		As $\ket{\phi_i}$ are a basis, they are linearly independent and therefore we have that they are \textit{not} eigenstates of $H$. This indicates that H is not represented in it's diagonal basis of eigenstates. \\
+	\end{solution}
+
+\noindent(c) Assuming that $\ket{\varphi_i}$ with $i\in\{1,2\}$ form a complete orthonormal basis, find the matrix representing H in this basis. What are the eigenvalues and eigenvectors of this matrix?  \\ 
+	\begin{solution}
+		\noindent With the knowledge that our basis has two elements, we can establish that the dimension of our state space is 2. This means that any operator will be represented in matrix form as $A\in\mathcal{M}_{2\times2}$. Because we have an equation for H, the matrix is given by:
+			\begin{align*}
+				H_{\ket{\varphi_i}} &\doteq \begin{pmatrix}
+					\bra{\varphi_1}H\ket{\varphi_1} & \bra{\varphi_1}H\ket{\varphi_2} \\ 
+					\bra{\varphi_2}H\ket{\varphi_1} & \bra{\varphi_2}H\ket{\varphi_2} 
+				\end{pmatrix} \\ 
+				&= \begin{pmatrix}
+					\bra{\varphi_1}\big(\alpha\ket{\varphi_2}\big) & \bra{\varphi_1}\big(\alpha\ket{\varphi_1}\big) \\ 
+					\bra{\varphi_2}\big(\alpha\ket{\varphi_2}\big) & 
+					\bra{\varphi_2}\big(\alpha\ket{\varphi_2}\big)
+				\end{pmatrix} \\ 
+				&= \begin{pmatrix}
+					0 & \alpha \\ 
+					\alpha & 0
+				\end{pmatrix}
+			\end{align*}
+		Interestingly, this matrix looks like $\alpha\sigma_x$ where $\sigma_x$ is the x'th Pauli spin matrix. Now let's find the eigenvalues and normalized eigenvectors. \\ 
+		
+		\noindent The characteristic equation for this matrix is: 
+			\begin{align*}
+				P(\lambda) &= (-\lambda)^2-\alpha^2 \\ 
+						&= 0 \\ 
+				\Rightarrow \lambda_{1,2} &= \pm \alpha 
+			\end{align*}
+		Plugging these back into the matrix yields the eigenvectors 
+			\begin{align*}
+				\mathit{v}_1 &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \frac{1}{\sqrt{2}}\big( \ket{\varphi_1} + \ket{\varphi_2}\big)\\
+				\mathit{v}_2 &= \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\  -1\end{pmatrix} = \frac{1}{\sqrt{2}}\big(\ket{\varphi_1}-\ket{\varphi_2}\big)
+			\end{align*}
+	\end{solution} 
+
+\noindent4. Show that for any two operators A and B
+	\begin{equation*}
+		e^BAe^{-B} = A + [B,A] + \frac{1}{2!}[B,[B,A]]+\frac{1}{3!}[B,[B,[B,A]]]
+	\end{equation*}
+	
+	\begin{solution}
+		\noindent Recall that for a linear operator $A$ we can defie $F(A)$ where F(x) is some function via the Taylor expansion:
+			\begin{equation*}
+				F(A) = \sum_n^\infty \frac{a_n}{n!}A^n 
+			\end{equation*}
+		For the function $F(x) = e^x$ we have the expansion: 
+			\begin{equation*}
+				F(A) = e^A = \sum_n^\infty \frac{1}{n!}A^n 
+			\end{equation*}
+		So, we can expand the equation in question to find: 
+			\begin{align*}
+				e^BAe^{-B} &= \Big(\sum_n^\infty \frac{1}{n!}B^n\Big)A\sum_m^\infty \frac{(-1)^m}{m!}B^m \\ 
+					&= \Big(\mathbb{1} + B + \frac{1}{2!} B^2 + \frac{1}{3!}B^3 + ... \Big)A\Big(\mathbb{1} - B + \frac{1}{2!} B^2 - \frac{1}{3!}B^3 + ... \Big)
+			\end{align*}
+		At this point we can use the binomial expansion to solve for the multiplication however I will just write the first few terms of the expansion
+			\begin{align*}
+				e^BAe^{-B} &= \begin{matrix}
+					A & -AB &+\frac{1}{2!}AB^2 &-\frac{1}{3!}AB^3 & +... \\ 
+					BA &-BAB &+\frac{1}{2!}BAB^2 &-\frac{1}{3!}BAB^3 &+... \\ 
+					\frac{1}{2!}B^2A &-\frac{1}{2!}B^2AB &+\frac{1}{(2!)(2!)}B^2AB^2 &+... 
+				\end{matrix} \\ 
+				&= A + [B, A] + \frac{1}{2!}B^2A - BAB + \frac{1}{2!}AB^2 + ... \\ 
+				&= A + [B,A] + \frac{1}{2!}\Big(B^2A-BAB-(BAB+AB^2)\Big) + ... \\ 
+				&= A + [B,A] + \frac{1}{2!}\Big(B[B,A]-[B,A]B\Big) + ... \\
+				&= A + [B,A] + \frac{1}{2!}[B, [B,A]] + ... 
+			\end{align*}
+		Thus we have shown the identity to be true. 
+	\end{solution}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

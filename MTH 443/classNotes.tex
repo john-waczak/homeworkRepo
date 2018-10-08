@@ -1,0 +1,135 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Class notes} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Last Updated: \today \\
+Dr. Schmidt
+\par\noindent\rule{\textwidth}{0.4pt}	
+	
+\section*{Notation Comments} 
+	\begin{Remark}
+		The notation $L_A:\F^n \to F^m$ when $A\in M_n(\F)$ has the letter $L$ to indicate left multiplication by A on column vectors. 
+	\end{Remark}
+
+	\begin{Remark}
+		Given any linear operator $T:V\to V$, and finite ordered bases $B, C$ for $V$. The matrix of $T$ with respect to $B$ and $C$ is denoted $[T]_B^C$. In particular, 
+			\begin{equation}
+				[Id_v]_C^B = \Big([Id_v]_b^C\Big)^{-1}
+			\end{equation}
+		From this, 
+			\begin{align}
+				[T]_C^C &= [Id_v]_B^C\; [T]_B^B\; [Id_v]_C^B \\ 
+					&= Q^{-1}\;[T]_B^C\; Q
+			\end{align}
+		where $Q = [Id_v]_C^B$ is the change of basis matrix. 
+	\end{Remark}
+
+\section*{Cosets}
+	If U is a subspace of V and $v\in V$ then the left coset of U in V represented by v is
+		\begin{equation}
+			v+U = \{v+u|u\in U\}
+		\end{equation}
+	The \textbf{set of left cosets} of U in V is 
+		\begin{equation}
+			V/U = \{v+U | v \in V\}
+		\end{equation}
+	Note that if $v\in V$ and $u \in U$ then $v+U = (v+u)+U$. Naively, we could hope that 
+		\begin{align*}
+			V/U \times V/U &\to V/U  \\ 
+			(v_1+U, v_2+U) &\mapsto (v_1+v_2)+U
+		\end{align*}
+	actually defines a function. We have to be sure that when you choose some $v_1', v_2'$ that the resulting coset is the same... i.e. that we need to check that this really is a function for which inputs have exactly one output. That is, 
+		\begin{align*}
+			(v_1+U, v_2+U) \mapsto v_1+v_2+U
+		\end{align*}
+	is well-defined, in the sense that the right hand side value is independent of choice of coset representatives of the initial cosets. Here, if $v_1' = v_1+u_1$, $v_2' = v_2+u_2$ with $u_i \in U$. Now 
+		\begin{equation*}
+			v_1' + v_2' + U = \Big[(v_1+u_1)+(v_2+u_2)\Big]+ U
+		\end{equation*}
+	Thus,
+		\begin{align*}
+			v_1'+v_2'+U &= (v_1+u_1+v_2) + (u_2 + U) \\ 
+				&= (v_1+v_2+u_1) + U \\ 
+				&= v_1+v_2 + U
+		\end{align*}
+	That is, since addition on V is Abelian, every subgroup U is normal and thus the naive formula does give a well-defined function. We now check if 
+		\begin{align*}
+			\F \times V/U &\to V/U \\ 
+			(\lambda, v+U)&\mapsto \lambda v + U
+		\end{align*}
+	is a well-defined function (\textbf{IT IS}). So the family of cosets of subspace U in vector space V is itself a vector space over $\F$. 
+	
+	\begin{lemma}
+		Suppose U is a vector subspace of V, and B is a basis of U. Let $C = B\cup B'$ be any basis of V extending B. Then, $\{v+U | v \in B'\}$ is a basis of our quotient vector space $V/U$. 
+	\end{lemma}
+	\begin{proof}
+		Suppose $\sum_i \lambda_i (v_i+U) = 0_{V/U}$ for some $\lambda_1,..., \lambda_n \in \F$. and $v_1, ... , v_n \in B'$. Since $0_{V/U} = 0_v + U = U$ is our zero vector, thus
+			\begin{align*}
+				\Big(\sum_i^n \lambda_i v_i\Big) + U = U
+			\end{align*} 
+		This holds if and only if 
+			\begin{align*}
+				\sum_i^n \lambda_i v_i \in U
+			\end{align*}
+		However, the $v_i\in B'$ and hence are linearly independent of the $sp(B)$. Therefore, this linear combination can only be $0_V\in U$. But $C$ is a basis and thus all of the $\lambda_i=0$. Note if $U=V$ then $V/U$ is only $\{0_v + U\}$ and one uses logical statements. 
+	\end{proof}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
