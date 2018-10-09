@@ -25,6 +25,18 @@
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
 
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
 \begin{document}
 %Header-Make sure you update this information!!!!
 \noindent
@@ -101,7 +113,69 @@ Dr. Schmidt
 		However, the $v_i\in B'$ and hence are linearly independent of the $sp(B)$. Therefore, this linear combination can only be $0_V\in U$. But $C$ is a basis and thus all of the $\lambda_i=0$. Note if $U=V$ then $V/U$ is only $\{0_v + U\}$ and one uses logical statements. 
 	\end{proof}
 
+\section*{More on cosets}
+	\noindent Recall that given $U$ is a subspace of $V$, we let $V/U$ be the quotient vector space, whose elements are cosets, thus of the form $v+U = \{ v+u|u\in U \}$. We call $v$ a coset representative of $v+U$; in general, cosets have many representative. We checked that 
+		\begin{align*}
+			V/U \times V/U &\to V/U \\ 
+			(v_1+U, v_2+U)&\mapsto (v_1+v_2)+U\\
+			\F \times V/U &\to V/U \\ 
+			(\lambda, v+U)&\mapsto \lambda v+U
+		\end{align*}
+	are functions. (We needed to check that their values were independent of coset representatives). You check that $V/U$ is then an $\F$-vectorspace.  \\ 
+	
+	\noindent Recall further that if $B$ is a basis for $U$ and $B'$ is such that $C=B\cup B'$ is a basis of $V$ extending $B$, then $\{v+U | v\in B'\}$ is a basis for $V/U$. 
+	
+	
+	\begin{lemma}
+		Let $U$ be a subspace of $V$ and define 
+			\begin{align*}
+				\pi:V&\to V/U \\ 
+				v &\mapsto v+U
+			\end{align*}
+		Then $\pi$ is a surjective linear transformation whose kernel is $U$. 
+	\end{lemma} 
+	\begin{proof}[sketch]
+		We check linearity:
+		\begin{align*}
+			\pi(\lambda v_1+v_2) &= (\lambda v_1 + v_2)+ U \\ 
+				&= (\lambda v_1 + U) + (v_2 + U) \\ 
+				&= \lambda(v_1+U)+(v_2+U) \\ 
+				&= \lambda\pi(v_1)+\pi(v_2) 
+		\end{align*}
+		$\forall \lambda \in \F$, $\forall v_1, v_2 \in V$. Thus the function $\pi$ is a linear transformation. Surjectivity is clear. Now we check the kernel. If $v\in \ker(\pi)$, then $\pi(v) = 0_{V/U} = 0_v+U$ that is $v+U = U$. Hence $v \in U$. The "other direction" holds equally well; $\ker(\pi) = U$. 
+	\end{proof}
 
+	\begin{lemma}
+		If $T:V\to W$ is a linear transformation, let $\bar{T}:V/\ker(T)\to W$ be given by
+			\begin{equation*}
+				\bar{T}(v+\ker(T)) = T(v)
+			\end{equation*}
+		$\forall v \in V$. Then, $\bar{T}$ is a linear transformation, which is injective. 
+	\end{lemma}
+	\begin{proof}
+		We must first check that $\bar{T}$ is a well-defined function. Suppose $v_1, v_2\in V$ are such that $v_1 + \ker(T) = v_2 + \ker(T)$. In particular, this means 
+			\begin{align*}
+				v_1 - v_2 \in \ker(T)
+			\end{align*} 
+		Hence $T(v_1 - v_2) = 0_W$. By the linearity of T, $T(v_1)-T(v_2) = 0_w$; that is $T(v_1)=T(v_2)$. Thus $\bar{T}$ is well-defined. Now $\forall \lambda \in \F$, $v_1, v_2 \in V$, 
+			\begin{align*}
+				\bar{T}(\lambda (v_1+ \ker(T)) + (v_2+\ker(T))) &= \bar{T}(\lambda v_1 + v_2+\ker(T)) \\ 
+				&= T(\lambda v_1 + v_2) \\ 
+				&= \lambda T(v_1) + T(v_2) \\ 
+				&= \lambda\bar{T}(v_1+\ker(T)) + \bar{T}(v_2+\ker(T))
+			\end{align*}
+		Thus, $\bar{T}$ is a linear transformation. Recall any linear transformation is injective if and only if its kernel is trivial ($\{0_V\}$). \\ 
+		
+		\noindent Suppose $\bar{T}(v + \ker(T)) = 0_W$. Then $T(v) = 0_W$. Hence $v\in\ker(T)$. Thus, $v+\ker(T) = \ker(T) = 0_{V/U}$. Therefore, $\bar{T}$ is injective
+	\end{proof}
+	
+	
+	\begin{corollary}
+		Given a linear transformation $T:V\to W$, we have $V/\ker(T) \text{ iso } T(V)$
+	\end{corollary} 
+	\begin{proof}
+		By the lemma, $\bar{T}:V/\ker(V)\to W$ is injective. Its range, $R_T = \{ T_v | v\in V\}$ Certainly, any linear transformation 
+	\end{proof}
 \end{document}
 
 

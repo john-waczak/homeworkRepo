@@ -1,0 +1,116 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 2} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt
+\par\noindent\rule{\textwidth}{0.4pt} \\
+
+\noindent(1). (a) Clearly state under what conditions the range and null space of a linear transformation T are the same set. 
+	\begin{solution}
+		\noindent Consider a general linear transformation $T:V\to W$ where $V$ and $W$ are $\F$-vector spaces. In order for the range of T to be equal to its null space, we must have the following
+			\begin{enumerate}
+				\item $\operatorname{rank}(T) = \operatorname{nullity}(T)$
+				\item $\dim(V)$ is even 
+				\item W = V 
+			\end{enumerate}
+	\end{solution}
+
+\noindent(b) Prove your assertion 
+	\begin{solution}
+		\begin{proof}
+			Recall from class that the Dimension Theorem (2.3) asserts 
+				\begin{equation*}
+					\operatorname{rank}(T) + \operatorname{nullity}(T) = \dim(V) 
+				\end{equation*}
+		\end{proof}
+	\end{solution} 
+\noindent(c) Give an example
+	\begin{solution}
+		\noindent\textbf{Example:} Consider the linear transformation $T:\F^2\to\F^2$ given by
+			\begin{equation*}
+				T(x,y) = (0, x) 
+			\end{equation*}
+		Acting this transformation on the canonical basis vectors $e_1, e_2$ generates the matrix representation for $T$ denoted $A_T \in \mathcal{M}_{2\times2}$. 
+			\begin{equation*}
+				A_T = \begin{pmatrix}
+					0 & 0 \\ 
+					1 & 0 
+				\end{pmatrix}
+			\end{equation*}
+		Then solutions to the equation $Ax=0$ are easily shown by row operations to be of the form
+			\begin{equation*}
+				\begin{pmatrix} 0 \\ \lambda \end{pmatrix}, \quad \forall \lambda\in\F
+			\end{equation*}
+		Therefore the null space of this linear transformation is
+			\begin{equation*}
+				\ker(T) = \{(x,y)\in \F^2| T(x,y) = (0,0)\} = \operatorname{span}(e_2)
+			\end{equation*}
+	\end{solution}
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,15 +23,34 @@
 \newcommand{\C}{\mathbb{C}}
 
 
+% braket notation commands 
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\expect}[1]{\langle #1 \rangle} 
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
 \begin{document}
 %Header-Make sure you update this information!!!!
 \noindent
 \large\textbf{Class notes} \hfill \textbf{John Waczak} \\
 \normalsize PH 651 \hfill  Last Updated: \today \\
+\par\noindent\rule{\textwidth}{0.4pt}	
 	
-	
-\subsection*{Measurements} 
-\par\noindent\rule{\textwidth}{0.4pt}
+\section*{Measurements} 
+
 Given $A|\phi_n\rangle = a_n |\phi_n\rangle$ ; $\{|\phi_n\rangle\} $ \\ 
 If our system is non-degenerate then our possible measurements are the eigenvalues $\{a_n\}$. Mathematically, we say that the way this works is via projection, i.e. 
 	\begin{align}
@@ -83,8 +102,7 @@ If our system is non-degenerate then our possible measurements are the eigenvalu
 
 
 
-\subsection*{Degeneracy} 
-\par\noindent\rule{\textwidth}{0.4pt}
+\section*{Degeneracy} 
 Given some $a_n$ degenerate, we write: 
 	\begin{equation*}
 		A|\phi_n^i\rangle = a_n |\phi_n^i\rangle 
@@ -125,15 +143,156 @@ We are constrained to have $c_2=0$ but we are free to make a choice for $c_1, c_
 
 
 
-\subsection*{Phases} 
-\par\noindent\rule{\textwidth}{0.4pt}
+\section*{Phases} 
 
 Given $|\psi\rangle$ and $|\psi'\rangle = e^{i\phi}|\psi\rangle$ are these physically equivalent? We say \textbf{yes} because $e^{i\phi}$ is an \textbf{overall} phase and is not measurable. Whenever we \textit{measure} we will have $e^{i\phi}e^{-i\phi}$ which will disappear.  \\ 
 
-Alternatively if we have a state $|\psi\rangle = \lambda_1 e^{i\phi_1}|\psi_1\rangle + \lambda_2 e^{i\phi_2}$ has a \textbf{relative} phase $e^{i(\theta_2-\theta_1)}$ which will not disappear when we perform measurements on the state. 
+Alternatively if we have a state $|\psi\rangle = \lambda_1 e^{i\phi_1}|\psi_1\rangle + \lambda_2 e^{i\phi_2}$ has a \textbf{relative} phase $e^{i(\theta_2-\theta_1)}$ which will not disappear when we perform measurements on the state. \\
+
+
+\section*{Compatible and incompatible observables} 
+
+	\noindent Recall that if we want to make measurements for operators $A,B$ then, 
+	\begin{definition}[compatible]
+		Two operators $A, B$ are compatible if $[A,B]=0$
+	\end{definition}
+	\begin{theorem}
+		If two observables are compatible, their operators possess a set of common eigenstate. 
+	\end{theorem}
+	\begin{proof}
+		\begin{align*}
+		A\ket{\varphi_n} &= a_n\ket{\varphi_n} \\ 
+		\bra{\varphi_m}[A,B]\ket{\varphi_n} &= 0 \\ 
+			&= \bra{\varphi_m}AB - BA\ket{\varphi_n} \\ 
+			&= a_m\bra{\varphi_m}B-Ba_n\ket{\varphi_n} \\ 
+			&= (a_m-a_n)\bra{\varphi_m}B\ket{\varphi_n} 
+		\end{align*}
+		From this we see that if $m\neq n$ then $\bra{\varphi_m}B\ket{\varphi_n} = 0$ i.e. the off diagonal matrix element is zero. This indicates that B is represented in it's own eigen-basis. Since these were the eigen-basis for A, we conclude that A and B share eigenstates. 
+	\end{proof}
+	
+	So if we have initial state $\ket{\Psi}$ and we measure $B$ we get some state $\ket{\varphi_n}$. If we then measure $A$ we get $\ket{\varphi_n}$ state again. We could flip the order of operators and the result would be the same, i.e. 
+		\begin{align}
+			A\ket{\varphi_n} &= a_n\ket{\varphi_n}\\
+			B\ket{\varphi_n} &= b_n\ket{\varphi_n}
+		\end{align}
+
+	\noindent Now what about incompatible operators? 
+		\begin{definition}[incompatible]
+			Two operators $A,B$ are incompatible if $[A,B]\neq0$. 
+		\end{definition}
+	So if $A,B$ are incompatible operators then if we have some $\ket{\Psi}$ and we measure $A$ we will get some $a_n$ and project to $\ket{\varphi_n}$. Then if we measure $B$ we get some $b_n$ and project again into some other state $\ket{\chi_n}$. Thus, 
+		\begin{equation*}
+			P(a_n, b_n) = |\bra{\Psi}\ket{\varphi_n}|^2|\bra{\varphi_n}\ket{\chi_n}|^2
+		\end{equation*}
+	But if we had changed the order of measurements, our total probability would be: 
+		\begin{equation*}
+			P(b_n, a_n) = |\bra{\Psi}\ket{\chi_n}|^2|\bra{\chi_n}\ket{\varphi_n}|^2
+		\end{equation*}
+	\begin{solution}
+		\noindent \textbf{Example} given $H\ket{\varphi_n} = n^2\varepsilon_0\ket{\varphi_n}$ and $A\ket{\varphi_n} = na_0\ket{\varphi_{n+0}}$. We expect that these are incompatible. First act with H then with A. 
+			\begin{align*}
+				H\ket{\varphi_3} &= 9\varepsilon_0\ket{\varphi_3} \\ 
+				A[9\varepsilon_0\ket{\varphi_3}] &= 27a_0\cdot\varepsilon_0 \\ 
+			\end{align*}
+		Now first act with A then with H 
+			\begin{align*}
+				A\ket{\varphi_3} &= 3a_0\ket{\varphi_4} \\ 
+				H[3a_0\ket{\varphi_4}] &= 48a_0 \epsilon_0 \ket{\varphi_4} 
+			\end{align*}
+	\end{solution}
+
+\section*{Uncertainty Relations}
+	\noindent Consider two arbitrary operators $A, B$ and their expectation values $\expect{A}$, $\expect{B}$ with respect to some normalized state vector $\ket{\psi}$. i.e.
+		\begin{align*}
+			\expect{\hat{A}} &= \bra{\psi}\hat{A}\ket{\psi} \\ 
+			\expect{\hat{B}} &= \bra{\psi}\hat{B}\ket{\psi} 
+		\end{align*}
+		
+	\noindent The uncertainties $\Delta A$ and $\Delta B$ are defined by 
+		\begin{align}
+			\Delta A &= \sqrt{\expect{\hat{A}^2}-\expect{\hat{A}}^2} \\
+			\Delta B &= \sqrt{\expect{\hat{B}^2}-\expect{\hat{B}^2}}
+		\end{align}
+		
+	\noindent Note that $\Delta A$, $\Delta B$ are numbers, not operators according to the above definition. Sakurai uses, 
+		\begin{align}
+			\Delta \hat{A} &= \hat{A}-\expect{\hat{A}} \\ 
+			\Delta \hat{B} &= \hat{B}-\expect{\hat{B}} 
+		\end{align}
+	What's the relationship between $\Delta A$ and $\Delta\hat{A}$? 
+		\begin{align*}
+			(\Delta\hat{A})^2 &= (\hat{A}-\expect{\hat{A}})^2 = \hat{A}^2-2\hat{A}\expect{\hat{A}} + \expect{\hat{A}}^2 \\ 
+			\Rightarrow \expect{(\Delta \hat{A})^2} &= \expect{\hat{A}^2} - 2\expect{\hat{A}}^2 + \expect{\hat{A}}^2 \\ 
+			&= \expect{A^2}-\expect{\hat{A}}^2 \\ 
+			&= (\Delta A)^2
+		\end{align*}
+	Now let's consider how the uncertainty operator acts on a state, i.e. 
+		\begin{align*}
+			\ket{\chi} &= \Delta\hat{A}\ket{\psi} \\ 
+			\ket{\phi} &= \Delta\hat{B}\ket{\psi} 
+		\end{align*}
+	Then by the Cauchy-Schwarz inequality, we have 
+		\begin{align*}
+			|\braket{\chi}{\phi}|^2 &\leq \braket{\chi}{\chi}\braket{\phi}{\phi} \\ 
+			\braket{\chi}{\chi} &= \bra{\psi}\Delta\hat{A}^\dagger \Delta\hat{A}\ket{\psi} \\ 
+			&= \bra{\psi}(\Delta \hat{A})^2 \ket{\psi} \\ 
+			&= \expect{(\Delta \hat{A})^2} = (\Delta A)^2 \\ 
+			\Rightarrow \braket{\phi}{\phi} &= \expect{(\Delta \hat{B})^2} 
+		\end{align*}
+	And also, 
+		\begin{align*}
+			\braket{\chi}{\phi} &= \bra{\psi}\Delta\hat{A}\Delta\hat{B}\ket{\psi} \\ 
+				&= \expect{(\Delta\hat{A}\Delta\hat{B})}
+		\end{align*}
+	So our Cauchy-Schwarz inequality becomes: 
+		\begin{align}
+			|\expect{(\Delta\hat{A}\Delta\hat{B})}|^2 &\leq (\Delta A)^2(\Delta B)^2
+		\end{align}
+	Now let's look at $\Delta\hat{A}\Delta\hat{B}$. 
+		\begin{align*}
+			\Delta\hat{A}\Delta\hat{B} &= \frac{1}{2}\Big(\Delta\hat{A}\Delta\hat{B}\Big) \\
+				&= 2\cdot\frac{1}{2}\Big(\Delta\hat{A}\Delta\hat{B}\Big)+\frac{1}{2}\Big(\Delta\hat{B}\Delta\hat{A}\Big)-\frac{1}{2}\Big(\Delta\hat{B}\Delta\hat{A}\Big) \\
+				&= \frac{1}{2}[\Delta\hat{A}, \Delta\hat{B}] + \frac{1}{2}\{\Delta\hat{A}, \Delta\hat{B}\}
+		\end{align*}
+	i.e. a combination of commutator and anti-commutator. Recall that $[ , ]$ was anti-Hermitian when the operators are Hermitian and that $\{ , \}$ was Hermitian. Then we have that $\Delta\hat{A}\Delta\hat{B}$ has a real and an imaginary part. i.e. 
+		\begin{align*}
+			\expect{\Delta\hat{A}\Delta\hat{B}} &= \frac{1}{2}\expect{[\Delta\hat{A}, \Delta\hat{B}]} + \frac{1}{2}\expect{\{ \Delta\hat{A},\Delta\hat{B}   \}} \\
+			|\expect{\Delta\hat{A}\Delta\hat{B}}|^2 &= \frac{1}{4}|\expect{[\Delta\hat{A}, \Delta\hat{B}]}|^2 + \frac{1}{4}|\expect{\{ \Delta\hat{A},\Delta\hat{B}   \}}|^2 
+		\end{align*}
+	Now let's examine the term with $[\Delta \hat{A}, \Delta \hat{B}]$: 
+		\begin{align*}
+			[\Delta \hat{A}, \Delta \hat{B}] &= \Delta\hat{A}\Delta\hat{B}-\Delta\hat{B}\Delta\hat{A} \\ 
+				&= (\hat{A}-\expect{\hat{A}})(\hat{B}-\expect{\hat{B}})-(\hat{B}-\expect{\hat{B}})(\hat{A}-\expect{\hat{A}}) \\ 
+				&= \hat{A}\hat{B}-\hat{A}\expect{\hat{B}}-\expect{\hat{A}}\hat{B} + \expect{\hat{A}}\expect{\hat{B}}- \hat{B}\hat{A}+\hat{B}\expect{\hat{A}}+\expect{\hat{B}}\hat{A}-\expect{\hat{B}}\expect{\hat{A}} \\ 
+				&= [\hat{A}, \hat{B}]
+		\end{align*}
+	Where in the last line we have equality because expectation values are scalars and can be moved to either side of the operator. Now returning to our previous calculation, we can simplify to find
+		\begin{align*}
+			|\expect{\Delta\hat{A}\Delta\hat{B}}|^2 = \frac{1}{4}|\expect{[\hat{A}, \hat{B}]}|^2 + \frac{1}{4}|\expect{\{ \Delta\hat{A}, \Delta\hat{B}  \}}|^2 \\ 
+		\end{align*}
+	From this equality, we can confirm the inequality, 
+		\begin{align*}
+			|\expect{\Delta\hat{A}\Delta\hat{B}}|^2 &\geq \frac{1}{4}|\expect{[\hat{A},\hat{B}]}|^2 \\ 
+			\Rightarrow (\Delta A)^2(\Delta B)^2 &\geq \frac{1}{4}|\expect{[\hat{A},\hat{B}]}|^2 \quad \text{by eqn 12} 
+		\end{align*}
+	Finally, by taking the square root of this equation, we arrive at the famous inequality:
+		\begin{equation}
+			\Delta A \Delta B \geq \frac{1}{2}\Big| \expect{[\hat{A}, \hat{B}]}\Big|
+		\end{equation}
+	which is the general form of the uncertainty principle.
+		\begin{solution}
+			\noindent\textbf{Example:} Heisenberg uncertainty relations
+				\begin{align}
+					\hat{A} = X \quad&;\quad \hat{B}=P_x \\ 
+					[X, P_x] &= i\hbar\mathbb{I}
+				\end{align}
+			Where $\mathbb{I}$ is the identity operator. Then, 
+				\begin{align*}
+					\Delta x \Delta p_x &\geq \frac{1}{2}|\expect{i\hbar}| = \frac{\hbar}{2}
+				\end{align*} 
+			The position and momentum of a microscopic system cannot be accurately measured both at once. If the position is measured with uncertainty $\Delta x$, the uncertainty in measuring the momentum cannot be smaller than $\hbar/2\Delta x$. 
+		\end{solution}
 \end{document}
-
-
 
 
 
