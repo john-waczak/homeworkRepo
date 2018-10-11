@@ -49,20 +49,25 @@ Dr. Schmidt
 	\begin{solution}
 		\noindent Consider a general linear transformation $T:V\to W$ where $V$ and $W$ are $\F$-vector spaces. In order for the range of T to be equal to its null space, we must have the following
 			\begin{enumerate}
-				\item $\operatorname{rank}(T) = \operatorname{nullity}(T)$
+				\item $W = V$ 
 				\item $\dim(V)$ is even 
-				\item W = V 
+				\item $\operatorname{rank}(T) = \operatorname{nullity}(T)$
 			\end{enumerate}
 	\end{solution}
 
 \noindent(b) Prove your assertion 
 	\begin{solution}
-		\begin{proof}
-			Recall from class that the Dimension Theorem (2.3) asserts 
+		\begin{proof} 
+			\noindent Consider a linear transformation $T:V\to W$ for $V,W$ $\F$-vector spaces. Our goal is to show that the above conditions are satisfactory requirements for the range to be equal to the null space of T. First in order for these to be the same set we must have $V=W$. If we do not, then even if the two supspaces are isomorphic we will not have that they are the \textit{same set}. \\ 
+		
+			Next, recall from class that the Dimension Theorem (2.3) asserts 
 				\begin{equation*}
 					\operatorname{rank}(T) + \operatorname{nullity}(T) = \dim(V) 
 				\end{equation*}
-		\end{proof}
+			Also, further recall from Theorem 2.1 that $\ker(T)$ and $T(V)$ are subspaces of V and W. Therefore given a set of vectors $\{v_i\}$ is in either of the spaces, $\operatorname{span}(\{v_i\})$ must also be in these spaces. If the $\dim(V)$ is not even, then by the above theorem it must be true that $\operatorname{rank}(T)\neq\operatorname{nullity}(T)$. As these quantities refer to the dimenions of the range and null space then the number of vectors needed to span the range is not equal to the number of vectors needed to span the null space. This implies that $T(V)\neq \ker(T)$. Therefore, we must have that $\dim(V)$ is even. \\ 
+
+			We now consider requirement 3. If requirements 1 and 2 hold and $\dim(V)=2$, we have that $\operatorname{rank}(T)=\operatorname{nullity}(T)$. If $\dim(V)\geq 2$ and $\dim(V)$ is even then it may be that $\operatorname{rank}(T) = k$ and $\operatorname{nullity}(T)= m$ where $k+m = \dim(V)$ but $k\neq m$. If this is true then by the same argument as before a different number of vectors will span  each space and so they can not be the same set (consider the difference between a plane and a line). Therefore, we must also have that $\operatorname{rank}(T) = \operatorname(nullity)(T)$. 
+		\end{proof} 
 	\end{solution} 
 \noindent(c) Give an example
 	\begin{solution}
@@ -85,7 +90,22 @@ Dr. Schmidt
 			\begin{equation*}
 				\ker(T) = \{(x,y)\in \F^2| T(x,y) = (0,0)\} = \operatorname{span}(e_2)
 			\end{equation*}
+		Now, the range of this transformation, $T(\F^2)$ is defined as 
+			\begin{equation*} 
+				T(\F^2) = \{w\in \F^2 :\; \exists v \in \F^2 \text{ with } T(v)=w\}
+			\end{equation*}
+		Thus, from our matrix we can see that $\forall$ $v=(x,y)^t \in \F^2$ we have the following
+			\begin{align*}
+				Av &= \begin{pmatrix}0 & 0 \\ 1 & 0\end{pmatrix}\begin{pmatrix}x \\ y\end{pmatrix}\\ 
+				&= \begin{pmatrix}0 \\ x\end{pmatrix}
+			\end{align*}
+		As $(x,y)$ was arbitrary, we see that the range is also given by 
+			\begin{equation*} 
+				T(\F^2) = \operatorname{span}(e_2)
+			\end{equation*}
+		From this we conclude that T is an example of a linear transformation with a range equal to its null space. 
 	\end{solution}
+
 
 \end{document} 
 
