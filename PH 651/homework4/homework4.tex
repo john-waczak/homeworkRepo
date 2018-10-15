@@ -1,0 +1,332 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% braket notation commands 
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\expect}[1]{\langle #1 \rangle} 
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 4} \hfill \textbf{John Waczak} \\
+\normalsize PH 651 \hfill  Date: \today \\
+\par\noindent\rule{\textwidth}{0.4pt}	\\
+
+\noindent 1. Consider a physical system whose Hamiltonian and initial state are given by $H = \varepsilon_0\begin{pmatrix} 1 & -1 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}$, $\ket{\psi} = \frac{1}{\sqrt{6}}\begin{pmatrix}1 \\ 1 \\ 2 \end{pmatrix}$, where $\varepsilon_0$ has the dimensions of energy. \\ 
+
+\noindent (a) What values will we obtain when measuring the energy and with what probabilities? \\
+	\begin{solution}
+		\noindent The possible values of measurement are given by the eigenvalues of $H$. From its matrix representation, we have that the characteristic equation is 
+			\begin{align*}
+				(-1-\lambda)[(1-\lambda)^2-1] &= 0 \\  
+				\Rightarrow -1-\lambda &= 0 \\ 
+					\lambda &= -1 \\ 
+				\Rightarrow (1-\lambda)^2 - 1 &= 0 \\ 
+					\lambda &= 0, 2
+			\end{align*}
+		Thus the possible measurements of $H$ are $\{-1\varepsilon_0,\; 0\varepsilon_0,\; 2\varepsilon_0\}$. To figure out with what probabilities these are found we need to determine the eigenbasis for $H$ and then evaluate $\ket{\psi}$ in this basis. 
+			\begin{align*}
+				\begin{pmatrix} 1-2 & -1 & 0 \\ -1 & 1-2 & 0 \\ 0 & 0 & -1-2 \end{pmatrix} &= \begin{pmatrix} -1 & -1 & 0 \\ -1 & -1 & 0 \\ 0 & 0 & -3 \end{pmatrix} \\
+				&\cong \begin{pmatrix}1 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix} \\
+				\Rightarrow \ket{E=2\varepsilon_0} &= \frac{1}{\sqrt{2}}\begin{pmatrix} -1 \\ 1 \\ 0\end{pmatrix}
+			\end{align*}
+		Continuing this procedure for the other eigenvalues leads to the eigenbasis
+			\begin{equation*}
+				\ket{E=2\varepsilon_0} = \frac{1}{\sqrt{2}}\begin{pmatrix}-1 \\ 1 \\ 0\end{pmatrix} \quad \ket{E=0\varepsilon_0} = \frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ 1 \\ 0\end{pmatrix} \quad \ket{E=-1\varepsilon_0} = \begin{pmatrix} 0 \\ 0 \\ 1\end{pmatrix}
+			\end{equation*}
+		Now assuming that $\ket{\psi}$ is represented in this basis, we have the following probabilities
+			\begin{align*}
+				P(2\varepsilon_0) &= \left| \braket{2\varepsilon_0}{\psi}\right|^2 \\ 
+					&= 0 \\ 
+				P(0\varepsilon_0) &= \left| \braket{0\varepsilon_0}{\psi}\right|^2 \\ 
+					&= \left|\frac{1}{\sqrt{12}}(1+1)\right|^2 \\ 
+					&= \frac{1}{3} \\ 
+				P(-1\varepsilon_0) &= \left| \braket{-1\varepsilon_0}{\psi} \right|^2 \\ 
+					&= \frac{4}{6} = \frac{2}{3} 
+			\end{align*}
+		Note that $0 + 1/3 + 2/3 = 1$ and so we are confident that these are the correct probabilities. \\
+	\end{solution}
+
+\noindent (b) Calculate the expectation value of the Hamiltonian both ways: (i) using the eigenvalues and probabilities, and (ii) using the definition of expectation value with H and $\ket{\psi}$. \\
+	\begin{solution}
+		\noindent(i) $\expect{H} = \sum_n E_n P_n = 2\varepsilon_0\cdot 0 + 0\varepsilon_0\cdot \frac{1}{3} - \varepsilon_0\cdot \frac{2}{3} = -\frac{2}{3}\varepsilon_0$ \\ 
+		
+		\noindent(ii) 
+			\begin{align*}
+				\expect{H} &= \bra{\psi}H\ket{\psi} \\ 
+					&= \frac{1}{6}\begin{pmatrix}1 & 1 & 2\end{pmatrix}\varepsilon_0\begin{pmatrix}
+					 1 & -1 & 0 \\ 
+					 -1 & 1 & 0 \\ 
+					 0 & 0 & -1
+					\end{pmatrix}\begin{pmatrix}1 \\ 1\\ 2\end{pmatrix} \\ 
+					&= \frac{\varepsilon_0}{6}(-4) \\ 
+					&= -\frac{2}{3}\varepsilon_0
+			\end{align*}
+		So we see that the two definitions are equivalent. \\
+	\end{solution}
+
+\noindent 2. Consider a system whose Hamiltonian and an operator A are given by the matrices\\ $$H = \varepsilon_0\begin{pmatrix}1 & -1 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & -1\end{pmatrix}, \quad A=a_0\begin{pmatrix}0 & 4 & 0 \\ 4 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$$.\\
+
+\noindent(a) If we measure energy, what values will we obtain? 
+	\begin{solution}
+		This Hamiltonian is the same as in problem 1. Therefore, the possible energy values are $\{2\varepsilon_0, 0\varepsilon_0, -1\varepsilon_0 \}$ \\ 
+	\end{solution}
+
+\noindent(b) Suppose that when we measure the energy, we obtain a value of $-\varepsilon_0$. Immediately afterwards, we measure A. What values will we obtain for A and with what probabilities? \\
+	\begin{solution}
+			\noindent If we measure $E=-\varepsilon_0$, then the state has been projected into $\ket{-\varepsilon_0}$. To figure out the results of a subsequent A measurement we must determine the eigenvalues (possible measurements) of $A$ as well as it's eigenvectors. Then we can find the coefficients of $\ket{-\varepsilon_0}$ in this basis for the probabilities. \\ 
+			
+			\noindent The characteristic equation for $A$ leads to eigenvalues $\{0a_0, a_0\sqrt{17}, -a_0\sqrt{17}\}$. The eigenvectors corresponding to these values are 
+				\begin{equation*}
+					\ket{-\sqrt{17}a_0} = \begin{pmatrix}2\sqrt{2/17} \\ -1/\sqrt{2}\\ 1/\sqrt{34}\end{pmatrix} \quad 	\ket{\sqrt{17}a_0} = \begin{pmatrix}2\sqrt{2/17} \\ 1/\sqrt{2} \\ 1/\sqrt{34}\end{pmatrix} \quad 	\ket{0a_0} = \begin{pmatrix}-\sqrt{1/17} \\ 0 \\ 4/\sqrt{17}\end{pmatrix}
+				\end{equation*}
+			Thus the possible measurements are their probabilities are 
+				\begin{align*}
+					P\left(a=-\sqrt{17}a_0\right) &= \left|\braket{-\sqrt{17}a_0}{-\varepsilon_0}\right|^2 \\ 
+						&= \left|\frac{1}{\sqrt{34}}\right|^2 \\ 
+						&= 1/34 \\ 
+					P\left(a=\sqrt{17}a_0\right) &= \left|\braket{\sqrt{17}a_0}{-\varepsilon_0}\right|^2 \\
+						&= 1/34 \\ 
+					P\left(a=0a_0\right) &= \left|\braket{0a_0}{-\varepsilon_0}\right|^2 \\ 
+						&= 32/34
+				\end{align*}
+	\end{solution}
+
+\noindent3. Consider a physical system whose state and two observables A and B are represented by
+	\begin{equation*}
+		\ket{\psi} = \frac{1}{6}\begin{pmatrix}1\\0\\4\end{pmatrix}, \quad A=\frac{1}{\sqrt{2}}\begin{pmatrix}
+		2 & 0 & 0 \\ 
+		0 & 1 & i \\ 
+		0 & -i & 1
+		\end{pmatrix}, \quad B = \begin{pmatrix}
+		1 & 0 & 0 \\ 
+		0 & 0 & -i \\ 
+		0 & i & 0
+		\end{pmatrix}
+	\end{equation*} 
+
+\noindent (a) We first measure A and then B. Find the probability of obtaining a value of 0 for A and a value of 1 for B. 
+	\begin{solution}
+		In analogy to rolling two dice, the probabilities simply multiply. Thus 
+			\begin{equation*}
+				P(a=0, \text{ then } b=1) = \left|\braket{a=0}{\psi}\right|^2\left|\braket{b=1}{a=0}\right|^2
+			\end{equation*}
+		Assuming 0 and 1 are in fact eigenvalues of A and B, we need to find the corresponding eigenvectors in order to perform the above calculations. This gives us
+			\begin{align*}
+				\ket{a=0} &= \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ 1 \\ i\end{pmatrix} \\ 
+				\ket{b=1} &= \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ i\end{pmatrix}
+			\end{align*}
+		And so the probabilities are
+			\begin{align*}
+				\left|\braket{a=0}{\psi}\right|^2 &= \frac{16}{2\cdot 36} = \frac{2}{9} \\ 
+				\left| \braket{b=1}{a=0} \right|^2 &= \left|\frac{2}{\sqrt{6}}\right|^2 = \frac{2}{3}
+			\end{align*}
+		Thus, we conclude that
+			\begin{equation*}
+				P\left( a=0 \text{ then } b=1 \right) = \frac{2}{9}\cdot \frac{2}{3} = \frac{4}{27}
+			\end{equation*}
+	\end{solution}
+
+\noindent(b) If we measure B then A what is the probability of obtaining 1 for B and 0 for A? 
+	\begin{solution}
+		This is similar to the previous problem except the order has been switched. It follows that the probability is given by 	
+			\begin{equation*}
+					P(b=1, \text{ then } a=0) = \left|\braket{b=1}{\psi}\right|^2\left|\braket{a=0}{b=1}\right|^2
+			\end{equation*}
+		The probabilities are 
+			\begin{align*}
+				\left|\braket{b=1}{\psi}\right|^2 &= \left| \frac{1}{6\sqrt{3}}(1-4i) \right|^2 \\ 
+					&= \frac{1+16}{36*3} = \frac{17}{108} \\
+				\left|\braket{a=0}{b=1}\right|^2 &= \left| \frac{1}{\sqrt{6}}(1+1)\right|^2 \\
+					&= \frac{4}{6} = \frac{2}{3} 
+			\end{align*}
+		Which gives a final probability of 
+			\begin{equation*}
+				P(b=1 \text{ then } a=0) = \frac{17}{108}\cdot \frac{2}{3} = \frac{17}{162}
+			\end{equation*}
+		Note that these probabilities aren't the same. \\
+	\end{solution}
+
+\noindent (c) Compare the results of (a) and (b) and explain. \\
+	\begin{solution}
+		\noindent In the first example $A$ projects $\ket{\psi}$ onto $\ket{a=0}$ whcih can then be seen as some linear combination of $\ket{b_i}$, the B basics. In the second case, we let B project $\ket{\psi}$ to $\ket{b=1}$ which can be thought of as a superposition of A's $\ket{a_i}$ basis states. These are different superpositions so one should not expect the probabilities to be the same. \\
+	\end{solution}
+
+\noindent 4 (a) Is the state $\psi(\theta, \varphi) = e^{-3i\varphi}\cos\theta$ an eigenfunction of the operators $A_\varphi = \partial/\partial\varphi$ and $B_\theta = \partial/\partial\theta$. 
+	\begin{solution}
+		\noindent To check if $\psi$ is an eigenfunction, we can let $A_\varphi$ and $B_\theta$ act upon $\psi(\theta, \varphi)$. 	
+			\begin{align*}
+				A_\varphi\psi &= \frac{\partial}{\partial \varphi}e^{-3i\varphi}\cos\theta \\
+					&= -3ie^{-3i\varphi}\cos\theta \\ 
+					&= -3i\psi(\theta, \varphi) \\ 
+				B_\theta\psi &= \frac{\partial}{\partial \theta}e^{-3i\varphi}\cos\theta \\ 
+					&= -e^{-3i\varphi}\sin\theta 
+			\end{align*}
+		So we see that $\psi$ is an eigenfunction of $A_\varphi$ with eigenvalue $-3i$ and but is not an eigenfunction of $B_\theta$. 
+		\end{solution}
+
+\noindent (b) Are $A_\varphi$ and $B_\theta$ Hermitian? 
+	\begin{solution}
+		\noindent To check if these operators are Hermitian, we will use the inner-product definition. 
+		\begin{align*}
+			\bra{\psi}A_\varphi\ket{\chi} &= \int\limits_0^\pi \int\limits_0^{2\pi}r^2\sin\theta d\varphi d\theta\; \psi^*(\theta, \varphi)\frac{\partial}{\partial \varphi}\chi(\theta, \varphi) \\
+			&= \int\limits_0^\pi d\theta \left( r^2\sin\theta\; \psi^*(\theta, \varphi)\chi(\theta,\varphi) \Big|_{0}^{2\pi}-\int\limits_0^{2\pi}r^2\sin\theta d\varphi \; \chi(\theta,\varphi)\frac{\partial}{\partial \varphi}\psi^*(\theta, \varphi)  \right)
+		\end{align*}
+		Because we are using spherical coordinates, we may impose a continuity periodicity condition on all wavefunctions so that $\psi(\varphi=0)=\psi(\varphi=2\pi)$ and $\chi(\varphi=0)=\chi(\varphi=2\pi)$. From this the evaluation term cancels, leaving us with
+			\begin{equation*}
+				= -\int\limits_0^\pi\int\limits_0^{2\pi} r^2\sin\theta d\varphi d\theta\; \chi(\theta,\varphi)\frac{\partial}{\partial\varphi}\psi^*(\theta,\varphi) = -\bra{\chi}A_\varphi\ket{\psi}^*
+			\end{equation*}
+		Thus $A_\varphi$ is anti-Hermitian. 
+			\begin{align*}
+				\bra{\psi}B_\theta\ket{\chi} &= \int\limits_0^{2\pi}\int\limits_{0}^{\pi}r^2\sin\theta d\theta d\varphi \; \psi^*(\theta, \varphi)\frac{\partial}{\partial \theta}\chi(\theta, \varphi) \\
+					&= \int\limits_{0}^{2\pi}d\varphi \left( r^2\sin\theta\;\psi^*(\theta,\varphi)\chi(\theta,\varphi)\Big|_{0}^{\pi}-\int\limits_{0}^{\pi}d\theta r^2\sin\theta \; \chi(\theta,\varphi)\frac{\partial}{\partial \theta} \psi^*(\theta, \varphi)\right) \\ 
+			\end{align*}
+		Since $\sin(\pi)=\sin(0)=0$, we have that this becomes
+			\begin{equation*}
+				= \int\limits_0^{2\pi}\int\limits_0^{\pi}r^2\sin\theta d\theta d\varphi \; \chi(\theta,\varphi)\frac{\partial}{\partial \theta}\psi^*(\theta,\varphi) = -\bra{\chi}B_\theta\ket{\psi}^* 
+			\end{equation*}
+		And thus $B_\theta$ is anti-Hermitian and not Hermitian. \\
+	\end{solution}
+
+\noindent (c) Calculate the expectation values $\expect{A_\varphi}$ and $\expect{B_\theta}$ 
+	\begin{align*}
+		\expect{A_\varphi} &= \int\limits_0^\pi\int\limits_0^{2\pi}r^2\sin\theta\; e^{3i\varphi}\cos\theta \frac{\partial}{\partial \theta}\left( e^{-3i\varphi}\cos\theta \right) \\ 
+			&= -4i\pi r^2 \\ 
+		\expect{B_\theta} &= \int\limits_0^\pi\int\limits_0^{2\pi}r^2\sin\theta\; e^{3i\varphi}\cos\theta \frac{\partial}{\partial \theta} e^{-3i\varphi}\cos\theta d\varphi d\theta \\ 
+			&= \int\limits_0^\pi\int\limits_0^{2\pi}r^2\sin\theta\cos\theta(-\sin\theta)d\varphi d\theta \\ 
+			&= 0
+	\end{align*} 
+	
+\noindent (d) Find the commutator $[A_\varphi, B_\theta]$. \\
+	\begin{solution}
+		\noindent Consider some general wavefunction $\Phi(\theta, \varphi)$. Then 
+			\begin{align*}
+				A_\varphi B_\theta \Phi &= A_\varphi \frac{\partial}{\partial \theta}\Phi = \frac{\partial^2 \Phi}{\partial \varphi \partial \theta} \\ 
+				B_\theta B_\varphi \Phi &= B_\theta \frac{\partial}{\partial \varphi}\Phi = \frac{\partial^2 \Phi}{\partial\theta \partial\varphi}
+			\end{align*}
+		Because mixed partial derivatives are equal, these terms are the same and therefore we have that $[A_\varphi, B_\theta]=0$ i.e. $A_\varphi$ and $B_\theta$ commute. \\
+	\end{solution}
+
+\noindent Consider a physical system which has a number of observables that are represented by the following matrices:
+	\begin{equation*}
+		A = \begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}, \quad B = \begin{pmatrix}0 & 0 & -1 \\ 0 & 0 & i \\ -1 & -i & 4\end{pmatrix}, \quad C = \begin{pmatrix}2 & 0 & 0 \\ 0 & 1 & 3 \\ 0 & 3 & 1\end{pmatrix}
+	\end{equation*}
+	
+\noindent (a) Which among these observables are compatible? Find the Results of the measurements of the compatible observables. 
+	\begin{solution}
+		See the attached Mathematica notebook for direct calculations 
+			\begin{align*}
+				[A, B] &= \begin{pmatrix}
+					0 & 1 & -1 \\ 
+					-1 & -2i & 4 \\ 
+					1 & -4 & 2i
+				\end{pmatrix} \\ 
+				[B, C] &= \begin{pmatrix}
+					0 & -3 & 1 \\ 
+					3 & 6i & -12 \\ 
+					-1 & 12 & -6i
+				\end{pmatrix} \\ 
+				[A,C] &= \begin{pmatrix}
+					0 & 0 & 0 \\ 
+					0 & 0 & 0 \\ 
+					0 & 0 & 0 
+				\end{pmatrix}
+			\end{align*}
+		From these commutators we see that operators A and C are the only compatible observables. The results of measurements of the compatible observables were also calculated using Mathematica (to save a bit of time). The eigenvalues are
+			\begin{align*}
+				\{a_n\} &= \{-1, 1, 1\} \\ 
+				\{c_n\} &= \{4, -2, 2\}
+			\end{align*}
+	\end{solution}
+
+\noindent (b) Give a basis of eigenvectors common to these observables. 
+	\begin{solution}
+		From the Mathematica calculations, we have the following eigenbasis for the compatible observables
+			\begin{align*}
+				\ket{a=-1, b=4} &= \begin{pmatrix} 0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\ 
+				\ket{a=1, b=-2} &= \begin{pmatrix}0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}  \end{pmatrix} \\ 
+				\ket{a=1, b=2} &= \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+			\end{align*}
+	\end{solution}
+
+\noindent (c) Do the following constitute a C.S.C.O: $\{A\}$, $\{B\}$, $\{C\}$, $\{A, B\}$, $\{B, C\}$, $\{A,C\}$? \\
+	\begin{solution}
+		\noindent Based off of our calculations, we can see that $\{A\}$ is not a C.S.C.O. because it has a degenerate eigenvalue of $1$. The sets $\{B\}$ and $\{C\}$ do constitute a C.S.C.O. as they do not have degenerate eigenvalues. \\ 
+		
+		\noindent The sets $\{A,B\}$ and $\{B,C\}$ do not constitute C.S.C.O. as those operators do not commute. $\{A,C\}$ does form a C.S.C.O. though as we showed in part (b) that you can form a set of eigenvectors for $\{A,C\}$ which has non-degenerate eigenvalues. 
+	\end{solution}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

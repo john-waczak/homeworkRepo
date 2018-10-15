@@ -292,6 +292,188 @@ Alternatively if we have a state $|\psi\rangle = \lambda_1 e^{i\phi_1}|\psi_1\ra
 				\end{align*} 
 			The position and momentum of a microscopic system cannot be accurately measured both at once. If the position is measured with uncertainty $\Delta x$, the uncertainty in measuring the momentum cannot be smaller than $\hbar/2\Delta x$. 
 		\end{solution}
+	
+	
+\section*{Completeness of commuting observables}
+	\noindent Consider an observable $A \rightarrow a_n$, $ \{\ket{\varphi_n}\}$. Is $\{A\}$ a complete set of commuting observables (C.S.C.O)? \\ 
+	
+	\noindent If $a_n$ is not degenerate so that $a_n \iff \ket{\varphi_n}$ and $a_n$ are not degenerate, then $\{A\}$ is a complete set of commuting observables. Recall 
+		\begin{equation*}
+			L_z \doteq \begin{pmatrix}
+				1 & 0 & 0 \\ 
+				0 & 0 & 0 \\ 
+				0 & 0 & -1 
+			\end{pmatrix}
+		\end{equation*}
+	This has nondegenerate eigenvalues and therefor is a C.S.C.O. On the other hand 
+		\begin{equation*}
+			L_z^2 \doteq \begin{pmatrix}
+			1 & 0 & 0 \\ 
+			0 & 0 & 0 \\ 
+			0 & 0 & 1 
+			\end{pmatrix}
+		\end{equation*}
+	Has a degeneracy of 2 for eigenvalue $\lambda=1$. So we say that $L_z^2$ is not a C.S.C.O. \\ 
+	
+	\noindent So how do we specify the vectors with no ambiguity? Given $A$ has degenerate $a_n$'s. Find $B$ such that $[A,B]=0$. Then we hope to find a pair of numbers $\{a_n, b_n\}$ which will specify your vector completely without ambiguity. Then the set $\{A, B\}$ is a C.S.C.O. 
+		\begin{solution}
+			\noindent\textbf{Ex}: Given $A \Rightarrow a_1 = 0,$ $a_{2,3} = 1$. Is $\{A\}$ a C.S.C.O? \\
+			
+			\noindent \textbf{NO}, but imagine we are given that 
+				\begin{align*}
+					\ket{a_1=0} &\doteq \begin{pmatrix}1 \\ 0 \\ 0 \end{pmatrix} \\
+					\ket{a_2=1} &\doteq \begin{pmatrix}0 \\ 1 \\ 0 \end{pmatrix}\\
+					\ket{a_3=1} &\doteq \begin{pmatrix}0 \\ 0 \\ 1 \end{pmatrix}
+				\end{align*}
+			Then when we find a B such that $[A,B]=0$ where $b_1 = 0, b_2=1, b_3=-1$. Then if we have 
+				\begin{align*}
+					\ket{b_1=0} &\doteq \begin{pmatrix}1 \\ 0 \\ 0 \end{pmatrix} \\
+					\ket{b_2=1} &\doteq \begin{pmatrix}0 \\ 1 \\ 0 \end{pmatrix}\\
+					\ket{b_3=-1} &\doteq \begin{pmatrix}0 \\ 0 \\ 1 \end{pmatrix}
+				\end{align*}
+			Then we can be specific and say that 
+				\begin{align*}
+				\ket{a_1=0, b=0} &\doteq \begin{pmatrix}1 \\ 0 \\ 0 \end{pmatrix} \\
+				\ket{a_2=1, b=1} &\doteq \begin{pmatrix}0 \\ 1 \\ 0 \end{pmatrix}\\
+				\ket{a_3=1, b=-1} &\doteq \begin{pmatrix}0 \\ 0 \\ 1 \end{pmatrix}
+				\end{align*}
+			Which eliminates the ambiguity. Furthermore because $[A,B]=0$ we know these are valid eigenstates for A. Then the set $\{A,B\}$ is a C.S.C.O. So we can see that we are okay so long as degeneracy in A and degeneracy in B do not overlap. If we have this problem, we keep looking observables until have a complete description. \textbf{NOTE} observables in nature are 
+		\end{solution}
+		\begin{solution}
+			\noindent\textbf{EX 2:} Is the set $\{X,Y,Z\}$ of position operators a CSCO?\\ 
+			\noindent Is the set $\{X\}$ in 3 dimensional position space a CSCO? \\ 
+			\noindent Is the set $\{X\}$ in 1 dimensional position space a CSCO? \\ 
+			
+			\noindent For the first case, yes because $\ket{x, y, z}$ is enough to pinpoint where you are in space. For that same reason the second set is not CSCO. However, $\{X\}$ in 1-dimensional space is a CSCO. 
+		\end{solution}
+	
+\section*{Unitary transformations} 
+	\noindent A unitary transformation $U$ is given by $\hat{U}^\dagger\hat{U}=\mathbb{I}$
+		\begin{align*}
+			\ket{\psi'} &= \hat{U}\ket{\psi} \\ 
+			\bra{\psi'} &= \bra{\psi}\hat{U}^\dagger
+		\end{align*}
+	Given some operator $\hat{A}$ such that $\hat{A}\ket{\psi}=\ket{\phi}$. What happens when we act a unitary operator on the whole thing to get $\hat{A}'\ket{\psi'}=\ket{\phi'}$? 
+		\begin{align*}
+			\hat{U}^\dagger \hat{A}'\ket{\psi} &= \hat{U}^\dagger\hat{U}\ket{\phi} = \ket{\phi}\\ 
+		\end{align*}
+	This leads us to conclude the change of basis formula
+		\begin{align*}
+			\hat{A}  &= \hat{U}^\dagger\hat{A}'\hat{U} \\ 
+			\hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger
+		\end{align*}
+	\subsection*{properties of unitary operators} 
+		\noindent If $\hat{A}$  is Hermitian, then $\hat{A}'$ is Hermitian. \\ 
+			\begin{proof}
+				$$\hat{A}^\dagger = (\hat{U}^\dagger\hat{A}'\hat{U})^\dagger = \hat{U}^\dagger\hat{A}^{'\dagger}\hat{U} = \hat{U}^\dagger\hat{A}'\hat{U}$$
+			\end{proof}
+		
+		\noindent \textbf{Eigenvalues}:
+			\begin{align*}
+				\hat{A}'\ket{\varphi_n'} &= (\hat{U}\hat{A}\hat{U}^\dagger)(\hat{U}\ket{\varphi_n}) \\ 
+					&= \hat{U}\hat{A}\ket{\varphi_n} \\ 
+					&= a_n\hat{U}\ket{\varphi_n} 
+			\end{align*}
+		so the eigenvalues don't change by applying unitary transformations. \\ 
+		
+		\noindent \textbf{Inner product}
+			\begin{align}
+				\bra{\psi'}\hat{A}'\ket{\chi'} &= (\bra{\psi}\hat{U}^\dagger)(\hat{U}\hat{A}\hat{U}^\dagger)(\hat{U}\ket{\chi})\\
+				&= \bra{\psi}\hat{A}\ket{\chi}
+			\end{align}
+		This means that expectation values, norms, inner products, etc... are invariant under unitary transformation. This makes sense as unitary operators have eigenvalues with norm 1. This means that a unitary operator can't re-scale the vectors only translate, reflect, etc...\\ 
+		
+		\noindent If $\hat{A} = \beta\hat{B}+\gamma\hat{C}$ then $\hat{A}' = \beta\hat{B}'+\gamma\hat{C}'$. \\ 
+		
+		\noindent Given $[\hat{A}, \hat{B}] = a \in \C$. Then $[\hat{A}', \hat{B}']=\hat{U}[\hat{A},\hat{B}]\hat{U}^\dagger = a\hat{U}\hat{U}^\dagger = a$. So most things we care about will remain the same. 
+		
+		
+		
+\section{Infinitesimal Unitary Transformations} 
+	\noindent Recall $\hat{U}^\dagger = \hat{U}^{-1}$. We had some nice properties that really all of the properties we care about do not change by application of unitary operators. Now we want to illustrate how this is useful for physics. Consider a unitary operator
+		\begin{equation*}
+			\hat{U}_\varepsilon(\hat{G}) = \mathbb{I} + i\varepsilon\hat{G}
+		\end{equation*}
+	Where $\hat{G}$ is the \textit{generator of transformation} and $\varepsilon$ is a real infinitesimal. Under what circumstances is something like this unitary. 
+		\begin{align*}
+			\hat{U}_\varepsilon\hat{U}_\varepsilon^\dagger &= (\mathbb{I}+i\varepsilon\hat{G})(\mathbb{I}-i\varepsilon\hat{G}^\dagger)\\
+			&= \mathbb{I}+i\varepsilon(\hat{G}-\hat{G}^\dagger)+\varepsilon^2\hat{G}\hat{G}^\dagger\\
+			&= \mathbb{I} \quad \text{if }\hat{G}\text{ is Hermitian} 
+		\end{align*}
+	And so for this to be unitary, we need that $\hat{G}$ is Hermitian. Now let's act this on a ket
+		\begin{align*}
+			\ket{\psi'} &= (\mathbb{I}+i\varepsilon\hat{G})\ket{\psi} \\ 
+				&= \ket{\psi} + i\varepsilon\hat{G}\ket{\psi}
+		\end{align*}
+	So all of your conservation laws will work in this form where our quantity is some generator. Now we want to see how operators transform. 
+		\begin{align*}
+			\hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger \\
+				&= (\mathbb{I}+ i\varepsilon\hat{G})\hat{A}(\mathbb{I}-i\varepsilon\hat{G}^\dagger)\\ 
+				&=  (\mathbb{I}+ i\varepsilon\hat{G})(\hat{A}-i\varepsilon\hat{A}\hat{G}^\dagger)\\ 
+				&= \hat{A} + i\varepsilon\hat{G}\hat{A}-i\varepsilon\hat{A}\hat{G}^\dagger + \varepsilon^2\hat{G}\hat{A}\hat{G}^\dagger \\
+				&= \hat{A}-ie[\hat{A},\hat{G}]
+		\end{align*}
+	Where in the last line we take $\varepsilon^2$ to be small enough to neglect. This informs us that $\hat{A}$ represents some conserved quantity. 
+	
+\section*{Finite unitary transformations}
+	Now consider the following case
+		\begin{align*}
+			\hat{U}_\alpha(\hat{G}) &= \hat{U}_\varepsilon(\hat{G})\hat{U}_\varepsilon(\hat{G})...\hat{U}_\varepsilon(\hat{G})\\ 
+			&= \lim\limits_{N\to\infty}\Pi_{k=1}^N(\mathbb{I}+i\frac{\alpha}{N}\hat{G}) \\
+			&= \lim\limits_{N\to\infty} (1+i\frac{\alpha}{N}\hat{G})^N \\ 
+			&= e^{i\alpha\hat{G}}
+		\end{align*}
+		Where we have recalled that
+		
+		Now to show this is unitary, we have 
+		\begin{equation*}
+		(e^{i\alpha\hat{G}})^\dagger = e^{-i\alpha\hat{G}^\dagger} = (e^{i\alpha\hat{G}})^{-1}
+		\end{equation*}
+		So now assuming $\hat{G}$ is Hermitian, 
+		\begin{align*}
+			\hat{A}' &= \hat{U}\hat{A}\hat{U}^\dagger \\ 
+				&= e^{i\alpha\hat{G}}\hat{A}e^{-i\alpha\hat{G}} \\ 
+				&= \hat{A}+i\alpha[\hat{G},\hat{A}], \frac{(i\alpha)^2}{2!}[\hat{G},[\hat{G}, \hat{A}]] + ... 
+		\end{align*}
+
+\section*{Applications of unitary transformations}
+	\noindent\textbf{Time Translations} $\hat{G} = -\frac{1}{\hbar}\hat{H}$ where $\hat{H}$ is the Hamiltonian. For simplicity let's work with infinitesimal translations in time $\varepsilon\to \delta t$. 
+		\begin{align*}
+			\hat{U}_{\delta t}(\hat{H}) &= \mathbb{I} + \frac{i}{\hbar}(-\hat{H})\delta t \\
+			\hat{U}_{\delta t}\ket{\psi(T)} &= (\mathbb{I}+\frac{i}{\hbar}\delta t\hat{H})\ket{\psi(t)} \\ 
+			&= \ket{\psi(t)}+\delta t \frac{\partial}{\partial t}\ket{\psi(t)} \\ 
+			&\approx \ket{\psi(t+\delta t)} 
+		\end{align*}
+	Where we have noticed that our equation is a Taylor expansion. Now let's try spatial translators 
+		\begin{align*}
+			\hat{G} &= \frac{1}{\hbar}\hat{P}_x = \mathbb{I}+\frac{i}{\hbar}\varepsilon\hat{P}_x \\ 
+			\hat{U}_{\varepsilon}(\hat{P}_x)\psi(x) &= \psi(x) + \varepsilon\frac{\partial}{\partial x}\psi(x) = \psi(x+\varepsilon) 
+		\end{align*}
+	Where again we are using the Taylor expansion. Now how about observable operators? 
+		\begin{align*}
+			\hat{A} &= X  \\ 
+			\hat{X}' &= (\mathbb{I}+\frac{i}{\hbar}\varepsilon\hat{P}_x)X(\mathbb{I}-\frac{i}{\hbar}\varepsilon\hat{P}_x) \\ 
+			&= X + \frac{i}{\hbar}\varepsilon[\hat{P}_x, X] = X + \varepsilon
+		\end{align*}
+	Since P and X don't commute, momentum does not conserve position and the effect is a translation as expected. \\
+	
+	\noindent\textbf{Rotations} $\hat{G}= \frac{1}{\hbar}\hat{J}_z$ where $\hat{J}_z$ is the z component of the orbital angular momentum. Then 
+		\begin{align*}
+			\hat{U}_{d\phi} &= \mathbb{I} + \frac{i}{\hbar}d\phi\hat{J}_z 
+		\end{align*} 
+	THIS IS SO FREAKING BEAUTIFUL! THIS MATHEMATICAL FORMALISM IS GIVING US ALL OF THE CONSERVATION LAWS!!!
+	
+\section{Position, momentum, translation} 
+	\noindent For this we need to know how to deal with continuum variables. First, let's list what we know about discrete vs continuum variables 
+		\begin{align*}
+		 	\text{Discrete} \qquad	& \qquad \text{Continuum} \\ 
+		 	A\ket{\varphi_n}=a_n\ket{\varphi_n}	&\quad  B\ket{\xi'} = b\ket{\xi'}\\
+		 	\braket{\varphi_n}{\varphi_m}=\delta_{nm} &\quad \delta(x-x_0)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ik(x-x_0)}dk \\
+		 	\sum_n\ket{\varphi_n}\bra{\varphi_n}=\mathbb{I} &\quad \int d\xi' \ket{\xi'}\bra{\xi'} = \mathbb{I} \\ 
+		 	\ket{\psi} = \sum_n \ket{\varphi_n}\bra{\varphi_n}\ket{\psi} &\quad\ket{\psi} = \int d\xi' \ket{\xi'}\bra{\xi'}\ket{\psi} \\ 
+		 	\braket{\chi}{\psi} = \sum_n\braket{\chi}{\phi_n}\braket{\phi_n}{\psi} &\quad \braket{\chi}{\psi} = \int d\xi' \braket{\chi}{\xi'}\braket{\xi'}{\psi} \\ 
+		 	\bra{\phi_n}A\ket{\phi_m} = a_m\delta_{mn} &\quad \bra{\chi''}B\ket{\xi'} = b\delta(\xi''-\xi')
+		\end{align*}
 \end{document}
 
 
