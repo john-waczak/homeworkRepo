@@ -154,7 +154,7 @@
 
 \noindent (a) We first measure A and then B. Find the probability of obtaining a value of 0 for A and a value of 1 for B. \\
 	\begin{solution}
-		\noindent In analogy to rolling two dice, the probabilities simply multiply. Note though that there is degeneracy in the B=1 measurement so we must add together the probability due to each state corresponding to this eigenvalue. Thus 
+		\noindent First, note that $\ket{\psi}$ is not normalized. For the values in the column, the normalization factor should instead be $1/sqrt{17}$. I will use this re-normalized ket in the following calculations. In analogy to rolling two dice, the probabilities simply multiply. Note though that there is degeneracy in the B=1 measurement so we must add together the probability due to each state corresponding to this eigenvalue. Thus 
 			\begin{equation*}
 				P(a=0, \text{ then } b=1) = \left|\braket{a=0}{\psi}\right|^2  \Bigg( \left|\braket{b^1=1}{a=0}\right|^2+\left|\braket{b^2=1}{a=0}\right|^2 \Bigg)
 			\end{equation*}
@@ -166,13 +166,13 @@
 			\end{align*}
 		And so the probabilities are
 			\begin{align*}
-				\left|\braket{a=0}{\psi}\right|^2 &= \frac{16}{2\cdot 36} = \frac{2}{9} \\ 
+				\left|\braket{a=0}{\psi}\right|^2 &= \left|\frac{4i}{\sqrt{17}\sqrt{2}}\right|^2 = \frac{16}{34} = \frac{8}{17}\\
 				\left| \braket{b^1=1}{a=0} \right|^2 &= \left|\frac{2}{2}\right|^2 = 1 \\ 
 				\left| \braket{b^2=1}{a=0} \right|^2 &= \left|\frac{0}{2}\right|^2= 0
 			\end{align*}
 		Thus, we conclude that
 			\begin{equation*}
-				P\left( a=0 \text{ then } b=1 \right) = \frac{2}{9}\cdot \Big(\frac{2}{3}  + 0\Big) = \frac{2}{9}
+				P\left( a=0 \text{ then } b=1 \right) = \frac{8}{17}\cdot \Big(1  + 0\Big) = \frac{8}{17}
 			\end{equation*}
 	\end{solution}
 
@@ -180,14 +180,14 @@
 	\begin{solution}
 		\noindent This is similar to the previous problem except the order has been switched. This means we have to deal with the degeneracy in B twice. It follows that the probability is given by 	
 			\begin{equation*}
-					P(b=1, \text{ then } a=0) = \Bigg(\left|\braket{b^1=1}{\psi}\right|^2 +\left|\braket{b^2=1}{\psi}\right|^2\Bigg)\Bigg( \left|\braket{a=0}{b^1=1}\right|^2+\left|\braket{a=0}{b^2=1}\right|^2 \Bigg)
+					P(b=1, \text{ then } a=0) = \Bigg(\left|\braket{b^1=1}{\psi}\right|^2 \left|\braket{a=0}{b^1=1}\right|^2\Bigg)+\Bigg( \left|\braket{b^2=1}{\psi}\right|^2\left|\braket{a=0}{b^2=1}\right|^2 \Bigg)
 			\end{equation*}
 		The probabilities are 
 			\begin{align*}
-				\left|\braket{b^1=1}{\psi}\right|^2 &= \left| \frac{1}{6\sqrt{2}}(-4i) \right|^2 \\ 
-					&= \frac{16}{2*36} = \frac{16}{72} = \frac{2}{9} \\
-				\left|\braket{b^2=1}{\psi}\right|^2 &= \left|  \frac{1}{6\sqrt{2}}(1)\right|^2 \\
-					&= \frac{1}{36*2}=\frac{1}{72} \\
+				\left|\braket{b^1=1}{\psi}\right|^2 &= \left| \frac{1}{\sqrt{2}\sqrt{17}}(-4i) \right|^2 \\ 
+					&= \frac{16}{34} = \frac{8}{17}\\
+				\left|\braket{b^2=1}{\psi}\right|^2 &= \left|  \frac{1}{\sqrt{17}}(1)\right|^2 \\
+					&= \frac{1}{17}\\
 				\left|\braket{a=0}{b^1=1}\right|^2 &= \left|  \frac{1}{2}(1+1)\right|^2 \\
 					&= 1 \\
 				\left|\braket{a=0}{b^2=1}\right|^2 &= \left|\frac{1}{\sqrt{2}}(0)\right|^2 \\
@@ -195,14 +195,14 @@
 			\end{align*}
 		Which gives a final probability of 
 			\begin{equation*}
-				P(b=1 \text{ then } a=0) = \Big(2\cdot\frac{17}{108}\Big)\cdot \Big(1\Big) = \frac{17}{54}
+				P(b=1 \text{ then } a=0) = \Big(\frac{8}{17}\cdot 1\Big)+ \Big(\frac{1}{17}\cdot 0\Big) = \frac{8}{17}
 			\end{equation*}
 		Note that these probabilities aren't the same. \\
 	\end{solution}
 
 \noindent (c) Compare the results of (a) and (b) and explain. \\
 	\begin{solution}
-		\noindent In the first example $A$ projects $\ket{\psi}$ onto $\ket{a=0}$ whcih can then be seen as some linear combination of $\ket{b_i}$, the B basics. In the second case, we let B project $\ket{\psi}$ to $\ket{b=1}$ which can be thought of as a superposition of A's $\ket{a_i}$ basis states. These are different superpositions so one should not expect the probabilities to be the same. \\
+		\noindent In the first example $A$ projects $\ket{\psi}$ onto $\ket{a=0}$ whcih can then be seen as some linear combination of $\ket{b_i}$, the B basis. In the second case, we let B project $\ket{\psi}$ to $\ket{b=1}$ which can be thought of as a superposition of A's $\ket{a_i}$ basis states. A and B share common eigenstates though so it should not be a surprise that the values are the same as they form a C.S.C.O.  \\
 	\end{solution}
 
 \noindent 4 (a) Is the state $\psi(\theta, \varphi) = e^{-3i\varphi}\cos\theta$ an eigenfunction of the operators $A_\varphi = \partial/\partial\varphi$ and $B_\theta = \partial/\partial\theta$. \\
