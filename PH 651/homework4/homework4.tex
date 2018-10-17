@@ -104,9 +104,9 @@
 
 \noindent 2. Consider a system whose Hamiltonian and an operator A are given by the matrices\\ $$H = \varepsilon_0\begin{pmatrix}1 & -1 & 0 \\ -1 & 1 & 0 \\ 0 & 0 & -1\end{pmatrix}, \quad A=a_0\begin{pmatrix}0 & 4 & 0 \\ 4 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$$.\\
 
-\noindent(a) If we measure energy, what values will we obtain? 
+\noindent(a) If we measure energy, what values will we obtain? \\
 	\begin{solution}
-		This Hamiltonian is the same as in problem 1. Therefore, the possible energy values are $\{2\varepsilon_0, 0\varepsilon_0, -1\varepsilon_0 \}$ \\ 
+		\noindent This Hamiltonian is the same as in problem 1. Therefore, the possible energy values are $\{2\varepsilon_0, 0\varepsilon_0, -1\varepsilon_0 \}$ \\ 
 	\end{solution}
 
 \noindent(b) Suppose that when we measure the energy, we obtain a value of $-\varepsilon_0$. Immediately afterwards, we measure A. What values will we obtain for A and with what probabilities? \\
@@ -129,6 +129,16 @@
 				\end{align*}
 	\end{solution}
 
+\noindent(c) What is the expectation value of A? 
+	\begin{solution}
+		The expectation value of A is given by 
+			\begin{align*}
+				\expect{A} &= \bra{-\varepsilon_0}A\ket{\varepsilon_0} \\ 
+					&= \begin{pmatrix}0 & 0 & 1\end{pmatrix}a_0\begin{pmatrix}0 & 4 & 0 \\ 4 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}\begin{pmatrix}0 \\ 0 \\ 1\end{pmatrix}\\
+					&= 0a_0
+			\end{align*}
+	\end{solution}
+
 \noindent3. Consider a physical system whose state and two observables A and B are represented by
 	\begin{equation*}
 		\ket{\psi} = \frac{1}{6}\begin{pmatrix}1\\0\\4\end{pmatrix}, \quad A=\frac{1}{\sqrt{2}}\begin{pmatrix}
@@ -142,44 +152,50 @@
 		\end{pmatrix}
 	\end{equation*} 
 
-\noindent (a) We first measure A and then B. Find the probability of obtaining a value of 0 for A and a value of 1 for B. 
+\noindent (a) We first measure A and then B. Find the probability of obtaining a value of 0 for A and a value of 1 for B. \\
 	\begin{solution}
-		In analogy to rolling two dice, the probabilities simply multiply. Thus 
+		\noindent In analogy to rolling two dice, the probabilities simply multiply. Note though that there is degeneracy in the B=1 measurement so we must add together the probability due to each state corresponding to this eigenvalue. Thus 
 			\begin{equation*}
-				P(a=0, \text{ then } b=1) = \left|\braket{a=0}{\psi}\right|^2\left|\braket{b=1}{a=0}\right|^2
+				P(a=0, \text{ then } b=1) = \left|\braket{a=0}{\psi}\right|^2  \Bigg( \left|\braket{b^1=1}{a=0}\right|^2+\left|\braket{b^2=1}{a=0}\right|^2 \Bigg)
 			\end{equation*}
 		Assuming 0 and 1 are in fact eigenvalues of A and B, we need to find the corresponding eigenvectors in order to perform the above calculations. This gives us
 			\begin{align*}
 				\ket{a=0} &= \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ 1 \\ i\end{pmatrix} \\ 
-				\ket{b=1} &= \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ i\end{pmatrix}
+				\ket{b^1=1} &= \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ 1 \\ i\end{pmatrix}\\
+				\ket{b^2=1} &= \begin{pmatrix} 1 \\ 0 \\ 0\end{pmatrix}
 			\end{align*}
 		And so the probabilities are
 			\begin{align*}
 				\left|\braket{a=0}{\psi}\right|^2 &= \frac{16}{2\cdot 36} = \frac{2}{9} \\ 
-				\left| \braket{b=1}{a=0} \right|^2 &= \left|\frac{2}{\sqrt{6}}\right|^2 = \frac{2}{3}
+				\left| \braket{b^1=1}{a=0} \right|^2 &= \left|\frac{2}{2}\right|^2 = 1 \\ 
+				\left| \braket{b^2=1}{a=0} \right|^2 &= \left|\frac{0}{2}\right|^2= 0
 			\end{align*}
 		Thus, we conclude that
 			\begin{equation*}
-				P\left( a=0 \text{ then } b=1 \right) = \frac{2}{9}\cdot \frac{2}{3} = \frac{4}{27}
+				P\left( a=0 \text{ then } b=1 \right) = \frac{2}{9}\cdot \Big(\frac{2}{3}  + 0\Big) = \frac{2}{9}
 			\end{equation*}
 	\end{solution}
 
-\noindent(b) If we measure B then A what is the probability of obtaining 1 for B and 0 for A? 
+\noindent(b) If we measure B then A what is the probability of obtaining 1 for B and 0 for A? \\
 	\begin{solution}
-		This is similar to the previous problem except the order has been switched. It follows that the probability is given by 	
+		\noindent This is similar to the previous problem except the order has been switched. This means we have to deal with the degeneracy in B twice. It follows that the probability is given by 	
 			\begin{equation*}
-					P(b=1, \text{ then } a=0) = \left|\braket{b=1}{\psi}\right|^2\left|\braket{a=0}{b=1}\right|^2
+					P(b=1, \text{ then } a=0) = \Bigg(\left|\braket{b^1=1}{\psi}\right|^2 +\left|\braket{b^2=1}{\psi}\right|^2\Bigg)\Bigg( \left|\braket{a=0}{b^1=1}\right|^2+\left|\braket{a=0}{b^2=1}\right|^2 \Bigg)
 			\end{equation*}
 		The probabilities are 
 			\begin{align*}
-				\left|\braket{b=1}{\psi}\right|^2 &= \left| \frac{1}{6\sqrt{3}}(1-4i) \right|^2 \\ 
-					&= \frac{1+16}{36*3} = \frac{17}{108} \\
-				\left|\braket{a=0}{b=1}\right|^2 &= \left| \frac{1}{\sqrt{6}}(1+1)\right|^2 \\
-					&= \frac{4}{6} = \frac{2}{3} 
+				\left|\braket{b^1=1}{\psi}\right|^2 &= \left| \frac{1}{6\sqrt{2}}(-4i) \right|^2 \\ 
+					&= \frac{16}{2*36} = \frac{16}{72} = \frac{2}{9} \\
+				\left|\braket{b^2=1}{\psi}\right|^2 &= \left|  \frac{1}{6\sqrt{2}}(1)\right|^2 \\
+					&= \frac{1}{36*2}=\frac{1}{72} \\
+				\left|\braket{a=0}{b^1=1}\right|^2 &= \left|  \frac{1}{2}(1+1)\right|^2 \\
+					&= 1 \\
+				\left|\braket{a=0}{b^2=1}\right|^2 &= \left|\frac{1}{\sqrt{2}}(0)\right|^2 \\
+					&= 0
 			\end{align*}
 		Which gives a final probability of 
 			\begin{equation*}
-				P(b=1 \text{ then } a=0) = \frac{17}{108}\cdot \frac{2}{3} = \frac{17}{162}
+				P(b=1 \text{ then } a=0) = \Big(2\cdot\frac{17}{108}\Big)\cdot \Big(1\Big) = \frac{17}{54}
 			\end{equation*}
 		Note that these probabilities aren't the same. \\
 	\end{solution}
@@ -189,7 +205,7 @@
 		\noindent In the first example $A$ projects $\ket{\psi}$ onto $\ket{a=0}$ whcih can then be seen as some linear combination of $\ket{b_i}$, the B basics. In the second case, we let B project $\ket{\psi}$ to $\ket{b=1}$ which can be thought of as a superposition of A's $\ket{a_i}$ basis states. These are different superpositions so one should not expect the probabilities to be the same. \\
 	\end{solution}
 
-\noindent 4 (a) Is the state $\psi(\theta, \varphi) = e^{-3i\varphi}\cos\theta$ an eigenfunction of the operators $A_\varphi = \partial/\partial\varphi$ and $B_\theta = \partial/\partial\theta$. 
+\noindent 4 (a) Is the state $\psi(\theta, \varphi) = e^{-3i\varphi}\cos\theta$ an eigenfunction of the operators $A_\varphi = \partial/\partial\varphi$ and $B_\theta = \partial/\partial\theta$. \\
 	\begin{solution}
 		\noindent To check if $\psi$ is an eigenfunction, we can let $A_\varphi$ and $B_\theta$ act upon $\psi(\theta, \varphi)$. 	
 			\begin{align*}
@@ -280,9 +296,9 @@
 	\begin{solution}
 		From the Mathematica calculations, we have the following eigenbasis for the compatible observables
 			\begin{align*}
-				\ket{a=-1, b=4} &= \begin{pmatrix} 0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\ 
-				\ket{a=1, b=-2} &= \begin{pmatrix}0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}  \end{pmatrix} \\ 
-				\ket{a=1, b=2} &= \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
+				\ket{a=-1, c=-2} &= \begin{pmatrix} 0 \\ -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\ 
+				\ket{a=1, c=4} &= \begin{pmatrix}0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}  \end{pmatrix} \\ 
+				\ket{a=1, c=2} &= \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}
 			\end{align*}
 	\end{solution}
 
