@@ -1,0 +1,109 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 3} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt \hfill Worked with: Garrett Jepson 
+\par\noindent\rule{\textwidth}{0.4pt} \\
+
+\noindent 1.) Let $S,T:V\to V$ be linear operators. \\
+
+\noindent a) Suppose that V is finite dimensional. If $S\circ T$ is invertible, prove that both S and T are invertible.\\
+	\begin{solution}
+		\begin{proof}
+			Let $S,T:V\to V$ such that the above assumptions hold. Then because $S\circ T$ is invertible, it is a bijection and is therefore onto. Thus, we have that 
+				\begin{equation*}
+					\dim(V) = \dim(S\circ T(V))
+				\end{equation*}
+			Now by composition of functions, we apply T and then S. Therefore $T:V \to T(V)\subseteq V$ and then $S:T(V)\to V$ in other words, S must map from the image of T back to V. Then by the rank-nullity theorem, we have that
+				\begin{align*}
+					\dim(V) &= \dim(T(V))+\dim(\ker(T)) \\ 
+					\dim(T(V)) &= \dim(S(T(V)))) + \dim(\ker(S)) \\ 
+					\Rightarrow \dim(S\circ T(V)) &= \dim(T(V))+\dim(\ker(T)) \\ 
+						&= \dim(S(T(V))) + \dim(\ker(S)) + \dim(\ker(T)) \\ 
+					\Rightarrow 0 &= \dim(\ker(S))+\dim(\ker(T))
+				\end{align*} 
+			Where in the last line we observe that $\dim(S\circ T(V))=\dim(S(T(V)))$. Since the $\dim(\ker(A))\geq 0$ $\forall$ linear transformations $A$, we have that $\Rightarrow \dim\ker(S)) = \dim\ker(T) = 0$. Therefore, it follows that 
+				\begin{align*}
+					\dim(V) &= \dim(T(V)) = \operatorname{rank}(T) \\ 
+					\dim(V) &= \dim(S(T(V))) = \operatorname{rank}(S)
+				\end{align*}
+			Therefore, by theorem 2.5 (page 71) both $S$ and $T$ are one to one and onto. This is equivalent to being a bijection and thus, we conclude that they are both invertible. \\
+		\end{proof}
+	\end{solution}
+
+\noindent 4.) Let n and m be positive integers and $\F$ a field. Let $l_1,...,l_m$ be linear functionals on $\F^n$. \\
+\noindent a) Show that the mapping 
+	\begin{align*}
+		T: &\F^n \to F^m \\ 
+			&v\mapsto (l_1(v), ..., l_m(v))
+	\end{align*}
+is a linear transformation. \\
+	\begin{proof}
+		Let $\lambda \in \F$ and $v_1, v_2 \in \F^n$. Then we have that
+			\begin{align*}
+				T(\lambda v_1 + v_2) &= (l_1(\lambda v_1 + v_2),..., l_m(\lambda v_1 + v_2)) \\ 
+			\end{align*}
+		Because linear functionals are linear transformations, we have that 
+			\begin{align*}
+				&= (\lambda l_1(v_1)+l_1(v_2), ..., \lambda l_m(v_1)+l_m(v_2)) \\ 
+				&= \lambda T(v_1)+T(v_2) \quad \text{ by vector addition in }\F^m
+			\end{align*}
+		Thus we have shown that $T$ is a linear transformation. \\
+	\end{proof}
+
+\noindent b) Show that every linear transformation from $\F^n$ to $\F^m$ is of the above form. \\
+	\begin{solution}
+		\begin{proof}
+			(Contrapositive) We will show that if a transformation cannot be expressed in the above form, then it can not be a linear transformation. \\
+			
+			\noindent If T can not be expressed in terms of m linear functionals, then it must be true that for some i, $l_i$ is \textit{not} a linear functional. Thus we have that $\forall \lambda \in \F$, $v_1, v_2 \in \F^n$, 
+				\begin{align*}
+					T(\lambda v_1 + v_2) &= (l_1(\lambda v_1+v_2), ... l_i(\lambda v_1+v_2), ... , l_m(\lambda v_1 + v_2)) \\ 
+						&= (\lambda l_1(v_1)+l_1(v_2), ..., l_i(\lambda v_1 + v_2), ... ,\lambda l_m(v_1)+ l_m(v_2) ) \\ 
+						&\neq \lambda T(v_1) + T(v_2) 
+				\end{align*}
+			\noindent Therefore we conclude that if we cannot represent as in the hypothesis, then T is not a linear transformation. It follows from this contrapositive that every linear transformation $T:\F^n\to\F^m$ can be represented as taking $v\in F^n$ to the vector in $F^m$ whose components are given by m linear functionals acting on v. 
+		\end{proof}
+	\end{solution}
+\end{document} 
+
