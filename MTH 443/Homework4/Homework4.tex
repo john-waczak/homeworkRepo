@@ -1,0 +1,228 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\usepackage{xfrac} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+\newcommand{\Span}{\operatorname{span}}
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 4} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt \hfill Worked with: Garrett Jepson 
+\par\noindent\rule{\textwidth}{0.4pt} \\
+
+\noindent1.) 543 \\ 
+
+\noindent2.) Let $V=\R^2$ as a vector space over $\R$ and $U=\operatorname\Span\{e_1+e_2\}$ where $\{e_1, e_2\}$ is the canonical basis.  \\ 
+	
+	\noindent a.) Give a geometric description of the left cosets of U in V. \\
+		\begin{solution}
+			\noindent Recall that for any $v\in V$ the coset $v+U = \{v+u : u \in U\}$. Geometrically, U in $\R^2$ is the line $y=x$ i.e. the line passing through the origin that makes an angle of $\pi/4$ to the x-axis. Therefore the set of cosets of U in V, $\sfrac{V}{U}$ is the set of all lines parallel to this $\pi/4$ line through the origin. This is roughly shown in the following diagram
+				\begin{figure}[!hbt]
+					\centering
+					\includegraphics[width=0.5\columnwidth]{cosets}
+					\caption{Some of the cosets of $\Span\{e_1+e_2\}$}
+				\end{figure}\\
+		\end{solution}
+	
+	\noindent b.) Determine an explicit basis of $\sfrac{V}{U}$.\\
+		\begin{solution}
+			\noindent First recall that $\dim(\sfrac{V}{U}) = \dim(V)-\dim(U)$ Therefore because $V=\R^2$ has dimension 2 and $U=\Span\{e_1+e_2\}$ has $\dim(U)=1$ we must have that $\dim(\sfrac{V}{U})$ be 1. We already established that the cosets of U in V look like parallel lines to U. Therefore, let's take the simple choice, $\mathcal{B}_{\sfrac{V}{U}\frac{num}{den}} = \{e_1-e_2 + U\}$ where we have chosen $v=e_1-e_2$ to be the vector perpendicular to the basis vector for U. Certainly $e_1-e_2$ is linearly independent from $e_1+e_2$ and is therefore not in the $\Span\{e_1+e_2\}$. Then any coset $v+U$ can be achieved by taking $\lambda\in\R$ such that $v=\lambda(e_1-e_2)$. Thus we have a set
+				\begin{equation*}
+					\mathcal{B}_{\sfrac{V}{U}} = \{e_1-e_2+U\}
+				\end{equation*}
+			is a basis for $\sfrac{V}{U}$. 
+		\end{solution}
+
+\noindent 3.) Let $V=\mathcal{P}_2(\R)$. Define three linear functions, thus elements in $V^*$, by 
+	\begin{equation*}
+		l_1(p)=\int_0^1 p(x)dx \qquad l_2(p)=\int_0^2 p(x)dx \qquad l_3(p)=\int_0^{-1}p(x)dx
+	\end{equation*}
+	
+\noindent Show that $\{l_1, l_2, l_3\}$ is a basis of $V^*$ by giving the basis of V to which it is a dual. \\
+	\begin{solution}
+		\noindent As the problem suggest we will construct a basis $\mathcal{B}=\{b_1, b_2, b_3\}$ for $\mathcal{P}_2(\R)$  (it has dimension 3) to which $\{l_1, l_2, l_3\}$ forms the dual basis $\mathcal{B}^*$. \\
+		
+		\noindent We begin this construction by considering the standard canonical basis for $\mathcal{P}_2(\R)$ which is $\{1, x, x^2\}$. A general vector in $\mathcal{P}_2(\R)$ may be represented as a linear combination of these basis vectors i.e. $p = \alpha + \beta x + \gamma x^2$ for $p\in \mathcal{P}_2(\R)$, and some $\alpha,\beta,\gamma\in\R$.  We can find the new basis vectors by allowing such a representation for each $b_j$ and noting that we must have $l_i(b_j) = \delta_{ij}$ in order for the $l_i$ to actually be the dual basis. As an example, for $b_1$ we have, 
+			\begin{align*}
+				l_1(b_1) = 1\\
+				l_2(b_1) = 0\\
+				l_3(b_1) = 0 \\ 
+			\end{align*}
+		If we assume $b_j$ to be a vector in the general form discussed above, then integrating over the different ranges defined by each $l_i$ leads to a system of equations easily encoded as 
+			\begin{equation*}
+				M b_i = e_i 
+			\end{equation*}
+		Where the matrix M is given by 
+			\begin{equation*}
+				M = \begin{pmatrix}
+				\int_0^1 1dx & \int_0^1 xdx & \int_0^1 x^2dx \\ 
+				\int_0^2 1dx & \int_0^2 xdx & \int_0^2 x^2dx \\ 
+				\int_0^{-1} 1dx & \int_0^{-1} xdx & \int_0^{-1} x^2dx \\ 		
+				\end{pmatrix} = \begin{pmatrix}
+					1 & \frac{1}{2} & \frac{1}{3} \\ 
+					2 & 2 & \frac{8}{3} \\ 
+					-1 & \frac{1}{2} & -\frac{1}{3} 
+				\end{pmatrix}
+			\end{equation*}
+		and represents the coefficients from the integration. Solving this system for each $b_j$ (see attached Mathematica code) gives the following vectors 
+			\begin{align*}
+				b_1 &= 1+x-\frac{3}{2}x^2 \\ 
+				b_2 &= -\frac{1}{6} + \frac{1}{2}x^2 \\ 
+				b_3 &= -\frac{1}{3} + x - \frac{1}{2}x^2
+			\end{align*}
+		These vectors are linearly independent as their coordinate representations in $\R^3$ have a determinant of 1 when written as rows in a matrix (and the determinant is zero if there are any two linearly dependent rows). Therefore we see that there is a basis $\mathcal{B}=\{b_1, b_2, b_3\}$ of $\mathcal{P}_2(\R)$ for which $\{l_1, l_2, l_3\}$ is the dual. Thus, we conclude that $\{l_1, l_2, l_3\}$ is a basis for the dual space. \\ 
+	\end{solution}
+
+\noindent 4.) Consider the real vector space of real $2\times 2$ matrices with its usual scalar multiplication and addition. Let $\mathcal{V}$ be the subspace spanned by the matrices 
+	\begin{equation*}
+		A = \begin{pmatrix}
+			1 & 1 \\ 
+			0 & 1 
+		\end{pmatrix} \quad B = \begin{pmatrix}
+			1 & 0 \\ 
+			1 & 1 
+		\end{pmatrix} \quad C = \begin{pmatrix}
+			0 & 1 \\ 
+			1 & 0
+		\end{pmatrix} \quad D = \begin{pmatrix}
+			1 & 3 \\ 
+			0 & 1
+		\end{pmatrix}
+	\end{equation*}
+and let $T:\mathcal{V}\to\R$ be the function that takes each $M\in\mathcal{V}$ to its trace. That is, for $M = \begin{pmatrix}
+ a & b \\ 
+ c & d
+\end{pmatrix}$, we have $\operatorname{Tr}(M) = a+d$. \\
+
+\noindent a.) Show that T is a linear transformation 
+	\begin{solution}
+		\noindent Let $M_1, M_2 \in \mathcal{V}$ with 
+			\begin{equation*}
+				M_1 = \begin{pmatrix}
+					a_1 & b_1\\
+					c_1 & d_1
+				\end{pmatrix} \quad M_2 = \begin{pmatrix}
+					a_2 & b_2 \\ 
+					c_2 & d_2
+				\end{pmatrix}
+			\end{equation*}
+		and let $\lambda \in \R$. Then we have that 
+			\begin{align*}
+				\operatorname{Tr}\left(\lambda M_1 + M_2\right) &= \operatorname{Tr}\left(\begin{pmatrix}
+				 \lambda a_1 + a_2 & \lambda b_1 + b_2 \\ 
+				 \lambda c_1 + c_2 & \lambda d_1 + d_2 
+				\end{pmatrix}\right) \\
+					&= \lambda a_1 + a_2 + \lambda d_1 + d_2 \\ 
+					&= \lambda(a_1+d_1) + a_2+d_2 \\ 
+					&= \lambda\operatorname{Tr}(M_1)+\operatorname{Tr}(M_2) 
+			\end{align*}
+		therefore we see that the trace is a linear transformation. \\
+	\end{solution}
+
+\noindent b.) Choose explicit ordered bases $\mathcal{B}$ of $\mathcal{V}$ and $\mathcal{C}$ of $\R$ and give the matrix representation of $T$ with respect ot these bases.\\
+	\begin{solution}
+		\noindent First note that the dimension of $\mathcal{M}_2$ is 4 and therefore it should have 4 elements in any basis. Since $\mathcal{V}\subseteq\mathcal{M}_2$ it would be wise to check that this is a proper subset. We can identify each matrix through isomorphism with a column vector in $\R^4$. Putting these together in a matrix K gives 
+			\begin{equation*}
+				K = \begin{pmatrix}
+					1 & 1 & 0 & 1 \\ 
+					1 & 0 & 1 & 3 \\ 
+					0 & 1 & 1 & 0 \\ 
+					1 & 1 & 0 & 1 
+				\end{pmatrix}
+			\end{equation*}
+		This row reduces to 
+			\begin{equation*}
+				\begin{pmatrix}
+					1 & 0 & 0 & 2 \\ 
+					0 & 1 & 0 & -1 \\ 
+					0 & 0 & 1 & 1 \\ 
+					0 & 0 & 0 & 0
+				\end{pmatrix}
+			\end{equation*}
+		This tells us that A, B, and C are linearly independent but $D=2A-B+C$. Therefore a basis for $\mathcal{V}$ can be sufficiently described as 
+			\begin{equation*}
+				\mathcal{B} = \{A, B, C\}
+			\end{equation*}
+		We also identify the basis $\mathcal{C}$ for $\R$ to be the obvious $\mathcal{C}=\{1\}$. Then the matrix representation of T between these two bases is given by 
+			\begin{align*}
+				[T]_\mathcal{B}^\mathcal{C} &= \Big(\operatorname{Tr}(A)\quad \operatorname{Tr}(B)\quad \operatorname{Tr}(C)\Big)\\
+					&= \Big( 2 \quad 2 \quad 0 \Big)
+			\end{align*}
+		This form makes sense as the dimension of our subspace $\mathcal{V}$ is 3 and therefore it is isomorphic to $\R^3$. Thus we need a row vector of size 3 in order to have a properly defined functional $\operatorname{Tr}$ via the usual matrix multiplication. \\
+	\end{solution}
+
+\noindent c.) Let $\mathcal{W}$ be the kernel of T. Give an explicit basis for $\mathcal{W}$. \\
+	\begin{solution}
+		\noindent Recall that the kernel is the set of vectors in the domain mapped to the zero vector in the codomain. That is 
+			\begin{align*}
+				(2\quad 2\quad 0) \begin{pmatrix}x \\ y \\ z \end{pmatrix} = 0_\R
+			\end{align*}
+		where x, y, and z are the coefficients for a linear combination of the ordered basis elements A, B and C. This equation gives that $x=-y$ and therefore, the kernel is spanned by the basis 
+			\begin{equation}
+				\mathcal{D} = \{ A-B, C\} 
+			\end{equation}
+	\end{solution}
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
