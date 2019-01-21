@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Cellular Processes}{2}
+\contentsline {subsubsection}{\numberline {1.1.1}The Cytoskeleton}{2}
+\contentsline {subsubsection}{\numberline {1.1.2}Mitosis}{2}
+\contentsline {subsection}{\numberline {1.2}Motor Proteins}{2}
+\contentsline {subsection}{\numberline {1.3}Dynein}{2}
+\contentsline {subsubsection}{\numberline {1.3.1}Directed Motion}{2}
+\contentsline {subsubsection}{\numberline {1.3.2}Drunken Walking}{2}
+\contentsline {subsubsection}{\numberline {1.3.3}Transporting Cargo}{2}
+\contentsline {subsubsection}{\numberline {1.3.4}Experimental Stepping Statistics}{2}
+\contentsline {section}{\numberline {2}The Model}{2}
+\contentsline {subsection}{\numberline {2.1}Brownian Motion}{2}
+\contentsline {subsection}{\numberline {2.2}A Simplified Model for Dynein}{2}
+\contentsline {subsection}{\numberline {2.3}Equations of Motion}{2}
+\contentsline {subsubsection}{\numberline {2.3.1}The one bound state}{2}
+\contentsline {subsubsection}{\numberline {2.3.2}The both bound state}{2}
+\contentsline {subsubsection}{\numberline {2.3.3}Calculating Forces and Torques}{2}
+\contentsline {subsection}{\numberline {2.4}The Code}{2}
+\contentsline {section}{\numberline {3}Results}{2}
+\contentsline {subsection}{\numberline {3.1}Model Tests}{2}
+\contentsline {subsubsection}{\numberline {3.1.1}Determining an Appropriate dt}{2}
+\contentsline {subsubsection}{\numberline {3.1.2}Conservation of Energy}{2}
+\contentsline {subsection}{\numberline {3.2}Parameter Fitting}{2}
+\contentsline {subsection}{\numberline {3.3}Model Stepping Statistics}{2}
+\contentsline {subsection}{\numberline {3.4}Simulating External Forces}{2}
+\contentsline {section}{\numberline {4}Discussion}{2}
+\contentsline {subsection}{\numberline {4.1}Comparison to Experimental Results}{2}
+\contentsline {subsection}{\numberline {4.2}Consequences of the Simple Model}{2}
+\contentsline {subsubsection}{\numberline {4.2.1}Do we need a Two State Model?}{2}
+\contentsline {section}{\numberline {5}Conclusions}{2}
+\contentsline {subsection}{\numberline {5.1}Summary}{2}
+\contentsline {subsection}{\numberline {5.2}Future Work}{2}
+\contentsline {subsubsection}{\numberline {5.2.1}Multiple Dynein}{2}
+\contentsline {subsubsection}{\numberline {5.2.2}Forces on the Binding Domain}{2}

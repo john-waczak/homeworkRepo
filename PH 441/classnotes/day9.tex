@@ -30,7 +30,7 @@ Our wavefunction only has kinetic energy and there are three degrees of freedom 
 	\end{align*}
 This sucks... So lets take a statistical approximation for a REALLY big box. First though let's simplify... We got this by separation of variables in quantum mechanics. Let's try and do that again. 
 	\begin{align*}
-		\frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2} &= \sum\limits_{n_x}^\infty e^{-\beta \frac{\hbar^2\pi^2n_x^2}{2mL^2}}\sum\limits_{n_y}^\infty e^{-\beta \frac{\hbar^2\pi^2n_y^2}{2mL^2}}\sum\limits_{n_z}^\infty e^{-\beta \frac{\hbar^2\pi^2n_z^2}{2mL^2}} \\ 
+		\frac{\hbar^2\pi^2(n_x^2+n_y^2+n_z^2)}{2mL^2} &\rightarrow \sum\limits_{n_x}^\infty e^{-\beta \frac{\hbar^2\pi^2n_x^2}{2mL^2}}\sum\limits_{n_y}^\infty e^{-\beta \frac{\hbar^2\pi^2n_y^2}{2mL^2}}\sum\limits_{n_z}^\infty e^{-\beta \frac{\hbar^2\pi^2n_z^2}{2mL^2}} \\ 
 		&= \Big(\sum\limits_n^\infty e^{-\beta\frac{\hbar^2\pi^2n^2}{2mL^2}}\Big)^3 \quad \text{same in each dimension} \\ 
 		\text{take: } \quad \frac{\beta \pi^2}{2mL^2}&<< 1 \quad \text{as classical approximation} \\  
 	\end{align*}

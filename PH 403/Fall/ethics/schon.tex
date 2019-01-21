@@ -1,0 +1,75 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{To:} \qquad \qquad PH403 Colleagues \\
+\large\textbf{From:} \qquad \, John Waczak \\
+\large\textbf{Date:} \qquad \,\, \today \\ \\ 
+\large\textbf{Subject:} \quad \; Beasley Report Memo \\ \\
+\par\noindent\rule{\textwidth}{0.4pt} \\ \\ \\ 
+
+
+An investigation by M.R. Beasley and others into the alleged scientific misconduct of Hendrick Sch\"{o}n has revealed several concerns regarding our modern conception of the peer review process and its use by greater physics community. Of the numerous offenses discussed, some particularly alarming examples were
+\begin{itemize}
+  \item None of the most significant physical results was witnessed by any coauthor or other colleague.
+  \item Proper laboratory records were not systematically maintained
+  \item No working devices with which one might confirm claimed results are presently available.
+  \item Hendrik Schön maintains that his record keeping practices were not unique for his Department within Bell Labs
+\end{itemize} 
+
+Regardless of the impact of this investigation on the career of Hendrick Sch\"{o}n, the scientific community must be able to address the concerns raised by the points above. It is clear to me, as is stated throughout the report, that the coauthors did not engage in any scientific misconduct. However, it is undeniable that the lack of direct participation of coauthors in the work contributed to ease with which Sch\"{o}n was able to publish false results. As the report suggests, more stress should be placed on coauthors and journals to encourage duplication of potentially groundbreaking results. \\
+
+We must set a standard for record keeping practices in the digital age. The cost of computer memory is always dropping and can no longer be allowed to constitute an excuse for a lack of attention to detail. If anything, the prevalence of technology should make record keeping and redundancy a simpler task. Many fields in physics already employ strategies to aid in this effort. Astrophysics as an example uses a file format called FITS (Flexible Image Transport System) that allows users to enter metadata that is stored with the raw data. This can be largely automated and provides information such as dates collected, devices used, and parameters for device calibration. Such formatting helps reduce opportunities for misconduct by simplifying the recording process. \\
+
+
+It is not distrustful to scrutinize the results of a peer. In order for science to be respected and for physics to remain valued as a field, the careful treatment of results is necessary. We all must examine the work our names appear upon and whether or not it represents honest, verifiable work. 
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

@@ -1,0 +1,261 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig}
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+\newcommand{\proj}[2]{\operatorname{proj}_{#2}(#1)}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 8} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt  
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+\noindent 1.) Let $V$ be the real inner product space given by $\mathcal{P}_2(\R)$ with the inner product
+\begin{equation*}
+  \langle f, g \rangle = \int\limits_0^1 f(x)g(x)dx
+\end{equation*}
+Perform Gram-Schmidt orthonormalization on the set $\mathcal{S}=\left\{ x^2-1, x^2+3, x-2 \right\}$ \\
+
+\begin{solution}
+ \noindent For ease of calculation, let us define the elements of $\mathcal{S}$ to be
+  \begin{align*}
+    f_1(x) &= x^2-1\\
+    f_2(x) &= x^2+3 \\
+    f_3(x) &= x-2
+  \end{align*}
+  The functions in the desired ONB will then be defined as $\{g_1(x), g_2(x), g_3(x)\}$. Recall that the definition of the projection of the vector v onto the vector u is given as
+  \begin{equation*}
+    \proj{u}{v} = \frac{\langle v,u \rangle}{\langle u, u \rangle}u
+  \end{equation*}
+  Now to perform Gram-Schmidt orthonormalization, we first take $\mathcal{S}$ and orthogonalize it. We accomplish this by first defining $f_1(x)=g_1(x)$. Then we construct the rest of the orthogonalized vectors $g_2, g_3$ by utilizing the projection defined above. Pictorially this is
+  \begin{figure}[!hbt]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gramSchmidt.pdf}
+    \caption{The Gram-Schmidt orthogonalization process}
+    \label{fig:gramSchmidt}
+  \end{figure}
+  For each subsequent vector, we just subtract of more projections so that in the end, we have
+  \begin{align*}
+    g_1(x) &= f_1(x) \\
+    g_2(x) &= f_2(x)-\proj{f_2}{g_1}\\
+    g_3(x) &= f_3(x)-\proj{f_3}{g_1}-\proj{f_3}{g_2}
+  \end{align*}
+
+  \noindent Given our functions from $\mathcal{S}$, this becomes:
+  \begin{align*}
+    g_1(x) &= x^2-1\\
+    g_2(x) &= x^2+3 - \frac{\int_0^1(x^2+3)(x^2-1)dx}{\int_0^1(x^2-1)^2dx}(x^2-1) \\
+    &= x^2+3 - \frac{\frac{-32}{15}}{\frac{8}{15}}(x^2-1) \\
+    &= x^2+3+4(x^2-1) \\
+    &= 5x^2-1 \\
+    g_3(x) &= x-2 - \frac{\int_0^1(x-2)(x^2-1)dx}{\int_0^1(x^2-1)^2dx}(x^2-1) - \frac{\int_0^1(x-2)(5x^2-1)dx}{\int_0^1(5x^2-1)^2dx}(5x^2-1)\\
+    &= x-2 - \frac{\frac{13}{12}}{\frac{8}{15}}(x^2-1) -\frac{\frac{-7}{12}}{\frac{8}{3}}(5x^2-1)\\
+    &= -\frac{3}{16}+x-\frac{15}{16}x^2 
+  \end{align*}
+
+  \noindent To ensure we haven't made a mistake it is valuable to check that these new vectors are in fact linearly independent. Writing the matrix formed by the coordinate representation of each vector in $\R^3$ we have
+  \begin{equation*}
+    \det\begin{pmatrix}
+    -1 & -1 & -\frac{3}{16} \\
+    0 & 0 & 1 \\
+    1 & 5 & -\frac{15}{16}
+    \end{pmatrix} = -1(5)+1(-1) = 4 \neq 0
+  \end{equation*}
+  Therefore, we can be confident that we do in fact still have a basis. Now that we have orhtogonalized, we need to normalize it. To do this we calculate the lengths of each vector.
+  \begin{align*}
+    ||g_1|| &= \sqrt{\langle g_1, g_1 \rangle} \\
+    &= \left( \int_0^1(x^2-1)^2dx\right)^{\frac{1}{2}} = 2\sqrt{\frac{2}{15}}\\
+    ||g_2|| &= \left(\int_0^1(5x^2-1)^2dx \right)^{\frac{1}{2}} = 2\sqrt{\frac{2}{3}}\\
+    ||g_3|| &= \left( \int_0^1\left( -\frac{3}{16}+x-\frac{15}{16}x^2   \right)^2dx  \right)^{\frac{1}{2}} = \frac{1}{8\sqrt{3}} 
+  \end{align*}
+  Therefore, our orthonormalized $\mathcal{S}$ is
+  \begin{equation*}
+    \mathcal{S}_\text{ONB} = \left\{ \frac{g_1}{||g_1||}, \frac{g_2}{||g_2||},  \frac{g_3}{||g_3||}  \right\} = \left\{ \frac{1}{2}\sqrt{\frac{15}{2}}(x^2-1), \frac{1}{2}\sqrt{\frac{3}{2}}(5x^2-1), -\frac{1}{2}\sqrt{3}(3-16x+15x^2)\right\}
+  \end{equation*}
+\end{solution}
+
+
+\noindent 2.) Consider $\mathcal{M}_2(\C)$ with the inner product
+\begin{equation*}
+  \langle A, B \rangle = \text{tr}B^\star A,
+\end{equation*}
+where $\text{tr} M = \sum_i^n M_ii$ and $M^\star = \bar{M}^t$ (conjugate transpose). Find the `closest` element of the complex symmetric to $A=\begin{pmatrix} 1 & -i \\ i & 1 \end{pmatrix}$. \\
+
+\begin{solution}
+  \noindent Recall that a matrix $M$ is symmetric if $M=M^t$. We can find the 'closest' matrix to A by finding a ONB for the subspace of symmetric 2x2 complex matrices and then finding expansion of $A$ in terms of this basis. The result will be a symmetric matrix that is not equal to A but is the closest we can get while still being symmetric. Therefore, we will first find an ONB for the symmetric 2x2 matrices.\\
+
+  \noindent From the above definition it is easy to see that a general symmetric 2x2 matrix may be written as
+  \begin{equation*}
+    M = \begin{pmatrix} a & b \\ b & c \end{pmatrix}
+  \end{equation*}
+  with $a,b,c\in\C$. Thus, this subspace is defined by three free parameters and therefore a suitable basis is
+  \begin{equation*}
+    \mathcal{B} = \left\{ M_1=\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, M_2=\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, M_3=\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}   \right\}
+  \end{equation*}
+
+  \noindent Before we can try and expand A in this basis, we must verify that it is orthonormal under our inner product $\langle \cdot, \cdot \rangle$.
+  \begin{align*}
+    \langle M_1, M_2 \rangle &= \text{tr}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\
+      &= 0 
+  \end{align*}
+  \begin{align*}
+    \langle M_3, M_2 \rangle &= \text{tr}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+      &= 0 
+  \end{align*}
+  \begin{align*}
+    \langle M_3, M_1 \rangle &= \text{tr}\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} \\
+      &= 0 
+  \end{align*}
+\begin{align*}
+    \langle M_1, M_1 \rangle &= \text{tr}\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+      &= 1 
+  \end{align*}
+\begin{align*}
+    \langle M_2, M_2 \rangle &= \text{tr}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \\
+      &= 2 
+  \end{align*}
+\begin{align*}
+    \langle M_3, M_3 \rangle &= \text{tr}\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} \\
+      &=\text{tr}\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \\
+      &= 1 
+  \end{align*}
+
+\noindent Thus we an see $\mathcal{B}$ is almost an ONB except for $M_2$ therefore, dividing each matrix by its norm gives the desired ONB
+\begin{equation*}
+  \mathcal{B}_\text{ON} = \left\{ m_1=\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, m_2=\begin{pmatrix} 0 & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & 0 \end{pmatrix}, m_3=\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}   \right\}
+\end{equation*}
+
+\noindent Now with this ONB, the 'clostest' matrix to $A$ which we will call $\tilde{A}$ is given by
+\begin{align*}
+  \tilde{A} &= \langle A, m_1\rangle m_1 + \langle A, m_2 \rangle m_2 + \langle A, m_3 \rangle m_3\\
+  \langle A, m_1 \rangle &= \text{tr}\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix}\begin{pmatrix}1 & -i \\ i & 1\end{pmatrix} \\
+    &= \text{tr}\begin{pmatrix}1 & -i \\ 0 & 0 \end{pmatrix}\\
+    &= 1\\
+   \langle A, m_2 \rangle &= \text{tr}\begin{pmatrix}0 & 1 \\ 1 & 0 \end{pmatrix}\begin{pmatrix}1 & -i \\ i & 1\end{pmatrix} \\
+    &= \text{tr}\begin{pmatrix}i & 1 \\ 1 & -i \end{pmatrix}\\
+    &= i-i = 0 \\
+    \langle A, m_3 \rangle &= \text{tr}\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix}1 & -i \\ i & 1\end{pmatrix} \\
+    &= \text{tr}\begin{pmatrix}0 & 0 \\ i & 1 \end{pmatrix}\\
+    &= 1 \\
+    \Rightarrow \tilde{A} &= \begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix} 
+\end{align*}
+
+\noindent Thus, we have found the closest symmetric 2x2 $\C$-valued matrix to $A$. \\
+\end{solution}
+
+\noindent 3.) Let $V$ be the real inner product space given by $\mathcal{P}_2(\R)$ with the inner product
+\begin{equation*}
+  \langle f,g \rangle = \int\limits_{-1}^1 f(x)g(x)dx
+\end{equation*}
+Let $\ell:V\to\R$ by $f\mapsto f'(0)+f(1)$. Find $g\in$ V, we have $\ell(f)=\langle f,g \rangle$\\
+
+\begin{solution}
+  \noindent Let $f,g \in V$ such that
+  \begin{align*}
+    f(x) &= a_0 + a_1x + a_2x^2 \\
+    g(x) &= b_0 + b_1x + b_2x^2
+  \end{align*}
+  Differentiating $f$ and substituting into the equation of the problem statement yields,
+  \begin{equation*}
+    a_1 + a_0 + a_1 + a_2 = a_0+2a_1+a_2
+  \end{equation*}
+  The right hand side of the equation becomes
+  \begin{align*}
+    \langle f,g \rangle &= \int\limits_{-1}^1 (a_0+a_1x+a_2x^2)(b_0+b_1x+b_2x^2)dx \\
+    &=\int\limits_{-1}^1 a_0b_0 + a_1b_0x + a_2b_0x^2 + a_0b_1x + a_1b_1x^2+a_2b_1x^3+a_0b_2x^2+a_1b_2x^3+a_2b_2x^4 dx\\
+    &=2a_0b_0 + \frac{2a_2b_0}{3} + \frac{2a_1b_1}{3} + \frac{2a_0b_2}{3} + \frac{2a_2b_2}{5} \\
+    &= \left(2b_0+\frac{2}{3}b_2\right)a_0 + \left(2\frac{b_1}{3}\right)a_1 + \left(2\frac{b_0}{3}+2\frac{b_2}{5}   \right)a_2
+  \end{align*}
+  Now in order for the two sides to be equal, we need the coefficients in front of each $a_i$ to be equal. Therefore, we have the following system
+  \begin{equation*}
+    \begin{cases}
+      2b_0+2\frac{b_2}{3} = 1 \\\\
+      2\frac{b_1}{3} = 2 \\\\
+      2\frac{b_0}{3}+2\frac{b_2}{5}
+      \end{cases}
+  \end{equation*}
+  This leads to
+  \begin{align*}
+    b_1 &= 3 \\
+    2b_0 + \frac{2}{3}b_2 &= \frac{2}{3}b_0 + \frac{2}{5}b_2\\
+    \frac{4}{3}b_0 &= \left(\frac{6}{15}-\frac{10}{15}\right)b_2 \\
+    b_0 &= -\frac{1}{5}b_2\\
+    &\vdots
+  \end{align*}
+  \begin{align*}
+    &  \vdots \\
+    1 &= \frac{2}{3}\left(-\frac{1}{5}b_2\right)+\frac{2}{5}b_2 \\
+    b_2 &= \frac{1}{\frac{6}{15}-\frac{2}{15}} \\
+    &= \frac{15}{4} \\
+    b_0 &= -\frac{1}{5}\frac{15}{4} \\
+    &= -\frac{3}{4}
+  \end{align*}
+  Thus, we have identified all the $b_i$'s and have therefore found the form for $g(x)$. We have
+  \begin{equation*}
+    g(x) = -\frac{3}{4} + 3x + \frac{15}{4}x^2
+  \end{equation*}
+
+\end{solution}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

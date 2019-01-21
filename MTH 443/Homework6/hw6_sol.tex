@@ -1,0 +1,245 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 6} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt \hfill Worked with: Garrett Jepson 
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+\noindent1.) FIS, p. 229 \#21 (Determinants of block-form matrices) \\
+\noindent Prove that if $M$ $\in\mathcal{M}_n(\F)$ can written in the form
+\begin{equation*}
+  M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}
+\end{equation*}
+where A and C are square matrices, then $\det(M)=\det(A)\cdot\det(C)$.\\
+
+\begin{solution}
+  \noindent Let $A\in\mathcal{M}_m(\F)$. Then we have that $B\in\mathcal{M}_{m, (n-m)}(\F)$, $0\in\mathcal{M}_{(n-m), m}(\F)$ and $C\in\mathcal{M}_{n-m}(\F)$. With this observation, we may rewrite $M$ as the product of the following matrices
+  \begin{equation*}
+    M = \begin{pmatrix}A & B \\ 0 & C\end{pmatrix} = \begin{pmatrix} \mathcal{I}_m & 0 \\ 0 & C \end{pmatrix}\begin{pmatrix} A & B \\ 0 & \mathcal{I}_{(n-m)} \end{pmatrix}
+  \end{equation*}
+  where $\mathcal{I}_k$ is the $k\times k$ identity matrix. Recall that the determinant of a product is the product of determinants. Thus, all we need to do is find the determinants of these two product matrices. The first one is quite easy to compute, we have
+  \begin{equation*}
+    \begin{pmatrix} \mathcal{I}_m & 0 \\ 0 & C \end{pmatrix} = \begin{pmatrix}
+      1 & 0 & 0 & \cdots & 0  \\ 
+      0 & 1 & 0 & \cdots & 0  \\
+      0 & 0 & 1 & \cdots & 0 & & \makebox(0,0){\text{\Huge{0}}} \\
+      \vdots & \vdots & \vdots & \ddots & \vdots  \\
+      0 & 0 & 0 & \cdots & 1 \\
+      &   &   &  &  & c_{m+1, m+1} & c_{m+1, m+2} & \cdots & c_{m+1, n} \\
+      &   &   &  &  & c_{m+2, m+1} & c_{m+2, m+2} & \cdots & c_{m+2, n} \\
+      &   & \makebox(0,0){\text{\Huge{0}}} & & & \vdots & \vdots & \vdots \\
+      &   &   &  &  & c_{n, m+1} & c_{n, m+2} & \cdots & c_{n,n} 
+    \end{pmatrix}
+  \end{equation*}
+  Thus, we can easily see that the recursive definition of the cofactor expansion of the determinant beginning with the $n,n$ element of the matrix gives 
+  \begin{equation*}
+    \det\begin{pmatrix} \mathcal{I}_m & 0 \\ 0 & C \end{pmatrix} = \det(C)
+  \end{equation*}
+
+  \noindent Next we consider the determinant of the second matrix. Expanding, we see that
+  \begin{equation*}
+    \begin{pmatrix} A & B \\ 0 & \mathcal{I}_{(n-m)} \end{pmatrix} = \begin{pmatrix}
+      a_{11} & a_{12} & \cdots & a_{1,m} & b_{1,m+1} & b_{1, m+2} & \cdots & b_{1, n} \\
+      a_{21} & a_{22} & \cdots & a_{2,m} & b_{2,m+1} & b_{2,m+2} & \cdots & b_{2, n}\\
+      \vdots & \vdots &  & \vdots & \vdots & \vdots & & \vdots\\
+      a_{m,1} & a_{m,2} & \cdots & a_{m,m} & b_{m,m+1} & b_{m,m+2} &\cdots & b_{m,n} \\
+      & & & & 1 & 0  & \cdots & 0  \\ 
+      & & & & 0 & 1  & \cdots & 0  \\
+      & & \makebox(0,0){\text{\Huge{0}}}& & \vdots & \vdots & \ddots & \vdots  \\
+      & & & & 0 & 0  & \cdots & 1 \\
+    \end{pmatrix}
+  \end{equation*}
+  Now if $M^*$ is the above matrix, then the cofactor expansion about the bottom row yields
+  \begin{equation*}
+    \det(M^*) = \sum\limits_{j=1}^n (-1)^{n+j}m_{n, j}^*\det(\tilde{M}_{n, j}^*) 
+  \end{equation*}
+  i.e. the determinant is defined recursively where $\tilde{M}_{n,j}^*$ is the matrix obtained by deleting the $n^\text{th}$ row and $j^\text{th}$ column of $M^*$. The $m_{n,j}^*$ are zero everywhere except on the diagonal.Also note that $(-1)^{i+j}$ will always be 1 on the diagonal as we have either $i, j$ are both odd or both even. Thus, this process continues accruing ones and deleting off the $(n-j)^\text{th}$column from the right until all that remains is $1\cdot \det(A)$. Therefore, we have that
+  \begin{equation*}
+    \det\begin{pmatrix} A & B \\ 0 & \mathcal{I}_{(n-m)}\end{pmatrix} = \det(A)
+  \end{equation*}
+
+  \noindent From this we conclude that
+  \begin{equation*}
+    \det\begin{pmatrix} A & B \\ 0 & C \end{pmatrix} = \det(C)\det(A) = \det(A)\det(C) 
+  \end{equation*}
+  \qed
+  \end{solution}
+
+\noindent 2.) Let $T$ be an invertible linear operator on a finite dimensional vector space $V$. \\
+\noindent a) Show that for any eigenvalue $\lambda$ of $T$, $\lambda^{-1}$ is an eigenvalue of $T^{-1}$.\\
+\begin{solution}
+  \noindent Let $v_\lambda$ be an eigenvector of $T$ corresponding to eigenvalue $\lambda$. Recall that by the definition of inverse, we have $TT^{-1}=T^{-1}T=\mathcal{I}$. Now consider the eigenvalue equation for $v_\lambda$. We have
+  \begin{align*}
+    Tv_\lambda &= \lambda v_\lambda \\
+    T^{-1}T v_\lambda &= T^{-1}\lambda v_\lambda \\
+    \mathcal{I}v_\lambda &= \lambda T^{-1} v_\lambda \\
+    v_\lambda &= \lambda T^{-1}v_\lambda \\
+    \lambda^{-1}v_\lambda &= \lambda^{-1}\lambda T^{-1}v_\lambda \\
+    \Rightarrow T^{-1}v_\lambda &= \lambda^{-1}v_\lambda 
+  \end{align*}
+  where we recognize the final line is an eigenvalue equation for $T^{-1}$ for which $\lambda^{-1}$ is an eigenvalue. For the case of $\lambda = 0$, we have that
+  \begin{align*}
+    Tv_0 &= 0v_0 = 0_v \\
+    T^{-1}T^{-1}T v_0 &= T^{-1}T^{-1}0_v \\
+    T^{-1}\mathcal{I}v_0 &= T^{-1}0_v \\
+    T^{-1}v_0 &= 0_v \\
+    \Rightarrow T^{-1}v_0 &= 0v_0
+  \end{align*}
+  Thus, in all cases, the hypothesis is satisfied.\qed \\
+\end{solution}
+
+\noindent b) For any eigenvalue $\lambda$ of $T$, sow that the eigenspace of $T$ corresponding to $\lambda$ is the eigenspace of $T^{-1}$ corresponding to $\lambda^{-1}$.\\
+\begin{solution}
+  \noindent Let $\mathcal{B}_\lambda = \{v_1, \dots , v_k\}$ be the basis of eigenvectors which span the eigenspace of $\lambda$. Then $\forall v_i \in \mathcal{B}_\lambda$, we have that
+  \begin{align*}
+    T^{-1}v_i = \lambda^{-1}v_i
+  \end{align*}
+  by the solution to part (a). Thus every vector from $\mathcal{B}_{\lambda}$ is in $\mathcal{B}_{\lambda^{-1}}$. If $v_\alpha$ is some eigenvector not in $\mathcal{B}_\lambda$ then by part (a) it will not have eigenvalue $\lambda^{-1}$. Therefore $\mathcal{B}_\lambda$ is the entire basis which spans the eigenspace of $T^{-1}$ corresponding to $\lambda^{-1}$. \qed \\  
+\end{solution}
+
+\noindent c) Prove that if $T$ is diagonalizable, then so is $T^{-1}$. \\
+\begin{solution}
+  \noindent Assume that $T$ is diagonalizable. Then $\exists$ a basis $\mathcal{B}$ such that $[T]_\mathcal{B} = D$ where $D$ is a diagonal matrix. By theorem 5.1, this basis $\mathcal{B} = \{b_1, \dots , b_n\}$ where $b_i$ are distinct eigenvectors of $T$. From this, we may write
+  \begin{equation*}
+    D = C^{-1}TC
+  \end{equation*}
+  where $C$ is the change of basis whose $j^\text{th}$ column is $Tb_j$. Then, because $T^{-1}$ and $C^{-1}$ exist we have
+  \begin{align*}
+    D^{-1} &= \left(C^{-1}TC\right)^{-1} \\
+    &= C^{-1}T^{-1}\left(C^{-1}\right)^{-1}\\
+    &= C^{-1}T^{-1}C 
+  \end{align*}
+Thus we see that the inverse to $D^{-1}$ is also a diagonal matrix as the basis $\mathcal{B}$ must also be an eigenbasis for $T^{-1}$. \qed\\
+\end{solution}
+
+\noindent 3.) Let $V$ be an $n$ dimensional vector space and let $T$ be a linear operator on $V$ such that $T^k=0$ for some positive integer k. Prove that $T^n = 0$. \\
+\begin{solution}
+  \noindent First note that the zero referred to in the problem statement is $0_{\mathcal{L}_\F(V)}$, the zero operator. Also, as we are given no condition on $n$ in the problem statement. I will assume that $n$ can be any positive integer. If this is true, then the first observation is that $n\geq k$. If it is not, and the hypothesis is true, then we would have that when $n=1$, $T^1= T = 0_{\mathcal{L}_\F(V)}$. This makes no sense as $T$ is a general linear operator and is not necessarily $0_{\mathcal{L}_\F(V)}$. \\
+
+  \noindent It follows, that there are two cases to consider then-- either $n=k$ or $n>k$. If $n=k$ then $T^n = T^k = 0_{\mathcal{L}_\F(V)}$ is immediate. In the other case we may write that $n = k + r$ for some integer $r>0$. This leads to
+  \begin{align*}
+    T^n = T^{k+r} = T{r+k} = T^{r}T^{k} = T^{r}0_{\mathcal{L}_\F(V)}
+  \end{align*}
+  Now recall that $T 0_v = 0_v$ for any linear transformation. Because $0_{\mathcal{L}_\F(v)}$ maps any vector that it acts on to $0_v$ we have that $T^n v = 0_v$ $\forall v \in V$ and thus we conclude that
+  \begin{equation*}
+    T^n = 0_{\mathcal{L}_\F(V)}
+  \end{equation*}
+  \noindent This completes the proof. \qed\\
+\end{solution}
+
+\noindent 4.) (543) \\
+
+\noindent 5.) Let $A=\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$ in $\mathcal{M}_2(\R)$ and let $T:\mathcal{M}_2(\R)\to\mathcal{M}_2(\R)$ be given by $T(M)=AM-MA$. \\
+\noindent a) Choose an ordered basis $\mathcal{B}$ for $\mathcal{M}_2(\R)$. Show that $T$ is linear and give $[T]_\mathcal{B}$. \\
+\begin{solution}
+  \noindent First we will show linearity of $T$. Let $M_1, M_2 \in \mathcal{M}_2(\R)$ and $\lambda\in\R$. Then we have
+  \begin{align*}
+    T(\lambda M_1 + M_2) &= A(\lambda M_1 + M_2) - (\lambda M_1 + M_2)A \\
+    &= \lambda A M_1 + A M_2 - \lambda M_1 A - M_2 A \\
+    &= \lambda(A M_1 - M_1 A) + (AM_2 - M_2 A) \\
+    &= \lambda T(M_1) + T(M_2)
+  \end{align*}
+
+  \noindent Thus we see that T is, in fact, linear. \\
+
+  \noindent Note that $\dim(\mathcal{M}_2(\R))=4$ therefore we expect $[T]_\mathcal{B}$ to be some kind of $2\times 2$ matrix. Consider the standard basis for $\mathcal{M}_2(\R)$ given by
+  \begin{equation*}
+    \mathcal{B} = \left\{\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}      \right\}
+  \end{equation*}
+  Then the $j^\text{th}$ column of $[T]_\mathcal{B}$ is given by $Tb_j$ for $b_j\in\mathcal{B}$. And so we must calculate...
+  \begin{align*}
+    T\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix} &= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix}-\begin{pmatrix}1 & 0 \\ 0 & 0 \end{pmatrix}\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+    &=\begin{pmatrix}0 & -2 \\ 3 & 0 \end{pmatrix}  \\
+    T\begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix} &= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix}-\begin{pmatrix}0 & 1 \\ 0 & 0 \end{pmatrix}\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+    &= \begin{pmatrix} -3 & -3 \\ 0 & 3 \end{pmatrix}\\
+    T\begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix} &= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix}-\begin{pmatrix}0 & 0 \\ 1 & 0 \end{pmatrix}\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+    &= \begin{pmatrix} 2 & 0 \\ 3 & -2 \end{pmatrix} \\
+    T\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix} &= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}-\begin{pmatrix}0 & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+    &= \begin{pmatrix} 0 & 2 \\ -3 & 0 \end{pmatrix} 
+  \end{align*}
+
+  \noindent Therefore, we have that $[T]_\mathcal{B}$ is given by
+  \begin{equation*}
+    [T]_\mathcal{B} = \begin{pmatrix}
+      0 & -3 & 2 & 0 \\
+      -2 & -3 & 0 & 2 \\
+      3 & 0 & 3 & -3 \\
+      0 & 3 & -2 & 0
+    \end{pmatrix}
+  \end{equation*}
+\end{solution}
+
+\noindent b) What is the rank of $T$?\\
+\begin{solution}
+  \noindent We can determine the rank of $T$ by row reducing $[T]_\mathcal{B}$ to see how many linearly independent columns there are. This leads to the matrix
+  \begin{equation*}
+    \begin{pmatrix}
+      1 & 0 & 1 & -1 \\
+      0 & 1 & -\frac{2}{3} & 0 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0
+    \end{pmatrix}
+  \end{equation*}
+  Therefore we see that $\operatorname{rank}(T) = 2$ as the second and third columns of $[T]_\mathcal{B}$ are combinations of the first two. 
+\end{solution}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

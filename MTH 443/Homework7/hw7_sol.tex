@@ -1,0 +1,251 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem} 
+\usepackage{graphicx}
+\usepackage{enumitem} % use for making lettered list 
+\usepackage{bbm} % use for making the 1 identity operator EX: \mathbbm{1}
+\usepackage{subfig} 
+\graphicspath{ {images/} }
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mat}[2]{\mathcal{M}_{#1\times#2}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{1.5cm}%
+			\setlength{\rightmargin}{1.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+\begin{document}
+%Header-Make sure you update this information!!!!
+\noindent
+\large\textbf{Homework 7} \hfill \textbf{John Waczak} \\
+\normalsize MTH 443 \hfill  Date: \today \\
+Dr. Schmidt \hfill Worked with: Garrett Jepson 
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+\noindent 1.) Let $T$ be a linear operator defined on $\C^4$ by $Te_1 =0$, $Te_2=-5e_1$, $Te_3=5e_1$, and $Te_4 = 2e_2 + 5e_3$. Determine a Jordan basis for $\C^4$ with respect to $T$. \\
+
+\begin{solution}
+  \noindent In order to find a Jordan basis with respect to $T$, let us consider the matrix representation of $T$ in the standard basis
+  \begin{equation*}
+    \mathcal{B} = \{e_1, e_2, e_3, e_4\}
+  \end{equation*}
+  From the definition of how $T$ acts on each of these vectors we find
+  \begin{equation*}
+    [T]_\mathcal{B} = \begin{pmatrix}
+      0 & -5 & 5 & 0 \\
+      0 & 0 & 0 & 2 \\
+      0 & 0 & 0 & 5 \\
+      0 & 0 & 0 & 0 \end{pmatrix}
+  \end{equation*}
+  From this we can see that the characteristic polynomial for $T$ is
+  \begin{equation*}
+    c_T[x] = x^4
+  \end{equation*}
+  This polynomial splits over $\C$ and gives a single eigenvalue of $\lambda = 0$ with algebraic multiplicity $4$. To find the corresponding eigenspace, we look for solutions to $[T]_\mathcal{B}-0\;\mathcal{I}_{\C^4}=0$ i.e.
+  \begin{align*}
+    \begin{pmatrix}
+      0 & -5 & 5 & 0 \\
+      0 & 0 & 0 & 2 \\
+      0 & 0 & 0 & 5 \\
+      0 & 0 & 0 & 0 \end{pmatrix}&\begin{pmatrix} x \\ y \\ z \\ t \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix} \\
+    \Rightarrow x &= \text{anything} \\
+    y &= z \\
+    t &= 0 \\ 
+  \end{align*}
+  From this we see that the eigenspace for $\lambda=0$ is given by
+  \begin{equation*}
+    \mathcal{E}_0 = \operatorname{span}\left\{ \begin{pmatrix}0 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix}1 \\ 0 \\ 0 \\ 0 \end{pmatrix}\right\}
+  \end{equation*}
+  From class we know that $\mathcal{E}_0 \subseteq \mathcal{K}_0$ where $\mathcal{K}_0$ is the generalized eigenspace for $\lambda = 0 $. Therefore, each of the basis vectors we have identified for $\mathcal{E}_0$ constitutes a Jordan chain with one element. Now we want to \textit{grow} these chains so that we have 4 linearly independent vectors. Growing the chain means looking for vectors that satisfy $([T]_\mathcal{B}-0\;\mathcal{I}_{\C^4})^2v = 0$ Let's try a vector that lies in the range of $T$ and not in the null space. An easy choice would be $e_4$. Calculation yields
+  \begin{align*}
+    [T]_\mathcal{B}\begin{pmatrix}0\\0\\0\\1\end{pmatrix} &= \begin{pmatrix}0\\2\\5\\0\end{pmatrix}\\
+        [T]_\mathcal{B}^2\begin{pmatrix}0\\0\\0\\1\end{pmatrix} &= [T]_\mathcal{B}\begin{pmatrix}0\\2\\5\\0\end{pmatrix}\\
+          &=\begin{pmatrix}0\\0\\0\\0\end{pmatrix}
+  \end{align*}
+  Therefore we have that $e_4\in\ker(T^2)$ which gives us a new Jordan Chain of length 2:
+  \begin{equation*}
+    C = \left\{ 2e_2+5e_3,\;\; e_4\right\}
+  \end{equation*}
+  Thus we conclude that the Jordan basis for $\C^4$ with respect to $T$ is
+  \begin{equation*}
+    \mathcal{J} = \left\{ e_2+e_3,\; e_1,\; 2e_2+5e_3,\; e_4\right\}
+  \end{equation*}
+  Writing $\mathcal{J}$ as a matrix and taking the determinant yields $\det([\mathcal{J}]) = -3 \neq 0$ which confirms that these vectors are linearly independent and therefore do form a basis for $\C^4$. If we compose this change of basis transformation with $[T]_\mathcal{B}$ we find
+  \begin{equation*}
+    \mathcal{J}^{-1}[T]_\mathcal{B}\mathcal{J} = \begin{pmatrix}
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0
+      \end{pmatrix}
+  \end{equation*}
+ which is in Jordan Canonical form as desired. \\
+\end{solution}
+
+\noindent 2.) Let $V$ be a finite dimensional $\C$-vector space and let $T$ be a linear operator on $V$. Assume that $c_T[x]=x^{10}$ and $N_T = R_T$. Does this information determine the Jordan canonical form of T? If so, give this form and if not, give examples to this effect.\\
+
+\begin{solution}
+  \noindent We see that the characteristic polynomial splits over $\C$ into 10 factors of $(x-0)$. Therefore, by theorem (Jordan Mania class notes) we have that there exists a Jordan basis for T and therefore the matrix of $T$ is similar to a matrix in Jordan Canonical Form. Furthermore, because the degree of $c_T[x]$ is 10 we have that $\dim(V)=10$. Therefore, by the Rank-Nullity theorem, we have that
+  \begin{align*}
+    10 &= \dim(N_T) + \dim(R_T) \\
+    &= \dim(N_T) + \dim(N_T) \\
+    \Rightarrow \dim(N_T) &= \dim(R_T) = 5
+  \end{align*}
+
+  \noindent $c_T[x]$ has a single root at 0 meaning that $T$ has a single eigenvalue of $\lambda=0$ with algebraic multiplicity 10. Based on the above calculation, we therefore have that the eigenspace $\mathcal{E}_0=\ker(T-0\;\mathcal{I}) = N_T$ is spanned by 5 linearly independent vectors. Because each of these vectors is in the kernel of $T$, each constitutes a Jordan chain of one element. We now wish to extend these chains so that they have two elements. Therefore, we are looking for vectors $b_i$ satisfying $b_i\in\ker(T-0\;\mathcal{I})^2$ or
+  \begin{align*}
+    T^2 b_i = T(Tb_i) = 0
+  \end{align*}
+  From this we see that we must have $Tb_i\in\ker{T}$ and therefore we can write 
+  \begin{equation*}
+    Tb_i = \sum_i^5 \alpha_i v_i
+  \end{equation*}
+  At this point nothing prevents us from choosing the $b_i$ such that the summation simplifies to something nice. 
+  \begin{equation*}
+    Tb_i = v_i
+  \end{equation*}
+  The $v_i$ are linearly independent and therefore each of the $b_i$ are distinct because linear operators are functions and therefore send each input to exactly one output. We now have that the Jordan chains become
+  \begin{equation*}
+    \mathcal{J}_i = \{ v_i, b_i\}
+  \end{equation*}
+  The matrix representation of each of these distinct chains forms a Jordan block. These are
+  \begin{align*}
+    B_i = T\mathcal{J}_i = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+  \end{align*}
+  Now we have everything we need to construct the JCF of T. We have 5, 2x2 Jordan blocks with the above form. If $\mathcal{B}_\mathcal{J}=\bigcup\limits_i^5\mathcal{J}_i$, then
+  \begin{equation*}
+    [T]_{\mathcal{B}_\mathcal{J}}=\begin{pmatrix}
+    0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \end{pmatrix}
+  \end{equation*}
+
+  \noindent In finding this JCF we assumed that each chain could be grown to a chain with 2 elements. This is just an assumption and without more information it is not clear whether or not each chain can be grown or should stop at 2 elements. From class we know that the dimension of the eigenspace is the number of chains of a fixed eigenvalues. Thus it is conceivable that we could also find a JCF in which we have three 3x3 blocks and a 1x1 block, or perhaps a 5x5 block, two 2x2 blocks and a 1x1 block. So long as there are 5 blocks and the total size is 10, the JCF is valid. \\
+
+  \noindent Therefore, we conclude that we are not given enough information to explicitly determine the JCF of the linear operator $T$. 
+
+\end{solution}
+
+\noindent 3.) Determine the Jordan canonical form of the linear operator $T$ on $\C^n$ defined by $Te_i = \sum\limits_i^n e_i$\\
+\begin{solution}
+  \noindent If we take the basis for $T$ to be the standards basis,
+  \begin{equation*}
+    \mathcal{B} = \{e_1, e_2, ... , e_n\},
+  \end{equation*}
+  then the above definition indicates that the matrix of $T$ in the basis $\mathcal{B}$ is the nxn matrix of ones. That is,
+  \begin{equation*}
+    [T]_\mathcal{B} = \begin{pmatrix}
+      1 & 1 & 1 & \cdots & 1 \\
+      1 & 1 & 1 & \cdots & 1 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      1 & 1 & 1 & \cdots & 1 
+    \end{pmatrix}
+  \end{equation*}
+  We want to find the Jordan Canonical Form of this matrix. To do this, we first consider the characteristic polynomial of $T$ given by
+  \begin{align*}
+    c_T[x] &= \det([T]_\mathcal{B}-\lambda\mathcal{I})\\
+    &= \begin{vmatrix}
+      1-x & 1 & 1 & \cdots & 1 \\
+      1 & 1-x & 1 & \cdots & 1 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      1 & 1 & 1 & \cdots & 1-x
+      \end{vmatrix}\\
+  \end{align*}
+  For the case of n=2, we have $c_T[x] = (1-x)^2-1 = (x-2)x$. For the case of $n=3$, we have $c_T[x]= 3x^2-x^3 = (3-x)x^2$. Therefore, by an induction, the characteristic polynomial for the n=n cases is
+  \begin{equation*}
+    c_T[x] = (x-n)x^{n-1}
+  \end{equation*}
+  Therefore, equating $c_T[x]$ to zero yields the eigenvalues $\lambda = n$ with algebraic multiplicity one, and $\lambda=0$ with algebraic multiplicity $n-1$. Now consider the eigenvalue equation for the first eigenvalue. We have
+  \begin{equation*}
+    Tv = nv
+  \end{equation*}
+  for an eigenvector n. If $v=\sum_i\alpha_ie_i$ then the above equation becomes
+  \begin{equation*}
+    \sum_i\alpha_i = n\alpha_j
+  \end{equation*}
+  For each $j$. This is solved if we allow $\alpha_i=\alpha_j$ $\forall i,j$ Therefore we have that the vector $v_1 = \sum_i e_i$ spans the eigenspace $\mathcal{E}_n$. For the other eigenvalue of $\lambda=0$ we have that this reduces to finding the kernel of T. That is, we are looking for solutions to
+  \begin{align*}
+    Tv &= 0v \\
+    \Rightarrow \sum_i \alpha_i &= 0
+  \end{align*}
+  This leads to the condition that
+  \begin{equation*}
+    \sum_{i\neq j} \alpha_i= -\alpha_j
+  \end{equation*}
+  Which means that we have $n-1$ free parameters. Therefore, the eigenspace $\mathcal{E}_0$ is spanned by $n-1$ vectors. Each of these vectors constitutes a Jordan chain of size 1 so that overall we have a single chain from $\mathcal{E}_n$ and $n-1$ chains from $\mathcal{E}_0$. Therefore if we take the ordering of our Jordan basis to be the $\lambda=0$ eigenvectors first, our JCF of T will actually be diagonalized, i.e.
+  \begin{equation*}
+    [T]_\text{JCF} = \begin{pmatrix}
+      0 & 0 & 0 & \cdots & 0 \\
+      0 & 0 & 0 & \cdots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & n
+    \end{pmatrix}
+  \end{equation*}
+  In terms of the original transformation, this is
+  \begin{equation*}
+    \begin{cases}
+      Tb_i = 0; & i<n \\ 
+      Tb_i = nb_i; & i=n\\
+    \end{cases}
+  \end{equation*}
+  where the $b_i$ are the elements of the Jordan basis described above. \\
+\end{solution}
+
+
+
+
+
+\noindent 4.) (543) 
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
