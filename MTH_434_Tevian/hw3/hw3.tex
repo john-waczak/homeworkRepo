@@ -1,0 +1,239 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Homework 3} \hfill \textbf{John Waczak} \\
+\normalsize MTH 434 \hfill  Date: \today \\
+Dr. Tevian Dray
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+
+
+\begin{enumerate}[leftmargin=0em]
+\item \textbf{SPHERICAL COORDINATES} Consider spherical coordinates in 3-dimensional Euclidean space with the usual orientation, namely $\omega = r^2\sin\theta dr\wedge d\theta \wedge d\phi$.
+  \begin{enumerate}[leftmargin=3em, label=(\alph*)]
+  \item Determine the Hodge dual operator $*$ on all formas (expressed in spherical coordinates) by computing its action on basis forms at each rank.\\
+
+    \begin{solution}
+      \noindent To begin, we would like to identify a set of orthonormal spherical elements to make a basis for $\bigwedge^1$. We can accomplish this by re-scaling the orthogonal coordinate basis $\{dr, d\theta, d\phi\}$. Recall that we have the following transformation for spherical coordinates
+      \begin{align*}
+        &x=r\sin\theta\cos\phi &r^2=x^2+y^2+z^2 \\
+        &y=r\sin\theta\sin\phi &\tan\phi = \frac{y}{x} \\
+        &z=r\cos\theta &\cos\theta=\frac{z}{r}
+      \end{align*}
+      From this we can zap the equation for r with d in order to find the differential in terms of the cartesian basis
+      \begin{align*}
+        rdr &= xdx + ydy + zdz \\
+        \Rightarrow g(rdr, rdr) &= g(xdx+ydy+zdz, xdx+ydy+zdz)\\
+        &= (x^2+y^2+z^2)=r^2 \\
+        \Rightarrow g(dr,dr) &= 1
+      \end{align*}
+      Now, for the $\phi$ component, we can recall that for polar coordinates we found
+      \begin{align*}
+        g(d\phi,d\phi) &= \frac{1}{\rho^2}
+      \end{align*}
+      Previously we identified $\rho$ as $r$ but in complete spherical coordinates, we can identify $\rho =r\sin\theta$ i.e. the projection of $r$ into the $x$-$y$ plane. Therefore,
+      \begin{align*}
+        g(r\sin\theta d\phi, r\sin\theta d\phi) = 1
+      \end{align*}
+      Finally, we must find the normalized theta component. Zapping with d yields
+      \begin{align*}
+        d(\cos\theta) &= -\sin\theta = \frac{rdz-zdr}{r^2} \\
+        g(-\sin\theta r^2 d\theta, -\sin\theta r^2 d\theta) &= g(rdz-zdr, rdz-zdr) \\
+        &= g(rdz, rdz) + g(rdz,-zdr) + g(-zdr, rdz) + g(-zdr, -zdr) \\
+        &= r^2+z^2+2g(rdz,-zdr) \\
+        &= r^2+z^2+2g\left(rdz, -z\frac{xdx+ydy+zdz}{r}\;\right) \\
+        &= r^2+z^2+2(-z^2) \\
+        &= r^2-z^2 = r^2\sin^2\theta \\ 
+        \Rightarrow g(rd\theta, rd\theta) &= \frac{r^2\sin^2\theta}{r^2\sin^2\theta} = 1 
+      \end{align*}
+      Therefore, the orthonormal spherical basis of 1-forms is
+      \begin{equation*}
+        \{dr, \;rd\theta,\;r\sin\theta d\phi\}
+      \end{equation*}
+      Now we can determine the action of $*$ on forms of each rank by considering the definition
+      \begin{equation*}
+        \alpha\wedge *\beta = g(\alpha,\beta)\omega
+      \end{equation*}
+      where $\omega$ is a choice of orientation and for us is $\omega = dr\wedge rd\theta \wedge r\sin\theta d\phi$. First, we have that
+      \begin{align*}
+        *1 = \omega = dr\wedge rd\theta \wedge r\sin\theta d\phi
+      \end{align*}
+      as * here is a map between two one dimensional spaces. Next, we can examine the maps between each of the one forms
+      \begin{align*}
+        dr\wedge *dr &= g(dr, dr) \omega  = dr\wedge rd\theta\wedge r\sin\theta d\phi \\
+        \Rightarrow *dr &= rd\theta\wedge r\sin\theta d\phi \\
+        rd\theta \wedge *(rd\theta) &= g(rd\theta,\; rd\theta)\omega = dr\wedge rd\theta\wedge r\sin\theta d\phi\\
+        &= -rd\theta \wedge dr \wedge r\sin\theta d\phi\\
+        &= rd\theta \wedge r\sin\theta d\phi \wedge dr  \\ 
+        \Rightarrow *(rd\theta)&= r\sin\theta d\phi \wedge dr \\
+        r\sin\theta d\phi \wedge *(r\sin\theta d\phi) &= g(r\sin\theta d\phi, r\sin\theta d\phi)\omega = dr\wedge rd\theta\wedge r\sin\theta d\phi \\
+        &= -dr \wedge r\sin\theta d\phi \wedge r d\theta \\
+        &= r\sin\theta d\phi \wedge dr \wedge r d\theta  \\
+        \Rightarrow *(r\sin\theta d\phi) &= dr \wedge r d\theta 
+      \end{align*}
+      Now because $*$ also serves as the inverse transformation, and because $*(*\alpha)=\alpha$, we have specified all of the necessary information. The action of $*$ is characterized by the following 4 equations
+      \begin{align*}
+        *(1) &= dr\wedge rd\theta\wedge r\sin\theta d\phi\\
+        *(dr) &= rd\theta \wedge r\sin\theta d\phi \\
+        *(rd\theta) &= r\sin\theta d\phi \wedge dr  \\
+        *(r\sin\theta d\phi) &= dr \wedge rd\theta
+      \end{align*}
+    \end{solution}
+
+
+  \item Compute the dot and cross products of 2 generic ``vector fields'' (really 1-forms) in spherical coordinates using the expressions
+    \begin{align*}
+      \alpha \cdot \beta &= *(\alpha \wedge *\beta) \\
+      \alpha \times \beta &= *(\alpha \wedge \beta ) 
+    \end{align*}
+    \begin{solution}
+      First, we will ``name the things we don't know''. Let $\alpha,\beta \in \bigwedge^1$ such that,
+      \begin{align*}
+        \alpha &= \alpha_rdr + \alpha_\theta rd\theta + \alpha_\phi r\sin\theta d\phi \\
+        \beta &= \beta_rdr + \beta_\theta rd\theta + \beta_\phi r\sin\theta d\phi
+      \end{align*}
+      In this notation, the dot product becomes
+      \begin{align*}
+        \alpha \cdot \beta &= *(\alpha \wedge *\beta) \\
+        &= *(g(\alpha,\beta)\omega) \\
+      \end{align*}
+      This is readily simplified using the properties of the orthonormal basis we found for part (a)
+      \begin{align*}
+        &= *\Big[(\alpha_r\beta_r+\alpha_\theta\beta_\theta+\alpha_\phi\beta_\phi)\omega\Big]\\
+        &= \alpha_r\beta_r+\alpha_\theta\beta_\theta+\alpha_\phi\beta_\phi
+      \end{align*}
+      Interestingly, we see that this looks just how we would expect the normal dot product to behave in Carteesian coordinates. We can add this to the list of nice properties for ONB. The cross product is slightly trickier...
+      \begin{align*}
+        \alpha \times \beta &= *(\alpha\wedge\beta) \\
+        &= *\Big[ (\alpha_rdr+\alpha_\theta rd\theta + \alpha_\phi r\sin\theta d\phi)\wedge(\beta_rdr+\beta_\theta rd\theta + \beta_\phi r\sin\theta d\phi)\Big] \\
+        &= *\Big[ \alpha_r\beta_\theta dr\wedge rd\theta + \alpha_r\beta_\phi dr\wedge r\sin\theta d\phi \\
+          &\hspace{5em}+\alpha_\theta\beta_rrd\theta\wedge dr + \alpha_\theta\beta_\phi rd\theta\wedge r\sin\theta d\phi \\
+          &\hspace{10em}+\alpha_\phi\beta_r r\sin\theta d\phi \wedge dr + \alpha_\phi\beta_\theta r\sin\theta d\phi \wedge rd\theta\Big] \\
+        &=*\Big[ (\alpha_r\beta_\theta-\alpha_\theta\beta_r)dr\wedge rd\theta + (\alpha_\phi\beta_r-\alpha_r\beta_\phi)r\sin\theta d\phi \wedge dr\\
+          &\hspace{5em}+(\alpha_\theta\beta_\varphi-\alpha_\phi\beta_\theta)rd\theta\wedge r\sin\theta d\phi\Big] \\
+        &=(\alpha_r\beta_\theta-\alpha_\theta\beta_r)r\sin\theta d\phi + (\alpha_\phi\beta_r-\alpha_r\beta_\phi)rd\theta + (\alpha_\theta\beta_\phi-\alpha_\phi\beta_\theta)dr
+      \end{align*}
+      Again, thanks to choosing an orthonormal basis, the combination of coefficients looks just as we would expect for the standard Cartesian cross product.
+
+
+    \end{solution}
+    
+
+  \end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+% format to allow bolded theorems, corollaries, etc... 
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Homework 3} \hfill \textbf{John Waczak} \\
+\normalsize PH 652 \hfill  Date: \today \\
+Dr. Tevian Dray
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+
+
+\begin{enumerate}[leftmargin=0em]
+\item In the hydrogen atom, an electron is in the 1s state. What is the probability to find the electron in the region $0\leq r \leq a_0/2$? ($a_0$ is the Bohr radius)
+\item Consider positronium (i.e a bound system of an electron $e^{-}$ and a positron $e^{+}$)
+  \begin{enumerate}[leftmargin=3em, label=(\alph*)]
+  \item Compare the Bohr radius for this system with that for the hydrogen atom. How does the radius of positronium (i.e. the distance from the center of mass to the particle(s) compare to that of the hydrogen atom (draw the sketch of both and indicate the interparticle distances)? Discuss...
+
+  \item If we measure optical absorption spectrum of the hydrogen atom (i.e. transitions between some levels $n_1$, $n_2$, $n_3$, etc...) and find absorption lines at wavelengths $\lambda = 652.2, 486.1, 410.1$ nm, at what wavelengths should we expect some absorption of the positronium if we look at transitions between the same levels? 
+  \end{enumerate}
+
+\item
+  \begin{enumerate}[leftmargin=3em, label=(\alph*)]
+  \item Is the helium ion $He^+$ smaller or larger than the hydrogen atom in its ground state? By how much?
+
+  \item Is a muonic atom that consists of a proton and a $\mu^{-}$ muon (charge is charge of electron, mass $m_\mu \approx 200 m_e$) smaller or larger than a hydrogen atom in its ground state? 
+
+  \end{enumerate}
+
+\item Sakurai 3.17 (grey edition) 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
