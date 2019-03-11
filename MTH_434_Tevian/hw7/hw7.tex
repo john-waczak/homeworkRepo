@@ -28,6 +28,7 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\sphere}{\mathbb{S}}
 
 % commands for bra-ket notation
 \newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
@@ -58,7 +59,7 @@
 
 \begin{document}
 \noindent
-\large\textbf{Homework 6} \hfill \textbf{John Waczak} \\
+\large\textbf{Homework 7} \hfill \textbf{John Waczak} \\
 \normalsize MTH 434 \hfill  Date: \today \\
 Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
 \par\noindent\rule{\textwidth}{0.4pt} \\\\
@@ -67,201 +68,127 @@ Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
 
 \begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}]
 \item \textbf{SPHERICAL COORDINATES II}
-  Consider spherical coordinates $\{r, \theta, \phi\}$ and the adapted
-  orthonormal basis
+  Consider the sphere of radius $r$, in spherical coordinates $(\theta, \phi)$,
+  with line element
   \begin{equation}
-    \left\{ \basis{1}, \basis{2}, \basis{3} \right\} = \left\{ \unit{r}, \unit{\theta}, \unit{\phi} \right\}
+    ds^2 = r^2(d\theta^2+\sin^2\theta d\phi^2)
   \end{equation}
-  The ``infinitesimal displacement vector'' $d\vec{\boldsymbol{r}}$ relates this
-  basis to an orthonormal basis of 1-forms via
-  \begin{equation}
-    \vec{\boldsymbol{r}} = dr\;\unit{r} + rd\theta\;\unit{\theta} + r\sin\theta d\phi \;\unit{\phi}
-  \end{equation}
-  WARNING: \textit{these conventions imply $\tan\phi = \frac{y}{x}$}
-
+  
 
   \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
-    \item Determine the exterior derivative of each basis vector (not 1-form)
-      above, that is, compute $d\unit{r}, d\unit{\theta}$, and $d\unit{\phi}$. \\
-      \begin{solution}
-        We begin by recalling the definition of \textit{connection} 1-forms
-        given by
-        \begin{equation}
-          d\unit{e}_j = \omega^i{}_j\; \unit{e}_i
-        \end{equation}
-        i.e. the 1-form coefficients of the expansion of $d\unit{e}_j$ in the
-        regular basis. In class, we also defined the metric compatibility and
-        torsion free requirements in terms of connections as
-        \begin{align}
-          \omega_{ij}+\omega_{ji} = 0 \\
-          d\sigma^{i}+\omega^i{}_j\wedge \sigma^j = 0
-        \end{align}
-        where a connection with both indices downstairs is given by
-        \begin{equation}
-          \omega_{ij} = \unit{e}_i\cdot d\unit{e}_j
-        \end{equation}
-        Equipped with these definitions we now can solve for the connection
-        1-forms. To evade a brute force calculation, recall the line element for
-        $\E^3$ in spherical coordinates is given by
-        \begin{equation}
-          ds^2 = dr^2 + r^2d\theta^2+r^2\sin^2\theta d\phi^2
-        \end{equation}
-        so that
-        \begin{equation}
-          d\bvec{r} = dr\unit{r}+rd\theta\unit{\theta}+r\sin\theta d\phi\unit{\phi} 
-        \end{equation}
-        however, we also know that
-        \begin{equation}
-          d\bvec{r} = d(r\unit{r}) = dr \unit{r} + rd\unit{r}
-        \end{equation}
-        so that direct comparison gives
-        \begin{equation}
-          \boxed{ d\unit{r} = d\theta\;\unit{\theta}+\sin\theta d\phi\;\unit{\phi}}
-        \end{equation}
-        Knowing (10) significantly simplifies our job. For the other two
-        derivatives we have
-        \begin{align}
-          d\unit{\theta} &= \omega^r{}_\theta\;\unit{r}+\omega^\theta{}_\theta \;\unit{\theta}+\omega^\phi{}_\theta \;\unit{\phi} \\
-          d\unit{\phi} &= \omega^r{}_\phi\;\unit{r}+\omega^\theta{}_\phi\;\unit{\theta}+\omega^\phi{}_\phi \;\unit{\phi}\notag 
-        \end{align}
-        However, equation (4) further simplifies by allowing us to remove the
-        diagonal terms. 
-        \begin{align}
-          d\unit{\theta} &= \omega^r{}_\theta\;\unit{r}+\omega^\phi{}_\theta \;\unit{\phi} \\
-          d\unit{\phi} &= \omega^r{}_\phi\;\unit{r}+\omega^\theta{}_\phi\;\unit{\theta}\notag 
-        \end{align}
-        The vector version of (4) states that
-        \begin{equation}
-          d(\unit{e}_i\cdot\unit{e}_j) = \unit{e}_i\cdot d\unit{e}_j + d\unit{e}_i\cdot\unit{e}_j = 0
-        \end{equation}
-        Thus, equation (13) yields the following:
-        \begin{align}
-          \omega^r{}_\theta &= -\unit{\theta}\cdot d\unit{r} = -d\theta \\
-          \omega^r{}_\phi &= -\unit{\phi}\cdot d\unit{r} = -\sin\theta d\phi
-        \end{align}
-        Now only two connections remain. However, we have that
-        $\omega^\phi{}_\theta = -\omega^{\theta}{}_\phi$. It is therefore
-        sufficient to solve for either one alone. To do this, consider the
-        torsion free condition (eq 5). We have that
-        \begin{align}
-          0 &= d(rd\theta)+\omega^\theta{}_r\wedge dr + \omega^\theta{}_\theta\wedge rd\theta + \omega^\theta{}_\phi \wedge r\sin\theta d\phi \\
-            &= dr\wedge d\theta +\omega^\theta{}_r\wedge dr + \omega^\theta{}_\phi\wedge r\sin\theta d\phi \\
-            &= dr\wedge d\theta +d\theta\wedge dr +\omega^\theta{}_\phi \\
-          \Rightarrow &\omega^\theta{}_\phi\wedge r\sin\theta d\phi = 0
-        \end{align}
-        Equation (19) tells us that $\omega^\theta{}_\phi$ must only include
-        $d\phi$ and no other 1-forms in order for (19) to hold. Equation (5)
-        also gives
-        \begin{align}
-          0 &= d(r\sin\theta d\phi) + \omega^\phi{}_r\wedge dr +\omega^\phi{}_\theta \wedge rd\theta + \omega^\phi{}_\phi\wedge r\sin\theta d\phi \\
-            &= \sin\theta dr\wedge d\phi + r\cos\theta d\phi\wedge d\phi + \omega^\phi{}_r\wedge dr +\omega^\phi{}_\theta \wedge rd\theta \\
-            &= \sin\theta dr \wedge d\phi + \sin\theta d\phi \wedge dr + r\cos\theta d\theta \wedge d\phi + \omega^{\phi}{}_\theta \wedge rd\theta \\
-            &= r\cos\theta d\theta \wedge d\phi - rd\theta \wedge \omega^\phi{}_\theta\\
-              \Rightarrow \omega^\phi{}_\theta &= \cos\theta d\phi \\
-          \text{and } \omega^{\theta}{}_\phi &= -\cos\theta d\phi 
-        \end{align}
-        ...and that's all there is to it! In summary, we have
-        \begin{empheq}[box=\fbox]{align}
-          d\unit{r} &= d\theta\;\unit{\theta} +\sin\theta d\phi\;\unit{\phi}\\
-          d\unit{\theta} &= -d\theta\;\unit{r} +\cos\theta d\phi\;\unit{\phi}\notag  \\
-          d\unit{\phi} &= -\sin\theta d\phi\;\unit{r} -\cos\theta
-          d\phi\;\unit{\theta} \notag
-        \end{empheq}
-      \end{solution}
+  \item Find the connection 1-forms $\omega_{ij}$ in this basis. \\ 
+    \begin{solution}
+      Because we are confined to the surface of the sphere, $d\bvec{r}$ vector
+      will not aid in our calculation. However, The metric compatibility
+      requirement
+      \begin{equation}
+        \omega_{ij}+\omega_{ji} = 0 
+      \end{equation}
+      Implies that every $\omega_{ii}$ is identically zero. Furthermore, because
+      r is constant on the sphere, there are only 4 connection 1-forms to
+      calculate. The above asymmetry argument implies we need only explicitly
+      calculate 1 of them. To do this we will consider the torsion free
+      requirement which states
+      \begin{equation}
+        d\sigma^i + \omega^i{}_j\wedge \sigma^j = 0 
+      \end{equation}
+      The leads to the following system of linear equations
+      \begin{align}
+        &\omega^\theta{}_\phi \wedge r\sin\theta d\phi = 0  \\
+        &r\cos\theta d\theta \wedge d\phi + rd\theta\wedge\omega^\theta{}_\phi = 0
+      \end{align}
+      where in equation (4) we note that $dr = 0$ for the sphere. Recalling that
+      $\omega^i{}_j$ are 1-forms and are expanded in the usual basis as
+      \begin{equation}
+        \omega^i{}_j = \Gamma^i{}_{jk}\;\sigma^k
+      \end{equation}
+      equation (4) implies that $\Gamma^\theta{}_{\phi\theta}=0$ so that
+      $\omega^\theta{}_\phi$ has only a $d\phi$ component. With this, equation
+      (5) becomes
+      \begin{align}
+        0 &= r\cos\theta d\theta \wedge d\phi + rd\theta \wedge \Gamma^{\theta}{}_{\phi\phi}d\phi \notag \\
+          &= r\cos\theta d\theta \wedge d\phi + r\Gamma^{\theta}{}_{\phi\phi}d\theta\wedge d\phi \notag \\
+        \Rightarrow \quad\Aboxed{&\Gamma^\theta{}_{\phi\phi} = -\cos\theta}
+      \end{align}
+      Where I have done the calculation in a coordinate basis for simplicity.
+      Thus, we can conclude that the connection 1-forms for $\sphere^2$ (in the
+      orthonormal basis) are
+      \begin{empheq}[box=\fbox]{align}
+            \omega_{\theta\theta} &=0 \hspace{8em}\omega_{\theta\phi}=-\frac{\cos\theta}{r}r\sin\theta \;d\phi
+            \\
+            \omega_{\phi\theta} &= \frac{\cos\theta}{r}r\sin\theta \;d\phi \qquad \omega_{\phi\phi}=0
+      \end{empheq} \\ 
+    \end{solution}
+    
+  \item Compute $\Omega_{ij} = d\omega_{ij}+\omega_{ik}\wedge\omega_{kj}$ for
+    $i, j = 1, 2$ (and where there is an implicit sum over k) \\ 
 
-    \item Compute $\omega_{ij}= \unit{e}_i\cdot d\unit{e}_j$ for $i,j=1,2,3$.
-      \textit{What sort of beast should you get?}
-      \begin{solution}
-        This question asks us to identify the connection 1-forms. We can easily
-        read these off from our solution to part $(a)$ by comparing with
-        equation (11). They are
-        \begin{empheq}[box=\fbox]{align}
-          \omega_{rr} &= 0 &\omega_{\theta r}&=d\theta
-          &\omega_{\phi r}&=\sin\theta d\phi \\
-          \omega_{r \theta}&=-d\theta &\omega_{\theta \theta} &= 0
-          &\omega_{\phi \theta} &= \cos\theta d\phi\ \notag\\
-          \omega_{r\phi}&= -sin\theta d\phi & \omega_{\theta \phi}&= -\cos\theta
-          d\phi & \omega_{\phi \phi} &= 0 \notag
-        \end{empheq}
-        
-      \end{solution}
-      
-      
-    \item Compute $\Omega_{ij}= d\omega_{ij}+\omega_{ik}\wedge\omega_{kj}$ for $i,j=1, 2, 3$
-      (and where there is an implicit sum over k). \textit{What sort of beast
-        should you get?} \\
-      \begin{solution}
-        Inspection of the equation for each $\Omega_{ij}$ reveals some
-        interesting structure given our solution to part (b) of the problem.
-        Notice that the table in equation 27 in antisymmetric as a result of
-        equation 4. Therefore, we have that.
-        
-        \begin{equation}
-          \omega_{ik}\wedge\omega_{ki} = -\omega_{ik}\wedge\omega_{ik}
-        \end{equation}
-        but each of our $\omega_{ik}$ are in $\bigwedge^1$ and therefore
-        \begin{equation}
-          \omega_{ik}\wedge\omega_{ik} = 0 \quad \forall\; i,k
-        \end{equation}
-        Thus, because $d(0)=0$ and because of (29) we have that $\Omega_{ii} =
-        0$ $\forall$ $i$. If we zap equation (4) with d, we find that
-        \begin{align}
-          d\omega_{ij}+d\omega_{ji}= 0 \\
-          \Rightarrow d\omega_{ji}=-d\omega_{ij}
-        \end{align}
-        For the second half of the $\Omega_{ij}$ equation, we have that
-        \begin{align}
-          \omega_{ik}\wedge \omega_{kj} &= -\omega_{kj}\wedge\omega_{ik} \\
-                                        &= \omega_{jk}\wedge\omega_{ik} \\
-                                        &= -\omega_{jk}\wedge\omega_{ki}
-        \end{align}
-        Putting (31) together with (34) gives
-        \begin{equation}
-          \Omega_{ij} = -\Omega_{ji}
-        \end{equation}
-        Therefore, it is sufficient to calculate elements with indices corresponding
-        to the upper right half of the table in equation (27).  Let's begin with
-        $i=\theta$ and $j = r$.
-        \begin{align}
-          d\omega_{\theta r} &= d(d\theta) = 0 \\
-          \omega_{\theta k}\wedge \omega_{k r} &= \omega_{\theta r}\wedge \omega_{r r} + \omega_{\theta \theta} \wedge \omega_{\theta r} + \omega_{\theta \phi} \wedge \omega_{\phi r}  \\
-                             &= 0 + 0 + \omega_{\theta \phi} \wedge \omega_{\phi r} \\
-                             &= -\cos\theta d\phi \wedge \sin\theta d\phi \\
-                             &= -\cos\theta\sin\theta d\phi \wedge d\phi \\
-                             &= 0  \\ 
-                              \Rightarrow  \Omega_{\theta r} &= 0 
-        \end{align}
-        For the next pair, we have 
-        \begin{align}
-          d\omega_{\phi r} &= d(\sin\theta d\phi) = \cos\theta d\theta \wedge d\phi \\
-          \omega_{\phi k}\wedge \omega_{k r} &= \omega_{\phi r} \wedge \omega_{r r} + \omega_{\phi \theta} \wedge \omega_{\theta r} + \omega_{\phi \phi}\wedge \omega_{\phi r} \\
-                           &= \omega_{\phi \theta} \wedge \omega_{\theta r} \\
-                           &= \cos\theta d\phi \wedge d\theta  \\
-                           &= -\cos\theta d\theta \wedge d\phi\\
-          \Rightarrow \Omega_{\phi r} &= 0
-        \end{align}
-        finally,
-        \begin{align}
-          d\omega_{\phi \theta} &= d(cos\theta d\phi) = -\sin\theta d\theta \wedge d\phi \\
-          \omega_{\phi k}\wedge\omega_{k\theta} &= \omega_{\phi r} \wedge \omega_{r\theta} + \omega_{phi \theta }\wedge\omega_{\theta \theta} + \wedge_{\phi \phi} \wedge \omega_{\theta \phi}  \\
-                                &= \omega_{\phi r}\wedge \omega_{r\theta} \\
-                                &= \sin\theta d\phi \wedge -d\theta \\
-                                &= \sin\theta d\theta \wedge d\phi \\ 
-          \Rightarrow \Omega_{\phi \theta} &= 0
-        \end{align}
-        Thus we conclude that every $\Omega_{ij} = 0$ for $\E^3$ described in
-        spherical coordinates. The $\Omega_{ij}$ are related to curvature, and
-        therefore, this makes sense as we are considering regular
-        Euclidean space which is supposed to be flat.
-        
-        
-        
+    \begin{solution}
+      As in the last homework set, equation (2) combined with the fact that
+      $d\alpha = 0$ for any $\alpha\in\bigwedge^1$ implies $\Omega_{ii} = 0$ for
+      all $i$. We also have that
+      \begin{equation}
+        \Omega_{ji} = -d\omega_{ij}-\omega_{ik}\wedge\omega_{kj} = -\Omega_{ij}\\ 
+      \end{equation}
+      Therefore, we need only explicitly calculate one of the curvature 2-forms.
+      For ease of calculation, I will begin in the coordinate basis and then
+      convert back into the orthonormal basis to make the Gauss curvature
+      obvious. 
+      \begin{align}
+        \Omega_{\theta\phi} &= d\omega_{\theta \phi} +\omega_{\theta\ k}\wedge\omega_{k\phi} \\
+                            &= d\omega_{\theta\phi} +\omega_{\theta\theta}\wedge\omega_{\theta\phi}+\omega_{\theta\phi}\wedge\omega_{\phi\phi} \\
+                            &= d\omega_{\theta\phi} \\
+                            &= d(-\cos\theta\; d\phi) \\
+                            &= -\sin\theta\; d\theta\wedge d\phi \\
+                            &= -\frac{\sin\theta}{r^2\sin\theta}\; rd\theta\wedge r\sin\theta\; d\phi \\
+                            &= -\frac{1}{r^2}\; rd\theta\wedge r\sin\theta\;d\phi \\
+                            &= -\frac{1}{r^2}\omega
+      \end{align}
+      where $\omega$  is the orientation of $\sphere^2$.  \\
 
-        
-        
+      In summary, we have found the following
+      \begin{empheq}[box=\fbox]{align}
+        \Omega_{\theta\theta} &= 0 \hspace{3em}\; \Omega_{\theta \phi} =
+        -\frac{1}{r^2}\omega \\
+        \Omega_{\phi\theta} &= \frac{1}{r^2}\omega \hspace{2em} \Omega_{\phi\phi}=0
+      \end{empheq} \\
 
-        
-      \end{solution}
+      From class, we know that the Gaussian curvature of a two dimensional
+      surface is related to these curvature 2-forms by
+      \begin{equation}
+        \Omega^1{}_2= K\omega
+      \end{equation}
+      and $\frac{1}{r^2}$ is precisely the Gaussian curvature of $\sphere^2$ \\ 
+    \end{solution}
+
+
+
+
+
+    
+  \item (Optional) Compare your answers (and your computations) with those from
+    the previous homework assignment. \\
+    
+    \begin{solution}
+      Looking at the previous homework, we see that the connection 1-forms are
+      exactly the same for our computation in $\E^3$ despite the fact that the
+      computation on $\sphere^2$ does not include any $dr$ components. It is
+      interesting to note that the $dr$ components of the 1-forms in the first structure equation from
+      $d\sigma^i$ exactly cancel out the $dr$ components of the 1-forms
+      from $\omega^i{}_j\wedge\sigma^j$ leaving the $\omega_{ij}$ unchanged as
+      we go from $\E^3$ to $\sphere^2$. \\
+
+      The exact opposite happens for the curvature 2-forms for which the $dr$
+      components of the 2-forms in the second structure equation exactly cancel
+      in 3-dimensions to give zero for each $\Omega_{ij}$. On the sphere, $dr=0$
+      which removes these canceling terms results in non-zero curvature 2-forms.
+      \\
+
+      This whole process illustrates how we can derive the curvature for
+      surfaces in $\E^3$ by considering curvilinear coordinate systems and then
+      setting a particular basis 1-form to 0. 
+    \end{solution}
+    
   \end{enumerate}
 \end{enumerate}
 
