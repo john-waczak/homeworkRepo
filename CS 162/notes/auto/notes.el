@@ -1,8 +1,11 @@
 (TeX-add-style-hook
- "hw7"
+ "notes"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "a4paper" "11pt")))
+   (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "lstinline")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "lstinline")
    (TeX-run-style-hooks
     "latex2e"
     "article"
@@ -13,10 +16,14 @@
     "amssymb"
     "amsthm"
     "ulem"
-    "mathtools"
     "enumitem"
-    "pdfpages")
+    "pdfpages"
+    "empheq"
+    "listings")
    (TeX-add-symbols
+    '("bvec" 1)
+    '("unit" 1)
+    '("basis" 1)
     '("expectation" 1)
     '("matrixel" 3)
     '("bracket" 2)
@@ -24,7 +31,9 @@
     '("bra" 1)
     "R"
     "C"
-    "F")
+    "F"
+    "E"
+    "sphere")
    (LaTeX-add-environments
     "solution")
    (LaTeX-add-amsthm-newtheorems

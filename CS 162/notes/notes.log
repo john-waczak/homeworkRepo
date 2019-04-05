@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.23)  27 JAN 2019 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.23)  3 APR 2019 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**hw3.tex
-(./hw3.tex
+**notes.tex
+(./notes.tex
 LaTeX2e <2018-04-01> patch level 5
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -231,21 +231,84 @@ File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 \AM@toc@title=\toks30
 \c@AM@survey=\count108
 \AM@templatesizebox=\box33
-) (./hw3.aux)
-\openout1 = `hw3.aux'.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/empheq.sty
+Package: empheq 2017/03/31 v2.15 Emphasizing equations
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count109
+\l_MT_multwidth_dim=\dimen130
+\origjot=\skip54
+\l_MT_shortvdotswithinadjustabove_dim=\dimen131
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen132
+\l_MT_above_intertext_sep=\dimen133
+\l_MT_below_intertext_sep=\dimen134
+\l_MT_above_shortintertext_sep=\dimen135
+\l_MT_below_shortintertext_sep=\dimen136
+)
+\l_EQ_equationtype_int=\count110
+\l_EQ_alignmentmode_int=\count111
+\l_EQ_totalwidth_dim=\dimen137
+\l_EQ_displaywidth_dim=\dimen138
+\l_EQ_temp_linewidth_dim=\dimen139
+\EmphEqdelimitershortfall=\dimen140
+\EmphEqdelimiterfactor=\count112
+\g_EQ_toptag_height_dim=\dimen141
+\g_EQ_bottomtag_depth_dim=\dimen142
+\g_EQ_toprow_height_dim=\dimen143
+\g_EQ_bottomrow_depth_dim=\dimen144
+\g_EQ_widesttag_dim=\dimen145
+\EQ_mathdisplay_box=\box34
+\EQ_tag_box=\box35
+\g_EQ_temprow_int=\count113
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count114
+\lst@gtempboxa=\box36
+\lst@token=\toks31
+\lst@length=\count115
+\lst@currlwidth=\dimen146
+\lst@column=\count116
+\lst@pos=\count117
+\lst@lostspace=\dimen147
+\lst@width=\dimen148
+\lst@newlines=\count118
+\lst@lineno=\count119
+\lst@maxwidth=\dimen149
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count120
+\lst@skipnumbers=\count121
+\lst@framebox=\box37
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+ (./notes.aux)
+\openout1 = `notes.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -283,17 +346,17 @@ LaTeX Font Info:    ... okay on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
-\scratchdimen=\dimen130
-\scratchbox=\box34
-\nofMPsegments=\count110
-\nofMParguments=\count111
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count112
-\MPscratchDim=\dimen131
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
-\everyMPtoPDFconversion=\toks32
+\scratchcounter=\count122
+\scratchdimen=\dimen150
+\scratchbox=\box38
+\nofMPsegments=\count123
+\nofMParguments=\count124
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen151
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
+\everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -335,7 +398,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box35
+\AtBeginShipoutBox=\box39
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
@@ -345,46 +408,81 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\Hy@linkcounter=\count128
+\c@lstlisting=\count129
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--57
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
+Underfull \hbox (badness 10000) in paragraph at lines 82--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--89
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 112.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 112.
+LaTeX Font Info:    Try loading font information for U+msa on input line 122.
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+LaTeX Font Info:    Try loading font information for U+msb on input line 122.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./hw3.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./notes.aux) ) 
 Here is how much of TeX's memory you used:
- 4542 strings out of 492641
- 62662 string characters out of 6131786
- 143552 words of memory out of 5000000
- 8350 multiletter control sequences out of 15000+600000
- 8999 words of font info for 35 fonts, out of 8000000 for 9000
+ 7089 strings out of 492641
+ 100138 string characters out of 6131786
+ 212452 words of memory out of 5000000
+ 10859 multiletter control sequences out of 15000+600000
+ 10258 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,39p,357b,262s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/t
+ 41i,6n,60p,272b,1274s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb>
-Output written on hw3.pdf (1 page, 71354 bytes).
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb>
+Output written on notes.pdf (2 pages, 77221 bytes).
 PDF statistics:
- 36 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 35 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
