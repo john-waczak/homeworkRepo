@@ -63,122 +63,74 @@
 
 \begin{document}
 \noindent
-\large\textbf{Class Notes} \hfill \textbf{John Waczak} \\
+\large\textbf{Assignment 1: Design} \hfill \textbf{John Waczak} \\
 \normalsize CS 162 \hfill  Date: \today 
 \par\noindent\rule{\textwidth}{0.4pt} \\\\
 
-% \begin{lstlisting}[language=C++]
-% \end{lstlisting}
-
-\section*{Objects \& Structures}
-Objects are a way to think about grouping together similar items in order to
-organize their structure and inter-relations. In programming, objects are a way
-to group variables together (as in arrays). \textit{Arrays} allow us to group
-together objects so long as they are the same type.
-
-\begin{lstlisting}[language=C++]
-  int grades[150]; 
-\end{lstlisting}
-But what if we want more flexibility? We need to move away from the
-\textit{primitive} variable types and begin to group different variables
-together in order to make a sort of container.\\ 
-
-\textbf{Structs} are custom objects (structures) that allow us to mix and match
-data types. Traditionally, structures contain only data and no member functions
-i.e. a clump of related variables. The following shows an example. \\
 
 
-\begin{lstlisting}[language=C++]
-  struct book{
-    int pages;
-    unsigned in pub_date;
-    string title; // a string inside the struct
-    int num_authors;
-    string* authors; // a pointer to a string
-  };
+\section*{Understanding the problem}
 
-  // declare a book struct
-  book text_book; 
-\end{lstlisting}
-\vspace{1em}
+\textit{In your own words, explain what YOU think the problem is asking you to
+  do.  Document your uncertainties about the problem and anything else that you
+  feel was unclear or vague}\\
 
-Inside of \textit{book} we have defined a number of useful variables such as a
-string for the title, an int for the number of pages, etc... How do we access
-these?
+The problem is asking us to design a program that will check a prompt a user for
+login credentials, see if those credentials match a the user information in a
+wizard file. After loging in, the program should print the user information and
+then ask how they would like the spellbooks to be organized. If the user is a
+student, then they will not be allowed to see certain spellbooks containing evil
+spells. After deciding how to sort, the user should then choose either to print
+the information or write it to a file. Finally, the user will be prompted to
+re-sort the spellbooks or quit the program.
 
+\section*{Devising a plane/design}
 
-\begin{lstlisting}[language=C++]
-  book bookshelf[10];
-  for (int i = 0; i < 10; i++){
-    bookshelf[i].num_pages = 100;
-    bookshelf[i].title = ``Place holder''
-    bookshelf[i].authors = new string[2]; // dynamically allocate array 
-  }
-\end{lstlisting}
+\textit{Provide an algorithm/pseudo code to help solve the problem. In addition,
+  draw pictures/flow charts to help you devise your plan, as well as any other
+  design decisions you make, such as how to manage your time, how to decompose
+  the problem, where to start first, etc. }\\ 
+
+See flowchart on next page
+
+\includepdf{images/flow_chart.pdf}
 
 
-\section*{Pointers}
-\begin{itemize}
-\item Pointers $==$ memory addresses.
-  
-\item Variable declaration creates a variable on the stack
+\section*{Looking back / testing}
 
-\begin{lstlisting}[language=C++]
-int a = 5;
-\end{lstlisting}
-  
-\item Pointer declaration
-  
-\begin{lstlisting}[language=C++]
-int* b = &a; 
-\end{lstlisting}
-This creates a pointer variable of type \textbf{int} which points to the address
-of \textbf{a} (using the address operator \&)
+\textit{This includes any checking/self-reflection you did while solving the
+  problem, which includes using a calculator to make sure the output is correct,
+  testing to make sure your code executes correctly and behaves the way you
+  expect under specific circumstances, using sources of information to make
+  sense of the results, etc. However, you need to think about the input prior to
+  implementation!!!}\\
+\vspace{5em}
 
-\item Dereferencing a pointer:
-  
-\begin{lstlisting}[language=C++]
-cout << *b << endl; 
-\end{lstlisting}
-This will take the pointer b and grab the variable held at that memory location. 
-
-\end{itemize}
+\begin{center}
+ \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+   \textbf{Value} & \textbf{Expected} & \textbf{Met expectation?}\\
+    &  &  \\
+   \hline
+   Incorrect id & could not find wizard. please try again  & \\
+   Incorrect pass & Incorrect password Please try again & \\
+   Incorrect pass (x3) & You failed to log in. (Quit program)  & \\
+   Correct user and pass  &Login successful. Display wizard info & \\
+   Test each sort option & Correctly sorts & \\
+   Print to screen & correctly displays information & \\
+   Print to file & correctly writes to file & \\
+ \end{tabular}
+\end{center} 
 
 
 
-\section*{Array}
-\begin{itemize}
-  \item An \textit{array} is a collection variables of one data type and its
-    memory is stored contiguously
-
-  \item \textit{static arrays} are created on the stack and are of a fixed size
-
-\begin{lstlisting}[language=C++]
-int stack_array[10]; 
-\end{lstlisting}
-    
-  \item \textit{Dynamic arrays} are created on the heap and their size may
-    change during runtime.
-
-    
-\begin{lstlisting}[language=C++]
-int *heap_array = new int[10]; 
-\end{lstlisting}
-
-  \item Arrays can be of one ore more dimensions
-
-    
-\begin{lstlisting}[language=C++]
-int stack_array_2d[5][7]; 
-\end{lstlisting}
-\end{itemize}
 
 
-\section*{Separating Code}
-We can separate our code into a main file, a \textit{header} file, and an
-\textit{implementation} file.
 
 \end{document}
+
+
+
+
 
 
 

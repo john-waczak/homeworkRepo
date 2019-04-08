@@ -63,9 +63,10 @@
 
 \begin{document}
 \noindent
-\large\textbf{Week 1 Notes} \hfill \textbf{John Waczak} \\
+\large\textbf{Class Notes} \hfill \textbf{John Waczak} \\
 \normalsize CS 162 \hfill  Date: \today 
 \par\noindent\rule{\textwidth}{0.4pt} \\\\
+
 
 % \begin{lstlisting}[language=C++]
 % \end{lstlisting}
@@ -171,15 +172,64 @@ int *heap_array = new int[10];
 \begin{lstlisting}[language=C++]
 int stack_array_2d[5][7]; 
 \end{lstlisting}
-
-
-    
-
-    
 \end{itemize}
 
 
 
+
+% \begin{lstlisting}[language=C++]
+% \end{lstlisting}
+\section*{Makefiles}
+The compilation process is deceptively complicated. It must find pre-processor
+directives and expand macros. It has to compile the code and translate it into
+assembly. Then it has to run the assembler and translate to machine code.
+Finally it has to run the linker and translate the files into an executable. \\
+
+\noindent Using a makefile allows us to stop the compilation at any point and break the
+process into manageable chunks. \\
+
+\noindent The basic structure of the makefile is
+
+\begin{lstlisting}[language=C++]
+<target>: dependencies
+    shell commands
+\end{lstlisting}
+Any time any of the dependencies change or are updated, the target is rerun.  
+
+\begin{lstlisting}[language=C++]
+clean:
+    rm -r *.out *.o 
+\end{lstlisting}
+The clean target is used to remove all generated files so that you can rebuild
+from scratch. 
+
+
+\begin{lstlisting}[language=C++]
+.PHONY
+\end{lstlisting}
+This target allows you to create a list of files and file types for make to
+ignore. \\
+
+
+\section*{Memory Leaks}
+To detect memory leaks, use the command line tool \textit{valgrind}. At the end,
+valgrind gives you a summary of memory lost with a particular category for
+definitely lost and indirectly lost. Valgrind will not tell you however where
+the memory leak is. \\
+
+To try and find this, we can use the $-g$ flag on compile to use debugging. We
+can do this in our makefile! $-Wall$ will display all warnings. 
+
+
+\begin{lstlisting}[language=C++]
+DEBUG ?= 1
+ifeq ($(DEBUG), 1)
+    CFLAGS := -g -Wall
+else 
+    CFLAGS := -DNDEBUG -03
+endif
+\end{lstlisting}
+now we can add a $\$(CFLAGS)$ 
 
 \end{document}
 
