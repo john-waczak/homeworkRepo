@@ -1,0 +1,214 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+\usepackage{empheq}
+
+\usepackage{listings}
+
+
+%format to allow bolded theorems, corollaries, etc...
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\sphere}{\mathbb{S}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% vector stuff
+\newcommand{\basis}[1]{\hat{\mathbf{e}}_#1}
+\newcommand{\unit}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\bvec}[1]{\vec{\boldsymbol{#1}}}
+
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Class Notes} \hfill \textbf{John Waczak} \\
+\normalsize CS 162 \hfill  Date: \today 
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+% \begin{lstlisting}[language=C++]
+% \end{lstlisting}
+
+\section*{Objects \& Structures}
+Objects are a way to think about grouping together similar items in order to
+organize their structure and inter-relations. In programming, objects are a way
+to group variables together (as in arrays). \textit{Arrays} allow us to group
+together objects so long as they are the same type.
+
+\begin{lstlisting}[language=C++]
+  int grades[150]; 
+\end{lstlisting}
+But what if we want more flexibility? We need to move away from the
+\textit{primitive} variable types and begin to group different variables
+together in order to make a sort of container.\\ 
+
+\textbf{Structs} are custom objects (structures) that allow us to mix and match
+data types. Traditionally, structures contain only data and no member functions
+i.e. a clump of related variables. The following shows an example. \\
+
+
+\begin{lstlisting}[language=C++]
+  struct book{
+    int pages;
+    unsigned in pub_date;
+    string title; // a string inside the struct
+    int num_authors;
+    string* authors; // a pointer to a string
+  };
+
+  // declare a book struct
+  book text_book; 
+\end{lstlisting}
+\vspace{1em}
+
+Inside of \textit{book} we have defined a number of useful variables such as a
+string for the title, an int for the number of pages, etc... How do we access
+these?
+
+
+\begin{lstlisting}[language=C++]
+  book bookshelf[10];
+  for (int i = 0; i < 10; i++){
+    bookshelf[i].num_pages = 100;
+    bookshelf[i].title = ``Place holder''
+    bookshelf[i].authors = new string[2]; // dynamically allocate array 
+  }
+\end{lstlisting}
+
+
+\section*{Pointers}
+\begin{itemize}
+\item Pointers $==$ memory addresses.
+  
+\item Variable declaration creates a variable on the stack
+
+\begin{lstlisting}[language=C++]
+int a = 5;
+\end{lstlisting}
+  
+\item Pointer declaration
+  
+\begin{lstlisting}[language=C++]
+int* b = &a; 
+\end{lstlisting}
+This creates a pointer variable of type \textbf{int} which points to the address
+of \textbf{a} (using the address operator \&)
+
+\item Dereferencing a pointer:
+  
+\begin{lstlisting}[language=C++]
+cout << *b << endl; 
+\end{lstlisting}
+This will take the pointer b and grab the variable held at that memory location. 
+
+\end{itemize}
+
+
+
+\section*{Array}
+\begin{itemize}
+  \item An \textit{array} is a collection variables of one data type and its
+    memory is stored contiguously
+
+  \item \textit{static arrays} are created on the stack and are of a fixed size
+
+\begin{lstlisting}[language=C++]
+int stack_array[10]; 
+\end{lstlisting}
+    
+  \item \textit{Dynamic arrays} are created on the heap and their size may
+    change during runtime.
+
+    
+\begin{lstlisting}[language=C++]
+int *heap_array = new int[10]; 
+\end{lstlisting}
+
+  \item Arrays can be of one ore more dimensions
+
+    
+\begin{lstlisting}[language=C++]
+int stack_array_2d[5][7]; 
+\end{lstlisting}
+\end{itemize}
+
+
+\section*{Separating Code}
+We can separate our code into a main file, a \textit{header} file, and an
+\textit{implementation} file.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
