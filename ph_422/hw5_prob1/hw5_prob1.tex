@@ -54,7 +54,9 @@
   The integrand is almost the same as equation (1) but we need it to match
   exactly for the power series to be valid. \textbf{Remember:} equation (1) is
   valid only for $|u|<1$. We are interested in finding the potential where
-  $s<R$, so we can \textit{pull out} $R^2$ from the expression. That is,
+  $s<R$, or in other words, $s/R<1$ is a small quantity and we can \textit{pull
+    out} $R^2$ from the expression. That is,
+  
   \begin{align}
     \Big(s^2+R^2-2sR\cos(\phi-\phi')\Big)^{-1/2} &= \Big[R^2\Big(1+\frac{s^2}{R^2}-\frac{2s}{R}\cos(\phi-\phi')\Big)\Big]^{-1/2}\\
                                                  &= \frac{1}{R}\Big(1+\frac{s^2}{R^2}-\frac{2s}{R}\cos(\phi-\phi')\Big)^{-1/2} 
@@ -68,12 +70,12 @@
   \noindent Now, we need to expand the powers of $u$ in order to find all of the fourth
   order terms in $\frac{s}{R}$. Yes, this is a lot of algebra. 
   \begin{align}
-    &(-1/2)u = \left( \frac{s}{R} \right)\cos(\phi-\phi')-\frac{1}{2}\left( \frac{s}{R} \right)^2\\
-    &\frac{(-1/2)(-3/2)}{2}u^2 = \frac{5}{2}\left( \frac{s}{R} \right)^2\cos^2(\phi-\phi')-\frac{3}{2}\left( \frac{s}{R} \right)^3\cos(\phi-\phi')+\frac{3}{8}\left( \frac{s}{R} \right)^4 \\
-    &\frac{(-1/2)(-3/2)(-5/2)}{6}u^3 = \frac{5}{2}\left( \frac{s}{R} \right)^3\cos^3(\phi-\phi')-\frac{15}{4}\left( \frac{s}{R} \right)^4\cos^2(\phi-\phi/) +...\\
-    &\frac{(-1/2)(-3/2)(-5/2)(-7/2)}{24}u^4 = \frac{35}{8}\left( \frac{s}{R} \right)^4\cos^4(\phi-\phi')+...
+    &p(u) =  \left( \frac{s}{R} \right)\cos(\phi-\phi')-\frac{1}{2}\left( \frac{s}{R} \right)^2\\
+    &\frac{p(p-1)}{2!}u^2 = \frac{5}{2}\left( \frac{s}{R} \right)^2\cos^2(\phi-\phi')-\frac{3}{2}\left( \frac{s}{R} \right)^3\cos(\phi-\phi')+\frac{3}{8}\left( \frac{s}{R} \right)^4 \\
+    & \frac{p(p-1)(p-2)}{3!}u^3 = \frac{5}{2}\left( \frac{s}{R} \right)^3\cos^3(\phi-\phi')-\frac{15}{4}\left( \frac{s}{R} \right)^4\cos^2(\phi-\phi/) +...\\
+    & \frac{p(p-1)(p-2)(p-3)}{4!}u^4 = \frac{35}{8}\left( \frac{s}{R} \right)^4\cos^4(\phi-\phi')+...
   \end{align}
-  Using this, the integral reduces to
+  Using this to combine all terms with like powers in $s/R$, the integral reduces to
   \begin{equation}
     \begin{split}
       V(s,\phi)\approx\frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\int_0^{2\pi}&\Bigg\{ 1+\cos(\phi-\phi')\left( \frac{s}{R} \right)\\
@@ -93,20 +95,21 @@
   \noindent The ring has cylindrical symmetry. The charge $Q$ is also evenly distributed
   along this ring. This means that the potential $V$ can not depend on $\phi$
   because if we were to close our eyes and rotate the ring, the new system would
-  be indistinguishable from the original.
+  be indistinguishable from the original when we open our eyes again.
   \begin{figure}[!hbt]
     \centering
-    \includegraphics[width=0.7\columnwidth, angle=-90]{ring_symmetry}
+    \includegraphics[width=0.6\columnwidth, angle=-90]{ring_symmetry}
     \caption{A point p within a ring of evenly distributed charge. All points
       along the dashed circle must have the same value of potential due to the
       symmetry of the charge distribution.}
   \end{figure}
 
 
-  \noindent Thanks to the symmetry, we have the freedom to choose a value of $\phi$
-  because the final solution \textit{can not} have $\phi$ dependence. For convenience,
-  let's say $\phi=0$. Then our nasty integral can be further simplified to the
-  following.  
+  \noindent From the above argument we know that the final solution can have no
+  $\phi$ dependence. We can therefore choose a particular value of $\phi$ to
+  simplify the integral. For convenience, let's say $\phi=0$. Then our integral is
+  reduced to the following
+  
  \begin{equation}
     \begin{split}
       V(s)\approx\frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\int_0^{2\pi}&\Bigg\{ 1+\cos(\phi')\left( \frac{s}{R} \right)\\
@@ -138,8 +141,10 @@
     &= \frac{Q}{4\pi\epsilon_0}\Bigg\{ \frac{1}{R}+\frac{3}{4} \frac{s^2}{R^3} -\frac{3}{2} \frac{s^4}{R^5}\Bigg\} \\
   \end{align}
 
-  \textbf{NOTE:} our solution is an even function in $s$. Why is that? 
+  \noindent\textbf{NOTE:} our solution is an even function in $s$. Why is that? \\
 
+  \noindent\textbf{CHECK:} Does our solution agree with the original integral equation at
+  the origin? 
   
 \end{solution}
 
