@@ -88,60 +88,28 @@
   \noindent The original equation for the potential can not be integrated analytically.
   Now that we have expanded the integrand, we have reduced the problem to a
   bunch of integrals of $\cos^n(\phi-\phi')$ which we can solve by 
-  brute force. Before we proceed though, let's pause and think for a
-  moment about the symmetries of the ring.\\
-  
+  brute force. If you wish to do the integrals by hand, take advantage of the
+  exponential form of cosine. Otherwise, Mathematica is a great option for this
+  sort of integral. \\
 
-  \noindent The ring has cylindrical symmetry. The charge $Q$ is also evenly distributed
-  along this ring. This means that the potential $V$ can not depend on $\phi$
-  because if we were to close our eyes and rotate the ring, the new system would
-  be indistinguishable from the original when we open our eyes again.
+
   \begin{figure}[!hbt]
     \centering
-    \includegraphics[width=0.6\columnwidth, angle=-90]{ring_symmetry}
-    \caption{A point p within a ring of evenly distributed charge. All points
-      along the dashed circle must have the same value of potential due to the
-      symmetry of the charge distribution.}
+    \includegraphics[width=1.0\columnwidth]{mathematica_integral}
   \end{figure}
 
-
-  \noindent From the above argument we know that the final solution can have no
-  $\phi$ dependence. We can therefore choose a particular value of $\phi$ to
-  simplify the integral. For convenience, let's say $\phi=0$. Then our integral is
-  reduced to the following
+  \newpage
   
- \begin{equation}
-    \begin{split}
-      V(s)\approx\frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\int_0^{2\pi}&\Bigg\{ 1+\cos(\phi')\left( \frac{s}{R} \right)\\
-      &+ \left[ \frac{5}{2}\cos^2(\phi')-\frac{1}{2}  \right]\left( \frac{s}{R} \right)^2\\
-      &+ \left[ \frac{5}{2}\cos^3(\phi')-\frac{3}{2}\cos(\phi')    \right]\left( \frac{s}{R} \right)^3\\
-      &+ \left[ \frac{3}{8}-\frac{15}{4}\cos^2(\phi')+\frac{35}{8}\cos^4(\phi') \right]\left( \frac{s}{R} \right)^4  \Bigg\}d\phi'
-    \end{split}
-  \end{equation}
-
-  \noindent In solving the above, the following integrals will be useful (look
-  them up or try using the exponential form of cosine to solve).
-  \begin{align}
-    \int \cos(x) &= \sin(x)+C\\
-    \int \cos^2(x) &= \int \frac{1}{2}(\cos(2x)+1)dx = \frac{1}{2}(x+\sin(x)\cos(x))+ C\\
-    \int \cos^3(x) &= \frac{1}{12}(9\sin(x)+\sin(3x))+C\\
-    \int \cos^4(x) &= \frac{1}{32}(12x+8\sin(2x)+\sin(4x)) + C
-  \end{align}
-  
+  \noindent Therefore, our solution for the electric potential in the plane of the ring to
+  fourth order in $s$ is
   \begin{equation}
-    \begin{split}
-      V(s)\approx\frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\Bigg\{ 2\pi + &\left( \frac{s}{R} \right)\int_0^{2\pi}\cos(\phi')d\phi'\\
-      &+ \left( \frac{s}{R} \right)^2\int_0^{2\pi}\left[ \frac{5}{2}\cos^2(\phi')-\frac{1}{2}  \right]d\phi'\\
-      &+ \left( \frac{s}{R} \right)^3 \int_0^{2\pi}\left[ \frac{5}{2}\cos^3(\phi')-\frac{3}{2}\cos(\phi')    \right]d\phi'\\
-      &+ \left( \frac{s}{R} \right)^4\int_0^{2\pi}\left[ \frac{3}{8}-\frac{15}{4}\cos^2(\phi')+\frac{35}{8}\cos^4(\phi') \right] d\phi' \Bigg\}
-    \end{split}
+    V(s,\phi,z=0) \approx \frac{Q}{4\pi\epsilon_0}\Bigg\{  \frac{1}{R} + \frac{3}{4} \frac{s^2}{R^3}+\frac{9}{64} \frac{s^4}{R^5} \Bigg\} 
   \end{equation}
-  \begin{align}
-    &= \frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\Bigg\{2\pi+ \frac{3\pi}{2}\left( \frac{s}{R} \right)^2 -3\pi\left( \frac{s}{R} \right)^4\Bigg\} \\
-    &= \frac{Q}{4\pi\epsilon_0}\Bigg\{ \frac{1}{R}+\frac{3}{4} \frac{s^2}{R^3} -\frac{3}{2} \frac{s^4}{R^5}\Bigg\} \\
-  \end{align}
+  
 
-  \noindent\textbf{NOTE:} our solution is an even function in $s$. Why is that? \\
+  \vspace{2em}
+  
+  \noindent\textbf{NOTE:} Our solution does not depend on $\phi$ \textit{and}  is an even function in $s$. Why is that? \\
 
   \noindent\textbf{CHECK:} Does our solution agree with the original integral equation at
   the origin? 
