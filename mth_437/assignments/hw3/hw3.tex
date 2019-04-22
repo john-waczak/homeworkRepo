@@ -17,7 +17,7 @@
 \usepackage{empheq}
 
 \usepackage{listings}
-
+\usepackage{hyperref}
 
 %format to allow bolded theorems, corollaries, etc...
 \newtheorem*{theorem}{Theorem}
@@ -75,147 +75,223 @@ Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
 \begin{equation}
   ds^2 = -\left( 1-\frac{2m}{r} \right)dt^2+\frac{dr^2}{1-\frac{2m}{r}}+ r^2(d\theta^2+\sin^2\theta d\phi^2)
 \end{equation}
-\textit{where the mass m and the radius r are measured in the same units}
+\textit{All orbits can be assumed to lie in the equatorial plane $(\theta = \pi/2)$}
 
 \begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}.]
-  \item \textbf{PROPER DISTANCE BETWEEN SHELLS}\\
+  \item \textbf{SATELLITE ORBITS}\\
     \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
-      \item Use the line element to find a formula for the proper distance
-        between \textit{nearby} spherical shells (surfaces with $r = $
-        constant). That is, find an expression for the infinitesimal distance
-        between nearby shells, assuming that only the radius changes (and that
-        $r>2m$).\\
+      \item Find the speed of a satellite orbiting a schwarschild black hole at
+        constant radius $r=6m$, as measured by a stationary (``Shell'') observer
+        at that radius. \\ 
 
         \begin{solution}
-          Given that the only coordinate changing between shells is $r$, our
-          simplified line element is
+          Given an orbit of constant radius, the line element can be further
+          simplified. Assuming (w.l.o.g.) that $\theta=\pi/2$, it
+          becomes
           \begin{equation}
-            ds^2 = \frac{1}{1-\frac{2m}{r}}dr^2
+            ds^2 = -\left( 1-\frac{2m}{r} \right)dt^2+ r^2 d\phi^2
           \end{equation}
-          so that the infinitesimal distance is given by
+          For a timelike trajectory, the corresponding proper time is given by
           \begin{equation}
-            d\ell = \sqrt{ds^2} = \frac{1}{\sqrt{1-\frac{2m}{r}}}dr
+            d\tau^2 = -ds^2 = \left( 1-\frac{2m}{r} \right)dt^2- r^2 d\phi^2
           \end{equation}
-          where I have used $d\ell$ to make it clear that this is a distance and
-          to emphasize that it is greater than zero and not equal to $dr$.\\
-        \end{solution}
-
-      \item As you approach the horizon $(r\rightarrow 2m^+)$, what happens to
-        your expression? How far away do you think the horizon is? Do you think
-        that you can ever get to the horizon? \\
-
-        \begin{solution}
-          As we take the above limit, $d\ell \rightarrow \infty$. This is
-          interesting because we would have a separate singularity if
-          $r\rightarrow 0$. I am a little confused about the wording ``How far
-          away do you think the horizon is''. As we have yet to define
-          \textit{horizon}, it appears that a reasonable definition would be to
-          chose
+          Therefore, at a given instant in time, a shell observer measures
+          distance across a shell by
           \begin{equation}
-            r_s = 2m
+            ds = rd\phi
           \end{equation}
-          I am unsure of how to answer the question if the intention is what
-          would I see as an observer. Certainly, if I am moving towards the
-          black hole, we can not neglect the $dt$ term, so I will assume the
-          question is asking for a definition of the horizon of a black hole
-          based on the Schwarzschild metric we were given.
-
-          Given that the equation blows up as $r\rightarrow 2m$, it seems
-          unlikely that the horizon can be reached, however I'm not sure how to
-          consider this from the perspective of various observers yet... 
-        \end{solution}
-        
-    \end{enumerate}
-
-  \item \textbf{EARTH DISTANCE}\\
-    The mass $m$ of a particular black hole is $5$ $km$, a little more than
-    three times that of our Sun. Two concentric spherical shells surround this
-    black hole. The inner shell has circumference $2\pi r$, and the outer shell
-    has a circumference $2\pi(r+\Delta r)$, where $\Delta r = 100$ cm. Use your
-    expression for the infinitesimal distance between nearby shells to estimate
-    the radial distance between the shells in each of the cases bellow.
-    \textit{Explicitly state any approximations you make.}
-    \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
-      \item $r = 50$
-      \item $r = 15$
-      \item $r = 10.5$
-    \end{enumerate}
-    \begin{solution}
-      First, note that $100$ cm $=$ $0.001$ km. Given this fact, I will use the
-      value given for $r$ as my estimate for the radius along the path. Our
-      approximation to each distance is therefore given by
-      \begin{equation}
-        \Delta s \approx \frac{1}{\sqrt{1-\frac{2m}{r}}}\Delta r
-      \end{equation}
-      Plugging in the values for each case yields the following
-      \begin{align}
-        (a)\qquad \Delta s&\approx \frac{1}{\sqrt{1-\frac{10}{50}}}0.001 \approx 0.00112 \text{ km} \\ 
-        (b)\qquad \Delta s&\approx \frac{1}{\sqrt{1-\frac{10}{15}}}0.001 \approx 0.00173 \text{ km} \\ 
-        (a)\qquad \Delta s&\approx \frac{1}{\sqrt{1-\frac{10}{10.5}}}0.001 \approx 0.00458 \text{ km} \\ 
-      \end{align}
-      Here we can clearly see how a change in radial coordinate by $\Delta r$
-      corresponds to an increasingly larger change in distance $\Delta s$ as the
-      segment $\Delta r$ is moved towards the black hole.
-    \end{solution}
-
-  \item \textbf{EXACT PROPER DISTANCE}
-    \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
-      \item Use your expression for the infinitesimal distance between nearby
-        shells to determine the exact (radial) distance traveled between two
-        spherical shells of arbitrary circumference (but outside the horizon,
-        that is, with $r>2m$).
-
-        \begin{solution}
-          In order to find the exact distance, we must integrate the line
-          element. If the radii of the two shells are $R_1$, and $R_2$, then the
-          integral becomes
+          and for a given position on the shell, time is measured by
           \begin{equation}
-            \text{dist} = \int_{R_1}^{R_2}\frac{dr}{\sqrt{1-\frac{2m}{r}}}
+            d\tau = \left( 1-\frac{2m}{r} \right)dt
           \end{equation}
-          This is a challenging integral for which I used mathematica to
-          simplify. The attached code shows the evaluation of the indefinite
-          version of (10) which we can then use to evaluate at our radii.
-          Alternatively, we can use the substitution $\cosh\alpha =\sqrt{\frac{r}{2m}}$
-          but this requires good knowledge of hyperbolic trig identities which I
-          do knot yet have.
-
-          \includepdf{integral.pdf}
-
-          Therefore, the fully evaluated integral is given by the following
-          \begin{equation}
-            \text{dist} = R_2\sqrt{1-\frac{2m}{R_2}}-R_1\sqrt{1-\frac{2m}{R_1}}+m\ln\left(\frac{R_2-m+R_2\sqrt{1-\frac{2m}{R_2}}}{R_1-m+R_1\sqrt{1-\frac{2m}{R_1}}}  \right)
-          \end{equation}
-          If we use this equation to find the exact values for the previous
-          problem, the values become
+          The speed is the derivative of position with respect to time and
+          derivatives are just ratios of small changes. Therefore, we can say
+          that
           \begin{align}
-            (a)\qquad &R_1=50\qquad R_2=50+0.001\qquad \text{dist}= 0.001118 \\
-            (b)\qquad &R_1=15\qquad R_2=15+0.001\qquad \text{dist}= 0.001731 \\
-            (c)\qquad &R_1 =10.5\hspace{1.25em} R_2=10.5+0.001\hspace{1.25em} \text{dist}= 0.004580
+            \frac{ds}{d\tau} &= \frac{r}{\sqrt{1-\frac{2m}{r}}}\frac{d\phi}{d t}\\
+                             &= \frac{r}{\sqrt{1-\frac{2m}{r}}}\frac{\dot\phi}{\dot t}
           \end{align}
-          Interestingly enough, these values do not deviate significantly from
-          our approximation in the previous problem. This is likely due to the
-          fact that $\Delta r = 0.001$ km is such a small fraction of the radii
-          used.\\
+          It remains for us to figure out what $\dot \phi/\dot  t$ is.
+          Recall that the geodesic equations for the Schwarzschild geometry are given by
+          \begin{align}
+            \dot\phi &= \frac{\ell}{r^2} \\
+            \dot t &= \frac{e}{1-\frac{2m}{r}} 
+          \end{align}
+          where I have neglected to write the third as $\dot r=0$ for a circular
+          orbit. Using these equations, we therefore have 
+          \begin{equation}
+            \frac{ds}{d\tau} = \frac{r}{\sqrt{1-\frac{2m}{r}}}\frac{\frac{\ell}{r^2}}{ \frac{e}{1-\frac{2m}{r}} }= \frac{\sqrt{1-\frac{2m}{r}}}{r}\frac{\ell}{e}
+          \end{equation}
+          Finally, we can further simplify the equation by writing what the
+          values of $\ell$ and $e$ are for circular orbits. As discussed in
+          class, we must have that $V'=0$. Therefore,
+          \begin{align}
+            0 &= mr^2-\ell^2r+3m\ell^2 \\
+            \Rightarrow \frac{\ell^2}{r^2} &= \frac{m/r}{1-\frac{3m}{r}} \\
+            e &= \sqrt{2V+1} = \left(1-\frac{2m}{r}\right)\left(1+\frac{\ell^2}{r^2}\right)\\
+            \Rightarrow e^2&= \frac{\left(1-\frac{2m}{r}\right)^2}{1-\frac{3m}{r}} 
+          \end{align}
+          so that
+          \begin{align}
+            \ell &= \sqrt{\frac{mr}{1-\frac{3m}{r}}}\\
+            e &=  \frac{(1-\frac{2m}{r})}{\sqrt{1-\frac{3m}{r}}}
+          \end{align}
+          Putting this all together gives the speed
+          \begin{align}
+            \frac{ds}{d\tau} &=  \frac{\sqrt{1-\frac{2m}{r}}}{r}\frac{\sqrt{\frac{mr}{1-\frac{3m}{r}}}}{\frac{(1-\frac{2m}{r})}{\sqrt{1-\frac{3m}{r}}}}\\
+            &= \frac{1}{\sqrt{1-\frac{2m}{r}}}\frac{\sqrt{mr}}{r}
+          \end{align}
+          Now would be a good time to consider the dimensions of this solution.
+          The first fraction is dimensionless. The second fraction is also
+          dimensionless as we are measuring mass in meters. Therefore, the
+          entire speed is dimensionless which makes sense as we measure time in
+          $ct$ and therefore a speed is a length per length. The following
+          figure show's the functional behavior of the speed.\\
+          \newpage
+          \begin{figure}[!hbt]
+            \centering
+            \includegraphics[width=.8\columnwidth]{speed}
+            \caption{Speed as measured by a shell observer (as a function of r)}
+            \label{fig:speed}
+          \end{figure}
+          
+          \noindent Plugging in the value of $r=6m$ gives a speed of
+          \begin{align}
+            v &= \frac{1}{\sqrt{1-\frac{2m}{6m}}}\frac{m\sqrt{6}}{6m} \\
+              &= \frac{1}{\sqrt{1-\frac{1}{3}}}\frac{\sqrt{6}}{6}\\
+              &= \frac{\sqrt{3}}{\sqrt{2}}\frac{\sqrt{3}\sqrt{2}}{6} \\
+            &= \frac{3}{6} = \frac{1}{2}
+          \end{align}
+          So the speed for an object of radius $6m$ is $0.5c$! That's pretty fast!
         \end{solution}
 
-      \item Use your result to decide whether the radial distance to the horizon
-        is finite or infinite.\\
+      \item Is a circular orbit at $r=\frac{5}{2}m$ possible?
         \begin{solution}
-          To evaluate whether or not the distance to the horizon is finite, we
-          can simply take the limit as $R_1\rightarrow 2m$ in equation (11).
-          Doing so results in the expression
+          As we discussed in class, for circular orbits we must have that
+          $dV/dr=0$. This enables us to conclude that
+          \begin{align}
+            V' &= \frac{1}{r^4}\left( mr^2-\ell^2r+3m\ell^2 \right) = 0 \\
+            \Rightarrow r &= \frac{\ell}{2}\left( \frac{\ell}{m}\pm\sqrt{\frac{\ell^2}{m^2}-12} \right)
+          \end{align}
+          This radius is only well defined for non-negative values of the
+          radical. That is, stable circular orbits must satisfy
           \begin{equation}
-            \text{dist} = R_2\sqrt{1-\frac{2m}{R_2}}+m\ln\left( R_2-m+R_2\sqrt{1-\frac{2m}{R_2}} \right)-m\ln(m)
+            \ell^2\geq 12m^2
           \end{equation}
-          Clearly, this result is finite and therefore, for finite $R_2$ the
-          distance to the horizon is finite. This result is definitely counter
-          intuitive to what I thought by simply examining the \textit{blow up} of
-          $ds$ at $r=2m$.
+         given that the angular momentum (per mass) $\ell$ is directly related
+         to $r$ for circular orbits by equation (15), we have that
+         \begin{align}
+           \ell^2 &= \frac{mr}{1-\frac{3m}{r}} = \frac{\frac{5}{2}m^2}{1-\frac{3m}{\frac{5}{2}m}} \\
+                  &= -\frac{25}{2}m^2 < 12m^2
+         \end{align}
+         Therefore, an object of radius $r=\frac{5}{2}m$ does not satisfy (25),
+         and so we do not expect a circular orbit of this radius to exist.
         \end{solution}
         
+      \item Determine the smallest radius at which a circular orbit is possible,
+        and the (shell) speed of a satellite in such an orbit.
+
+        \begin{solution}
+          As mentioned in (b), to have a stable orbit, an object must satisfy
+          the relationship given by equation (25). Therefore, to find the
+          smallest possible orbit, we can take the equality and then solve for
+          the radius, i.e. $\ell^2 = 12m^2$
+          \begin{align}
+            r &= \frac{\ell}{2}\left( \frac{\ell}{m}\pm\sqrt{\frac{\ell^2}{m^2}-12} \right)\\
+              &= \frac{\ell^2}{2m} \\
+            &= \frac{12m^2}{2m} = 6m
+          \end{align}
+          after checking with Wikipedia, it appears that this solution does
+          agree with the $r_{isco}$ radius (innermost stable circular orbit) \url{https://en.wikipedia.org/wiki/Innermost_stable_circular_orbit}. An
+          object at this radius would have a speed of $0.5c$ which is exactly
+          what we found for part (a)!\\
+          
+        \end{solution}
+        
+    \end{enumerate}
+
+  \item \textbf{NULL ORBITS}\\
+    Imagine a beam of light in orbit around a Schwarzschild black hole at
+    constant radius. 
+    \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
+      \item How fast would a shell observer think the beam of light is
+        traveling? \\
+        \noindent\textit{Your answer must be supported by an explicit
+          calculation}
+
+        \begin{solution}
+          The length of any lightlike trajectory must be zero, therefore, $ds=0$
+          and consequently our line element may be simplified.
+          \begin{equation}
+            0 = -\left( 1-\frac{2m}{r} \right)dt^2+r^2d\phi^2
+          \end{equation}
+          where I have again set $dr=0$ for a circular orbit. As we mentioned
+          earlier, a shell observer measures distance on a shell as $rd\phi$ and
+          therefore, we can try and solve the above for the speed as
+          $rd\phi/dt$.
+          \begin{align}
+            \frac{r^2d\phi^2}{dt^2} &= \left( 1-\frac{2m}{r} \right) \\
+           \Rightarrow \frac{rd\phi}{dt}  &= \sqrt{ 1-\frac{2m}{r} }
+          \end{align}
+          This is really cool! From this perspective, as an object approaches
+          the Schwarzschild radius, it appears to \textit{slow down}! This also
+          agrees with what an observer far away should observer: for large r,
+          the speed is approximately $1c$. 
+        \end{solution}
+        
+
+    \item How fast would an observer far away think the beam of light is
+      traveling?\\
+      \noindent\textit{Recall that observers far away believe that $t$ and $r$
+      have their usual properties from special relativity. They are not really
+      ``observers'' so much as ``bookkeepers''.}\\
+      \begin{solution}
+        As the hint mentions, a far away bookkeeper experiences regular
+        Minkowski flat spacetime. Therefore, they measure distance as something
+        more like
+        \begin{align}
+          ds^2 = d\ell^2-dt^2
+        \end{align}
+        Here, a lightlike trajectory still must have zero length, and therefore,
+        measures the speed as
+        \begin{align}
+          0 &= d\ell^2-dt^2 \\
+          \Rightarrow \frac{d\ell}{dt} &=  1
+        \end{align}
+        In other words, the distance observer measures the light to travel at
+        the speed of light $c$, in agreement with the second postulate of
+        special relativity. \\
+      \end{solution}
+
+
+    \item At what value(s) of $r$, if any, is such an orbit possible? \\
+      \begin{solution}
+        If we begin with equations (8), and (9), we can combine them with (31)
+        but instead keeping the $dr$ term. This gives us the third geodesic
+        equation but for Null orbits specifically.
+        \begin{equation}
+          \dot r^2 = e^2-\frac{\ell^2}{r^2}+\frac{2m\ell^2}{r^3}
+        \end{equation}
+        Differentiating this equation and dividing through by $\dot r$ yields
+        \begin{equation}
+          \ddot r = \frac{\ell^2}{r^3}-\frac{3m\ell^2}{r^4} = \frac{\ell^2}{r^3}\left( 1-\frac{3m}{r} \right)
+        \end{equation}
+        For circular orbits, the condition that $V'=0$ implies that $\ddot r = 0$. Therefore, we have
+        that light in a circular orbit around a black hole of mass $m$ has a
+        radius
+        \begin{equation}
+          r = 3m = \frac{3}{2}\;r_s
+        \end{equation}
+        after searching the internet, it appears that my solution agrees with
+        the accepted value for the radius of the \textit{photon sphere} around a
+        Schwarzschild black hole
+        \url{https://en.wikipedia.org/wiki/Photon_sphere}. 
+      \end{solution}
+      
         
         
     \end{enumerate}
+    
     
 
 \end{enumerate}
