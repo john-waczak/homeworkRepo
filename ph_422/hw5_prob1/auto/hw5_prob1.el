@@ -10,7 +10,8 @@
     "enumitem"
     "geometry"
     "amsmath"
-    "graphicx")
+    "graphicx"
+    "pdfpages")
    (LaTeX-add-environments
     "solution"))
  :latex)

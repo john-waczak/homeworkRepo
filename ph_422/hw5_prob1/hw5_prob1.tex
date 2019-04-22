@@ -5,7 +5,7 @@
 \geometry{letterpaper, margin=1in}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
-
+\usepackage{pdfpages} % for including full pdf pages
 
 
 
@@ -79,7 +79,7 @@
   \begin{equation}
     \begin{split}
       V(s,\phi)\approx\frac{1}{4\pi\epsilon_0}\frac{Q}{2\pi}\frac{1}{R}\int_0^{2\pi}&\Bigg\{ 1+\cos(\phi-\phi')\left( \frac{s}{R} \right)\\
-      &+ \left[ \frac{5}{2}\cos^2(\phi-\phi')-\frac{1}{2}  \right]\left( \frac{s}{R} \right)^2\\
+      &+ \left[ \frac{3}{2}\cos^2(\phi-\phi')-\frac{1}{2}  \right]\left( \frac{s}{R} \right)^2\\
       &+ \left[ \frac{5}{2}\cos^3(\phi-\phi')-\frac{3}{2}\cos(\phi-\phi')    \right]\left( \frac{s}{R} \right)^3\\
       &+ \left[ \frac{3}{8}-\frac{15}{4}\cos^2(\phi-\phi')+\frac{35}{8}\cos^4(\phi-\phi') \right]\left( \frac{s}{R} \right)^4  \Bigg\}d\phi'
     \end{split}
@@ -93,17 +93,19 @@
   sort of integral. \\
 
 
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=1.0\columnwidth]{mathematica_integral}
-  \end{figure}
+  \includepdf[pages=-]{mathematica_integral.pdf}
 
-  \newpage
+  
+  % \begin{figure}[!hbt]
+  %   \centering
+  %   \includegraphics[width=1.0\columnwidth]{mathematica_integral}
+  % \end{figure}
+
   
   \noindent Therefore, our solution for the electric potential in the plane of the ring to
   fourth order in $s$ is
   \begin{equation}
-    V(s,\phi,z=0) \approx \frac{Q}{4\pi\epsilon_0}\Bigg\{  \frac{1}{R} + \frac{3}{4} \frac{s^2}{R^3}+\frac{9}{64} \frac{s^4}{R^5} \Bigg\} 
+    V(s,\phi,z=0) \approx \frac{Q}{4\pi\epsilon_0}\Bigg\{  \frac{1}{R} + \frac{1}{4} \frac{s^2}{R^3}+\frac{9}{64} \frac{s^4}{R^5} \Bigg\} 
   \end{equation}
   
 
