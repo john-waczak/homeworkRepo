@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.23)  22 APR 2019 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.10.23)  22 APR 2019 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -560,33 +560,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--208
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 251--255
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--278
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--282
+Underfull \hbox (badness 10000) in paragraph at lines 275--279
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 314.
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+ []
+
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 314.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 315.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 315.
  (./hw3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 314.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 314.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 315.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 315.
 Package rerunfilecheck Info: File `hw3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 314.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 315.
  ) 
 Here is how much of TeX's memory you used:
- 10023 strings out of 492641
- 146776 string characters out of 6131786
+ 10024 strings out of 492641
+ 146782 string characters out of 6131786
  265650 words of memory out of 5000000
  13726 multiletter control sequences out of 15000+600000
  9821 words of font info for 38 fonts, out of 8000000 for 9000
@@ -605,10 +611,10 @@ fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on hw3.pdf (5 pages, 166305 bytes).
+Output written on hw3.pdf (6 pages, 166659 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 170 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
