@@ -102,7 +102,7 @@ Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
           \end{equation}
           and for a given position on the shell, time is measured by
           \begin{equation}
-            d\tau = \left( 1-\frac{2m}{r} \right)dt
+            d\tau = \sqrt{ 1-\frac{2m}{r}}dt
           \end{equation}
           The speed is the derivative of position with respect to time and
           derivatives are just ratios of small changes. Therefore, we can say
@@ -231,12 +231,26 @@ Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
           $rd\phi/dt$.
           \begin{align}
             \frac{r^2d\phi^2}{dt^2} &= \left( 1-\frac{2m}{r} \right) \\
-           \Rightarrow \frac{rd\phi}{dt}  &= \sqrt{ 1-\frac{2m}{r} }
+           \Rightarrow \frac{rd\phi}{dt}  &= \pm\sqrt{ 1-\frac{2m}{r} }
           \end{align}
           This is really cool! From this perspective, as an object approaches
           the Schwarzschild radius, it appears to \textit{slow down}! This also
           agrees with what an observer far away should observer: for large r,
-          the speed is approximately $1c$. 
+          the speed is approximately $1c$. I am tempted to leave this answer as
+          is but special relativity suggests that the speed of light should be
+          constant in all intertial frames. Here we don't have inertial frames
+          but we do know that \textit{the laws of physics are the same for all
+            observers in free-fall}. How do we resolve this? I think that the
+          answer lies in the fact that while the light is moving in
+          ``free-fall'', our ``shell-observer'' is not; the shell observer is
+          stationary and measures time using proper time as we already decided
+          in equation (5). Therefore, the speed of the light \textit{as measured
+            by the shell observer} is
+          \begin{equation}
+            \frac{rd\phi}{d\tau} =\pm \frac{\sqrt{1-\frac{2m}{r}}}{\sqrt{1-\frac{2m}{r}}} = \pm 1
+          \end{equation}
+          As we would hope, the shell observer measures the light moving at the
+          speed of light!
         \end{solution}
         
 
