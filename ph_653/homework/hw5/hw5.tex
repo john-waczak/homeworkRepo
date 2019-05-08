@@ -1,0 +1,411 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+\usepackage{empheq}
+
+\usepackage{listings}
+
+
+%format to allow bolded theorems, corollaries, etc...
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\prob}[2]{\mathcal{P}_{_{#1\rightarrow #2}}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\sphere}{\mathbb{S}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% vector stuff
+\newcommand{\basis}[1]{\hat{\mathbf{e}}_#1}
+\newcommand{\unit}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\bvec}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\threevec}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Homework 5} \hfill \textbf{John Waczak} \\
+\normalsize PH 653 \hfill  Date: \today \\
+Dr. Oksana Ostroverkhova \hfill worked w/ Ryan Tollefsen
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+
+
+\begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}]
+  \item  Imagine a situation in which there are  three particles and only three
+    states a, b, and c available to them. What is the total number of allowed,
+    distinct configurations for the following systems: 
+  
+    \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
+      \item Labeled (i.e. distinguishable) particles \\
+        \begin{solution}
+          If we consider 3 distinguishable particles $\{1, 2, 3\}$ and three possible states
+          $\{ \ket{a}, \ket{b}, \ket{c} \}$ then each particle can occupy any of
+          the three states so that there are
+          \begin{equation}
+            3^3 = 27
+          \end{equation}
+          possible states in total. If we insist that states of the particles
+          must be different, then there are
+          \begin{equation}
+            3! = 6
+          \end{equation}
+          possible states.
+          
+        \end{solution}
+
+      \item identical bosons\\
+        \begin{solution}
+          If instead the particles are bosons, multiple particles may occupy the
+          same state and the state vector describing the system must by
+          \textit{symmetric} under exchange. That is,
+          \begin{equation}
+            \hat{P}_{ij}\ket{\psi_A} = \ket{\psi_A}
+          \end{equation}
+          where $\hat{P}_{ij}$ denotes the permutation operator which exchanges the
+          states of the $i^{th}$ and $j^{th}$ particles. We will begin
+          counting by first examining states for which each particle is in the
+          same state and then will work up to the case for which each particle
+          occupies a different state. \\
+
+          Hereafter, we assume the notation $\ket{a; b; c}$ for the combined
+          state vector which indicates particle one is in state a, particle two
+          is in state b, and so forth. With this convention, we can easily see
+          that there are only three symmetric cases for which each particle is
+          in the same state, namely
+          \begin{equation}
+            \ket{a;a;a} \qquad \ket{b;b;b} \qquad \ket{c;c;c}
+          \end{equation}
+
+          Next, let us consider the possible symmetric state vectors for the
+          case where exactly two particles occupy the same state. To account for
+          all possible permutations, we must have
+          \begin{align}
+            &\ket{a;a;b} + \ket{a;b;a} + \ket{b;a;a} \\
+            &\ket{b;b;a} + \ket{b;a;b} + \ket{a;b;b} \\
+            \nonumber\\
+            &\ket{c;c;a} + \ket{c;a;c} + \ket{a;c;c} \\
+            &\ket{a;a;c} + \ket{a;c;a} + \ket{c;a;a} \\
+            \nonumber\\
+            &\ket{b;b;c} + \ket{b;c;b} + \ket{c;b;b} \\
+            &\ket{c;c;b} + \ket{c;b;c} + \ket{b;c;c}
+          \end{align}
+          Where we can think of this as taking a state (for example $\ket{a}$)
+          and multiplying by the a symmetric combination of that state with
+          another (e.g. $\ket{ab}+\ket{ba}$). 
+
+          Finally, we have the case for which every particle in a different
+          state. The symmetric state vector in this configuration is given by
+          \begin{equation}
+            \ket{a;b;c}+ \ket{a;c;b} + \ket{b;c;a} + \ket{b;a;c}+\ket{c;b;a}+\ket{c;a;b}
+          \end{equation}
+          Therefore, in total we have 10 possible states. 
+
+
+          Again, if we insist that the particles must occupy separate states, 
+          then the only option is equation (11) so that there is 1 symmetric
+          state vector. 
+        \end{solution}
+        
+       
+      \item identical fermions
+        \begin{solution}
+          For the case of three fermions, we expect that the system will behave
+          altogether as a fermion and therefore require that the state vector
+          describing this system is antisymmetric. That is
+          \begin{equation}
+            \hat{P}_{ij}\ket{\psi_A} = -\ket{\psi_A}
+          \end{equation}
+          No state vector for which each particle occupies the same state can be
+          antisymmetric. To see if there are any possible antisymmetric states
+          where two particles occupy the same sate, we can construct the so
+          called Slater determinant
+
+          \begin{align}
+            \ket{\psi_{A, 2}} &= \begin{vmatrix} \ket{a} & \ket{a} &\ket{b}\\  \ket{a} & \ket{a} &\ket{b}\\  \ket{a} & \ket{a} &\ket{b}\\ \end{vmatrix} \\
+                          & = \ket{a}\Big(\ket{a;b}-\ket{b;a}\Big)-\ket{a}\Big(\ket{a;b}-\ket{b;a} \Big)+\ket{b}\Big(\ket{a;a}-\ket{a;a}\Big)\\
+                          &= 0
+          \end{align}
+          therefore we can clearly see that there is no way we can make an
+          antisymmetric state where two particles occupy the same state. This
+          result is simply a restatement of the Pauli Exclusion Principle. Thus,
+          the only possible way to construct an antisymmetric state for three
+          particle with three possible states is by taking the following Slater
+          determinant.
+
+          \begin{align}
+            \ket{\psi_A} &= \begin{vmatrix}\ket{a}&\ket{b}&\ket{c}\\ \ket{a}&\ket{b}&\ket{c}\\ \ket{a}&\ket{b}&\ket{c}\end{vmatrix} \\
+                         &= \ket{a}\Big(\ket{b;c}-\ket{c;b}\Big)-\ket{b}\Big(\ket{a;c}-\ket{c;a}\Big)+\ket{c}\Big(\ket{a;b}-\ket{b;a}\Big)\\
+                         &= \ket{a;b;c}-\ket{a;c;b}-\ket{b;a;c}+\ket{b;c;a}+\ket{c;a;b}-\ket{c;b;a}
+          \end{align}
+          Thus, we conclude that there is exactly one antisymmetric state for
+          a three particle, three state system.
+        \end{solution}
+        
+    \end{enumerate}
+
+
+  \item Two non-interacting particles, with the same mass $m$, are in a 1D box
+    of length $2a$. \\
+    
+    \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
+      \item What are the values of the three lowest energies of the system?
+        \begin{solution}
+          If the two particles-in-a-box are non-interacting, the Hamiltonian is
+          separable in terms of each individual particle so that we may write:
+          \begin{equation}
+            H = H_1 + H_2
+          \end{equation}
+          This leads to energies given by 
+          \begin{equation}
+            E_{n_1,n_2} = \frac{\pi^2\hbar^2}{8ma^2}\left( n_1^2+n_2^2 \right)
+          \end{equation}
+          The ground state of such a system occurs for $n_1=n_2=0$ with energy
+          \begin{equation}
+            E_{gs}=E_{11} = \frac{1}{4}\frac{\pi^2\hbar^2}{ma^2}
+          \end{equation}
+
+          The first excited state then occurs for either $n_1=1$ $n_2=2$
+          \textit{or} $n_1=2$ $n_2=1$  with energy
+          \begin{equation}
+            E_{12} = E_{21} = \frac{5}{8}\frac{\pi^2\hbar^2}{ma^2}
+          \end{equation}
+
+          The second excited state occurs when $n_1=n_2=2$ with energy
+          \begin{equation}
+            E_{22} = 1\frac{\pi^2\hbar^2}{ma^2}
+          \end{equation}
+
+          As a sanity check, the state $n_1=1, n_2=3$ has energy
+          \begin{equation}
+            E_{13}=E_{31} = \frac{5}{4}\frac{\pi^2\hbar^2}{ma^2} > E_{22}
+          \end{equation}
+         Thus, we have identified the three lowest energy levels.  
+
+          
+        \end{solution}
+      \item What are the degeneracies of these energy levels if the two
+        particles are:
+        \begin{enumerate}[leftmargin=2em, label=(\textbf{\roman*})]
+          \item identical, with spin $1/2$;
+            \begin{solution}
+              A system of two identical fermions obeys Fermi-Dirac statistics
+              and must therefore have an antisymmetric overall state vector under
+              particle exchange. We must construct all possible
+              antisymmetric state vectors for each of the energy levels
+              identified in part (a). The total state vector is the tensor
+              product of the spatial state (relating to the $n$ quantum number)
+              with the spin state (relating to the $m_s$ quantum number). \\ 
+              Therefore either the spacial or the spin part must be antiymmetric
+              while the opposite is symmetric as discussed in McIntyre (pg 413
+              eq 13.10). To that end, we adopt the notation
+              \begin{equation}
+                \ket{n_1, n_2; m_{s1},m_{s2}}
+              \end{equation}
+              for the combined, two-particle state. \\
+
+              In the ground state $n_1=n_2$ and therefore, we must have an
+              antisymmetric spin component. There is only one way to do this
+              \begin{equation}
+                \ket{1,1;+,-} - \ket{1,1;-,+}
+              \end{equation}
+              For the first excited state we have degeneracy in the energy and
+              spin so that we have either $\ket{n_1,n_2}_S\ket{m_{s1},m_{s2}}_A$
+              or $\ket{n_1,n_2}_A\ket{m_{s1},m_{s2}}_S$. This results in four
+              possible states
+              \begin{align}
+                \big(\ket{1,2}-\ket{2,1}\big)\ket{++}&=\ket{1,2;++}-\ket{2,1;++} \\
+                \big(\ket{1,2}-\ket{2,1}\big)\ket{--}&=\ket{1,2;--}-\ket{2,1;--} \\
+                \ket{1,2}\big(\ket{+,-}-\ket{-,+}\big)&=\ket{1,2;+,-}-\ket{1,2;-+} \\
+                \ket{2,1}\big(\ket{+,-}-\ket{-,+}\big)&=\ket{2,1;+-}-\ket{2,1;-+} 
+              \end{align}
+
+              For the second excited state, we again have $n_1=n_2$ so that
+              there is only one way to make the overall state antisymmetric:
+              \begin{equation}
+                \ket{2,2;+,-} - \ket{2,2;-,+}
+              \end{equation}
+ 
+            \end{solution}
+
+          \item not identical, but both have spin $1/2$;
+            \begin{solution}
+              As discussed in class (see page 8 of the lecture 11 notes) a
+              system of two non-identical fermions (like a hydrogen atom)
+              behaves as a boson. Therefore, we require that the overall state
+              vector must be symmetric under particle exchange and consequently,
+              both the spatial and spin components of the state must be
+              symmetric. \\
+
+              For the ground state where $n_1=n_2$, the spacial component is
+              necessarily symmetric. There are 3 ways to make a symmetric spin
+              state and therefore, we have 3 total states possible
+              \begin{align}
+                &\ket{1,1;+,+} \\
+                &\ket{1,1;-,-} \\
+                &\ket{1,1}\Big(\ket{+,-}+\ket{-,+}\Big) = \ket{1,1;+,-}+\ket{1,1;-,+}
+              \end{align}
+
+              For the first excited state we have exactly one way to make a
+              symmetric spatial state and (again) three ways to make a symmetric
+              spin state. Thus, the options are
+              \begin{align}
+                \Big(\ket{1,2}+\ket{2,1}\Big)\ket{++} &= \ket{1,2;++}+\ket{2,1;++} \\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\ket{--} &= \ket{1,2;--}+\ket{2,1;--} \\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\Big(\ket{+,-}+\ket{-,+}\Big) &= \ket{1,2;+,-}+\ket{1,2;-,+} \nonumber \\
+                &\quad+\ket{2,1;+,-}+\ket{2,1;-,+} 
+              \end{align}
+              Finally, for the second excited state, we have the same scenario
+              as the ground state but with $n_1 = n_2=2$. Therefore, there are
+              three more states
+              \begin{align}
+                &\ket{2,2;+,+} \\
+                &\ket{2,2;-,-} \\
+                &\ket{2,2}\Big(\ket{+,-}+\ket{-,+}\Big) = \ket{2,2;+,-}+\ket{2,2;-,+}
+              \end{align}
+
+            \end{solution}
+            
+          \item identical, with spin 1;
+            \begin{solution}
+              We now consider what happens if the two particles are identical
+              bosons with spin 1. Because spin 1 particles may have
+              z-projections of either $\hbar, 0,$ or $-\hbar$, there are more
+              ways to write a symmetric spin state vector. They are:
+
+              \begin{align}
+                \ket{1,1} \\
+                \ket{0,0} \\
+                \ket{-1,-1} \\
+                \ket{1,0}+\ket{0,1} \\
+                \ket{1,-1} + \ket{-1,1} \\
+                \ket{0,-1} + \ket{-1,0} 
+              \end{align}
+
+              For the ground state $n_1=n_2=1$ so that the spatial component is
+              already symmetric. Therefore, the possible overall symmetric state vectors
+              are just
+              
+              \begin{align}
+                \ket{1,1}\ket{1,1} &= \ket{1,1;1,1}\\
+                \ket{1,1}\ket{0,0} &= \ket{1,1;0,0}\\
+                \ket{1,1}\ket{-1,-1} &= \ket{1,1;-1,-1}\\
+                \ket{1,1}\Big(\ket{1,0}+\ket{0,1}\Big) &=\ket{1,1;1,0}+\ket{1,1;0,1}\\
+                \ket{1,1}\Big(\ket{1,-1} + \ket{-1,1} \Big) &= \ket{1,1;1,-1}+\ket{1,1;-1,1}\\
+                \ket{1,1}\Big(\ket{0,-1} + \ket{-1,0}\Big)&= \ket{1,1;0,-1}+\ket{1,1;-1,0}
+              \end{align}
+
+              For the first excited state we have exactly one way to make a
+              symmetric spatial state and (again) six ways to make a symmetric
+              spin state. Therefore, the possible states are
+               
+              \begin{align}
+                \Big(\ket{1,2}+\ket{2,1}\Big)\ket{1,1} &= \ket{1,2;1,1}+\ket{2,1;1,1}\\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\ket{0,0} &= \ket{1,2;0,0}+\ket{2,1;0,0}\\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\ket{-1,-1} &= \ket{1,2;-1,-1}+\ket{2,1;-1,-1}\\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\Big(\ket{1,0}+\ket{0,1}\Big) &=\ket{1,2;1,0}+\ket{2,1;1,0} \nonumber\\
+                &\quad+\ket{1,2;0,1}+\ket{2,1;0,1}\\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\Big(\ket{1,-1} + \ket{-1,1} \Big) &= \ket{1,2;1,-1}+\ket{2,1;1,-1}\nonumber\\
+                &+\quad\ket{1,2;-1,1}+\ket{2,1;-1,1}\\
+                \Big(\ket{1,2}+\ket{2,1}\Big)\Big(\ket{0,-1} + \ket{-1,0}\Big)&= \ket{1,2;0,-1}+\ket{2,1;0,-1}\nonumber\\
+                &+\quad\ket{1,2;-1,0}+\ket{2,1;-1,0}
+              \end{align}
+
+              Finally, the second excited state is the same as the ground state
+              but with $n_1=n_2=2$. This leads to
+               
+              \begin{align}
+                \ket{2,2}\ket{1,1} &= \ket{2,2;1,1}\\
+                \ket{2,2}\ket{0,0} &= \ket{2,2;0,0}\\
+                \ket{2,2}\ket{-1,-1} &= \ket{2,2;-1,-1}\\
+                \ket{2,2}\Big(\ket{1,0}+\ket{0,1}\Big) &=\ket{2,2;1,0}+\ket{2,2;0,1}\\
+                \ket{2,2}\Big(\ket{1,-1} + \ket{-1,1} \Big) &= \ket{2,2;1,-1}+\ket{2,2;-1,1}\\
+                \ket{2,2}\Big(\ket{0,-1} + \ket{-1,0}\Big)&= \ket{2,2;0,-1}+\ket{2,2;-1,0}
+              \end{align}
+
+
+
+            \end{solution}
+            
+        \end{enumerate}
+        
+
+    \end{enumerate}
+    
+  
+\end{enumerate}
+
+  
+\end{document}
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
