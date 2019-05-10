@@ -89,7 +89,7 @@ Dr. Oksana Ostroverkhova \hfill worked w/ Ryan Tollefsen
         Therefore, we have
         \begin{align}
           \ket{i} &= \ket{100}  \\
-          \Rightarrow \psi_i(r,\theta,\phi) = \psi_{100}(r,\theta,\phi) &= \frac{1}{\sqrt{\pi a_0}}e^{-r/a_0}
+          \Rightarrow \psi_i(r,\theta,\phi) = \psi_{100}(r,\theta,\phi) &= \frac{1}{\sqrt{\pi a_0^3}}e^{-r/a_0}
         \end{align}
         The final state is that of the ionized electron which we are instructed
         to describe via a plane wave (along the z-axis).
@@ -145,7 +145,43 @@ Dr. Oksana Ostroverkhova \hfill worked w/ Ryan Tollefsen
         \begin{align}
           V_{fi} = \frac{q}{2}\frac{1}{L^{3/2}}\frac{1}{\sqrt{\pi a_0^3}}\int\limits_{\text{all space}}e^{-ik_z z}\left(\bvec{\E}_0\cdot\bvec{r}  \right) e^{-r/a_0}dV
         \end{align}
+        We can make two further simplifications before attempt to solve this
+        integral. The first is to recognize that $z=r\cos\theta$ in polar
+        coordinates. The second is that we can write out the Cartesian dot
+        product $\bvec{\E}_0\cdot\bvec{r}$ in spherical coordinates as
+        \begin{equation}
+          \bvec{\E}_0\cdot\bvec{r} = \E_{0x}r\cos\phi\sin\theta +  \E_{0y}r\sin\phi\sin\theta + \E_{0z}r\cos\theta 
+        \end{equation}
+        Therefore the full integral may be written as
+        \begin{align}
+          V_{fi}= \frac{q}{2L^{3/2}\sqrt{\pi a_0^3}}\int\limits_0^\infty\int\limits_0^\pi\int\limits_0^{2\pi}e^{-ik_zr\cos\theta}\Bigg[&\E_{0x}r\cos\phi\sin\theta +\nonumber\\
+          &\E_{0y}r\sin\phi\sin\theta +\nonumber\\
+            &E_{0z}r\cos\theta \Bigg]e^{-r/a_0}r^2\sin\theta d\phi d\theta dr
+        \end{align}
+        At this point I used Mathematica to calculate the integral and found
+        \begin{figure}[!hbt]
+          \centering
+          \includegraphics[width=0.8\columnwidth]{integral_1}
+        \end{figure}
+        \newpage
+        so that the matrix element is
+        \begin{equation}
+          V_{fi} = -\frac{16iq\E_{0z}\sqrt{\pi}}{L^{3/2}}\frac{k_za_0^{7/2}}{(1+k_z^2a_0^2)^3}
+        \end{equation}
+        Now we have everything needed to write the transition rate 
+        \begin{align}
+          dw_{{}_{i\to f}} &= \left( \frac{2\pi}{\hbar} \right)\left| V_{fi} \right|^2\rho(E) \\
+                          &= \left( \frac{2\pi}{\hbar} \right)\left| -\frac{16iq\E_{0z}\sqrt{\pi}}{L^{3/2}}\frac{k_za_0^{7/2}}{(1+k_z^2a_0^2)^3} \right|^2\rho(E) \\
+                          &= \left( \frac{2\pi}{\hbar} \right)\frac{16^2q^2\E_{0z}^2\pi}{L^{3}}\frac{k_z^2a_0^{7}}{(1+k_z^2a_0^2)^^6} \rho(E) \\
+                          &= \left( \frac{2\pi}{\hbar} \right)\frac{16^2q^2\E_{0z}^2\pi a^5}{L^{3}}\frac{k_z^2a_0^{2}}{(1+k_z^2a_0^2)^^6} \rho(E) \\
+                          &= \left( \frac{2\pi}{\hbar} \right)\frac{16^2q^2\E_{0z}^2\pi a^5}{L^{3}}\frac{k_z^2a_0^{2}}{(1+k_z^2a_0^2)^^6} \left( \frac{L}{2\pi} \right)^3\frac{m}{\hbar^2}k_zd\Omega
+        \end{align}
+        which simplifies to
+        \begin{equation}
+          dw = \frac{64\E_{0z}^2a_0^3}{\pi\hbar}\frac{(k_za_0)^3}{(1+k_z^2a_0^2)^6}d\Omega
+        \end{equation}
         
+          
       \end{solution}
       
       
@@ -156,6 +192,47 @@ Dr. Oksana Ostroverkhova \hfill worked w/ Ryan Tollefsen
       of the hydrogen atom. Analyze your probability (i.e. get as much physics as
       you can from your expression). Plot it as a function of the frequency
       $\omega$. \\
+
+      \begin{solution}
+        Integrating our result from part (c) over all solid angle gives
+        \begin{equation}
+          w_{{}_{i\to f}} = \frac{256a_0^3\E_{0z}^2}{\hbar}\frac{(k_za_0)^3}{(1+k_z^2a_0^2)^6}
+        \end{equation}
+        Conservation of energy for absorption gives us that
+        \begin{equation}
+          \hbar\omega = \frac{\hbar^2k_z^2}{2m}+\hbar\omega_0
+        \end{equation}
+        so that
+        \begin{equation}
+          k_z^2 = \frac{2m}{\hbar}(\omega-\omega_0)
+        \end{equation}
+        furthermore, if we recall that the Bohr radius is defined as
+        $a_0=\frac{\hbar^2}{m^2q^2}$ then we can say
+        \begin{equation}
+          k_z^2a_0^2 = \frac{2m}{\hbar}(\omega-\omega_0)\frac{\hbar^4}{m^4q^4} = \frac{\omega-\omega_0}{\omega_0}
+        \end{equation}
+        where the frequency corresponding to the ionization energy of hydrogen
+        is $\omega_0=\frac{mq^4}{2\hbar^3}$
+        therefore, we can conclude that the total transition rate is given by
+        \begin{equation}
+          w_{{}_{i\to f}}= \frac{256a_0^3\E_{0z}^2a_0^3}{\hbar}\left(\frac{\omega_0}{\omega}\right)^6\left( \frac{\omega}{\omega_0}-1 \right)^{3/2}
+        \end{equation}
+        A plot of this equation as a function of $\omega$ with everything else
+        set to 1 for convenience is shown below.
+
+        \begin{figure}[!hbt]
+          \centering
+          \includegraphics[width=0.75\columnwidth]{transition_rate}
+        \end{figure}
+        Here we see some interesting physics. First, as we expect, for
+        frequencies below $\omega_0$ we do not see ionization. This clearly
+        makes sense as the field does not have enough energy to force the
+        transition. The biggest surprise is that the maximum (resonance?) does
+        not occur when the driving frequency is $\omega=\omega_0$. 
+
+        
+      \end{solution}
+      
   \end{enumerate}
   
   \item Consider elastic scattering of an electron by a nucleus so that the
@@ -253,21 +330,54 @@ Dr. Oksana Ostroverkhova \hfill worked w/ Ryan Tollefsen
         \begin{solution}
           Fermi's Golden rule dictates that the transition rate is given by
           \begin{equation}
-            w_{{}_{i\rightarrow f}} = \frac{2\pi}{\hbar}|V_{fi}|^2\rho(E)
+            dw_{{}_{i\rightarrow f}} = \frac{2\pi}{\hbar}|V_{fi}|^2\rho(E)
           \end{equation}
           and therefore, using the previous results, we have that this becomes
           \begin{equation}
-            w_{{}_{i\rightarrow f}} = \frac{2\pi}{\hbar} \left| \frac{1}{L^3}\int\limits_{\text{all space}} V(\bvec{r})e^{i(\bvec{k}_i-\bvec{k}_f)\cdot \bvec{r}}\;d^3\bvec{r}  \right|^2   \left( \frac{L}{2\pi} \right)^3 \frac{m}{\hbar^2}k_f\;d\Omega
+            dw_{{}_{i\rightarrow f}} = \frac{2\pi}{\hbar} \left| \frac{1}{L^3}\int\limits_{\text{all space}} V(\bvec{r})e^{i(\bvec{k}_i-\bvec{k}_f)\cdot \bvec{r}}\;d^3\bvec{r}  \right|^2   \left( \frac{L}{2\pi} \right)^3 \frac{m}{\hbar^2}k_f\;d\Omega
           \end{equation}
 
-          Using this, we can define the differential cross-section as
+          Using this, we can define the  cross-section as
           \begin{equation}
-            \sigma_{{}_\text{abs}} = \frac{\text{Energy per unit time absorbed by the atom}}{\text{Energy flux of the radiation field}}
+            \sigma = \frac{\text{transition rate}}{\text{flux}}
           \end{equation}
-          which in terms of our parameters is
+          where in this context, the flux can be interpreted as the
+          ``probability current'' through the volume of our cube. i.e.
           \begin{equation}
-            \sigma_{{}_\text{abs}} = \frac{\hbar \omega\;w_{{}_{i\rightarrow f}} }{c\mathcal{U}}
+            \frac{v}{L^3}
           \end{equation}
+          where $v$ is the electron's speed. Quantum mechanically, the
+          particle's momentum is $\hbar k_f$ so that the velocity is just
+          \begin{equation}
+            v = \frac{\hbar k_f}{m}
+          \end{equation}
+          Putting this all together yields
+          \begin{align}
+            \sigma &= \frac{dw}{\frac{\hbar k_f}{mL^3}} = \frac{mL^3}{\hbar k_f}\frac{2\pi}{\hbar} \left| \frac{1}{L^3}\int\limits_{\text{all space}} V(\bvec{r})e^{i(\bvec{k}_i-\bvec{k}_f)\cdot \bvec{r}}\;d^3\bvec{r}  \right|^2   \left( \frac{L}{2\pi} \right)^3 \frac{m}{\hbar^2}k_f\;d\Omega \\
+                   &=\frac{m^2}{(2\pi)^2\hbar^4} \left| \int\limits_{\text{all space}} V(\bvec{r})e^{i(\bvec{k}_i-\bvec{k}_f)\cdot \bvec{r}}\;d^3\bvec{r}  \right|^2 \;d\Omega
+          \end{align}
+          Note that the volume $L^3$ has disappeared from the equation! From
+          this, the differential cross section is given by
+          
+          \begin{equation}
+            \frac{d\sigma}{d\Omega} = \frac{m^2}{(2\pi)^2\hbar^4} \left| \int\limits_{\text{all space}} V(\bvec{r})e^{i(\bvec{k}_i-\bvec{k}_f)\cdot \bvec{r}}\;d^3\bvec{r}  \right|^2 
+          \end{equation}
+          To probe this experimentally, we would fire an electron beam at a
+          neutral atom, varying the impact parameter $b$ in order to learn about
+          the properties of the potential $V(\bvec{r})$. For neutral atoms, we
+          would expect the potential to be spherically symmetric as we assumed
+          above. Where we place the detector with respect to the atom and
+          electron beam is important because moving the detector checks the
+          angular dependence of the differential cross section. For elastic
+          collisions, we should expect some kind symmetric angular dependence in
+          the plane perpendicular to the electron beam as illustrated in the
+          following figure:
+          \begin{figure}[!hbt]
+            \centering
+            \includegraphics[width=0.6\columnwidth]{cross_section}
+          \end{figure}
+          
+            
         \end{solution}
         
     \end{enumerate}
