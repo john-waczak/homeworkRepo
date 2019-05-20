@@ -1,0 +1,291 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+\usepackage{empheq}
+
+\usepackage{listings}
+\usepackage{hyperref}
+
+%format to allow bolded theorems, corollaries, etc...
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\sphere}{\mathbb{S}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% vector stuff
+\newcommand{\basis}[1]{\hat{\mathbf{e}}_#1}
+\newcommand{\unit}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\bvec}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\threevec}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\del}{\overrightarrow{\nabla}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Homework 6} \hfill \textbf{John Waczak} \\
+\normalsize MTH 437 \hfill  Date: \today \\
+Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+
+\begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}.]
+\item \textbf{INDEX GYMNASTICS}\\
+  In a coordinate basis $\{dx^i\}$ of 1-forms, the components $g_{ij}$ of the
+  metric are defined by $ds^2=g_{ij}dx^idx^j$. The dual basis $\{\bvec{e}_i\}$
+  of vectors satisfies $\bvec{e}_i\cdot\bvec{e}_j = g_{ij}$. \\
+  \noindent \textit{These bases are \textbf{not} necessarily orthogonal. It is
+    however still true that $d\bvec{r} = dx^i\bvec{e}_i$}
+
+  \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
+      \item Determine an expression for $\bvec{e}_i\cdot\del f$ in terms
+        of partial derivatives.\\
+        \begin{solution}
+          Expanding the total derivative of f, we have
+          \begin{align}
+            df = \frac{\partial f}{\partial x^i}dx^i &= \del f\cdot d\bvec{r} \\
+                                                     &= \del f \cdot dx^i\bvec{e}_i \\
+                                                     &= \big(\bvec{e}_i\cdot\del f\big)dx^i 
+          \end{align}
+          \begin{equation}
+            \Rightarrow \bvec{e}_i\cdot\del f = \frac{\partial f}{\partial x^i}
+          \end{equation}
+        \end{solution}
+        
+      \item Acting on 1-forms $F=\bvec{F}\cdot d\bvec{r}$, $G = \bvec{G}\cdot
+        d\bvec{r}$, the metric satisfies $g(F,G)=\bvec{F}\cdot\bvec{G}$ for any
+        vectors $\bvec{F}, \bvec{G}$. Express the components
+        $g^{ij}=g(dx^i,dx^j)$ in terms of the components $g_{ij}$. \\
+        \noindent\textit{A derivation in 2 dimensions is acceptable if you
+          don't see how to handle the general case.}\\
+        \begin{solution}
+          In order to expand $g^{ij}=g(dx^i,dx^j)$, we need to find the fields
+          related to $dx^i$ so that we can take advantage of the above fact. To
+          do this, consider the following inner products
+          \begin{align}
+            \bvec{e}_i\cdot d\bvec{r} &= \bvec{e}_i\cdot dx^k\bvec{e}_k\\
+                                      &= dx^kg_{ik} \\
+            \bvec{e}_j\cdot d\bvec{r} &= \bvec{e}_j\cdot dx^\ell \bvec{e}_\ell \\
+                                      & = dx^\ell g_{j\ell}
+          \end{align}
+          This suggest that we should look at the inner product on these two
+          fields. \\
+          \begin{align}
+            g(dx^kg_{ik}, dx^\ell g_{j\ell}) &= \bvec{e}_i\cdot\bvec{e}_j = g_{ij} \\
+            \Rightarrow g_{ik}\;g_{j\ell}\;g(dx^k,dx^\ell) &= g_{ij}  \\
+            g_{ik}\;g_{j\ell}\;g^{k\ell} &= g_{ij} 
+          \end{align}
+          Now we note that this index equation may be reinterpreted as a matrix
+          equation. If we take
+          \begin{equation}
+            \Big( g_{ij} \Big) \equiv G \qquad  \Big(g^{ij}\Big) \equiv \tilde{G} 
+          \end{equation}
+          Then equation 11 reinterpreted in terms of these matrices says
+          \begin{equation}
+            G\Big(G\tilde{G}\Big) = G
+          \end{equation}
+          Such an equation has a nontrivial solution only if
+          \begin{equation}
+            G\tilde{G} = \mathcal{I}
+          \end{equation}
+          where $\mathcal{I}$  is the identity matrix. This further implies that
+          we must have $\tilde{G}=G^{-1}$. Therefore each $g^{ij}$ are the
+          elements of the inverse matrix to $G$ corresponding to all of the
+          $g_{ij}$. There is no simple way to write this out as an inverse
+          matrix is the adjugate matrix divided by the determinant. We would therefore
+          expect each $g^{ij}$ depends the determinant of many submatrices of
+          $G$ resulting in 16 linear equations that we can, in principle, solve.
+        \end{solution}
+        
+  \end{enumerate}
+
+\item \textbf{DOUBLE-NULL COORDINATES}\\\\
+  \noindent In 2-dimensional Minkowski space, let $u=t-x$, $v=t+x$.
+  \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
+  \item Express the line element $ds^2 = -dt^2+dx^2$ in terms of the coordinate
+    basis $\{du,dv\}$.
+    \begin{solution}
+      Taking the exterior derivative of the above, we find
+      \begin{equation}
+        du = dt-dx \qquad dv = dt+dx
+      \end{equation}
+      so that
+      \begin{align}
+        dt &= \frac{1}{2}(dv+du) \\
+        dx &= \frac{1}{2}(dv-du)
+      \end{align}
+      Therefore, the re-expressed line element is
+      \begin{align}
+        ds^2 &= -dt^2+dx^2 \\
+             &= -\left[ \frac{1}{2}(dv+du) \right]^2+\left[ \frac{1}{2}(dv-du) \right]^2\\
+        &= -\frac{1}{2}dv\;du - \frac{1}{2}du\; dv
+      \end{align}
+      I chose to leave equation (20) as it is to make identifying elements of
+      the metric easier. \\
+    \end{solution}
+  \item Determine the components $g^{ij}$ in this basis.\\
+    \begin{solution}
+      Recall from problem 1 that $ds^2=g_{ij}dx^idx^j$. Therefore, by
+      inspection, we have that
+      \begin{equation}
+        \begin{cases}
+          g_{uu} = g_{vv} = 0 \\
+          g_{uv} = g_{vu} = -\frac{1}{2}
+        \end{cases}
+      \end{equation}
+      so that as a matrix, the metric is
+      \begin{equation}
+        \Big(g_{ij}\Big) = \begin{pmatrix}0 & -\frac{1}{2} \\ -\frac{1}{2} & 0 \end{pmatrix}
+      \end{equation}
+      Now we wish to find all of the $g^{ij}$. Recall from problem 1 that
+      $g^{ij}\equiv g(dx^i,dx^j)$. Therefore,
+      \begin{align}
+        g^{uu} &= g(du,du) = g(dt-dx, dt-dx) \\
+               &= g(dt,dt) + g(dx,dx) \\
+               &= -1+1 = 0 \\
+        g^{uv} &= g(du,dv) = g(dt-dx,dt+dx) \\
+               &= g(dt,dt)-g(dx,dx) \\
+               &= -1-1 = -2\\
+        g^{vu} &= g(dv, du) = g(dt+dx, dt-dx) \\
+               &= g(dt,dt)-g(dx,dx) \\
+               &= -1-1 = -2 \\
+        g^{vv} &= g(dv,dv) = g(dt+dx, dt+dx) \\
+               &= g(dt,dt)+g(dx,dx) \\
+               &= -1+1 = 0
+      \end{align}
+      To summarize, the matrix corresponding to $g^{ij}$ is
+      \begin{equation}
+        \Big(g^{ij}\Big) = \begin{pmatrix}0 & -2 \\ -2 & 0 \end{pmatrix}
+      \end{equation}
+      which is in fact the inverse matrix to $\Big(g_{ij}\Big)$ as we predicted
+      in problem 1.
+    \end{solution}
+    
+  \item Compute $g_{ij}g^{jk}$. What sort of beast is it the components of?
+    \begin{solution}
+      There are four terms we must compute. Using our results from (b), they are
+      \begin{align}
+        g_{uu}g^{uu}+g_{uv}g^{vu} = 1 &= \delta_u{}^u  \\
+        g_{uu}g^{vu}+g_{uv}g^{vv} = 0 &= \delta_u{}^v \\
+        g_{vu}g^{uu}+g_{vv}g^{uv} = 0 &= \delta_v{}^u \\
+        g_{vu}g^{uv}+g_{vv}g^{vv} = 1 &= \delta_v{}^v  
+      \end{align}
+
+      Apparently, $g_{ij}g^{jk}=\delta_i{}^k$ but we know this to be the case
+      from problem 1 where we concluded that this kind of ``beast'' corresponds
+      to an identity matrix. In other words,
+      \begin{equation}
+        \Big(g_{ij}g^{jk}\Big) = \begin{pmatrix}1&0\\0&1\end{pmatrix} 
+      \end{equation}
+      
+    \end{solution}
+    
+  \end{enumerate}
+
+\item \textbf{TRACES}\\\\
+  \noindent Suppose that two vector-valued 1-forms
+  $\bvec{G}=G^i{}_j\sigma^j\bvec{e}_i$ and $\bvec{R}=R^i{}_j\sigma^j\bvec{e}_i$
+  have components that are related by
+  \begin{equation}
+    G^i{}_j = R^i{}_j - \frac{1}{2}\delta^i{}_jR, 
+  \end{equation}
+  where $R=R^i{}_i$. Find an expression for the trace $G=G^i{}_i$ of $\bvec{G}$
+  in terms of R. \\
+  \noindent\textit{$R$ is called the \textbf{trace} of $\bvec{R}$; more
+    precisely, it is the trace of the matrix of components
+    $\left(R^i{}_j\right)$. You may assume if desired that the underlying
+    geometry is 4-dimensional, with signature 1.}\\
+  \begin{solution}
+    To find the trace, we simply let $j=i$. Doing this yields
+    \begin{align}
+      G^i{}_i &= R^i{}_i-\frac{1}{2}\delta^i{}_iR\\
+              &= R^i{}_i-\frac{1}{2}\left(\sum_i 1\right) R \\
+      &= R^{i}{}_i - \frac{N}{2}R = R\left(1-\frac{N}{2}\right)
+    \end{align}
+    where $N$ is the dimensionality of the space. For the particular case of
+    4-dimensional spacetime with signature 1, we have
+    \begin{equation}
+      G^i{}_i = R(1-2) = -R 
+    \end{equation}
+    which a quick internet search confirms. Apparently, equation (45) is the
+    reason why $\bvec{G}$, the Einstein tensor, is also known as the
+    trace-reversed Ricci tensor.
+  \end{solution}
+  
+\end{enumerate}
+
+ 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
