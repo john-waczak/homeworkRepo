@@ -1,9 +1,9 @@
 #ifndef WIZARD_CATALOG_H
 #define WIZARD_CATALOG_H
-
 #include <iostream>
 #include <string>
 #include <fstream>
+
 
 using std::cin;
 using std::cout;

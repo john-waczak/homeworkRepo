@@ -6,7 +6,6 @@
 #include <vector>
 
 class Event{
-
  private:
   char type;
 
@@ -18,12 +17,27 @@ class Event{
 };
 
 
+
+
+class Wumpus : Event{
+ private:
+  bool is_awake;
+
+ public:
+  Wumpus();
+  void percept();
+  void encounter();
+  void move_wumpus();
+};
+
+
 class Bottomless_pit : Event{
  public:
   Bottomless_pit();
   void percept();
   void encounter();
 };
+
 
 class Super_bats : Event{
  public:
@@ -32,13 +46,13 @@ class Super_bats : Event{
   void encounter();
 };
 
+
 class Gold_teasure : Event{
  public:
   Gold_teasure();
   void percept();
   void encounter();
 };
-
 
 
 #endif

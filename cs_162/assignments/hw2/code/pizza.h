@@ -1,5 +1,5 @@
-#ifndef PIZZA_PORTAL_H
-#define PIZZA_PORTAL_H
+#ifndef PIZZA_H
+#define PIZZA_H
 
 #include <iostream>
 #include <string>
@@ -43,6 +43,8 @@ class Pizza{
   void set_large_cost(int large_cost);
   void set_num_ingredients(int num_ingredients);
   void set_ingredient(int index, string ingredient);
+
+  bool does_pizza_have_ingredient(string ingredient);
 
 };
 

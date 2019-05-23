@@ -10,9 +10,64 @@
 
 \begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}.]
   \setcounter{enumi}{2} % remove this if you want to add other solutions 
-  \item \textbf{Solution}: \vspace{3em}
+  \item \textbf{Solution}:\\
     \begin{enumerate}[leftmargin=2em, label=(\textbf{\alph*})]
-    \item
+    \item We wish to calculate the necessary velocity changes $\Delta v$ and
+      $\Delta v'$ in order to achieve the orbit shown in the above figure.
+      Recall from class that the total energy of an orbiting body is related to
+      the length of the semi-major axis by
+      \begin{equation}
+        E = -\frac{k}{2a}
+      \end{equation}
+      The total energy $E$ is also defined as the sum of the kinetic ($T$) and
+      potential ($U(r)$) energies so that we must have
+      \begin{equation}
+        -\frac{k}{2a} = E = \frac{1}{2}mv_1^2-\frac{k}{R}
+      \end{equation}
+      Solving this equation for $v_1$, yields the total velocity of the
+      satellite for the smaller circular orbit. That is,
+      \begin{equation}
+        v_1 = \sqrt{\frac{k}{mR}}
+      \end{equation}
+      The transfer orbit is an ellipse whose semi-major axis is determined from
+      figure 1 to be
+      \begin{equation}
+        2a_t = R+R'
+      \end{equation}
+      We can now use this to solve for the speed of the satellite in the
+      elliptical transfer orbit at the point where it changes from the green
+      circular orbit. That is,
+      \begin{equation}
+        E_t = -\frac{k}{R+R'}= \frac{1}{2}m v_t^2-\frac{k}{R}
+      \end{equation}
+      Note that here we are using $R$ as distance from the sun in agreement
+      with the green orbit. This results in a speed
+      \begin{equation}
+        v_{t1}=\sqrt{\frac{2k}{mR}\left( \frac{R'}{R+R'} \right)}
+      \end{equation}
+      Therefore, the necessary change in speed for the satellite to leave the
+      circular orbit and enter the yellow elliptical transfer orbit is just 
+      \begin{equation}
+        \Delta v = v_{1t}-v_1
+      \end{equation}
+
+      Similarly, we can solve for $\Delta v'$ by finding the speed of the two
+      orbits at the point where they overlap. They are
+      \begin{align}
+        v_2 = \sqrt{\frac{k}{mR'}}
+        v_{t2} = \sqrt{\frac{2k}{mR'}\left( \frac{R}{R+R'} \right)}
+      \end{align}
+      The necessary change in velocity is therefore,
+      \begin{equation}
+        \Delta v' = v_2-v_{t2}
+      \end{equation}
+      
+    \item The total time to make the transfer $T_t$ is a half-period of the
+      transfer orbit. Using Kepler's third law, the time is found to be
+      \begin{equation}
+        T_t = \pi \sqrt{\frac{k}{m}}a_t^{3/2} = \pi\sqrt{\frac{k}{m}}\left( \frac{R+R'}{2} \right)^{3/2}
+      \end{equation}
+      
     \end{enumerate}
 \end{enumerate}
 \end{document}

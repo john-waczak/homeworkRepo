@@ -63,7 +63,7 @@
 
 \begin{document}
 \noindent
-\large\textbf{Assignment 2: Design} \hfill \textbf{John Waczak} \\
+\large\textbf{Assignment 3: Design} \hfill \textbf{John Waczak} \\
 \normalsize CS 162 \hfill  Date: \today 
 \par\noindent\rule{\textwidth}{0.4pt} \\\\
 
@@ -75,16 +75,11 @@
   do.  Document your uncertainties about the problem and anything else that you
   feel was unclear or vague}\\
 
-The problem is asking us to design a program for a pizza restaurant which will
-present different functionality depending on whether a customer or employee
-chooses to use it. Employees must first login to the system and have their id
-and password checked against data in a separate file. After the user identifies
-themselves as employee or customer, they are then presented with options to view
-the menu, place orders, add menu items, etc... Some of these options are
-exclusive to either the employee or the customer. The user may also may logout
-and return to the welcome screen at any time. After making a choice, the user is
-then redirected to the prompt menu for further options until they decide to
-logout and then quit the program. 
+This problem is asking us to design a zoo tycoon type simulation which will
+allow the ``owner'' of the zoo to purchase animals, purchase food, earn revenue,
+each week. The owner begins with no animals and $\$100,000$ dollars and the
+simulation finishes if the owner runs out of money. 
+
 \section*{Devising a plane/design}
 
 \textit{Provide an algorithm/pseudo code to help solve the problem. In addition,
@@ -94,7 +89,8 @@ logout and then quit the program.
 
 See flowchart on next page
 
-\includepdf{images/flow_chart.pdf}
+\includepdf{images/hw3_program_design.pdf}
+\includepdf{images/hw3_class_design.pdf}
 
 
 \section*{Looking back / testing}
@@ -108,23 +104,16 @@ See flowchart on next page
 \vspace{5em}
 
 \begin{center}
- \begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+ \begin{tabular}{l|l} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
    \textbf{Input} & \textbf{Expected} \\
     &    \\
    \hline
-   Incorrect id: asdflj;lkj & could not find login information. please try again   \\
-   Incorrect pass: asdfasdfas & Password does not match our records: Please try again  \\
-   Incorrect pass (x3) & You failed to log in. (Quit program)   \\
-   Choose an option: 1  &Return to welcome screen  \\
-   Choose an option: 2 & Print out the menu  \\
-   Choose an option: 3 & Print out hours of service  \\
-   Choose an option: 4 & Prompt for address or phone number  \\
-   Choose an option: 5 & Prompt for open and close times  \\
-   Choose an option: 6 & Prompt: Would you like to add or remove menu items? \\
-   Choose an option: 7 & Prompt: Would like like to view or remove orders?  \\
-   Choose an option: 8 & Prompt: Please enter the maximum amount you wish to spend (\$)  \\
-   Choose an option: 9 & Prompt: Please enter an ingredient to search by.  \\
-   Choose an option: 10 & Prompt: Please enter the name of the pizza you would like to order.  \\
+   animal gets sick & animals ``is\_healthy'' attribute set to false \\
+   animal gets sick and don't have enough money & animal dies and is removed from  zoo\\
+   animal gets sick and do have enough money & half of animal's cost subtracted from bank\\
+   addult gives birth & two new animals are added to zoo with age set to zero \\
+   zoo attendance spike & revenue for monkeys increases \\
+   owner runs out of money & simulation ends.
  \end{tabular}
 \end{center} 
 

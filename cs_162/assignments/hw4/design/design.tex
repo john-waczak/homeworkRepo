@@ -63,7 +63,7 @@
 
 \begin{document}
 \noindent
-\large\textbf{Assignment 3: Design} \hfill \textbf{John Waczak} \\
+\large\textbf{Assignment 4: Design} \hfill \textbf{John Waczak} \\
 \normalsize CS 162 \hfill  Date: \today 
 \par\noindent\rule{\textwidth}{0.4pt} \\\\
 
@@ -75,11 +75,15 @@
   do.  Document your uncertainties about the problem and anything else that you
   feel was unclear or vague}\\
 
-This problem is asking us to design a zoo tycoon type simulation which will
-allow the ``owner'' of the zoo to purchase animals, purchase food, earn revenue,
-each week. The owner begins with no animals and $\$100,000$ dollars and the
-simulation finishes if the owner runs out of money. 
-
+The problem asks us to design a game in which a player is within a cave system
+and seeks to find a chest of gold. The player may move between rooms in which a
+variety of events can occur. The player may fall into a bottomless pit, be
+transported by a super bat, find the golden treasure, or wake up the Wumpus. If
+the player enters the room with the Wumpus,  it awakens and proceeds to eat her.
+Before moving though, the player may choose to fire an arrow (of which she has
+3). If the arrow reaches the Wumpus (within a distance of 3 rooms), it dies.
+Otherwise, the arrow is wasted. Once the player has found the treasure, they
+must return to the initial room to escape up the escape rope. 
 \section*{Devising a plane/design}
 
 \textit{Provide an algorithm/pseudo code to help solve the problem. In addition,
@@ -87,11 +91,13 @@ simulation finishes if the owner runs out of money.
   design decisions you make, such as how to manage your time, how to decompose
   the problem, where to start first, etc. }\\ 
 
-See flowchart on next page
+I will implement a polymorphic class structure. The event class will be abstract
+from which the wumpus, super bat, bottomless pit, and golden treasure classes
+are derived. I will use a ``rooms'' class to manage a dynamic array of events.
+With this structure, the flow of the program will be implemented as shown in the
+following flow chart.
 
-\includepdf{images/hw3_program_design.pdf}
-\includepdf{images/hw3_class_design.pdf}
-
+\includepdf{images/hw4_flow.pdf}
 
 \section*{Looking back / testing}
 
@@ -108,55 +114,14 @@ See flowchart on next page
    \textbf{Input} & \textbf{Expected} \\
     &    \\
    \hline
-   animal gets sick & animals ``is\_healthy'' attribute set to false \\
-   animal gets sick and don't have enough money & animal dies and is removed from  zoo\\
-   animal gets sick and do have enough money & half of animal's cost subtracted from bank\\
-   addult gives birth & two new animals are added to zoo with age set to zero \\
-   zoo attendance spike & revenue for monkeys increases \\
-   owner runs out of money & simulation ends.
+   player moves near room with event & percept is printed to the screen \\
+   player fires arrow in empty direction& ``nothing interesting happens...'' is printed\\
+   player fires arrow at wumpus  & ``you hear a loud YAAAAARRGH! followed by silence'' is printed\\
+   player runs out of arrow & ``Game over'' is printed \\
+   Debug mode engaged & detailed map is printed to screen \\
+   you walk into bottemless pit & ``You fall to your death. Game over!'' is printed \\
+   you walk into super bat & you are moved to random room 
  \end{tabular}
-\end{center} 
-
-
-
-
-
+\end{center}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,8 @@
+/******************************************************
+ ** Program: pizza.cpp
+ ** Author: John Waczak
+ ** Description:  Function definitions for pizza class
+ ******************************************************/
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -13,7 +18,9 @@ using std::ifstream;
 using std::ofstream;
 
 // default constructors
-Pizza::Pizza(){};
+Pizza::Pizza(){
+  this->ingredients = NULL;
+};
 
 Pizza::Pizza(int num_ingredients){
   this->num_ingredients = num_ingredients;
@@ -31,7 +38,6 @@ Pizza::~Pizza(){
 
 // copy constructor
 Pizza::Pizza(const Pizza &old_pizza){
-  cout << "Copy constructor called" << endl;
   this->name = old_pizza.name;
   this->small_cost = old_pizza.small_cost;
   this->medium_cost = old_pizza.medium_cost;
@@ -47,6 +53,7 @@ Pizza::Pizza(const Pizza &old_pizza){
 // assignment operator
 Pizza& Pizza::operator=(const Pizza &old_pizza){
   if(this != &old_pizza){
+    delete [] this->ingredients;
     this->name = old_pizza.name;
     this->small_cost = old_pizza.small_cost;
     this->medium_cost = old_pizza.medium_cost;
@@ -88,6 +95,8 @@ string Pizza::get_ingredient(int index) const{
   return this->ingredients[index];
 }
 
+
+
 /***********setters****************/
 void Pizza::set_name(string name){
   this->name = name;
@@ -105,10 +114,29 @@ void Pizza::set_large_cost(int large_cost){
 }
 void Pizza::set_num_ingredients(int num_ingredients){
   this->num_ingredients = num_ingredients;
+  this->ingredients = new string[num_ingredients];
 }
 
 void Pizza::set_ingredient(int index, string ingredient){
   this->ingredients[index]=ingredient;
 }
+
+
+
+/*********************************************************************
+ ** Function: does_pizza_have_ingredient
+ ** Description: returns true is the pizza has a specified ingredient
+ ** Parameters: string (ingredient)
+ *********************************************************************/ 
+bool Pizza::does_pizza_have_ingredient(string ingredient){
+  for(int i=0; i< this->num_ingredients; i++){
+    if(this->ingredients[i] == ingredient){
+      return true;
+    }
+  }
+  return false;
+}
+
+
 
 
