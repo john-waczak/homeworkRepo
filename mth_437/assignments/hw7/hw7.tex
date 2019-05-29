@@ -1,0 +1,245 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{amsmath}
+\usepackage{amssymb}  
+\usepackage{amsthm}
+\usepackage{ulem}
+
+\usepackage{enumitem}
+
+
+\usepackage{pdfpages} % for including full pdf pages
+
+\usepackage{empheq}
+
+\usepackage{listings}
+\usepackage{hyperref}
+
+%format to allow bolded theorems, corollaries, etc...
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem*{Example}{Example} 
+\newtheorem*{Remark}{Remark}
+
+% stop typing \mathbb a thousand times 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\sphere}{\mathbb{S}}
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% vector stuff
+\newcommand{\basis}[1]{\hat{\mathbf{e}}_#1}
+\newcommand{\unit}[1]{\hat{\boldsymbol{#1}}}
+\newcommand{\bvec}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\threevec}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\del}{\overrightarrow{\nabla}}
+
+% change margins for solution
+\newenvironment{solution}{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\leftmargin}{0.5cm}%
+			\setlength{\rightmargin}{0.5cm}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{\end{list}}
+
+
+
+
+\begin{document}
+\noindent
+\large\textbf{Homework 7} \hfill \textbf{John Waczak} \\
+\normalsize MTH 437 \hfill  Date: \today \\
+Dr. Tevian Dray %\hfill worked w/ Ryan Tollefsen
+\par\noindent\rule{\textwidth}{0.4pt} \\\\
+
+
+\begin{enumerate}[leftmargin=0em, label=\textbf{\arabic*}.]
+  \setcounter{enumi}{-1}
+  \item \textbf{WARMUP}\\
+    Determine the (nonzero) components of $R^i{}_{jkl}$ of the curvature 2-forms
+    \begin{equation}
+      \Omega^i{}_j = \frac{1}{2}R^i{}_{jkl}\sigma^k\wedge\sigma^l
+    \end{equation}
+    for the Robertson-Walker geometry, with line element
+    \begin{equation}
+      ds^2 = -dt^2+a(t)^2\left( \frac{dr^2}{1-kr^2}+r^2d\theta^2+r^2\sin^2\theta d\phi^2 \right)
+    \end{equation}
+    with $k= -1, 0, 1$, depending on whether the spatial cross-sections are
+    hyperbolic, flat, or spherical respectively.
+    \begin{solution}
+      The curvature 2-forms for the Robertson-Walker geometry are given by
+      \begin{equation}
+        \Big(\Omega^i{}_j\Big) = \begin{pmatrix}
+          0 & \frac{\ddot{a}}{a}\sigma^t\wedge \sigma^r & \frac{\ddot{a}}{a}\sigma^t\wedge \sigma^{\theta} & \frac{\ddot{a}}{a}\sigma^t\wedge \sigma^{\phi} \\
+          \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^r & 0 & \frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^{\theta} & \frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^{\phi} \\
+          \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^\theta & -\frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^{\theta} & 0 & \frac{\dot{a}^2+k}{a^2}\sigma^\theta\wedge\sigma^{\phi} \\
+          \frac{\ddot{a}}{a}\sigma^t\wedge \sigma^{\phi} & -\frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^{\phi} &  -\frac{\dot{a}^2+k}{a^2}\sigma^\theta\wedge\sigma^{\phi}& 0
+          \end{pmatrix}
+      \end{equation}
+      Note that we have used the property that $\Omega_{ji} = -\Omega_{ij}$.
+      Also note that the curvature two forms each only depend on one basis
+      2-form. We can now try and find the components of the curvature 2-forms
+      using (1). These will clearly only be non-zero for non-zero
+      $\Omega^i{}_j$. \\
+
+      Recall that by convention, $R^i{}_{jlk}=-R^i{}_{jkl}$ so that beginning
+      with the first row of (3), we have
+      \begin{align}
+        \Omega^t{}_r = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^r &= \frac{1}{2}\left( R^t{}_{rtr}\sigma^t\wedge\sigma^r+R^t{}_{rrt}\sigma^r\wedge\sigma^t \right)  = R^t{}_{trt}\sigma^r\wedge\sigma^t \\
+        \Rightarrow R^t{}_{rtr} &= \frac{\ddot{a}}{a}, \qquad R^t{}_{rrt} = -\frac{\ddot{a}}{a} \\
+        \Omega^t{}_\theta = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^\theta &= \frac{1}{2}\left( R^t{}_{\theta t \theta}\sigma^t\wedge\sigma^\theta+R^t{}_{\theta\theta t}\sigma^\theta\wedge\sigma^t \right) = R^t{}_{\theta t \theta}\sigma^t\wedge\sigma^\theta \\
+        \Rightarrow R^t{}_{\theta t \theta} &= \frac{\ddot{a}}{a}, \qquad R^t{}_{\theta\theta t} = -\frac{\ddot{a}}{a} \\ 
+        \Omega^t{}_\phi = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^\phi &= \frac{1}{2}\left( R^t{}_{\phi t \phi}\sigma^t\wedge\sigma^\phi+R^t{}_{\phi\phi t}\sigma^\phi\wedge\sigma^t \right) = R^t{}_{\phi t \phi}\sigma^t\wedge\sigma^\phi \\
+        \Rightarrow R^t{}_{\phi t \phi} &= \frac{\ddot{a}}{a}, \qquad R^t{}_{\phi\phi t} = -\frac{\ddot{a}}{a} \\
+        \Omega^r{}_\theta = \frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^\theta &= \frac{1}{2}\left( R^r{}_{\theta r \theta}\sigma^r\wedge\sigma^\theta+R^{r}{}_{\theta\theta r}\sigma^\theta\wedge\sigma^r \right) = R^r{}_{\theta r \theta}\sigma^r\wedge\sigma\theta \\
+        \Rightarrow R^r{}_{\theta r \theta} &= \frac{\dot{a}^2+k}{a^2},\qquad R^r{}_{\theta\theta r}=- \frac{\dot{a}^2+k}{a^2}
+      \end{align}
+      \begin{align}
+           \Omega^r{}_\phi = \frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^\phi &= \frac{1}{2}\left( R^r{}_{\phi r \phi}\sigma^r\wedge\sigma^\phi+R^{r}{}_{\phi\phi r}\sigma^\phi\wedge\sigma^r \right) = R^r{}_{\phi r \phi}\sigma^r\wedge\sigma^\phi \\
+        \Rightarrow R^r{}_{\phi r \phi} &= \frac{\dot{a}^2+k}{a^2},\qquad R^r{}_{\phi\phi r}=- \frac{\dot{a}^2+k}{a^2}\\
+            \Omega^\theta{}_\phi = \frac{\dot{a}^2+k}{a^2}\sigma^\theta\wedge\sigma^\phi &= \frac{1}{2}\left( R^\theta{}_{\phi \theta \phi}\sigma^\theta\wedge\sigma^\phi+R^\theta{}_{\phi\phi \theta}\sigma^\phi\wedge\sigma^\theta \right) = R^\theta{}_{\phi \theta \phi}\sigma^\theta\wedge\sigma^\phi \\
+        \Rightarrow R^\theta{}_{\phi \theta \phi} &= \frac{\dot{a}^2+k}{a^2},\qquad R^\theta{}_{\phi\phi \theta}=- \frac{\dot{a}^2+k}{a^2}
+      \end{align}
+      For the items below the diagonal, we have
+      % We can find more non-zero curvature components by utilizing the fact that
+      % $\Omega_{ji}=-\Omega_{ij}$ as we previously mentioned. We must be careful
+      % to remember that these indices are downstairs so that our index
+      % gymnastics give
+      % \begin{equation}
+      %   \Omega_{ij} = g^{ik}\Omega_{kj}
+      % \end{equation}
+      % thus,
+      % \begin{align}
+      %   \Omega^r{}_t &= \Omega^t{}_r \qquad\Rightarrow\qquad R^r{}_{trt}=R^t_{rtr} = \frac{\ddot{a}}{a} \qquad R^r{}_{trt} = -\frac{\ddot{a}}{a} \\
+      %   \Omega^\theta{}_t &= \Omega^t{}_\theta \qquad\Rightarrow\qquad R^\theta{}_{t\theta t}=R^t_{\theta t \theta} = \frac{\ddot{a}}{a} \qquad R^\theta{}_{t\theta \theta } = -\frac{\ddot{a}}{a}\\
+      %   \Omega^\phi{}_t &= \Omega^t{}_\phi \qquad\Rightarrow\qquad R^\phi{}_{t\phi t}=R^t_{\phi t \phi} = \frac{\ddot{a}}{a} \qquad R^\phi{}_{t\phi \phi } = -\frac{\ddot{a}}{a}\\
+      %   \Omega^\theta{}_r &= -\Omega^r{}_\theta \qquad\Rightarrow\qquad R^\theta{}_{r\theta r} = -R^r{}_{\theta r \theta} = -\frac{\dot{a}^2+k}{a^2} \qquad R^\theta{}_{r\theta \theta} = \frac{\dot{a}^2+k}{a^2} \\
+      %   \Omega^\phi{}_r &= -\Omega^r{}_\phi \qquad\Rightarrow\qquad R^\phi{}_{r\phi r} = -R^r{}_{\phi r \phi} = -\frac{\dot{a}^2+k}{a^2} \qquad R^\phi{}_{r\phi \phi} = \frac{\dot{a}^2+k}{a^2} \\
+      %   \Omega^\phi{}_\theta &= -\Omega^\theta{}_\phi \qquad\Rightarrow\qquad R^\phi{}_{\theta\phi \theta} = -R^\theta{}_{\phi \theta \phi} = -\frac{\dot{a}^2+k}{a^2} \qquad R^\phi{}_{\theta\phi \phi} = \frac{\dot{a}^2+k}{a^2} 
+      % \end{align}
+      \begin{align}
+        \Omega^r{}_t = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^r &= \frac{1}{2}\left( R^r{}_{trt}\sigma^r\wedge\sigma^t+R^r{}_{ttr}\sigma^t\wedge\sigma^r \right) = R^r{}_{ttr}\sigma^t\wedge\sigma^r\\
+        \Rightarrow R^r{}_{ttr} &= \frac{\ddot{a}}{a} \qquad R^r{}_{trt} = -\frac{\ddot{a}}{a} \\
+          \Omega^\theta{}_t = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^\theta &= \frac{1}{2}\left( R^\theta{}_{t\theta t}\sigma^\theta\wedge\sigma^t+R^\theta{}_{tt\theta}\sigma^t\wedge\sigma^\theta \right) = R^\theta{}_{tt\theta}\sigma^t\wedge\sigma^\theta\\
+        \Rightarrow R^\theta{}_{tt\theta} &= \frac{\ddot{a}}{a} \qquad R^\theta{}_{t\theta t} = -\frac{\ddot{a}}{a} \\
+           \Omega^\phi{}_t = \frac{\ddot{a}}{a}\sigma^t\wedge\sigma^\phi &= \frac{1}{2}\left( R^\phi{}_{t\phi t}\sigma^\phi\wedge\sigma^t+R^\phi{}_{tt\phi}\sigma^t\wedge\sigma^\phi \right) = R^\phi{}_{tt\phi}\sigma^t\wedge\sigma^\phi\\
+        \Rightarrow R^\phi{}_{tt\phi} &= \frac{\ddot{a}}{a} \qquad R^\phi{}_{t\phi t} = -\frac{\ddot{a}}{a}  \\
+        \Omega^\theta{}_r = -\frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^\theta &= \frac{1}{2}\left( R^\theta{}_{r\theta r}\sigma^\theta\wedge\sigma^r+R^{\theta}{}_{rr\theta}\sigma^r\wedge\sigma^\theta \right) = R^\theta{}_{rr\theta}\sigma^r\wedge\sigma^\theta \\
+        \Rightarrow R^\theta{}_{rr\theta}&= -\frac{\dot{a}^2+k}{a^2} \qquad R^\theta{}_{r\theta r} = \frac{\dot{a}^2+k}{a^2} \\
+                \Omega^\phi{}_r = -\frac{\dot{a}^2+k}{a^2}\sigma^r\wedge\sigma^\phi &= \frac{1}{2}\left( R^\phi{}_{r\phi r}\sigma^\phi\wedge\sigma^r+R^{\phi}{}_{rr\phi}\sigma^r\wedge\sigma^\phi\right) = R^\phi{}_{rr\phi}\sigma^r\wedge\sigma^\phi\\
+        \Rightarrow R^\phi{}_{rr\phi}&= -\frac{\dot{a}^2+k}{a^2} \qquad R^\phi{}_{r\phi r} = \frac{\dot{a}^2+k}{a^2} \\
+                        \Omega^\phi{}_\theta = -\frac{\dot{a}^2+k}{a^2}\sigma^\theta\wedge\sigma^\phi &= \frac{1}{2}\left( R^\phi{}_{\theta\phi \theta}\sigma^\phi\wedge\sigma^\theta+R^{\phi}{}_{\theta\theta\phi}\sigma^\theta\wedge\sigma^\phi\right) = R^\phi{}_{\theta\theta\phi}\sigma^\theta\wedge\sigma^\phi\\
+        \Rightarrow R^\phi{}_{\theta\theta\phi}&= -\frac{\dot{a}^2+k}{a^2} \qquad R^\phi{}_{\theta\phi \theta} = \frac{\dot{a}^2+k}{a^2} 
+      \end{align}
+      
+      Having exhausted all of the non-zero curvature two-forms, I believe we
+      have found all of the components.
+    \end{solution}
+   \newpage 
+
+  \item Using the relationships
+    \begin{align}
+      R_{ij} &= R^m{}_{imj} \\
+      G^i{}_j &= R^i{}_j-\frac{1}{2}\delta^i{}_jR
+    \end{align}
+    Compute the (nonzero) components $G^i{}_j$ of the \textit{Einstein tensor}
+    for the Robertson-Walker geometry.\\
+    \begin{solution}
+      Given the curvature two-form components $R^i{}_{jkl}$ from problem 0, we
+      can now find the components of the Ricci curvature tensor. Let's start
+      with the diagonal terms
+      \begin{align}
+        R_{tt} = R^m{}_{tmt} &= R^t{}_{ttt}+R^r{}_{trt}+R^\theta{}_{t\theta t}+R^{\phi}{}_{t \phi t} \\
+                             &= 0 -\frac{\ddot{a}}{a}-\frac{\ddot{a}}{a}-\frac{\ddot{a}}{a} = -3\frac{\ddot{a}}{a} \\
+        R_{rr} = R^m{}_{rmr} &= R^t{}_{rtr}+R^{r}{}_{rrr}+R^\theta{}_{r\theta r}+R^\phi{}_{r\phi r} \\
+                             &=  \frac{\ddot{a}}{a} + 0 + \frac{\dot{a}^2+k}{a^2} + \frac{\dot{a}^2+k}{a^2} = \frac{\ddot{a}}{a}+2 \frac{\dot{a}^2+k}{a^2} \\
+        R_{\theta\theta} = R^m{}_{\theta m \theta} &= R^t{}_{\theta t \theta} + R^r{}_{\theta r \theta} + R^\theta{}_{\theta\theta\theta} + R^\phi{}_{\theta\phi\theta} \\
+                             &= \frac{\ddot{a}}{a} + \frac{\dot{a}^2+k}{a^2} + 0 + \frac{\dot{a}^2+k}{a^2} = \frac{\ddot{a}}{a}+ 2\frac{\dot{a}^2+k}{a^2} \\
+        R_{\phi\phi} = R^m{}_{\phi m \phi} &= R^t{}_{\phi t \phi}+R^{r}{}_{\phi r \phi} + R^\theta{}_{\phi \theta \phi} + R^\phi{}_{\phi\phi\phi} \\ 
+                             &= \frac{\ddot{a}}{a} + \frac{\dot{a}^2+k}{a^2}+ \frac{\dot{a}^2+k}{a^2}+ 0 = \frac{\ddot{a}}{a}+2\frac{\dot{a}^2+k}{a^2} 
+      \end{align}
+      Putting all of these together, we can calculate the trace of the Ricci
+      curvature $R^i{}_i$. Remember that $R^i{}_j = g^{ik}R_{kj}$.
+      \begin{equation}
+        R = g^{tk}R_{kt}+g^{rk}R_{kr}+g^{\theta k}R_{k\theta}+g^{\phi k}R_{k\phi} = 3\frac{\ddot{a}}{a}+3\frac{\ddot{a}}{a}+6\frac{\dot{a}^2+k}{a^2} = 6\left( \frac{\ddot{a}}{a}+\frac{\dot{a}^2+k}{a^2} \right)
+      \end{equation}
+      Note that all of the non-zero curvature components are of the form
+      $R^m{}_{nnm}$ or $R^m{}_{nmn}$. Therefore, it follows that all off
+      diagonal Ricci curvature components $R_{ij}=0$ where $i\neq j$.
+
+      Using this result, we conclude that the \textit{Einstein tensor} is
+      diagonal and therefore we only need to calculate four elements. Better
+      yet, $R_{rr}=R_{\theta\theta}=R_{\phi\phi}$ and so we really only have to
+      calculate two. That is,
+      \begin{align}
+        G^t{}_t &=  R^t{}_t-\frac{1}{2}\delta^t{}_tR \\
+                &= g_{tk}R^k{}_t -3\left( \frac{\ddot{a}}{a}+\frac{\dot{a}^2+k}{a^2} \right) \\
+                &= 3\frac{\ddot{a}}{a}-3\left( \frac{\ddot{a}}{a}+\frac{\dot{a}^2+k}{a^2} \right) \\
+                &= -3\frac{\dot{a}^2+k}{a^2}\\
+        G^r{}_r  &= R^r{}_r-\frac{1}{2}\delta^r{}_rR\\
+                &= g_{rk}R^k{}_{r}-3\left( \frac{\ddot{a}}{a}+\frac{\dot{a}^2+k}{a^2} \right) \\
+                &= \frac{\ddot{a}}{a}+2\frac{\dot{a}^2+k}{a^2}-3\left( \frac{\ddot{a}}{a}+\frac{\dot{a}^2+k}{a^2} \right) \\
+                &= -2\frac{\ddot{a}a}{a^2}-\frac{\dot{a}^2+k}{a^2} \\
+                &= -\frac{2a\ddot{a}+\dot{a}^2+k}{a^2}\\
+        G^\theta{}_\theta &= G^\phi{}_\phi = G^r{}_r =  -\frac{2a\ddot{a}+\dot{a}^2+k}{a^2}
+      \end{align}
+      Thus, we have specified all four non-zero Einstein tensor components for
+      the Robertson-Walker geometry. These results agree with equations 9.15 and
+      9.16 in the textbook.
+    \end{solution}
+    
+
+
+ \end{enumerate}
+
+ 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
