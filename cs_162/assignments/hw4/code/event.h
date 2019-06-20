@@ -5,54 +5,23 @@
 #include <string>
 #include <vector>
 
+
 class Event{
  private:
-  char type;
+  char mark;
 
  public:
-  Event(char type);
+  Event();
+  Event(char mark);
 
   virtual void percept() = 0;
   virtual void encounter() = 0;
+
+
+  char get_mark() const;
 };
 
 
-
-
-class Wumpus : Event{
- private:
-  bool is_awake;
-
- public:
-  Wumpus();
-  void percept();
-  void encounter();
-  void move_wumpus();
-};
-
-
-class Bottomless_pit : Event{
- public:
-  Bottomless_pit();
-  void percept();
-  void encounter();
-};
-
-
-class Super_bats : Event{
- public:
-  Super_bats();
-  void percept();
-  void encounter();
-};
-
-
-class Gold_teasure : Event{
- public:
-  Gold_teasure();
-  void percept();
-  void encounter();
-};
 
 
 #endif

@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+
+% commands for bra-ket notation
+\newcommand{\bra}[1]{\ensuremath{\left\langle#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right\rangle}}
+\newcommand{\bracket}[2]{\ensuremath{\left\langle #1 \middle| #2 \right\rangle}}
+\newcommand{\matrixel}[3]{\ensuremath{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}}
+\newcommand{\expectation}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\outter}[2]{\ensuremath{| #1 \rangle\!\langle #2 |} }
+
+
+\begin{document}
+
+\begin{align}
+  \mathcal{D}_z^{1/2}(\phi) &= \lim\limits_{n\to \infty}\left[ 1-i\frac{S_z}{\hbar}\frac{\phi}{n} \right]^n \nonumber\\
+  &\nonumber \\
+  &= \displaystyle{e^{-iS_z\phi/\hbar}} \nonumber
+\end{align}
+
+\begin{align}
+  S_x &= \frac{\hbar}{2}\Big\{ \outter{+}{-} +\outter{-}{+}\Big\}\nonumber\\
+  S_y &= \frac{\hbar i}{2}\Big\{ -\outter{+}{-}+\outter{-}{+} \Big\}\nonumber\\
+  S_z &= \frac{\hbar}{2}\Big\{ \outter{+}{+}-\outter{-}{-} \Big\}
+\end{align}
+
+\begin{equation*}
+  A\ket{a}=a\ket{a}\Rightarrow f(A)\ket{a} = f(a)\ket{a}
+\end{equation*}
+
+\begin{align}
+  \expectation{S_x}_\text{new} &= \cos\phi \expectation{S_x}-\sin\phi\expectation{S_y} \nonumber\\
+  \expectation{S_y}_\text{new} &= \cos\phi \expectation{S_y}+\sin\phi\expectation{S_x} \nonumber
+\end{align}
+\begin{equation}
+  \begin{pmatrix} \expectation{S_x}_\text{new}\\ \expectation{S_y}_\text{new} \end{pmatrix} = \begin{pmatrix}
+    \cos\phi & -\sin\phi \\
+    \sin\phi & \cos\phi
+  \end{pmatrix}\begin{pmatrix}\expectation{S_x}\\ \expectation{S_y}\end{pmatrix}
+\end{equation}
+
+\begin{align}
+  \mathcal{D}_z^{1/2}(\phi)\ket{\alpha} &= \mathcal{D}_z^{1/2}(\phi)\Big( \bracket{+}{\alpha}\ket{+}+\bracket{-}{\alpha}\ket{-} \Big)\\
+                                        &=  \bracket{+}{\alpha}e^{-iS_z\phi/\hbar}\ket{+}+\bracket{-}{\alpha} e^{-iS_z\phi/\hbar}\ket{-}\\
+                                          &= e^{-i\phi/2}\bracket{+}{\alpha}+e^{i\phi/2}\bracket{-}{\alpha}
+\end{align}
+
+\begin{equation}
+  \mathcal{D}_z^{1/2}(2\pi)\ket{\alpha} = -\ket{\alpha}
+\end{equation}
+
+
+\begin{equation}
+  \mathcal{U}(t, 0) = e^{-iHt/\hbar}
+\end{equation}
+\begin{equation}
+  H = -\left( \frac{e}{m_ec} \right)\mathbf{S}\cdot\mathbf{B} \equiv \omega S_z
+\end{equation}
+\begin{equation}
+  \mathcal{U}(t,0) = e^{-iS_z\omega t/\hbar}
+\end{equation}
+
+
+\end{document}

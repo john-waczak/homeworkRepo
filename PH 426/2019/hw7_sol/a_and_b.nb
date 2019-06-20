@@ -1,0 +1,304 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     11819,        303]
+NotebookOptionsPosition[      9697,        255]
+NotebookOutlinePosition[     10274,        276]
+CellTagsIndexPosition[     10231,        273]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Show the first 5 Legendre polynomials", "Text",
+ CellChangeTimes->{{3.768224508631586*^9, 3.768224528808404*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"d070cdb3-0c33-4777-8a4b-59eb66e32617"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{
+     "\"\<\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``\>\"", ",", " ", "n", 
+      ",", " ", 
+      RowBox[{"LegendreP", "[", 
+       RowBox[{"n", ",", "z"}], "]"}]}], "]"}], "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "0", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7682247528455687`*^9, 3.768224800499793*^9}, {
+  3.768224839822311*^9, 3.768224990383794*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"3a018cf3-32a8-407b-8335-ce616cae7bbb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"0\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{\\\"1\\\"}]\\)\"\>",
+  StringForm["\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 0, 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768224991001153*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"01a9c421-9775-4073-88da-bf7387b8a5b8"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"1\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{\\\"z\\\"}]\\)\"\>",
+  StringForm["\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 1, $CellContext`z],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7682249910020523`*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"978ee2a1-f699-4616-8586-8a7deb7a10f3"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"2\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"2\\\"], \
+\\\" \\\", RowBox[{\\\"(\\\", RowBox[{RowBox[{\\\"-\\\", \\\"1\\\"}], \\\"+\\\
+\", RowBox[{\\\"3\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \\\"2\\\"]}]}], \
+\\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 2, 
+   Rational[1, 2] (-1 + 3 $CellContext`z^2)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768224991003257*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"1a5ee741-c824-498d-be1b-2b390be1d85e"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"3\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"2\\\"], \
+\\\" \\\", RowBox[{\\\"(\\\", RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"3\\\"}], \
+\\\" \\\", \\\"z\\\"}], \\\"+\\\", RowBox[{\\\"5\\\", \\\" \\\", \
+SuperscriptBox[\\\"z\\\", \\\"3\\\"]}]}], \\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 3, 
+   Rational[1, 2] ((-3) $CellContext`z + 5 $CellContext`z^3)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768224991005033*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"b92346cb-3c4a-49a8-8081-77e54897e79d"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"4\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"8\\\"], \
+\\\" \\\", RowBox[{\\\"(\\\", RowBox[{\\\"3\\\", \\\"-\\\", \
+RowBox[{\\\"30\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \\\"2\\\"]}], \
+\\\"+\\\", RowBox[{\\\"35\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \
+\\\"4\\\"]}]}], \\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 4, 
+   Rational[1, 8] (3 - 30 $CellContext`z^2 + 35 $CellContext`z^4)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768224991006302*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"6fc3e10b-e0d7-414f-a06d-751d5afde82f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[TextData[{
+ "Use Rodrigques\[CloseCurlyQuote] formula to calculate the first 5 \
+polynomials.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["P", "\[ScriptL]"], "(", "z", ")"}], " ", "=", " ", 
+    FractionBox["1", 
+     RowBox[{
+      SuperscriptBox["2", "\[ScriptL]"], 
+      RowBox[{"\[ScriptL]", "!"}]}]]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "35d94312-6559-44fe-a695-c78b6b7c7ac2"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     SuperscriptBox["d", "\[ScriptL]"], 
+     SuperscriptBox["dz", "\[ScriptL]"]], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["z", "2"], "-", "1"}], ")"}], "\[ScriptL]"]}], 
+   TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "9d379c52-3fd3-43b5-bcca-7519e039bfa8"],
+ "\n"
+}], "Text",
+ CellChangeTimes->{{3.768225028122344*^9, 3.768225056538924*^9}, {
+  3.768225221148059*^9, 3.768225274241206*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"cc78d3d7-f1fc-4289-b9b6-3ff264395d0c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["P", "rodrigues"], "[", 
+   RowBox[{"\[ScriptL]_", ",", " ", "z_"}], "]"}], ":=", 
+  RowBox[{"FullSimplify", "[", " ", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{
+      SuperscriptBox["2", "\[ScriptL]"], "*", 
+      RowBox[{"\[ScriptL]", "!"}]}]], "*", 
+    RowBox[{"D", "[", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"z", "^", "2"}], "-", "1"}], ")"}], "\[ScriptL]"], ",", " ", 
+      
+      RowBox[{"{", 
+       RowBox[{"z", ",", " ", "\[ScriptL]"}], "}"}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.768225073246369*^9, 3.7682252107646103`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"0050ea3b-e15f-44b7-a10a-8b97ed2e3695"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{
+     "\"\<\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``\>\"", ",", " ", "n", 
+      ",", " ", 
+      RowBox[{
+       SubscriptBox["P", "rodrigues"], "[", 
+       RowBox[{"n", ",", "z"}], "]"}]}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "0", ",", "4"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.768225134175579*^9, 3.7682251410738697`*^9}, {
+  3.768225201381557*^9, 3.768225202946211*^9}, {3.7682252798404922`*^9, 
+  3.7682253272279787`*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"45665d96-02d6-4554-903a-671634877bc5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"0\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{\\\"1\\\"}]\\)\"\>",
+  StringForm["\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 0, 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768225295091936*^9, 3.768225327939391*^9},
+ CellLabel->
+  "During evaluation of \
+In[35]:=",ExpressionUUID->"2250b189-f411-44e5-9e9e-94656b7547e0"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"1\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{\\\"z\\\"}]\\)\"\>",
+  StringForm["\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 1, $CellContext`z],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768225295091936*^9, 3.768225327940669*^9},
+ CellLabel->
+  "During evaluation of \
+In[35]:=",ExpressionUUID->"58b7b568-034a-4707-8e1b-92ef83b40c47"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"2\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"2\\\"], \
+\\\" \\\", RowBox[{\\\"(\\\", RowBox[{RowBox[{\\\"-\\\", \\\"1\\\"}], \\\"+\\\
+\", RowBox[{\\\"3\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \\\"2\\\"]}]}], \
+\\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 2, 
+   Rational[1, 2] (-1 + 3 $CellContext`z^2)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768225295091936*^9, 3.768225327941786*^9},
+ CellLabel->
+  "During evaluation of \
+In[35]:=",ExpressionUUID->"8a8be1e3-57ed-401e-9ebb-22282a9d87f5"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"3\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"2\\\"], \
+\\\" \\\", \\\"z\\\", \\\" \\\", RowBox[{\\\"(\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"3\\\"}], \\\"+\\\", RowBox[{\\\"5\\\", \\\" \\\
+\", SuperscriptBox[\\\"z\\\", \\\"2\\\"]}]}], \\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 3, 
+   Rational[1, 2] $CellContext`z (-3 + 5 $CellContext`z^2)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768225295091936*^9, 3.768225327942788*^9},
+ CellLabel->
+  "During evaluation of \
+In[35]:=",ExpressionUUID->"d1d8a6a9-4775-4f36-a731-a958fd9cec81"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"\\!\\(\\*SubscriptBox[\\(P\\), \\(\\!\\(\\*RowBox[{\\\
+\"4\\\"}]\\)\\)]\\)(z) = \\!\\(\\*RowBox[{FractionBox[\\\"1\\\", \\\"8\\\"], \
+\\\" \\\", RowBox[{\\\"(\\\", RowBox[{\\\"3\\\", \\\"-\\\", \
+RowBox[{\\\"30\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \\\"2\\\"]}], \
+\\\"+\\\", RowBox[{\\\"35\\\", \\\" \\\", SuperscriptBox[\\\"z\\\", \
+\\\"4\\\"]}]}], \\\")\\\"}]}]\\)\"\>",
+  StringForm[
+  "\!\(\*SubscriptBox[\(P\), \(``\)]\)(z) = ``", 4, 
+   Rational[1, 8] (3 - 30 $CellContext`z^2 + 35 $CellContext`z^4)],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.768225295091936*^9, 3.768225327943839*^9},
+ CellLabel->
+  "During evaluation of \
+In[35]:=",ExpressionUUID->"ae7419b0-7cc9-4690-9f66-1a88e395fe29"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{933, 1016},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperOrientation"->"Portrait",
+"PaperSize"->{Automatic, Automatic},
+"PostScriptOutputFile"->"/home/john/gitRepos/homeworkRepo/PH \
+426/2019/hw7_sol/a_and_b.pdf"},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 215, 3, 51, "Text",ExpressionUUID->"d070cdb3-0c33-4777-8a4b-59eb66e32617"],
+Cell[CellGroupData[{
+Cell[640, 20, 587, 14, 34, "Input",ExpressionUUID->"3a018cf3-32a8-407b-8335-ce616cae7bbb"],
+Cell[CellGroupData[{
+Cell[1252, 38, 399, 8, 25, "Print",ExpressionUUID->"01a9c421-9775-4073-88da-bf7387b8a5b8"],
+Cell[1654, 48, 414, 8, 25, "Print",ExpressionUUID->"978ee2a1-f699-4616-8586-8a7deb7a10f3"],
+Cell[2071, 58, 641, 13, 42, "Print",ExpressionUUID->"1a5ee741-c824-498d-be1b-2b390be1d85e"],
+Cell[2715, 73, 690, 13, 42, "Print",ExpressionUUID->"b92346cb-3c4a-49a8-8081-77e54897e79d"],
+Cell[3408, 88, 727, 14, 42, "Print",ExpressionUUID->"6fc3e10b-e0d7-414f-a06d-751d5afde82f"]
+}, Open  ]]
+}, Open  ]],
+Cell[4162, 106, 1067, 33, 138, "Text",ExpressionUUID->"cc78d3d7-f1fc-4289-b9b6-3ff264395d0c"],
+Cell[5232, 141, 746, 22, 57, "Input",ExpressionUUID->"0050ea3b-e15f-44b7-a10a-8b97ed2e3695"],
+Cell[CellGroupData[{
+Cell[6003, 167, 662, 16, 34, "Input",ExpressionUUID->"45665d96-02d6-4554-903a-671634877bc5"],
+Cell[CellGroupData[{
+Cell[6690, 187, 421, 8, 25, "Print",ExpressionUUID->"2250b189-f411-44e5-9e9e-94656b7547e0"],
+Cell[7114, 197, 434, 8, 25, "Print",ExpressionUUID->"58b7b568-034a-4707-8e1b-92ef83b40c47"],
+Cell[7551, 207, 663, 13, 42, "Print",ExpressionUUID->"8a8be1e3-57ed-401e-9ebb-22282a9d87f5"],
+Cell[8217, 222, 700, 13, 42, "Print",ExpressionUUID->"d1d8a6a9-4775-4f36-a731-a958fd9cec81"],
+Cell[8920, 237, 749, 14, 42, "Print",ExpressionUUID->"ae7419b0-7cc9-4690-9f66-1a88e395fe29"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
